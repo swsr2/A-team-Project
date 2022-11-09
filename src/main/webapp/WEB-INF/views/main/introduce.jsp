@@ -75,7 +75,7 @@ body {
 </head>
 <body>
 <div class="header">
-	<img src="${path }/resources/image/logo.png" width="150" height="150" >
+	<img src="${path }/resources/image/logo.png" width="150" height="150">
 	<button type="button">로그인</button>
 </div>
 <div class="topnav">
@@ -87,7 +87,17 @@ body {
 </div>
 
 <div class="content">
-	<img src="${path }/resources/image/jejumain.jpg" style="width:auto;">
+	<table>
+		<tr>
+			<td><img src="3${path }/resources/image/#" width="100"></td>
+			<td><p> 제주가고싶조는 제주도를 여행하고자 하는 여행자들에게 맛집, 관광지, 액티비티와 관련한 정보를 제공해줌으로써
+			편리하게 여행을 할 수 있도록 돕고자 만들어 졌습니다.</p></textarea></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+		</tr>
+	</table>
 </div>
 
 <div class="footer">
@@ -98,5 +108,3 @@ body {
 
 </body>
 </html>
-
-

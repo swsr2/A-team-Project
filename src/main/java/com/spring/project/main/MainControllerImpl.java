@@ -18,6 +18,11 @@ public class MainControllerImpl implements MainController{
 		return "/main/main";
 	}
 
+	@RequestMapping(value="/main/introduce")
+	public String introduce(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "/main/introduce";
+	}
+
 }
 
 

@@ -6,4 +6,5 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface MainController {
 	public String main(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public String introduce(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
