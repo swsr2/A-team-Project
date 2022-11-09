@@ -54,7 +54,7 @@ body {
 
 /* Style the content */
 .content {
-  background-color: #ddd;
+  background-color: transparent;
   padding: 10px;
   height: 450px; 
 }

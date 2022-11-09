@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"	isELIgnored="false"
-	%>
+   pageEncoding="utf-8"   isELIgnored="false"
+   %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path"  value="${pageContext.request.contextPath}"  />
@@ -10,101 +10,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>CSS Template</title>
+<title>main</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-/* Style the header */
-.header {
-  background-color: #f1f1f1;
-  padding:0px;
-  text-align: center;
-}
-.header img {
-	margin-right:90%;
-}
-.header button {
-	margin-left:90%;
-}
-
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Style the content */
-.content {
-  background-color: #ddd;
-  padding: 10px;
-  height: 450px; 
-}
-
-/* Style the footer */
-.footer {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align:center;
-}
-</style>
 </head>
-<body>
-<div class="header">
-	<img src="${path }/resources/image/logo.png" width="150" height="150">
-	<button type="button">로그인</button>
-</div>
-<div class="topnav">
-  <a href="${path }/main/introduce">제주가고싶조</a>
-  <a href="#">먹으멍</a>
-  <a href="#">보멍</a>
-  <a href="#">즐기멍</a>
-  <a href="#">이벤트</a>
-</div>
-
-<div class="content">
-	<table>
-		<tr>
-			<td><img src="3${path }/resources/image/#" width="100"></td>
-			<td><p> 제주가고싶조는 제주도를 여행하고자 하는 여행자들에게 맛집, 관광지, 액티비티와 관련한 정보를 제공해줌으로써
-			편리하게 여행을 할 수 있도록 돕고자 만들어 졌습니다.</p></textarea></td>
-		</tr>
-		<tr>
-		</tr>
-		<tr>
-		</tr>
-	</table>
-</div>
-
-<div class="footer">
- 	<p>e-mail : jejukj@test.com</p>
-	<p>회사주소 : 서울 마포구 양화로 122 3층, 4층</p>
-	<p><a href="#">1:1문의하기</a></p>
-</div>
-
+		<table>
+			<tr>
+				<td><img src="${path }/resources/image/jejuemo4.jpg" width="50"></td>
+				<td colspan="10">'제주가고싶조'는 제주도를 여행하고자 하는 여행자들에게 맛집, 관광지, 액티비티 등 제주도와 
+						관련된 정보를 제공함으로써 편리하게 여행을 할 수 있도록 돕고자 만들어 졌습니다.</tr>
+			<tr>
+				<td colspan="10">여행 일정짜기 어려울땐 육지사람부터 제주도민까지 모두가 좋아할만한 코스들로 준비했으니 찜하기를
+						하여 내 일정짜기에 추가할 수 있어요.</td>
+				<td><img src="${path }/resources/image/jejuemo2.jpg" width="50"></td>
+			</tr>
+			<tr>
+				<td><img src="${path }/resources/image/jejuemo3.jpg" width="50"></td>
+				<td colspan="10">제주여행을 최저가로? '제주가고싶조' 회원이라면 제주도 항공권과 숙박업체를 온라인 단독
+						최저가로 만나실 수 있어요. 오직 제주가고싶조에서!/tr>
+		</table>
 </body>
 </html>

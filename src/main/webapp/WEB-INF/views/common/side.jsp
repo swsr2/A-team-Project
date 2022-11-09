@@ -4,7 +4,8 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-  <a href="#">제주가고싶조</a>
+<c:set var="path" value="${pageContext.request.contextPath }" />
+  <a href="${path }/main/introduce">제주가고싶조</a>
   <a href="#">먹으멍</a>
   <a href="#">보멍</a>
   <a href="#">즐기멍</a>
