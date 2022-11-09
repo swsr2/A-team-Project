@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainControllerImpl implements MainController{
 
 	@Override
-	@RequestMapping(value="/main", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/main/main.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String main(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return "/main/main";
 	}
