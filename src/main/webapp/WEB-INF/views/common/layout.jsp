@@ -26,7 +26,7 @@ body {
 .header img {
 	margin-right:90%;
 }
-.header button {
+.header #login {
 	margin-left:90%;
 }
 
@@ -65,6 +65,53 @@ body {
   padding: 10px;
   text-align:center;
 }
+.search {
+	position: absolute;
+	left : 50%;
+	transform: translate(-50%, -50%);
+	bottom: 82%;
+}
+.search_btn {
+	position: absolute;
+	border:0;
+	outline: none;
+	font-size: 25px;
+	width:70px;
+	top:8px;
+}
+#inputSearch {
+		width: 100%;
+        padding: 12px 24px;
+
+        background-color: transparent;
+        transition: transform 250ms ease-in-out;
+        font-size: 14px;
+        line-height: 18px;
+ 		background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1px solid #575756;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        &:placeholder {
+            color: color(#575756 a(0.8));
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        &:hover,
+        &:focus {
+            padding: 12px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #575756;
+            border-radius: 0;
+            background-position: 100% center;
+        }
+}
+
 </style>
 </head>
 <body>
