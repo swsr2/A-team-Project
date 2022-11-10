@@ -5,7 +5,7 @@
 	request.setCharacterEncoding("utf-8");
 %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<img src="${path }/resources/image/logo.png" width="150" height="150" >
+<a href="${path }/main/main.do"><img src="${path }/resources/image/logo.png" width="150" height="150" ></a>
 <div class="search">
      <input type="text" id="inputSearch" placeholder="검색어를 입력해주세요." style="width:1000px;font-size:25px;">
       <button class="search_btn">검색</button>

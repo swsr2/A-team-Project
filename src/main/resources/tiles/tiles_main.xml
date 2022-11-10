@@ -22,13 +22,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/main/introduce.jsp" />
 	</definition>
 
+	<definition name="/main/support" extends="baseLayout">
+		<put-attribute name="title" value="1:1문의하기" />
+		<put-attribute name="body" value="/WEB-INF/views/main/support.jsp" />
+	</definition>
+	
  	<definition name="/food/foodmain" extends="baseLayout">
-		<put-attribute name="title" value="제주가고싶조 소개글" />
+		<put-attribute name="title" value="먹으멍_맛집" />
 		<put-attribute name="body" value="/WEB-INF/views/food/foodmain.jsp" />
 	</definition>
 	
 	<definition name="/food/cafe" extends="baseLayout">
-		<put-attribute name="title" value="제주가고싶조 소개글" />
+		<put-attribute name="title" value="먹으멍_카페" />
 		<put-attribute name="body" value="/WEB-INF/views/food/cafe.jsp" />
 	</definition>
 </tiles-definitions>

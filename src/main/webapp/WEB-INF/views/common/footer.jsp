@@ -4,6 +4,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
+<c:set var="path" value="${pageContext.request.contextPath }" />
  	<p>e-mail : jejukj@test.com</p>
 	<p>회사주소 : 서울 마포구 양화로 122 3층, 4층</p>
-	<p><a href="#">1:1문의하기</a></p>
+	<p><a href="${path }/main/support">1:1문의하기</a></p>
