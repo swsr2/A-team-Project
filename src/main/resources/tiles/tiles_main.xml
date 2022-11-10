@@ -36,4 +36,9 @@
 		<put-attribute name="title" value="먹으멍_카페" />
 		<put-attribute name="body" value="/WEB-INF/views/food/cafe.jsp" />
 	</definition>
+	
+	<definition name="food/resDetail" extends="baseLayout">
+		<put-attribute name="title" value="먹으멍_맛집_상세페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/food/resDetail.jsp" />
+	</definition>
 </tiles-definitions>

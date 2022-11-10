@@ -3,9 +3,19 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="mapper.food">
-	<select id="foodList" resultType="com.spring.project.food.dto.FoodDTO">
+	<resultMap type="foodDTO" id="foodResult">
+		<result property="fd_no" column="fd_no" />
+		<result property="fd_name" column="fd_name" />
+		<result property="fd_address" column="fd_address" />
+		<result property="fd_open" column="fd_open" />
+		<result property="fd_colse" column="fd_colse" />
+		<result property="fd_score" column="fd_score" />
+		<result property="fd_category" column="fd_category" />
+	</resultMap>
+
+	<select id="selectfd_no" parameterType="int" resultType="com.spring.project.food.dto.FoodDTO">
 		<![CDATA[
-			select * from food
+			select * from food where fd_no=#{fn_no}
 		]]>
 	</select>	
 </mapper>
