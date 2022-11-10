@@ -8,14 +8,16 @@
 <meta charset="UTF-8">
 <title><tiles:insertAttribute name="title" /></title>
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);﻿
 * {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Hanna', serif;
 }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Hanna', serif;
 }
 /* Style the header */
 .header {
@@ -24,15 +26,21 @@ body {
   text-align: center;
 }
 .header img {
-	margin-right:90%;
+	position:absolute;
+	right:90%;
 }
-.header #login {
-	margin-left:90%;
+.header #head {
+	width: 100%;
+	height:160px;
+}
+
+.info {
+	font-family: 'NanumSquare', sans-serif;
 }
 
 /* Style the top navigation bar */
 .topnav {
-  overflow: hidden;
+  overflow: auto;
   background-color: #333;
 }
 
@@ -41,14 +49,22 @@ body {
 	width:100%;
 	top:0%;
 	padding: 5px;
-	margin-left: 45%;
 }
-.logBtn{
+li button{
 	border: 0;
 	background: transparent;
 	color: gray;
 }
-.logBtn:hover{
+#loginBarList{
+margin: 0px;
+}
+#loginBarList li{
+	list-style-type: none;
+	float: right;
+	padding-right: 10px;
+}
+
+.loginBtn:hover, .addMemBtn:hover {
 	color:black;
 }
 .logBtn:active{
@@ -73,6 +89,7 @@ body {
 
 /* Style the content */
 .content {
+  overflow : auto;
   background-color: transparent;
   padding: 10px;
   height: 450px; 
@@ -88,18 +105,17 @@ body {
 	position: absolute;
 	left : 50%;
 	transform: translate(-50%, -50%);
-	bottom: 82%;
+	top:13%;
 }
 .search_btn {
-	position: absolute;
+	position:absolute;
 	border:0;
 	outline: none;
 	font-size: 25px;
 	width:70px;
-	top:8px;
+	top:3px;
 }
 #inputSearch {
-		width: 100%;
         padding: 12px 24px;
 
         background-color: transparent;
@@ -114,21 +130,6 @@ body {
         transition: all 250ms ease-in-out;
         backface-visibility: hidden;
         transform-style: preserve-3d;
-        &:placeholder {
-            color: color(#575756 a(0.8));
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        
-        &:hover,
-        &:focus {
-            padding: 12px 0;
-            outline: 0;
-            border: 1px solid transparent;
-            border-bottom: 1px solid #575756;
-            border-radius: 0;
-            background-position: 100% center;
-        }
 }
  
 </style>
