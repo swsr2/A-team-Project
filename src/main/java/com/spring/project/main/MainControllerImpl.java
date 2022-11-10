@@ -34,7 +34,7 @@ public class MainControllerImpl implements MainController{
 		return "/main/support";
 	}
 	
-	@RequestMapping(value="/sendMail", method=RequestMethod.POST)
+	@RequestMapping(value="/sendEmail", method=RequestMethod.POST)
 	public void sendEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -44,12 +44,12 @@ public class MainControllerImpl implements MainController{
 		String title =request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		mailService.sendMail("tkfkd9119@gmail.com", id+"님의 문의:: "+ title, content);
+		mailService.sendMail("jjkjadm@gmail.com", id+"님의 문의:: "+ title, content);
 		
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("alert('문의가 완료되었습니다.');");
-		out.println("location.href='http://localhost:8080/project/main/main';");
+		out.println("location.href='http://localhost:8080/project/main/main.do';");
 		out.println("</script>");
 	}
 	

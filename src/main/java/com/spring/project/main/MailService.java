@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 public class MailService {
 	@Autowired
 	private JavaMailSender mailSender;
-	@Autowired
-	private SimpleMailMessage preConfiguredMessage;
 	
 	@Async
 	public void sendMail(String to, String title, String body) {
@@ -22,8 +20,8 @@ public class MailService {
 		
 		try {
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "utf-8");
-			messageHelper.setCc("tkfkd911@gmail.com"); 
-			messageHelper.setFrom("tkfkd9119@gmail.com", "홍길동");
+			messageHelper.setCc("jjkjadm@gmail.com"); 
+			messageHelper.setFrom("jjkjadm@gmail.com", "admin");
 			messageHelper.setSubject(title);
 			messageHelper.setTo(to);
 			messageHelper.setText(body, true);
@@ -33,10 +31,4 @@ public class MailService {
 		}
 	}
 	
-	@Async
-	public void sendPreConfiguredMail(String message) {
-		SimpleMailMessage mailMessage = new SimpleMailMessage(preConfiguredMessage);
-		mailMessage.setText(message);
-		mailSender.send(mailMessage);
-	}
 }
