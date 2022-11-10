@@ -17,5 +17,5 @@
 		<![CDATA[
 			select * from food where fd_no=#{fn_no}
 		]]>
-	</select>	
+	</select>
 </mapper>
