@@ -27,7 +27,7 @@
 			<tr>
 				<td><img src="${path }/resources/image/jejuemo3.jpg" width="50"></td>
 				<td colspan="10">제주여행을 최저가로? '제주가고싶조' 회원이라면 제주도 항공권과 숙박업체를 온라인 단독
-						최저가로 만나실 수 있어요. 오직 제주가고싶조에서!/tr>
+						최저가로 만나실 수 있어요. 오직 제주가고싶조에서!</tr>
 		</table>
 </body>
 </html>
