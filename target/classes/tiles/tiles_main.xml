@@ -22,5 +22,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/main/introduce.jsp" />
 	</definition>
 
-	
+ 	<definition name="/food/foodmain" extends="baseLayout">
+		<put-attribute name="title" value="제주가고싶조 소개글" />
+		<put-attribute name="body" value="/WEB-INF/views/food/foodmain.jsp" />
+	</definition>
 </tiles-definitions>
