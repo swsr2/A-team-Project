@@ -36,6 +36,25 @@ body {
   background-color: #333;
 }
 
+/* Style the top navigation login bar */
+#loginBar {
+	width:100%;
+	top:0%;
+	padding: 5px;
+	margin-left: 45%;
+}
+.logBtn{
+	border: 0;
+	background: transparent;
+	color: gray;
+}
+.logBtn:hover{
+	color:black;
+}
+.logBtn:active{
+	color:blue;
+}
+
 /* Style the topnav links */
 .topnav a {
   float: left;
