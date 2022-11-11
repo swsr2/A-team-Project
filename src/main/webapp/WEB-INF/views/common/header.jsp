@@ -15,13 +15,14 @@
 			<li><a href="${path}/main/main.do">메인으로</a></li>
 		</ul>
 		</c:when>
-		</c:choose>
+		
 	<c:otherwise>
 	<ul id="loginBarList">
 		<li><a class="addMemBtn" href="${path }/member/memberForm.do">회원가입</a></li>
 		<li><a class="loginBtn" href="${path }/member/loginForm.do">로그인</a></li>
 	</ul>
 	</c:otherwise>
+	</c:choose>
 </div>
 
 <div id="head">
