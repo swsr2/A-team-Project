@@ -1,14 +1,13 @@
 package com.spring.project.member.controller;
 
 import java.io.PrintWriter;
-import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
@@ -29,7 +28,6 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	@Autowired
 	private MemberService memberService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
 	
 //	@Override
 //	@RequestMapping(value="/member/listMembers.do", method=RequestMethod.GET)

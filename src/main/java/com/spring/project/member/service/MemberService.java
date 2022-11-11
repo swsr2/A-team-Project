@@ -1,6 +1,5 @@
 package com.spring.project.member.service;
 
-import java.util.List;
 
 import com.spring.project.member.dto.MemberDTO;
 

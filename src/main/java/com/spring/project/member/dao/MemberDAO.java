@@ -1,6 +1,5 @@
 package com.spring.project.member.dao;
 
-import java.util.List;
 
 import com.spring.project.member.dto.MemberDTO;
 
