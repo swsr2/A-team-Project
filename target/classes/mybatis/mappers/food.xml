@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+	 
 <mapper namespace="mapper.food">
 	<resultMap type="foodDTO" id="foodResult">
 		<result property="fd_no" column="fd_no" />
@@ -19,6 +19,7 @@
 			select * from food where fd_no=#{fn_no}
 		]]>
 	</select>
+<<<<<<< HEAD
 	
 	<insert id="addReview" parameterType="com.spring.project.food.dto.ReviewDTO">
 		<![CDATA[
@@ -29,3 +30,7 @@
 	
 	
 </mapper>
+=======
+</mapper>
+
+>>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git

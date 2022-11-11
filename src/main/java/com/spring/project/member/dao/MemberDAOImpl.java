@@ -20,12 +20,12 @@ public class MemberDAOImpl implements MemberDAO{
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Override
-	public List<MemberDTO> selectAllMembers() {
-		// TODO Auto-generated method stub
-		List<MemberDTO> membersList = sqlSession.selectList("mapper.member.selectAllMemberList"); 
-		return membersList;
-	}
+//	@Override
+//	public List<MemberDTO> selectAllMembers() {
+//		// TODO Auto-generated method stub
+//		List<MemberDTO> membersList = sqlSession.selectList("mapper.member.selectAllMemberList"); 
+//		return membersList;
+//	}
 
 	@Override
 	public void addMember(MemberDTO member) {
