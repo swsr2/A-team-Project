@@ -19,7 +19,6 @@
 			select * from food where fd_no=#{fn_no}
 		]]>
 	</select>
-<<<<<<< HEAD
 	
 	<insert id="addReview" parameterType="com.spring.project.food.dto.ReviewDTO">
 		<![CDATA[
@@ -30,7 +29,4 @@
 	
 	
 </mapper>
-=======
-</mapper>
 
->>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
