@@ -87,8 +87,8 @@ li button {
 	<ul id="myMenuList">
 		<!-- <li><button type="button" class="myPickBtn">찜하기</button></li>
 		<li><button type="button" class="reviewBtn">리뷰쓰기</button></li> -->
-		<li><a class="myReview" href="${path }/food/resDetail/myReview">리뷰쓰기</a></li>
-		<li><a class="myPick" href="${path }/food/resDetail/myPick">찜하기</a></li>
+		<li><a class="myReview" href="${path }/food/myReview">리뷰쓰기</a></li>
+		<li><a class="myPick" href="${path }/food/myPick">찜하기</a></li>
 	</ul>
 	</div>
 </body>
