@@ -61,7 +61,6 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	public ModelAndView memberForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
-		
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}

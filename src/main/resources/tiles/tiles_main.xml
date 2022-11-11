@@ -46,4 +46,15 @@
 		<put-attribute name="title" value="먹으멍_맛집_리뷰" />
 		<put-attribute name="body" value="/WEB-INF/views/food/reviewForm.jsp" />
 	</definition>
+	
+	<definition name="/member/loginForm" extends="baseLayout">
+		<put-attribute name="title" value="로그인" />
+		<put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp" />
+	</definition>
+	
+	<definition name="/member/memberForm" extends="baseLayout">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
+	</definition>
+	
 </tiles-definitions>

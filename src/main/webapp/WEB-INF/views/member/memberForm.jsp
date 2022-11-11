@@ -10,15 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원등록창</title>
-<style type="text/css">
-        body {
-            background-color: white;
-        }
-
-
-
-</style>
-
 </head>
 <body>
 	<form method="post" action="${path }/member/addMember.do">

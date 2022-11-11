@@ -10,16 +10,16 @@
 		
 		<c:when test="${isLogOn == true && member != null }">	
 		<ul>
-			<h4>${member.id }님 <a href="${path }/member/logout.do"> 로그아웃
-			<a href="${path}/member/memberDetail.do?id=${member.id}">마이페이지</a>
-			<a href="${path}/main/main.do">메인으로</a></h4><br>
+			<li>${member.id }님 <a href="${path }/member/logout.do"> 로그아웃</a></li>
+			<li><a href="${path}/member/memberDetail.do?id=${member.id}">마이페이지</a></li>
+			<li><a href="${path}/main/main.do">메인으로</a></li>
 		</ul>
 		</c:when>
 		
 	<c:otherwise>
 	<ul id="loginBarList">
-		<li><button type="button" class="addMemBtn"><a href="${path }/member/loginForm.do">로그인</button></li>
-		<li><button type="button" class="loginBtn"><a href="${path }/member/memberForm.do">회원가입</button></li>
+		<li><a class="addMemBtn" href="${path }/member/memberForm.do">회원가입</a></li>
+		<li><a class="loginBtn" href="${path }/member/loginForm.do">로그인</a></li>
 	</ul>
 	</c:otherwise>
 	</c:choose>
