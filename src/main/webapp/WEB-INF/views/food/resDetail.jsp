@@ -10,6 +10,19 @@
 <head>
 <meta charset="UTF-8">
 <title>맛집 상세페이지</title>
+<script>
+	function myPick(){
+		let heart = document.getElementById("heart");
+		let imgName = heart.getAttribute("src");
+		if(imgName == "${path }/resources/image/empty_heart.jpg"){
+			if(confirm('찜 하시겠습니까?')){
+				heart.setAttribute("src","${path }/resources/image/not_empty_heart.png");
+			}
+		} else {
+			heart.setAttribute("src","${path }/resources/image/empty_heart.jpg");
+		}
+	}
+</script>
 <style>
 form {
 	display: inline;
@@ -89,7 +102,10 @@ li button {
 		<li><button type="button" class="reviewBtn">리뷰쓰기</button></li> -->
 		<li><a class="myReview" href="${path }/food/myReview">리뷰쓰기</a></li>
 		<li>
-			<a class="myPick" href="${path }/food/myPick">찜하기</a>
+			<%-- <a class="myPick" href="${path }/food/myPick">찜하기</a> --%>
+			<button id="myPick" onclick="myPick()">
+				<img id="heart" src="${path }/resources/image/empty_heart.jpg" width="15">&nbsp;찜하기
+			</button>
 		</li>
 	</ul>
 	</div>
