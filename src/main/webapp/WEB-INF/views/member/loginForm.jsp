@@ -56,6 +56,5 @@
             <input type="reset" id="btn" value="계정 찾기"><br>
         </form>  
     </div>
-    <div style="margin:120px;"></div>
-</body>
+    <div style="margin:120px;"></div>   
 </html>

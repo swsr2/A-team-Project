@@ -6,6 +6,7 @@
 %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <div id="loginBar">
+<<<<<<< HEAD
 	<c:choose>
 		
 		<c:when test="${isLogOn == true && member != null }">	
@@ -17,13 +18,13 @@
 		</c:when>
 		
 	<c:otherwise>
+=======
+>>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 	<ul id="loginBarList">
 		<li><a class="addMemBtn" href="${path }/member/memberForm.do">회원가입</a></li>
 		<li><a class="loginBtn" href="${path }/member/loginForm.do">로그인</a></li>
 	</ul>
-	</c:otherwise>
-	</c:choose>
-</div> 
+</div>
 <div id="head">
 <img src="${path }/resources/image/logo.png" width="150" height="150" >
 	<div class="search">
