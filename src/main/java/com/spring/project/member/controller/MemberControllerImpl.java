@@ -78,9 +78,6 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		
 		out.println("location.href='"+ request.getContextPath() +"/main/main.do';");
 		out.println("</script>");	
-		
-		
-		
 	}
 
 	@Override
