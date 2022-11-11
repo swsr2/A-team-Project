@@ -48,9 +48,10 @@ body {
 	top:0%;
 	padding: 5px;
 }
-.addMemBtn, .loginBtn{
+li button{
+	border: 0;
+	background: transparent;
 	color: black;
-	text-decoration: none;
 }
 #loginBarList{
 margin: 0px;
@@ -145,8 +146,8 @@ margin: 0px;
   padding:0 .2em;
   text-align:center;
   width:5em;
-  margin-left:17%;
-  margin-top:20px;
+  margin-left: 50%;
+  margin-bottom:5px;
   transform: translate(-50%, -50%);
 }
 
