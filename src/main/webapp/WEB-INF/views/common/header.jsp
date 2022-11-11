@@ -7,8 +7,8 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <div id="loginBar">
 	<ul id="loginBarList">
-		<li><button type="button" class="addMemBtn">회원가입</button></li>
-		<li><button type="button" class="loginBtn">로그인</button></li>
+		<li><a class="addMemBtn" href="${path }/member/memberForm.do">회원가입</a></li>
+		<li><a class="loginBtn" href="${path }/member/loginForm.do">로그인</a></li>
 	</ul>
 </div>
 <div id="head">

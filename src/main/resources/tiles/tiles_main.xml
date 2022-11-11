@@ -46,7 +46,6 @@
 		<put-attribute name="title" value="먹으멍_맛집_리뷰" />
 		<put-attribute name="body" value="/WEB-INF/views/food/reviewForm.jsp" />
 	</definition>
-<<<<<<< HEAD
 	
 	<definition name="/member/loginForm" extends="baseLayout">
 		<put-attribute name="title" value="로그인" />
@@ -58,6 +57,4 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
 	</definition>
 	
-=======
->>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 </tiles-definitions>
