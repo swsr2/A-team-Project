@@ -13,12 +13,12 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	@Override
-	public List<MemberDTO> listMembers() {
-		// TODO Auto-generated method stub
-		List<MemberDTO> membersList = memberDAO.selectAllMembers(); 
-		return membersList;
-	}
+//	@Override
+//	public List<MemberDTO> listMembers() {
+//		// TODO Auto-generated method stub
+//		List<MemberDTO> membersList = memberDAO.selectAllMembers(); 
+//		return membersList;
+//	}
 
 	@Override
 	public void addMember(MemberDTO member) {

@@ -31,30 +31,30 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
 	
-	@Override
-	@RequestMapping(value="/member/listMembers.do", method=RequestMethod.GET)
-	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		
-		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		
-		if(isLogOn != null) {
-			
-			
-			logger.info("info 레벨 : viewName = " + viewName);
-			logger.debug("debug 레벨 : viewName = " + viewName);
-			List<MemberDTO> membersList = memberService.listMembers();
-			
-			
-			mav.addObject("membersList", membersList);
-		} else {
-			mav.setViewName("redirect:/member/loginForm.do");
-		}
-		return mav;
-	}
+//	@Override
+//	@RequestMapping(value="/member/listMembers.do", method=RequestMethod.GET)
+//	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		// TODO Auto-generated method stub
+//		HttpSession session = request.getSession();
+//		
+//		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+//		String viewName = (String) request.getAttribute("viewName");
+//		ModelAndView mav = new ModelAndView(viewName);
+//		
+//		if(isLogOn != null) {
+//			
+//			
+//			logger.info("info 레벨 : viewName = " + viewName);
+//			logger.debug("debug 레벨 : viewName = " + viewName);
+//			List<MemberDTO> membersList = memberService.listMembers();
+//			
+//			
+//			mav.addObject("membersList", membersList);
+//		} else {
+//			mav.setViewName("redirect:/member/loginForm.do");
+//		}
+//		return mav;
+//	}
 
 	@Override
 	@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
@@ -67,13 +67,18 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 	@Override
 	@RequestMapping(value="/member/addMember.do", method=RequestMethod.POST)
-	public ModelAndView addMember(@ModelAttribute("member") MemberDTO member, 
+	public void addMember(@ModelAttribute("member") MemberDTO member, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		memberService.addMember(member);
-					
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
-		return mav;
+		PrintWriter out = response.getWriter();
+		out.println("<script>");			
+		out.println("alert('회원가입이 완료되었습니다');");
+		
+		out.println("location.href='"+ request.getContextPath() +"/main/main.do';");
+		out.println("</script>");	
+		
 	}
 
 	@Override
@@ -134,22 +139,30 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 	@Override
 	@RequestMapping(value="/member/login.do", method=RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+	public void login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
-		ModelAndView mav = new ModelAndView();
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
 		MemberDTO memberDTO = memberService.login(member);
 		
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
 		if(memberDTO != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/main/main.do" );
+			out.println("alert('"+memberDTO.getId()+"님 로그인 되었습니다');");
+		out.println("location.href='"+request.getContextPath() +"/main/main.do';"); 
+			out.println("</script>");
 		} else {
 			rAttr.addAttribute("result", "loginFailed");
-			mav.setViewName("redirect:/member/loginForm.do");
+			
+			out.println("location.href='"+request.getContextPath() +"/member/loginForm.do';");
+		
 		}
-		return mav;
+		
 	}
 
 	@Override

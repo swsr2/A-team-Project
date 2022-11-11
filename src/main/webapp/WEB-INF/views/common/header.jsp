@@ -9,7 +9,7 @@
 	<c:choose>
 		
 		<c:when test="${isLogOn == true && member != null }">	
-		<ul>
+		<ul id="loginBarList">
 			<li>${member.id }님 <a href="${path }/member/logout.do"> 로그아웃</a></li>
 			<li><a href="${path}/member/memberDetail.do?id=${member.id}">마이페이지</a></li>
 			<li><a href="${path}/main/main.do">메인으로</a></li>
