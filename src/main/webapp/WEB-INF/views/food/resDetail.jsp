@@ -11,9 +11,36 @@
 <meta charset="UTF-8">
 <title>맛집 상세페이지</title>
 <style>
-	form {
-		display:inline;
-	}
+form {
+	display: inline;
+}
+
+#myMenu {
+	width: 100%;
+	bottom: 0%;
+	padding: 5px;
+}
+
+li button {
+	border: 0;
+	background: transparent;
+	color: black;
+}
+
+#myMenuList {
+	margin: 0px;
+}
+
+#myMenuList li {
+	list-style-type: none;
+	float: right;
+	padding-right: 20px;
+}
+
+.myPick:hover, .myReview:hover {
+	color: black;
+}
+
 </style>
 </head>
 <body>
@@ -55,5 +82,14 @@
  			<td>${food.fd_category}</td>
      	</tr>
     </table>
+    
+    <div id="myMenu">
+	<ul id="myMenuList">
+		<!-- <li><button type="button" class="myPickBtn">찜하기</button></li>
+		<li><button type="button" class="reviewBtn">리뷰쓰기</button></li> -->
+		<li><a class="myReview" href="${path }/food/resDetail/myReview">리뷰쓰기</a></li>
+		<li><a class="myPick" href="${path }/food/resDetail/myPick">찜하기</a></li>
+	</ul>
+	</div>
 </body>
 </html>
