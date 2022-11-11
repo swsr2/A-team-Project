@@ -10,3 +10,4 @@
   <a href="${path }/tour/main">보멍</a>
   <a href="${path }/activity/main">즐기멍</a>
   <a href="${path }/event/main">이벤트</a>
+  <img src="${path }/resources/image/icon.png" width="40">

@@ -16,6 +16,7 @@ body {
   padding:0px;
   text-align: center;
   background-image: url("/project/resources/image/jejusea.jpg");
+  background-size: cover;
 }
 .header img {
 	position:absolute;
