@@ -7,8 +7,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <div id="loginBar">
 
-	<c:choose></c:choose>
-		
+	<c:choose>	
 		<c:when test="${isLogOn == true && member != null }">	
 		<ul id="loginBarList">
 			<li>${member.id }님 <a href="${path }/member/logout.do"> 로그아웃</a></li>
@@ -16,7 +15,7 @@
 			<li><a href="${path}/main/main.do">메인으로</a></li>
 		</ul>
 		</c:when>
-		
+		</c:choose>
 	<c:otherwise>
 	<ul id="loginBarList">
 		<li><a class="addMemBtn" href="${path }/member/memberForm.do">회원가입</a></li>
