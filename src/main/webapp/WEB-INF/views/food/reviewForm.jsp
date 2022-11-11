@@ -14,7 +14,6 @@
 form {
    display: inline;
 }
-
 </style>
 <script>
    function backToList() {
@@ -61,6 +60,6 @@ form {
             </td>
       </table>   
    </form>
-   
+
 </body>
 </html>
