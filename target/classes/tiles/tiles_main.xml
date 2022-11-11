@@ -41,4 +41,9 @@
 		<put-attribute name="title" value="먹으멍_맛집_상세페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/food/resDetail.jsp" />
 	</definition>
+	
+	<definition name="/food/reviewForm" extends="baseLayout">
+		<put-attribute name="title" value="먹으멍_맛집_리뷰" />
+		<put-attribute name="body" value="/WEB-INF/views/food/reviewForm.jsp" />
+	</definition>
 </tiles-definitions>

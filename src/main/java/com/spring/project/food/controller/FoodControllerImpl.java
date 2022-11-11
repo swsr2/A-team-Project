@@ -50,15 +50,15 @@ public class FoodControllerImpl implements FoodController {
 	}
 
 	@Override
-	@RequestMapping("/resDetail/myReview")
+	@RequestMapping("/myReview")
 	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		return "/food/review";
+		return "/food/reviewForm";
 	}
 
 	/* 
 	@Override
-	@RequestMapping(value="/resDetail/myPick", method=RequestMethod.POST)
+	@RequestMapping(value="/myPick", method=RequestMethod.POST)
 	public void myPick(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 			response.setContentType("text/html;charset=utf-8");

@@ -90,7 +90,7 @@ margin: 0px;
   overflow : auto;
   background-color: transparent;
   height: 100%; 
-  padding:20px 20px 140px 20px; /* footer의 높이 */
+  padding:20px 20px 120px 20px; /* footer의 높이 */
   
 }
 
@@ -107,7 +107,7 @@ margin: 0px;
 	position: absolute;
 	left : 50%;
 	transform: translate(-50%, -50%);
-	top:5%;
+	top:70px;
 }
 .search_btn {
 	background-color: transparent;
@@ -136,4 +136,38 @@ margin: 0px;
 }
 #inputSearch:focus {
 	background-color: white;
+}
+
+/* component */
+
+.star-rating {
+  border:solid 1px #ccc;
+  display:flex;
+  flex-direction: row-reverse;
+  font-size:1.5em;
+  justify-content:space-around;
+  padding:0 .2em;
+  text-align:center;
+  width:5em;
+  margin-left: 50%;
+  margin-bottom:5px;
+  transform: translate(-50%, -50%);
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color:#ccc;
+  cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+  color:#f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color:#fc0;
 }
