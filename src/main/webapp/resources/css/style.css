@@ -31,6 +31,9 @@ body {
 	width: 100%;
 	height:160px;
 }
+.header #loginBar{
+	margin-left:70%;
+}
 
 .info {
 	font-family: 'NanumSquare', sans-serif;
