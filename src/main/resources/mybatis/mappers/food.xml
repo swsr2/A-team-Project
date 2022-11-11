@@ -12,10 +12,20 @@
 		<result property="fd_score" column="fd_score" />
 		<result property="fd_category" column="fd_category" />
 	</resultMap>
+	
 
 	<select id="selectfd_no" parameterType="int" resultType="com.spring.project.food.dto.FoodDTO">
 		<![CDATA[
 			select * from food where fd_no=#{fn_no}
 		]]>
 	</select>
+	
+	<insert id="addReview" parameterType="com.spring.project.food.dto.ReviewDTO">
+		<![CDATA[
+			insert into review (re_no, re_score, re_content, id) 
+			values(re_seq.nextval, #{re_score}, #{re_content}, 'aaa') 
+		]]>
+	</insert>
+	
+	
 </mapper>

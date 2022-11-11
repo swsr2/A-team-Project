@@ -1,17 +1,21 @@
 package com.spring.project.food.controller;
 
-// import java.io.PrintWriter;
+import java.io.PrintWriter;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.food.dto.FoodDTO;
+import com.spring.project.food.dto.ReviewDTO;
 import com.spring.project.food.service.FoodService;
 
 @Controller("foodController")
@@ -53,7 +57,29 @@ public class FoodControllerImpl implements FoodController {
 	@RequestMapping("/myReview")
 	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
 		return "/food/reviewForm";
+	}
+
+	@Override
+	@RequestMapping(value="/addReview", method=RequestMethod.POST)
+	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		System.out.println(review.getRe_content());
+		int result = foodService.addReview(review);
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result == 1) {
+			out.println("alert('리뷰등록이 완료 되었습니다. 작성하신 리뷰는 [마이페이지 > 나의 리뷰보기]에서 확인하실 수 있습니다.')");
+		} else {
+			out.println("alert('리뷰가 등록되지 않았습니다.');");
+		}
+		out.println("location.href='"+ request.getContextPath() +"/food/resDetail?fd_no=1';");
+		out.println("</script>");
+		
+		
 	}
 
 	/* 
