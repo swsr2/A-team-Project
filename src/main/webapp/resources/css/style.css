@@ -15,6 +15,7 @@ body {
   background-color: #f1f1f1;
   padding:0px;
   text-align: center;
+  background-image: url("/project/resources/image/jejusea.jpg");
 }
 .header img {
 	position:absolute;
@@ -32,7 +33,7 @@ body {
 /* Style the top navigation bar */
 .topnav {
   overflow: auto;
-  background-color: #333;
+  background-color: orange;
 }
 
 /* Style the top navigation login bar */
@@ -57,9 +58,6 @@ margin: 0px;
 
 .loginBtn:hover, .addMemBtn:hover {
 	color:black;
-}
-.logBtn:active{
-	color:blue;
 }
 
 /* Style the topnav links */
@@ -88,6 +86,7 @@ margin: 0px;
 
 /* Style the footer */
 .footer {
+	 overflow : auto;
   background-color: #f1f1f1;
   padding: 10px;
   text-align:center;
@@ -99,6 +98,7 @@ margin: 0px;
 	top:13%;
 }
 .search_btn {
+	background-color: transparent;
 	position:absolute;
 	border:0;
 	outline: none;
@@ -121,4 +121,7 @@ margin: 0px;
         transition: all 250ms ease-in-out;
         backface-visibility: hidden;
         transform-style: preserve-3d;
+}
+#inputSearch:focus {
+	background-color: white;
 }
