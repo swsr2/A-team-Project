@@ -18,8 +18,8 @@ form {
 </style>
 <script>
    function backToList() {
-      let form = document.articleForm;
-      form.action = "${path}/board/listArticles.do"
+      let form = document.reviewForm;
+      form.action = "${path}/food/resDetail?fd_no=1";
       form.submit();
    }
 </script>
