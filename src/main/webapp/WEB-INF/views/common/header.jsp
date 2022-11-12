@@ -12,7 +12,6 @@
 		<ul id="loginBarList">
 			<li>${member.id }님 <a href="${path }/member/logout.do"> 로그아웃</a></li>
 			<li><a href="${path}/member/memberDetail.do?id=${member.id}">마이페이지</a></li>
-			<li><a href="${path}/main/main.do">메인으로</a></li>
 		</ul>
 		</c:when>
 		
@@ -26,7 +25,7 @@
 </div>
 
 <div id="head">
-<img src="${path }/resources/image/logo.png" width="150" height="150" >
+<a href="${path}/main/main.do"><img src="${path }/resources/image/logo.png" width="150" height="150" ></a>
 	<div class="search">
      	<input type="text" id="inputSearch" placeholder="검색어를 입력해주세요." style="width:500px;">
       	<button class="search_btn">검색</button>
