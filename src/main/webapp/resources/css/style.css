@@ -169,3 +169,14 @@ margin: 0px;
 .star-rating label:hover ~ label {
   color:#fc0;
 }
+
+.category {
+	border-radius: 100px;
+	background-color: white;
+	border: 1px solid gray;
+}
+.category:hover, .category:checked {
+	background-color: blue;;
+	color: white;
+}
+

@@ -33,7 +33,10 @@
 			</tr>
 			<tr>
 				<td width="200"><p align="right">성별</p></td>
-				<td width="400"><input type="text" name="gender"></td>
+				<td width="400">
+					<input type="radio" name="gender" value="M">남자
+					<input type="radio" name="gender" value="W">여자
+				</td>
 			</tr>
 			<tr>
 				<td width="200"><p align="right">전화번호</p></td>
