@@ -57,4 +57,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
 	</definition>
 	
+	<definition name="/event/eventmain" extends="baseLayout">
+		<put-attribute name="title" value="이벤트" />
+		<put-attribute name="body" value="/WEB-INF/views/event/eventmain.jsp" />
+	</definition>
+	
+	<definition name="event/airDetail" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_항공_상세페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/event/airDetail.jsp" />
+	</definition>
+	
 </tiles-definitions>
