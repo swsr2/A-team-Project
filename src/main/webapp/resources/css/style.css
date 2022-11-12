@@ -1,35 +1,44 @@
 @charset "UTF-8";
+
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);﻿
+
+@import
+	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css)
+	;
+
+﻿
 * {
-  box-sizing: border-box;
-  font-family: 'Hanna', serif;
+	box-sizing: border-box;
+	font-family: 'Hanna', serif;
 }
 
 body {
-  margin: 0;
-  padding:0;
-  font-family: 'Hanna', serif;
+	margin: 0;
+	padding: 0;
+	font-family: 'Hanna', serif;
 }
+
 #container {
-	position:relative;
-  min-height:100%;
+	position: relative;
+	min-height: 100%;
 }
 /* Style the header */
 .header {
-  background-color: #f1f1f1;
-  padding:0px;
-  text-align: center;
-  background-image: url("/project/resources/image/jejusea.jpg");
-  background-size: cover;
+	background-color: #f1f1f1;
+	padding: 0px;
+	text-align: center;
+	background-image: url("/project/resources/image/jejusea.jpg");
+	background-size: cover;
 }
+
 .header img {
-	position:absolute;
-	right:90%;
+	position: absolute;
+	right: 90%;
 }
+
 .header #head {
 	width: 100%;
-	height:160px;
+	height: 160px;
 }
 
 .info {
@@ -38,136 +47,136 @@ body {
 
 /* Style the top navigation bar */
 .topnav {
-  overflow: auto;
-  background-color: orange;
+	overflow: auto;
+	background-color: orange;
 }
 
 /* Style the top navigation login bar */
 #loginBar {
-	width:100%;
-	top:0%;
+	width: 100%;
+	top: 0%;
 	padding: 5px;
 }
-.addMemBtn, .loginBtn{
-	text-decoration:none;
+
+.addMemBtn, .loginBtn {
+	text-decoration: none;
 	color: black;
-	
 }
-#loginBarList{
-margin: 0px;
+
+#loginBarList {
+	margin: 0px;
 }
-#loginBarList li{
+
+#loginBarList li {
 	list-style-type: none;
 	float: right;
 	padding-right: 10px;
 }
 
 .loginBtn:hover, .addMemBtn:hover {
-	color:black;
-}     
+	color: black;
+}
 
 /* Style the topnav links */
 .topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 /* Change color on hover */
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+	background-color: #ddd;
+	color: black;
 }
 
 /* Style the content */
 .content {
-  overflow : auto;
-  background-color: transparent;
-  height: 100%; 
-  padding:20px 20px 120px 20px; /* footer의 높이 */
-  
+	overflow: auto;
+	background-color: transparent;
+	height: 100%;
+	padding: 20px 20px 120px 20px; /* footer의 높이 */
 }
 
 /* Style the footer */
 .footer {
-  background-color: #f1f1f1;
-  text-align:center;
-  width: 100%;
-  height: 120px; /* footer의 높이 */
-  position: absolute;  
-  bottom: 0;
+	background-color: #f1f1f1;
+	text-align: center;
+	width: 100%;
+	height: 120px; /* footer의 높이 */
+	position: absolute;
+	bottom: 0;
 }
+
 .search {
 	position: absolute;
-	left : 50%;
+	left: 50%;
 	transform: translate(-50%, -50%);
-	top:70px;
+	top: 70px;
 }
+
 .search_btn {
 	background-color: transparent;
-	position:absolute;
-	border:0;
+	position: absolute;
+	border: 0;
 	outline: none;
 	font-size: 25px;
-	width:70px;
-	top:3px;
+	width: 70px;
+	top: 3px;
 }
-#inputSearch {
-        padding: 12px 24px;
 
-        background-color: transparent;
-        transition: transform 250ms ease-in-out;
-        font-size: 14px;
-        line-height: 18px;
- 		background-repeat: no-repeat;
-        background-size: 18px 18px;
-        background-position: 95% center;
-        border-radius: 50px;
-        border: 1px solid #575756;
-        transition: all 250ms ease-in-out;
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
+#inputSearch {
+	padding: 12px 24px;
+	background-color: transparent;
+	transition: transform 250ms ease-in-out;
+	font-size: 14px;
+	line-height: 18px;
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 95% center;
+	border-radius: 50px;
+	border: 1px solid #575756;
+	transition: all 250ms ease-in-out;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
 }
+
 #inputSearch:focus {
 	background-color: white;
 }
 
 /* component */
-
 .star-rating {
-  border:solid 1px #ccc;
-  display:flex;
-  flex-direction: row-reverse;
-  font-size:1.5em;
-  justify-content:space-around;
-  padding:0 .2em;
-  text-align:center;
-  width:5em;
-  margin-left: 50%;
-  margin-bottom:5px;
-  margin-top:20px;
-  transform: translate(-50%, -50%);
+	border: solid 1px #ccc;
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 1.2em;
+	justify-content: space-around;
+	padding: 0 .2em;
+	text-align: center;
+	width: 5em;
+	margin-left:15%;
+	transform: translate(-15%, -70%);
 }
 
 .star-rating input {
-  display:none;
+	display: none;
 }
 
 .star-rating label {
-  color:#ccc;
-  cursor:pointer;
+	color: #ccc;
+	cursor: pointer;
 }
 
 .star-rating :checked ~ label {
-  color:#f90;
+	color: #f90;
 }
 
-.star-rating label:hover,
-.star-rating label:hover ~ label {
-  color:#fc0;
+.star-rating label:hover, .star-rating label:hover ~ label {
+	color: #fc0;
 }
 
 .category {
@@ -175,8 +184,8 @@ margin: 0px;
 	background-color: white;
 	border: 1px solid gray;
 }
+
 .category:hover, .category:checked {
 	background-color: blue;;
 	color: white;
 }
-

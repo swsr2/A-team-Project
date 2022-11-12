@@ -17,6 +17,9 @@
 		if(imgName == "${path }/resources/image/empty_heart.jpg"){
 			if(confirm('찜 하시겠습니까?')){
 				heart.setAttribute("src","${path }/resources/image/not_empty_heart.png");
+				if(heart.getAttribute("src")=="${path }/resources/image/not_empty_heart.png") {
+					loca
+				}
 			}
 		} else {
 			heart.setAttribute("src","${path }/resources/image/empty_heart.jpg");
