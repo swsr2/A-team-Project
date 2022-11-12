@@ -31,12 +31,12 @@ public class FoodControllerImpl implements FoodController {
 	@Autowired
 	FoodService foodService;
 	
-	static final String API_KEY = "txwoaa25joo8ac4y";
-	
 	@Override
 	@RequestMapping("/main")
 	public String restaurant(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 테스트 하실때 공유드라이브에 api 받아오기 텍스트 파일안 내용을 요기다 넣고 한번 돌리시면
+		// api 내용이 db에 저장이 될 겁니다 db에서 테이블 이랑 시퀀스 만들고 돌려주세요
 		
 		List<FoodDTO> foodList = foodService.foodList();
 		request.setAttribute("foodList", foodList);

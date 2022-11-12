@@ -32,4 +32,10 @@ public class FoodDAOImpl implements FoodDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.food.foodList");
 	}
+
+	@Override
+	public void dbInsert(FoodDTO food) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.food.dbInsert",food);
+	}
 }

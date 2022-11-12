@@ -10,6 +10,8 @@ public interface FoodService {
 	public FoodDTO selectOne(int fd_no);
 
 	public int addReview(ReviewDTO review);
+	
+	public void dbInsert(FoodDTO food);
 
 	public List<FoodDTO> foodList();
 

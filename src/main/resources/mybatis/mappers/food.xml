@@ -27,12 +27,12 @@
 		]]>
 	</insert>
 	
-<!-- 	<insert id="insert" parameterType="com.spring.project.food.dto.FoodDTO">
+ 	<insert id="dbInsert" parameterType="com.spring.project.food.dto.FoodDTO">
 		<![CDATA[
 			insert into food values(fd_seq.nextval, #{fd_title}, #{fd_info}, 
 			#{fd_address}, #{fd_roadAddress}, #{fd_phoneNo}, #{fd_imgPath}, #{fd_thumbnailPath}, #{fd_category})		
 		]]>
-	</insert> -->
+	</insert>
 	
 	<select id="foodList" resultType="com.spring.project.food.dto.FoodDTO">
 		<![CDATA[

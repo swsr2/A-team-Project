@@ -33,4 +33,10 @@ public class FoodServiceImpl implements FoodService {
 		return foodDAO.foodList();
 	}
 
+	@Override
+	public void dbInsert(FoodDTO food) {
+		// TODO Auto-generated method stub
+		foodDAO.dbInsert(food);
+	}
+
 }
