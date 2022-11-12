@@ -1,5 +1,7 @@
 package com.spring.project.food.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +25,11 @@ public class FoodDAOImpl implements FoodDAO{
 	public int addReview(ReviewDTO review) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("mapper.food.addReview", review);
+	}
+
+	@Override
+	public List<FoodDTO> foodList() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.food.foodList");
 	}
 }
