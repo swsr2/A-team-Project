@@ -1,11 +1,18 @@
 package com.spring.project.food.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,10 +31,15 @@ public class FoodControllerImpl implements FoodController {
 	@Autowired
 	FoodService foodService;
 	
+	static final String API_KEY = "txwoaa25joo8ac4y";
+	
 	@Override
 	@RequestMapping("/main")
 	public String restaurant(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		
+		List<FoodDTO> foodList = foodService.foodList();
+		request.setAttribute("foodList", foodList);
 		return "/food/foodmain";
 	}
 	

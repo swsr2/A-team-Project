@@ -1,5 +1,7 @@
 package com.spring.project.food.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,4 +26,11 @@ public class FoodServiceImpl implements FoodService {
 		// TODO Auto-generated method stub
 		return foodDAO.addReview(review);
 	}
+
+	@Override
+	public List<FoodDTO> foodList() {
+		// TODO Auto-generated method stub
+		return foodDAO.foodList();
+	}
+
 }

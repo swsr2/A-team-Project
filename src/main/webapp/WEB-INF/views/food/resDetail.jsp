@@ -73,25 +73,25 @@ li button {
  			<tr align="center">
  				<td><a href="${path}/food/resDetail?fd_no=${fd_no}"><img src="${path }/resources/image/${fd_no}.png" width="500"/></a></td>
  			</tr> --%>
- 			<td rowspan="6"><img src="${path }/resources/image/1.png" width="500"/></td>
+ 			<td rowspan="6"><img src="${food.fd_imgPath }" width="500"/></td>
  			<td width="100">번호 :</td>
  			<td>${food.fd_no }</td>
      	</tr>
      	<tr>
  			<td width="100">가게명 :</td>
- 			<td>${food.fd_name }</td>
+ 			<td>${food.fd_title }</td>
      	</tr>
      	<tr>
- 			<td width="100">주소 :</td>
+ 			<td width="100">지번주소 :</td>
  			<td>${food.fd_address }</td> <%-- api로 추후연결하기 --%>
      	</tr>
      	<tr>
- 			<td width="100">운영시간 :</td>
- 			<td>${food.fd_open }~${food.fd_close }</td>
+ 			<td width="100">도로명 주소 :</td>
+ 			<td>${food.fd_roadAddress }</td>
      	</tr>
      	<tr>
- 			<td width="100">평점 :</td>
- 			<td>${food.fd_score }</td>
+ 			<td width="100">전화번호 :</td>
+ 			<td>${food.fd_phoneNo }</td>
      	</tr>
      	<tr>
  			<td>카테고리</td>
