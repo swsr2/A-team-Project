@@ -31,9 +31,9 @@
  			<tr align="center">
  				<td><a href="${path}/food/resDetail?fd_no=${fd_no}"><img src="${path }/resources/image/fd_no.png" width="500"/></a></td>
  			</tr> --%>
- 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="500"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="500"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="500"/></a></td>
+ 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
+ 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
+ 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
     	</tr>
     </table>
 </body>

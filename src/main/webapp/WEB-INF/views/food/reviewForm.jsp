@@ -40,7 +40,8 @@ form {
             </td>
          </tr>
          <tr>
-         	<td align="left"><div class="star-rating">
+         	<td align="left">별점: 
+         	<div class="star-rating">
 			<input type="radio" id="5-stars" name="re_score" value="5" />
 			<label for="5-stars" class="star">&#9733;</label>
 			<input type="radio" id="4-stars" name="re_score" value="4" />
@@ -51,7 +52,8 @@ form {
 			<label for="2-stars" class="star">&#9733;</label>
 			<input type="radio" id="1-star" name="re_score" value="1" />
 			<label for="1-star" class="star">&#9733;</label>
-			</div></td>
+			</div>
+			</td>
          </tr>
          <tr>
             <td colspan="2" align="right">
