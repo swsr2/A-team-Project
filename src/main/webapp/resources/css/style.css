@@ -186,6 +186,11 @@ body {
 }
 
 .category:hover, .category:checked {
-	background-color: blue;;
+	background-color: lightblue;
 	color: white;
+}
+
+.page {
+	margin-left: 580px;
+	bottom: 120px;
 }

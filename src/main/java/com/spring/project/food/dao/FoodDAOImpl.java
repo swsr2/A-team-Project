@@ -1,6 +1,7 @@
 package com.spring.project.food.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ public class FoodDAOImpl implements FoodDAO{
 	}
 
 	@Override
-	public List<FoodDTO> foodList() {
+	public List<FoodDTO> foodList(Map<String, Integer> page) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("mapper.food.foodList");
+		return sqlSession.selectList("mapper.food.foodList",page);
 	}
 
 	@Override
@@ -40,8 +41,20 @@ public class FoodDAOImpl implements FoodDAO{
 	}
 
 	@Override
-	public List<FoodDTO> cafeList() {
+	public List<FoodDTO> cafeList(Map<String, Integer> page) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("mapper.food.cafeList");
+		return sqlSession.selectList("mapper.food.cafeList",page);
+	}
+
+	@Override
+	public int allFoodCnt() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.food.allFoodCnt");
+	}
+
+	@Override
+	public int allCafeCnt() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.food.allCafeCnt");
 	}
 }

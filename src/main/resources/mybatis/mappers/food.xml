@@ -34,14 +34,39 @@
 		]]>
 	</insert>
 	
-	<select id="foodList" resultType="com.spring.project.food.dto.FoodDTO">
+	<select id="foodList" resultType="com.spring.project.food.dto.FoodDTO" parameterType="java.util.Map">
 		<![CDATA[
-			select * from food where not fd_category like '%' || '카페' || '%'
+			SELECT *
+  				FROM (
+		        SELECT  f.*, row_number() over(order by fd_no asc) as rNum
+		          FROM food f
+		          where not (fd_category like '%'||'카페'||'%' or fd_category like '%'||'커피'||'%')
+		        ) 
+		   WHERE rNum between #{start} and #{end}
 		]]>
 	</select>
-	<select id="cafeList" resultType="com.spring.project.food.dto.FoodDTO">
+	
+	<select id="allFoodCnt" resultType="int">
 		<![CDATA[
-			select * from food where fd_category like '%' || '카페' || '%'
+			select count(*) from food 
+			where not (fd_category like '%' || '카페' || '%' or fd_category like '%' || '커피' || '%')
+		]]>
+	</select>
+	<select id="cafeList" resultType="com.spring.project.food.dto.FoodDTO" parameterType="java.util.Map">
+		<![CDATA[ 
+			SELECT *
+  				FROM (
+		        SELECT  f.*, row_number() over(order by fd_no asc) as rNum
+		          FROM food f
+		          where (fd_category like '%'||'카페'||'%' or fd_category like '%'||'커피'||'%')
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+	<select id="allCafeCnt" resultType="int">
+		<![CDATA[
+			select count(*) from food 
+			where fd_category like '%' || '카페' || '%' or fd_category like '%' || '커피' || '%'
 		]]>
 	</select>
 </mapper>

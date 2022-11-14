@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.project.food.dto.ReviewDTO;
 
 public interface FoodController {
-	public String restaurant(HttpServletRequest request, HttpServletResponse response) throws Exception; 
-	public String cafe(HttpServletRequest request, HttpServletResponse response) throws Exception; 
+	public String restaurant(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception; 
+	public String cafe(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public ModelAndView resDetail(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	// public void myPick(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception; 

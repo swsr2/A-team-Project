@@ -18,10 +18,12 @@
 </style>
 </head>
 <body>
-	<form name="food1" action="/project/food/main" method="post">
+	<form name="food1" action="/project/food/main" method="GET">
+		<input type="hidden" name="page" value="1">
         <input class="category" type='submit' value='맛집'/>
     </form>
-	<form name="food2" action="/project/food/cafe" method="post">
+	<form name="food2" action="/project/food/cafe" method="GET">
+		<input type="hidden" name="page" value="1">
         <input class="category" type='submit' value='카페'/>
     </form>
     <br><br><br>
@@ -38,7 +40,23 @@
  			</c:forEach>
  				</tr>
     </table>
- 		
+ 		 <div class="page">
+ <h3>
+    <c:if test="${prev}">
+ <span>[ <a href="${path }/food/cafe?page=${startPageNum - 1}">이전</a> ]</span>
+</c:if>
+
+<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+  <span>
+   <a href="${path }/food/cafe?page=${num}">${num}</a> 
+ </span>
+</c:forEach>
+
+<c:if test="${next}">
+ <span>[ <a href="${path }/food/cafe?page=${endPageNum +1 }">다음</a> ]</span>
+</c:if>
+</h3>
+</div>s
 </body>
 </html>
 

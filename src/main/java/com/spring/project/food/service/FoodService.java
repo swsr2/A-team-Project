@@ -13,9 +13,13 @@ public interface FoodService {
 	
 	public void dbInsert(FoodDTO food);
 
-	public List<FoodDTO> foodList();
+	public List<FoodDTO> foodList(int start, int end);
 
-	public List<FoodDTO> cafeList();
+	public List<FoodDTO> cafeList(int start, int end);
+
+	public int allFoodCnt();
+
+	public int allCafeCnt();
 
 
 }

@@ -1,6 +1,8 @@
 package com.spring.project.food.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +30,12 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public List<FoodDTO> foodList() {
+	public List<FoodDTO> foodList(int start, int end) {
 		// TODO Auto-generated method stub
-		return foodDAO.foodList();
+		Map<String, Integer> page = new HashMap<String, Integer>();
+		page.put("start", start);
+		page.put("end", end);
+		return foodDAO.foodList(page);
 	}
 
 	@Override
@@ -40,9 +45,24 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public List<FoodDTO> cafeList() {
+	public List<FoodDTO> cafeList(int start, int end) {
 		// TODO Auto-generated method stub
-		return foodDAO.cafeList();
+		Map<String, Integer> page = new HashMap<String, Integer>();
+		page.put("start", start);
+		page.put("end", end);
+		return foodDAO.cafeList(page);
+	}
+
+	@Override
+	public int allFoodCnt() {
+		// TODO Auto-generated method stub
+		return foodDAO.allFoodCnt();
+	}
+
+	@Override
+	public int allCafeCnt() {
+		// TODO Auto-generated method stub
+		return foodDAO.allCafeCnt();
 	}
 
 }
