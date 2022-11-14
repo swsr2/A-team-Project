@@ -25,16 +25,24 @@
         <input class="category" type='submit' value='카페'/>
     </form>
     <br><br><br>
-    <table>
-    	<tr>
-    		<%-- <c:forEach var="res" items="${resList }">
- 			<tr align="center">
- 				<td><a href="${path}/food/resDetail?fd_no=${fd_no}"><img src="${path }/resources/image/fd_no.png" width="500"/></a></td>
- 			</tr> --%>
- 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
-    	</tr>
+        <table align="center">
+    <tr align="center">
+    		<c:forEach var="cf" items="${cafeList }" varStatus="status">
+	 			<td><a href="${path}/food/resDetail?fd_no=${cf.fd_no}" style="padding:10px;">
+	 				<img src="${cf.fd_thumbnailPath }" width="350"/></a>
+	 				<p>${cf.fd_title }</p></td>
+	 			<c:if test="${(status.count%3) == 0 }">
+	 				</tr>
+	 				<tr align="center">
+	 			</c:if>
+ 			</c:forEach>
+ 				</tr>
     </table>
+ 		
 </body>
 </html>
+
+
+	<%-- 	<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
+ 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td>
+ 				<td><a href="#"><img src="${path }/resources/image/cafe1.png" width="450"/></a></td> --%>

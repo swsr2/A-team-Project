@@ -82,6 +82,10 @@ li button {
  			<td>${food.fd_title }</td>
      	</tr>
      	<tr>
+ 			<td width="100">설명 :</td>
+ 			<td>${food.fd_info }</td>
+     	</tr>
+     	<tr>
  			<td width="100">지번주소 :</td>
  			<td>${food.fd_address }</td> <%-- api로 추후연결하기 --%>
      	</tr>
@@ -103,7 +107,7 @@ li button {
 	<ul id="myMenuList">
 		<!-- <li><button type="button" class="myPickBtn">찜하기</button></li>
 		<li><button type="button" class="reviewBtn">리뷰쓰기</button></li> -->
-		<li><a class="myReview" href="${path }/food/myReview">리뷰쓰기</a></li>
+		<li><a class="myReview" href="${path }/food/myReview?fd_no=${food.fd_no}">리뷰쓰기</a></li>
 		<li>
 			<%-- <a class="myPick" href="${path }/food/myPick">찜하기</a> --%>
 			<button id="myPick" onclick="myPick()">

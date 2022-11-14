@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path"  value="${pageContext.request.contextPath}"  />
+<c:set var="fd_no" value="${param.fd_no }" />
 <%
   request.setCharacterEncoding("UTF-8");
 %>
@@ -19,7 +20,7 @@ form {
 <script>
    function backToList() {
       let form = document.reviewForm;
-      form.action = "${path}/food/resDetail?fd_no=1";
+      form.action = "${path}/food/resDetail?fd_no=${fd_no}";
       form.submit();
    }
 </script>

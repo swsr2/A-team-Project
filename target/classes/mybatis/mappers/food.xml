@@ -36,7 +36,12 @@
 	
 	<select id="foodList" resultType="com.spring.project.food.dto.FoodDTO">
 		<![CDATA[
-			select * from food		
+			select * from food where not fd_category like '%' || '카페' || '%'
+		]]>
+	</select>
+	<select id="cafeList" resultType="com.spring.project.food.dto.FoodDTO">
+		<![CDATA[
+			select * from food where fd_category like '%' || '카페' || '%'
 		]]>
 	</select>
 </mapper>

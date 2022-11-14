@@ -15,5 +15,7 @@ public interface FoodService {
 
 	public List<FoodDTO> foodList();
 
+	public List<FoodDTO> cafeList();
+
 
 }

@@ -15,5 +15,7 @@ public interface FoodDAO {
 
 	public void dbInsert(FoodDTO food);
 
+	public List<FoodDTO> cafeList();
+
 
 }
