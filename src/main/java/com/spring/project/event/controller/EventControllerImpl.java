@@ -1,6 +1,6 @@
 package com.spring.project.event.controller;
 
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +24,7 @@ public class EventControllerImpl implements EventController {
 	@RequestMapping("/main")
 	public String airport(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		return "/event/eventmain";
+		return "/event/airmain";
 	}
 
 	@Override
@@ -36,15 +36,19 @@ public class EventControllerImpl implements EventController {
 
 	@Override
 	@RequestMapping("/airDetail")
-	public ModelAndView airDetail(@RequestParam("air_no") int air_no, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView airDetail(@RequestParam("date") String date, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
-		AirplaneDTO airplane = eventService.selectOne(air_no);
+		String fromDate = date.substring(0,10);
+		//System.out.println(date.substring(0,10));
+		//System.out.println(date.substring(13));
+		List<AirplaneDTO> airplaneList = eventService.selectList(fromDate);
 		
 		String viewName = (String) request.getAttribute("viewName");
 		
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("airpalne", airplane);
+		
+		mav.addObject("airplaneList", airplaneList);
 		
 		return mav;
 	}

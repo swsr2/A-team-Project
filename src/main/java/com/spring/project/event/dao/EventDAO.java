@@ -1,10 +1,11 @@
 package com.spring.project.event.dao;
 
+import java.util.List;
+
 import com.spring.project.event.dto.AirplaneDTO;
 
 public interface EventDAO {
-
-	public AirplaneDTO selectOne(int air_no);
+	public List<AirplaneDTO> selectList(String fromDate);
 
 
 	// public int addReview(ReviewDTO review);

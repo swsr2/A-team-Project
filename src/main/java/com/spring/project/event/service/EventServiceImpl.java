@@ -1,5 +1,8 @@
 package com.spring.project.event.service;
 
+import java.sql.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +14,15 @@ public class EventServiceImpl implements EventService {
 	@Autowired
 	EventDAO eventDAO;
 
+
+
 	@Override
-	public AirplaneDTO selectOne(int air_no) {
+	public List<AirplaneDTO> selectList(String fromDate) {
 		// TODO Auto-generated method stub
-		return eventDAO.selectOne(air_no);
+		List<AirplaneDTO> airplane = eventDAO.selectList(fromDate);
+		return airplane;
 	}
+
 
 	/*
 	@Override

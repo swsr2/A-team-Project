@@ -1,11 +1,12 @@
 package com.spring.project.event.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.project.event.dto.AirplaneDTO;
-import com.spring.project.food.dto.FoodDTO;
 
 @Repository
 public class EventDAOImpl implements EventDAO{
@@ -13,9 +14,9 @@ public class EventDAOImpl implements EventDAO{
 	private SqlSession sqlSession;
 
 	@Override
-	public AirplaneDTO selectOne(int air_no) {
+	public List<AirplaneDTO> selectList(String fromDate) {
 		// TODO Auto-generated method stub
-		AirplaneDTO airplane = (AirplaneDTO) sqlSession.selectOne("mapper.event.selectair_no", air_no);
+		List<AirplaneDTO> airplane = sqlSession.selectList("mapper.event.selectairList", fromDate);
 		return airplane;
 	}
 

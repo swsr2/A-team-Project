@@ -18,18 +18,13 @@ form {
 	display: inline;
 }
 
-#myReserv {
-	bottom: 0%;
-	padding: 5px;
-	margin-left:90%
-}
 </style>
 </head>
 <body>
-	<form name="event1" action="/project/event/main">
+	<form name="event1" action="/project/event/airmain">
 		<input class="category" type='submit' value='항공' />
 	</form>
-	<form name="event2" action="/project/event/main">
+	<form name="event2" action="/project/event/lodmain">
 		<input class="category" type='submit' value='숙박' />
 	</form>
 	<br>
@@ -37,43 +32,27 @@ form {
 	<br>
 	<table>
 		<tr>
-			<%-- <c:forEach var="res" items="${resList }">
- 			<tr align="center">
- 				<td><a href="${path}/food/resDetail?fd_no=${fd_no}"><img src="${path }/resources/image/${fd_no}.png" width="500"/></a></td>
- 			</tr> --%>
-			<td rowspan="8"><img src="${path }/resources/image/3.jpg"
-				width="450" /></td>
-			<td width="100">번호 :</td>
+			<th align="center">번호</th>
+			<th align="center">항공사</th>
+			<th align="center">출발일자</th>
+			<th align="center">출발장소</th>
+			<th align="center">출발시간</th>
+			<th align="center">도착장소</th>
+			<th align="center">도착시간</th>
+			<th align="center">가격</th>
+		</tr>
+		<c:forEach var="airplane" items="${airplane }">
+		<tr>
 			<td>${airplane.air_no }</td>
-		</tr>
-		<tr>
-			<td width="100">항공사 :</td>
 			<td>${airplane.air_airline }</td>
-		</tr>
-		<tr>
-			<td width="100">출발시간 :</td>
-			<td>${airplane.air_departTime }</td>
-		</tr>
-		<tr>
-			<td width="100">도착시간 :</td>
-			<td>${airplane.air_arrivalTime }</td>
-		</tr>
-		<tr>
-			<td width="100">출발장소 :</td>
+			<td>${airplane.air_Date }</td>
 			<td>${airplane.air_departPlace }</td>
-		</tr>
-		<tr>
-			<td width="100">도착장소 :</td>
+			<td>${airplane.air_departTime }</td>
 			<td>${airplane.air_arrivalPlace }</td>
-		</tr>
-		<tr>
-			<td width="100">좌석번호 :</td>
-			<td>${airplane.air_seat }</td>
-		</tr>
-		<tr>
-			<td width="100">금액 :</td>
+			<td>${airplane.air_arrivalTime }</td>
 			<td>${airplane.air_price }</td>
 		</tr>
+		</c:forEach>
 	</table>
 
 	<div>

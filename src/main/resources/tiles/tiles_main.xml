@@ -57,9 +57,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
 	</definition>
 	
-	<definition name="/event/eventmain" extends="baseLayout">
+	<definition name="/event/airmain" extends="baseLayout">
 		<put-attribute name="title" value="이벤트" />
-		<put-attribute name="body" value="/WEB-INF/views/event/eventmain.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/event/airmain.jsp" />
 	</definition>
 	
 	<definition name="event/airDetail" extends="baseLayout">
