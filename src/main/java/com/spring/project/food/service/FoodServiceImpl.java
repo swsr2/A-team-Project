@@ -65,4 +65,10 @@ public class FoodServiceImpl implements FoodService {
 		return foodDAO.allCafeCnt();
 	}
 
+	@Override
+	public List<ReviewDTO> reviewList(int fd_no) {
+		// TODO Auto-generated method stub
+		return foodDAO.reviewList(fd_no);
+	}
+
 }

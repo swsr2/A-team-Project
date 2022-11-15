@@ -22,8 +22,8 @@
 	
 	<insert id="addReview" parameterType="com.spring.project.food.dto.ReviewDTO">
 		<![CDATA[
-			insert into review (re_no, re_score, re_content, id) 
-			values(re_seq.nextval, #{re_score}, #{re_content}, 'aaa') 
+			insert into review (re_no, re_score, re_content, id, fd_no) 
+			values(re_seq.nextval, #{re_score}, #{re_content}, 'aaa', #{fd_no}) 
 		]]>
 	</insert>
 	
@@ -67,6 +67,12 @@
 		<![CDATA[
 			select count(*) from food 
 			where fd_category like '%' || '카페' || '%' or fd_category like '%' || '커피' || '%'
+		]]>
+	</select>
+	
+	<select id="reviewList" parameterType="int" resultType="com.spring.project.food.dto.ReviewDTO">
+		<![CDATA[
+			select * from review where fd_no=#{fd_no}
 		]]>
 	</select>
 </mapper>

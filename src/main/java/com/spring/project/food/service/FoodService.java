@@ -21,5 +21,7 @@ public interface FoodService {
 
 	public int allCafeCnt();
 
+	public List<ReviewDTO> reviewList(int fd_no);
+
 
 }

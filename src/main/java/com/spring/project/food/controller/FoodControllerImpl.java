@@ -122,12 +122,13 @@ public class FoodControllerImpl implements FoodController {
 			throws Exception {
 		// TODO Auto-generated method stub
 		FoodDTO food = foodService.selectOne(fd_no);
+		List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
 		String[] category = food.getFd_category().split(",");
 		String viewName = (String) request.getAttribute("viewName");
-		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("food", food);
 		mav.addObject("category",category);
+		mav.addObject("reviewList",reviewList);
 		return mav;
 	}
 
@@ -144,7 +145,6 @@ public class FoodControllerImpl implements FoodController {
 	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
-		System.out.println(review.getRe_content());
 		int result = foodService.addReview(review);
 		
 		PrintWriter out = response.getWriter();
@@ -154,7 +154,8 @@ public class FoodControllerImpl implements FoodController {
 		} else {
 			out.println("alert('리뷰가 등록되지 않았습니다.');");
 		}
-		out.println("location.href='"+ request.getContextPath() +"/food/resDetail?fd_no=1';");
+		out.println("location.href='"+ request.getContextPath() 
+				+ "/food/resDetail?fd_no="+review.getFd_no()+"';");
 		out.println("</script>");
 		
 		

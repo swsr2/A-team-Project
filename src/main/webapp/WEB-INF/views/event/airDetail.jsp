@@ -41,7 +41,7 @@ form {
 			<th align="center">도착시간</th>
 			<th align="center">가격</th>
 		</tr>
-		<c:forEach var="airplane" items="${airplane }">
+		<c:forEach var="airplane" items="${airplaneList }">
 		<tr>
 			<td>${airplane.air_no }</td>
 			<td>${airplane.air_airline }</td>

@@ -28,6 +28,7 @@ form {
 <body>
 
    <form name="reviewForm" method="post" action="${path }/food/addReview">
+   	<input type="hidden" name="fd_no" value="${fd_no }">
          <table align="center">
          <tr>
          	<td colspan="2">
