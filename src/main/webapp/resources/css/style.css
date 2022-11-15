@@ -194,3 +194,13 @@ body {
 	margin-left: 580px;
 	bottom: 120px;
 }
+.page a {
+	text-decoration: none;
+	color:black;
+}
+.page a:hover {
+	color:gray;
+}
+.page a:active {
+	color: orange;
+}

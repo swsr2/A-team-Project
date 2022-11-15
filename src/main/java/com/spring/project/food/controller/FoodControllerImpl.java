@@ -81,7 +81,6 @@ public class FoodControllerImpl implements FoodController {
 		int postNum = 12;
 		
 		int pageNum = (int)Math.ceil((double)cafeCnt/postNum);
-		System.out.println("pageNum : " + pageNum);
 		int start = page * postNum;
 		
 		int end = start + (postNum-1);
@@ -123,12 +122,12 @@ public class FoodControllerImpl implements FoodController {
 			throws Exception {
 		// TODO Auto-generated method stub
 		FoodDTO food = foodService.selectOne(fd_no);
-		
+		String[] category = food.getFd_category().split(",");
 		String viewName = (String) request.getAttribute("viewName");
 		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("food", food);
-		
+		mav.addObject("category",category);
 		return mav;
 	}
 

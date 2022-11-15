@@ -4,6 +4,7 @@
 <c:set var="path"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
+  
 %>
 <!DOCTYPE html>
 <html>
@@ -69,19 +70,16 @@ li button {
         <input class="category" type='submit' value='카페'/>
     </form>
     <br><br><br>
-    <table>
+    <table align="center">
     	<tr>
-    		<%-- <c:forEach var="res" items="${resList }">
- 			<tr align="center">
- 				<td><a href="${path}/food/resDetail?fd_no=${fd_no}"><img src="${path }/resources/image/${fd_no}.png" width="500"/></a></td>
- 			</tr> --%>
- 			<td rowspan="6"><img src="${food.fd_imgPath }" width="500"/></td>
- 			<td width="100">번호 :</td>
- 			<td>${food.fd_no }</td>
+ 			<td colspan="2" align="center"><img src="${food.fd_imgPath }" width="700"/></td>
      	</tr>
      	<tr>
- 			<td width="100">가게명 :</td>
- 			<td>${food.fd_title }</td>
+ 			<td colspan="2" align="center"><h2>${food.fd_title }</h2>
+ 			<c:forEach var="tag" items="${category}">
+ 					#${tag }
+ 				</c:forEach>
+ 			</td>
      	</tr>
      	<tr>
  			<td width="100">설명 :</td>
@@ -100,8 +98,9 @@ li button {
  			<td>${food.fd_phoneNo }</td>
      	</tr>
      	<tr>
- 			<td>카테고리</td>
- 			<td>${food.fd_category}</td>
+ 			<td colspan="2">
+ 				
+ 			</td>
      	</tr>
     </table>
     
@@ -117,6 +116,14 @@ li button {
 			</button>
 		</li>
 	</ul>
+	</div>
+	<br>
+	<div>
+		<hr>
+		작성자 : hong<br>
+		평점 : ★★★★★<br>
+		내용 : 맛있어요!<br>
+		
 	</div>
 </body>
 </html>
