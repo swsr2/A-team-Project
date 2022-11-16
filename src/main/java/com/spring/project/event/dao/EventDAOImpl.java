@@ -22,6 +22,35 @@ public class EventDAOImpl implements EventDAO{
 	}
 
 
+	@Override
+	public List<AirplaneDTO> selectList2(AirplaneDTO air) {
+		// TODO Auto-generated method stub
+		//System.out.println("*");
+		//System.out.println(air.getAir_arrivalPlace());
+		//System.out.println(air.getAir_departPlace());
+		//System.out.println(air.getAir_date());
+		List<AirplaneDTO> airplaneList2 = sqlSession.selectList("mapper.event.selectairList2", air);
+		return airplaneList2;
+	}
+
+
+	@Override
+	public AirplaneDTO selectAir_no_from(int air_no_from) {
+		// TODO Auto-generated method stub
+		AirplaneDTO  airplane_from = sqlSession.selectOne("mapper.event.selectAir_no_from", air_no_from);
+		return airplane_from;
+	}
+
+
+	@Override
+	public AirplaneDTO selectAir_no_to(int air_no_to) {
+		// TODO Auto-generated method stub
+		AirplaneDTO  airplane_to = sqlSession.selectOne("mapper.event.selectAir_no_to", air_no_to);
+		return airplane_to;
+	}
+
+
+
 	/*
 	@Override
 	public int addReview(ReviewDTO review) {

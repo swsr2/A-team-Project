@@ -22,4 +22,22 @@
 		]]>
 	</select>
 	
+	<select id="selectairList2" parameterType="airplaneDTO" resultType="com.spring.project.event.dto.AirplaneDTO">
+		<![CDATA[
+			select * from airplane where air_departPlace=#{air_arrivalPlace} and 
+			air_arrivalPlace=#{air_departPlace} and air_date=#{air_date}
+		]]>
+	</select>
+
+	<select id="selectAir_no_from" parameterType="int" resultType="com.spring.project.event.dto.AirplaneDTO">
+		<![CDATA[
+			select * from airplane where air_no=#{air_no_from}
+		]]>
+	</select>
+	
+		<select id="selectAir_no_to" parameterType="int" resultType="com.spring.project.event.dto.AirplaneDTO">
+		<![CDATA[
+			select * from airplane where air_no=#{air_no_to}
+		]]>
+	</select>
 </mapper>

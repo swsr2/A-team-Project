@@ -63,8 +63,14 @@
 	</definition>
 	
 	<definition name="event/airDetail" extends="baseLayout">
-		<put-attribute name="title" value="이벤트_항공_상세페이지" />
+		<put-attribute name="title" value="이벤트_항공_상세페이지_가는편" />
 		<put-attribute name="body" value="/WEB-INF/views/event/airDetail.jsp" />
 	</definition>
+	
+	<definition name="event/checkReserv" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_항공_예매내용확인하기" />
+		<put-attribute name="body" value="/WEB-INF/views/event/checkReserv.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>

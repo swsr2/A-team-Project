@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.event.dto.AirplaneDTO;
@@ -41,21 +42,48 @@ public class EventControllerImpl implements EventController {
 		// TODO Auto-generated method stub
 		String date = request.getParameter("date");
 		String fromdate = date.substring(0,10);
+		String todate= date.substring(13);
 		air.setAir_date(fromdate);
-		//System.out.println(air.getAir_date());
-		//System.out.println(air.getAir_departPlace());
-		//System.out.println(air.getAir_arrivalPlace());
-		//System.out.println(date.substring(13));
+		
 		List<AirplaneDTO> airplaneList = eventService.selectList(air);
-		System.out.println(airplaneList);
+		
+		air.setAir_date(todate);
+		//System.out.println(air.getAir_date());
+		//System.out.println(air.getAir_arrivalPlace());
+		//System.out.println(air.getAir_departPlace());
+		
+		List<AirplaneDTO> airplaneList2 = eventService.selectList2(air);
+		
 		String viewName = (String) request.getAttribute("viewName");
-		
 		ModelAndView mav = new ModelAndView(viewName);
-		
 		mav.addObject("airplaneList", airplaneList);
+		mav.addObject("airplaneList2", airplaneList2);
 		
 		return mav;
 	}
+
+	@Override
+	@RequestMapping("/checkReserv")
+	public ModelAndView checkReserv(int air_no_from, int air_no_to, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		List<AirplaneDTO> airplaneList = eventService.checkReserv(air_no_from, air_no_to);
+		// System.out.println(airplaneList.get(0).getAir_price());
+		// System.out.println(airplaneList.get(1).getAir_price());
+		
+		int price_from = airplaneList.get(0).getAir_price();
+		int price_to = airplaneList.get(1).getAir_price();
+		int sum = price_from + price_to;
+		
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("airplaneList", airplaneList);
+		mav.addObject("sum", sum);
+		return mav;
+	}
+	
+
+
 
 	
 }
