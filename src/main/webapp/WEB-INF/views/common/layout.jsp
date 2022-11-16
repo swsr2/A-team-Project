@@ -10,19 +10,19 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css?after">
 </head>
 <body>
-	<div id="container">
-		<div class="header">
-			<tiles:insertAttribute name="header" />
-		</div>
-		<div class="topnav">
-			<tiles:insertAttribute name="side" />
-		</div>
-		<div class="content">
-			<tiles:insertAttribute name="body" />
-		</div>
-		<div class="footer">
-			<tiles:insertAttribute name="footer" />
-		</div>
-	</div>
+   <div id="container">
+      <div class="header">
+         <tiles:insertAttribute name="header" />
+      </div>
+      <div class="topnav">
+         <tiles:insertAttribute name="side" />
+      </div>
+      <div class="content">
+         <tiles:insertAttribute name="body" />
+      </div>
+      <div class="footer">
+         <tiles:insertAttribute name="footer" />
+      </div>
+   </div>
 </body>
 </html>

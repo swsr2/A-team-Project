@@ -1,11 +1,10 @@
 package com.spring.project.event.dto;
 
-import java.sql.Date;
 
 public class AirplaneDTO {
 	private int air_no;
     private String air_airline;
-    private Date air_Date;
+    private String air_date;
     private String air_departTime;
     private String air_arrivalTime;
 	private String air_departPlace;
@@ -13,11 +12,12 @@ public class AirplaneDTO {
 	private int air_price;
 	
 	
-	public Date getAir_Date() {
-		return air_Date;
+
+	public String getAir_date() {
+		return air_date;
 	}
-	public void setAir_Date(Date air_Date) {
-		this.air_Date = air_Date;
+	public void setAir_date(String air_date) {
+		this.air_date = air_date;
 	}
 	public int getAir_no() {
 		return air_no;

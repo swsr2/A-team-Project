@@ -4,21 +4,21 @@
 	
 <mapper namespace="mapper.event">
 	<resultMap type="airPlaneDTO" id="airResult">
-		<result property="air_no" column="iair_no" />
+		<result property="air_no" column="air_no" />
 		<result property="air_airline" column="air_airline" />
-		<result property="air_Date" column="air_Date" />
+		<result property="air_date" column="air_date" />
 		<result property="air_departPlace" column="air_departPlace" />
 		<result property="air_arrivalPlace" column="air_arrivalPlace" />
 		<result property="air_departTime" column="air_departTime" />
 		<result property="air_arrivalTime" column="air_arrivalTime" />
-		<result property="air_arrivalPlace" column="air_arrivalPlace" />
 		<result property="air_price" column="ir_price" />
 	</resultMap>
 
 	
-	<select id="selectairList" parameterType="String" resultType="com.spring.project.event.dto.AirplaneDTO">
+	<select id="selectairList" parameterType="airplaneDTO" resultType="com.spring.project.event.dto.AirplaneDTO">
 		<![CDATA[
-			select * from airplane where air_Date=#{fromDate}
+			select * from airplane where air_departPlace=#{air_departPlace} and 
+			air_arrivalPlace=#{air_arrivalPlace} and air_date=#{air_date}
 		]]>
 	</select>
 	

@@ -62,6 +62,36 @@ form {
 	<br>
 	<h3>일정선택</h3>
 	<form name="form" action="/project/event/airDetail">
+		<label>출발지</label>
+		<select name="air_departPlace">
+			<option value="none">=== 선택 ===</option>
+			<option value="김포">김포</option>
+			<option value="제주">제주</option>
+			<option value="부산">부산</option>
+			<option value="광주">광주</option>
+			<option value="대구">대구</option>
+			<option value="여수">여수</option>
+			<option value="울산">울산</option>
+			<option value="원주">원주</option>
+			<option value="청주">청주</option>
+			<option value="포항">포항</option>
+			<option value="양양">양양</option>
+		</select> 
+		<label>도착지</label>
+		<select name="air_arrivalPlace">
+			<option value="none">=== 선택 ===</option>
+			<option value="김포">김포</option>
+			<option value="제주">제주</option>
+			<option value="부산">부산</option>
+			<option value="광주">광주</option>
+			<option value="대구">대구</option>
+			<option value="여수">여수</option>
+			<option value="울산">울산</option>
+			<option value="원주">원주</option>
+			<option value="청주">청주</option>
+			<option value="포항">포항</option>
+			<option value="양양">양양</option>
+		</select>
 		<label for="From">일정</label>
 		<input type="text" id="date" name="date" value="" />
 		<input type="submit" value="선택완료">

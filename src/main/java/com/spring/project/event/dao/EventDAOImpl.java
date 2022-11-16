@@ -13,11 +13,12 @@ public class EventDAOImpl implements EventDAO{
 	@Autowired
 	private SqlSession sqlSession;
 
+
 	@Override
-	public List<AirplaneDTO> selectList(String fromDate) {
+	public List<AirplaneDTO> selectList(AirplaneDTO air) {
 		// TODO Auto-generated method stub
-		List<AirplaneDTO> airplane = sqlSession.selectList("mapper.event.selectairList", fromDate);
-		return airplane;
+		List<AirplaneDTO> airplaneList = sqlSession.selectList("mapper.event.selectairList", air);
+		return airplaneList;
 	}
 
 

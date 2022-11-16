@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.event.dto.AirplaneDTO;
@@ -36,14 +36,18 @@ public class EventControllerImpl implements EventController {
 
 	@Override
 	@RequestMapping("/airDetail")
-	public ModelAndView airDetail(@RequestParam("date") String date, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView airDetail(@ModelAttribute("air") AirplaneDTO air, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String fromDate = date.substring(0,10);
-		//System.out.println(date.substring(0,10));
+		String date = request.getParameter("date");
+		String fromdate = date.substring(0,10);
+		air.setAir_date(fromdate);
+		//System.out.println(air.getAir_date());
+		//System.out.println(air.getAir_departPlace());
+		//System.out.println(air.getAir_arrivalPlace());
 		//System.out.println(date.substring(13));
-		List<AirplaneDTO> airplaneList = eventService.selectList(fromDate);
-		
+		List<AirplaneDTO> airplaneList = eventService.selectList(air);
+		System.out.println(airplaneList);
 		String viewName = (String) request.getAttribute("viewName");
 		
 		ModelAndView mav = new ModelAndView(viewName);

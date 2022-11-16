@@ -8,22 +8,20 @@ import org.springframework.stereotype.Service;
 
 import com.spring.project.event.dao.EventDAO;
 import com.spring.project.event.dto.AirplaneDTO;
+import com.sun.mail.iap.Response;
 
 @Service
 public class EventServiceImpl implements EventService {
 	@Autowired
 	EventDAO eventDAO;
 
-
-
 	@Override
-	public List<AirplaneDTO> selectList(String fromDate) {
+	public List<AirplaneDTO> selectList(AirplaneDTO air) {
 		// TODO Auto-generated method stub
-		List<AirplaneDTO> airplane = eventDAO.selectList(fromDate);
-		return airplane;
+		List<AirplaneDTO> airplaneList = eventDAO.selectList(air);
+		return airplaneList;
 	}
-
-
+	
 	/*
 	@Override
 	public int addReview(ReviewDTO review) {
