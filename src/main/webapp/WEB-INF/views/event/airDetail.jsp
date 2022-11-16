@@ -53,7 +53,7 @@ td {
 		<tr>
 			<td>${airplane.air_no }</td>
 			<td>${airplane.air_airline }</td>
-			<td>${airplane.air_Date }</td>
+			<td>${airplane.air_date }</td>
 			<td>${airplane.air_departPlace }</td>
 			<td>${airplane.air_departTime }</td>
 			<td>${airplane.air_arrivalPlace }</td>

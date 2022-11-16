@@ -71,4 +71,16 @@ public class FoodServiceImpl implements FoodService {
 		return foodDAO.reviewList(fd_no);
 	}
 
+	@Override
+	public void myPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		foodDAO.myPick(pickMap);
+	}
+
+	@Override
+	public void delPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		foodDAO.delPick(pickMap);
+	}
+
 }

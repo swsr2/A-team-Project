@@ -1,6 +1,7 @@
 package com.spring.project.food.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.project.food.dto.FoodDTO;
 import com.spring.project.food.dto.ReviewDTO;
@@ -22,6 +23,10 @@ public interface FoodService {
 	public int allCafeCnt();
 
 	public List<ReviewDTO> reviewList(int fd_no);
+
+	public void myPick(Map pickMap);
+
+	public void delPick(Map pickMap);
 
 
 }
