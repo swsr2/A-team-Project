@@ -24,5 +24,9 @@ public interface FoodDAO {
 
 	public List<ReviewDTO> reviewList(int fd_no);
 
+	public void myPick(Map pickMap);
+
+	public void delPick(Map pickMap);
+
 
 }

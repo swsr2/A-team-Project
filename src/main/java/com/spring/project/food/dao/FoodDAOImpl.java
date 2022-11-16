@@ -63,4 +63,16 @@ public class FoodDAOImpl implements FoodDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.food.reviewList",fd_no);
 	}
+
+	@Override
+	public void myPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.food.myPick",pickMap);
+	}
+
+	@Override
+	public void delPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("mapper.food.delPick",pickMap);
+	}
 }

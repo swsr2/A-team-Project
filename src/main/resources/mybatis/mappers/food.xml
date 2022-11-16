@@ -75,5 +75,17 @@
 			select * from review where fd_no=#{fd_no}
 		]]>
 	</select>
+	
+	<insert id="myPick" parameterType="java.util.Map">
+		<![CDATA[
+			insert into mypick(id,fd_no) values(#{id},#{fd_no})
+		]]>
+	</insert>
+	
+	<delete id="delPick" parameterType="java.util.Map">
+		<![CDATA[
+			delete from mypick where id=#{id} and fd_no=#{fd_no}
+		]]>
+	</delete>
 </mapper>
 

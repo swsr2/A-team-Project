@@ -16,4 +16,6 @@ public interface FoodController {
 	// public void myPick(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView myPick(@RequestParam("fd_no") int fd_no,@RequestParam("pick") boolean pick,
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

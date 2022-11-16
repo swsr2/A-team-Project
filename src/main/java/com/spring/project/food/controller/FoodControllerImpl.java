@@ -1,7 +1,9 @@
 package com.spring.project.food.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -129,6 +131,15 @@ public class FoodControllerImpl implements FoodController {
 		mav.addObject("food", food);
 		mav.addObject("category",category);
 		mav.addObject("reviewList",reviewList);
+		
+//		Map pickMap = new hashMap();
+//		pickMap.put("id", "현재 세션에 있는 아이디값");
+//		pickMap.put("fd_no", fd_no);
+//		if(foodService.checkPick(pickMap)) {
+//			mav.addObject("pick",true);
+//		}else {
+//			mav.addObject("pick",false);
+//		}
 		return mav;
 	}
 
@@ -161,29 +172,35 @@ public class FoodControllerImpl implements FoodController {
 		
 	}
 
-	/* 
+	
 	@Override
-	@RequestMapping(value="/myPick", method=RequestMethod.POST)
-	public void myPick(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value="/myPick", method=RequestMethod.GET)
+	public ModelAndView myPick(@RequestParam("fd_no") int fd_no,@RequestParam("pick") boolean pick,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 			response.setContentType("text/html;charset=utf-8");
 			
-			int result = foodService.myPick(fd_no);
+			FoodDTO food = foodService.selectOne(fd_no);
+			List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
+			String[] category = food.getFd_category().split(",");
+			ModelAndView mav = new ModelAndView("food/resDetail");
+			mav.addObject("food", food);
+			mav.addObject("category",category);
+			mav.addObject("reviewList",reviewList);
 			
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			if(result == 1) {
-				out.println("alert('찜하기가 완료되었습니다! 찜 리스트는 ‘마이페이지 > 나의 여행일정’에서 확인하실 수 있습니다.');");
-				out.println("location.href='"+ request.getContextPath() +"/food/resDetail';");
-			} else {
-				out.println("alert('찜하기를 다시 시도해주세요.');");
-				// out.println("location.href='"+ request.getContextPath() +"/food/resDetail?fd_no="+food.getFd_no()+"';");
+			Map pickMap = new HashMap();
+			pickMap.put("id", "hong");
+			pickMap.put("fd_no", fd_no);
+			
+			if(pick) {
+				foodService.myPick(pickMap);
+				mav.addObject("pick",true);
+			}else {
+				foodService.delPick(pickMap);
+				mav.addObject("pick",false);
 			}
-			out.println("</script>");
+			return mav;
 	}
-	*/
-	
-	
 	
 	
 }
