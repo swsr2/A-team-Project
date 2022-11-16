@@ -57,4 +57,10 @@ public class FoodDAOImpl implements FoodDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.food.allCafeCnt");
 	}
+
+	@Override
+	public List<ReviewDTO> reviewList(int fd_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.food.reviewList",fd_no);
+	}
 }

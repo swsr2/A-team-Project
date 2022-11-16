@@ -49,7 +49,11 @@ td {
 			<th align="center">가격</th>
 			<th align="center">예약하기</th>
 		</tr>
+<<<<<<< HEAD
 		<c:forEach var="airplane" items="${airplaneList }" >
+=======
+		<c:forEach var="airplane" items="${airplaneList }">
+>>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 		<tr>
 			<td>${airplane.air_no }</td>
 			<td>${airplane.air_airline }</td>

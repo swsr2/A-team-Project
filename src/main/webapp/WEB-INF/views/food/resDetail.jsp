@@ -117,13 +117,33 @@ li button {
 		</li>
 	</ul>
 	</div>
-	<br>
+	<br><br>
+	<hr>
 	<div>
-		<hr>
-		작성자 : hong<br>
-		평점 : ★★★★★<br>
-		내용 : 맛있어요!<br>
-		
+		<table align="center" style="width: 60%;">
+			<c:forEach var="review" items="${reviewList }">
+			<tr>
+				<td>${review.id }</td>
+				<td>${review.re_writeDate }</td>
+				<td><div class="star-ratings">
+					<div 
+				    class="star-ratings-fill space-x-2 text-lg"
+				    style=" width: ${review.re_score * 20}%">
+						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+					</div>
+					<div class="star-ratings-base space-x-2 text-lg">
+						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+					</div>
+				</div></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>${review.re_content }</p>
+				</td>
+			</tr>
+			<tr><td colspan="3"><hr></td></tr>
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>
