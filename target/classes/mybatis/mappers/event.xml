@@ -40,4 +40,17 @@
 			select * from airplane where air_no=#{air_no_to}
 		]]>
 	</select>
+	
+	<delete id="resetAir">
+		<![CDATA[
+			delete from airplane
+		]]>
+	</delete>
+	
+	<insert id="addAirplane" parameterType="airplaneDTO">
+		<![CDATA[
+			insert into airplane values(#{air_no},#{air_airline},#{air_date},
+			#{air_departTime},#{air_arrivalTime},#{air_departPlace},#{air_arrivalPlace},#{air_price})
+		]]>
+	</insert>
 </mapper>

@@ -50,6 +50,20 @@ public class EventDAOImpl implements EventDAO{
 	}
 
 
+	@Override
+	public void resetAir() {
+		// TODO Auto-generated method stub
+		sqlSession.delete("mapper.event.resetAir");
+	}
+
+
+	@Override
+	public void addAirplane(AirplaneDTO air) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.event.addAirplane",air);
+	}
+
+
 
 	/*
 	@Override
