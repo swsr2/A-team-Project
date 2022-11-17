@@ -35,11 +35,11 @@ public class MemberDAOImpl implements MemberDAO{
 	
 
 	@Override
-	public int idChk(MemberDTO member) {
+	public int idChk(String id) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("mapper.member.selectMemberById", member);
+		int result = sqlSession.selectOne("mapper.member.idChk", id);
+		return result;
 	}
-
 
 
 	@Override

@@ -21,7 +21,7 @@
 		]]>
 	</insert>
 	 
-	<select id="idChk" parameterType="memberDTO" resultType="int">
+	<select id="idChk" parameterType="String" resultType="int">
 		<![CDATA[
 			select count(*) from member where id=#{id}
 		]]>

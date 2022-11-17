@@ -10,5 +10,5 @@ public interface MemberDAO {
 	public int modMember(MemberDTO member);
 	public int delMember(String id);
 	public MemberDTO login(MemberDTO member);
-	public int idChk(MemberDTO member);
+	public int idChk(String id);
 }

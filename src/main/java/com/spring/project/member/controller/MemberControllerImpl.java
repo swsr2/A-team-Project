@@ -23,7 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.project.member.dto.MemberDTO;
 import com.spring.project.member.service.MemberService;
 
-import jdk.internal.org.jline.utils.Log;
 
 @Controller("memberController")
 @EnableAspectJAutoProxy
@@ -45,6 +44,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	@RequestMapping(value="/member/addMember.do", method=RequestMethod.POST)
 	public void addMember(@ModelAttribute("member") MemberDTO member, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		memberService.addMember(member);
@@ -54,16 +54,14 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		out.println("location.href='"+ request.getContextPath() +"/main/main.do';");
 		out.println("</script>");	
 		
-		
 	}
 	
 	@Override
 	@ResponseBody
 	@RequestMapping(value="/idChk")
-	public int idChk(MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public int idChk(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(member.getId());
-		int result = memberService.idChk(member);
+		int result = memberService.idChk(id);
 		return result;
 	}
 

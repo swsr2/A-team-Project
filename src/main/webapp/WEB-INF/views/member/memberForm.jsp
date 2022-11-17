@@ -9,37 +9,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원등록창</title>
-<script>
-	function fn_idChk(){
-		$.ajax({
-			url: "./idChk",
-			type : "post",
-			dataType : "json",
-			console.log(id);
-			data : {"id":$("#id").val()},
-			success : function(data){
-				if(data == 1){
-					alert("중복된 아이디입니다.");
-				} else if(data == 0){
-					$("#idChk").attr("value", "Y");
-					alert("사용가능한 아이디입니다.");					
-				}
-			}	
-		})
-		
-	}
+<title>회원가입</title>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+function fn_idChk(){
+	$.ajax({
+		url : "${path}/idChk",
+		type : "get",
+		dataType : "json",
+		data : {"id" : $("#id").val()},
+		success : function(result){
+			console.log(result);
+			if(result == 1){
+				alert("중복된 아이디입니다.");
+			}else if(result == 0){
+				$("#idChk").attr("value", "Y");
+				alert("사용가능한 아이디입니다.");
+			}
+			
+		},
+		error:function(result){
+			console.log(result);
+		}
+	});
+}
 
 </script>
 </head>
 <body>
-	<form method="post" action="${path }/member/addMember.do">
+	<form name="frm" method="post" action="${path }/member/addMember.do">
 		<h1 style="text-align:center;">회원 가입 등록창</h1>
 		<table align="center">
 			<tr>
 				<td width="200"><p align="right">아이디</p></td>
 				<td width="400"><input type="text" id="id" name="id"></td>
-				<td ><button onclick="fn_idChk()" >중복확인</button></td>
+				<td ><button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button></td>
 			</tr>
 			<tr>
 				<td width="200"><p align="right">비밀번호</p></td>
