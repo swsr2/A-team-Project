@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -148,6 +149,24 @@ public class FoodControllerImpl implements FoodController {
 	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
+		
+		HttpSession session = request.getSession();
+		String id = session.getId();
+		// System.out.println(id);
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		ModelAndView mav = null;
+		if(isLogOn!=null && isLogOn==true) {
+			String viewName = (String) request.getAttribute("viewName");
+			mav = new ModelAndView(viewName);
+		} else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인 후 이용가능합니다..');");
+			out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+			out.println("</script>");
+			return null;
+		}
+		
 		return "/food/reviewForm";
 	}
 
@@ -156,6 +175,7 @@ public class FoodControllerImpl implements FoodController {
 	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
+		
 		int result = foodService.addReview(review);
 		
 		PrintWriter out = response.getWriter();
@@ -169,7 +189,6 @@ public class FoodControllerImpl implements FoodController {
 				+ "/food/resDetail?fd_no="+review.getFd_no()+"';");
 		out.println("</script>");
 		
-		
 	}
 
 	
@@ -180,16 +199,32 @@ public class FoodControllerImpl implements FoodController {
 		// TODO Auto-generated method stub
 			response.setContentType("text/html;charset=utf-8");
 			
+			HttpSession session = request.getSession();
+			String id = session.getId();
+			Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+			ModelAndView mav = null;
+			if(isLogOn!=null && isLogOn==true) {
+				String viewName = (String) request.getAttribute("viewName");
+				mav = new ModelAndView(viewName);
+			} else {
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('로그인 후 이용가능합니다..');");
+				out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+				out.println("</script>");
+				return null;
+			}
+			
 			FoodDTO food = foodService.selectOne(fd_no);
 			List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
 			String[] category = food.getFd_category().split(",");
-			ModelAndView mav = new ModelAndView("food/resDetail");
+			mav = new ModelAndView("food/resDetail");
 			mav.addObject("food", food);
 			mav.addObject("category",category);
 			mav.addObject("reviewList",reviewList);
 			
 			Map pickMap = new HashMap();
-			pickMap.put("id", "hong");
+			pickMap.put("id", id);
 			pickMap.put("fd_no", fd_no);
 			
 			if(pick) {

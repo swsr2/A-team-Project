@@ -21,13 +21,12 @@
 		]]>
 	</insert>
 	 
-	<!-- 
-	<insert id="insertMember2" parameterType="java.util.HashMap">
+	<select id="idChk" parameterType="String" resultType="int">
 		<![CDATA[
-			insert into member values(#{id}, #{pwd}, #{name}, #{age}, #{gender}, #{tel}, #{email})
+			select count(*) from member where id=#{id}
 		]]>
-	</insert>
-	 -->
+	</select>
+	 
 
 	<update id="updateMember" parameterType="memberDTO">
 		<![CDATA[
@@ -157,14 +156,12 @@
 	</select>
 	-->
 	
-	<!-- id="loginById" 로 아이디/패스워드를 입력 받아서 MemberDTO를 반환하는 sql 작성 -->
-	<select id="loginById" parameterType="memberDTO"
-		resultType="memberDTO">
+
+	<select id="loginById" parameterType="memberDTO" resultType="memberDTO">
 		<![CDATA[
 			select * from member where id=#{id} and pwd=#{pwd}
 		]]>
 	</select>
-	
 	
 </mapper>
 

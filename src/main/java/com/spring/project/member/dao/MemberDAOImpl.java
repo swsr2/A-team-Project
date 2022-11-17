@@ -32,13 +32,15 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		sqlSession.insert("mapper.member.insertMember", member);
 	}
+	
 
 	@Override
-	public MemberDTO selectOne(String id) {
+	public int idChk(String id) {
 		// TODO Auto-generated method stub
-		MemberDTO member = (MemberDTO) sqlSession.selectOne("mapper.member.selectMemberById", id);
-		return member;
+		int result = sqlSession.selectOne("mapper.member.idChk", id);
+		return result;
 	}
+
 
 	@Override
 	public int modMember(MemberDTO member) {
@@ -60,6 +62,7 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberDTO memberDTO = sqlSession.selectOne("mapper.member.loginById", member);
 		return memberDTO;
 	}
+
 
 }
 
