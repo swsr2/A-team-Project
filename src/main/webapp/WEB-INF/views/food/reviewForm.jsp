@@ -33,8 +33,8 @@ form {
          <tr>
          	<td >
          		<h3 style="text-align:left">리뷰쓰기</h3>
-         		<h5>아이디: ${id }</h5>
-         		<input type="hidden" name="id" value="${id }">
+         		<h5>아이디: ${member.id }</h5>
+         		<input type="hidden" name="id" value="${member.id }">
          	</td>
          </tr>
          <tr>

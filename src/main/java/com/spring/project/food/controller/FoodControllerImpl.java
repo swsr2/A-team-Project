@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.project.food.dto.FoodDTO;
 import com.spring.project.food.dto.ReviewDTO;
 import com.spring.project.food.service.FoodService;
+import com.spring.project.member.dto.MemberDTO;
 
 @Controller("foodController")
 @RequestMapping("/food")
@@ -151,8 +152,6 @@ public class FoodControllerImpl implements FoodController {
 		response.setContentType("text/html;charset=utf-8");
 		
 		HttpSession session = request.getSession();
-		String id = session.getId();
-		// System.out.println(id);
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		ModelAndView mav = null;
 		if(isLogOn!=null && isLogOn==true) {
@@ -200,7 +199,7 @@ public class FoodControllerImpl implements FoodController {
 			response.setContentType("text/html;charset=utf-8");
 			
 			HttpSession session = request.getSession();
-			String id = session.getId();
+			MemberDTO member = (MemberDTO) session.getAttribute("member");
 			Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 			ModelAndView mav = null;
 			if(isLogOn!=null && isLogOn==true) {
@@ -224,7 +223,7 @@ public class FoodControllerImpl implements FoodController {
 			mav.addObject("reviewList",reviewList);
 			
 			Map pickMap = new HashMap();
-			pickMap.put("id", id);
+			pickMap.put("id", member.getId());
 			pickMap.put("fd_no", fd_no);
 			
 			if(pick) {
