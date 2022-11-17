@@ -66,8 +66,8 @@ h1 {
 			<th align="center">도착시간</th>
 			<th align="center">금액</th>
 		</tr>
-		<c:forEach var="airplane" items="${airplaneList }" varStatus="status">
-		<tr>	
+		<c:forEach var="airplane" items="${airplaneList }" varStatus="status" >
+				<tr>	
 				<c:if test="${status.first }">
 					<td>가는편</td>
 				</c:if>
@@ -83,6 +83,7 @@ h1 {
 			<td>${airplane.air_arrivalTime }</td>
 			<td>${airplane.air_price }</td>
 		</tr>
+		<input type="hidden" name="air_no${status.count }" value="${airplane.air_no }">
 		</c:forEach>
 		<tr bgcolor="lightgray" >
 		<td colspan="8" align="center">총 금액</td>

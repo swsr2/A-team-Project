@@ -73,7 +73,7 @@ public class EventControllerImpl implements EventController {
 		
 		int price_from = airplaneList.get(0).getAir_price();
 		int price_to = airplaneList.get(1).getAir_price();
-		int sum = price_from + price_to;
+		int sum = price_from + price_to; 
 		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -81,8 +81,17 @@ public class EventControllerImpl implements EventController {
 		mav.addObject("sum", sum);
 		return mav;
 	}
+
+	@Override
+	@RequestMapping("/airReserv")
+	public String airReserv(int air_no1, int air_no2, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
+	
 
 
 	
