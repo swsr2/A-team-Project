@@ -13,6 +13,10 @@ public interface EventDAO {
 
 	public AirplaneDTO selectAir_no_to(int air_no_to);
 
+	public void resetAir();
+
+	public void addAirplane(AirplaneDTO air);
+
 
 
 	// public int addReview(ReviewDTO review);

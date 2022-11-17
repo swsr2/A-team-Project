@@ -60,41 +60,54 @@ form {
 	<br>
 	<br>
 	<br>
-	<h3>일정선택</h3>
-	<form name="form" action="/project/event/airDetail">
-		<label>출발지</label>
-		<select name="air_departPlace">
-			<option value="none">=== 선택 ===</option>
-			<option value="김포">김포</option>
-			<option value="제주">제주</option>
-			<option value="부산">부산</option>
-			<option value="광주">광주</option>
-			<option value="대구">대구</option>
-			<option value="여수">여수</option>
-			<option value="울산">울산</option>
-			<option value="원주">원주</option>
-			<option value="청주">청주</option>
-			<option value="포항">포항</option>
-			<option value="양양">양양</option>
-		</select> 
-		<label>도착지</label>
-		<select name="air_arrivalPlace">
-			<option value="none">=== 선택 ===</option>
-			<option value="김포">김포</option>
-			<option value="제주">제주</option>
-			<option value="부산">부산</option>
-			<option value="광주">광주</option>
-			<option value="대구">대구</option>
-			<option value="여수">여수</option>
-			<option value="울산">울산</option>
-			<option value="원주">원주</option>
-			<option value="청주">청주</option>
-			<option value="포항">포항</option>
-			<option value="양양">양양</option>
-		</select>
-		<label for="From">일정</label>
-		<input type="text" id="date" name="date" value="" />
-		<input type="submit" value="선택완료">
-	</form>
+	<div align="center" id="airSearch">
+		<h1>일정선택</h1>
+		<form name="form" action="/project/event/airDetail">
+		<table>
+		<tr>
+			<td><label>출발지</label></td>
+			<td><label>도착지</label></td>
+		</tr>
+		<tr>
+			<td><select name="air_departPlace">
+				<option value="none" selected disabled>=== 선택 ===</option>
+				<option value="GMP">김포</option>
+				<option value="CJU">제주</option>
+				<option value="PUS">부산/김해</option>
+				<option value="KWJ">광주</option>
+				<option value="TAE">대구</option>
+				<option value="RSU">여수</option>
+				<option value="USN">울산</option>
+				<option value="WJU">원주/횡성</option>
+				<option value="CJJ">청주</option>
+				<option value="KPO">포항</option>
+				<option value="YNY">양양</option>
+			</select></td>
+			
+			<td ><select name="air_arrivalPlace">
+				<option value="none" selected disabled>=== 선택 ===</option>
+				<option value="GMP">김포</option>
+				<option value="CJU">제주</option>
+				<option value="PUS">부산/김해</option>
+				<option value="KWJ">광주</option>
+				<option value="TAE">대구</option>
+				<option value="RSU">여수</option>
+				<option value="USN">울산</option>
+				<option value="WJU">원주/횡성</option>
+				<option value="CJJ">청주</option>
+				<option value="KPO">포항</option>
+				<option value="YNY">양양</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td colspan="4"><label for="From">일정</label>
+			<input type="text" id="date" name="date" value="" /></td>
+		</tr>
+		<tr>
+			<td colspan="4"><input type="submit" value="선택완료"></td>
+		</tr>
+		</table>
+		</form>
+	</div>
 </body>
 </html>

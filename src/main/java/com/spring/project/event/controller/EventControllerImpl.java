@@ -40,19 +40,20 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView airDetail(@ModelAttribute("air") AirplaneDTO air, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		eventService.resetAir();
 		String date = request.getParameter("date");
 		String fromdate = date.substring(0,10);
 		String todate= date.substring(13);
 		air.setAir_date(fromdate);
 		
-		List<AirplaneDTO> airplaneList = eventService.selectList(air);
+		List<AirplaneDTO> airplaneList = eventService.arrivalList(air);
 		
 		air.setAir_date(todate);
 		//System.out.println(air.getAir_date());
 		//System.out.println(air.getAir_arrivalPlace());
 		//System.out.println(air.getAir_departPlace());
 		
-		List<AirplaneDTO> airplaneList2 = eventService.selectList2(air);
+		List<AirplaneDTO> airplaneList2 = eventService.departList(air);
 		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -64,12 +65,10 @@ public class EventControllerImpl implements EventController {
 
 	@Override
 	@RequestMapping("/checkReserv")
-	public ModelAndView checkReserv(int air_no_from, int air_no_to, HttpServletRequest request,
+	public ModelAndView checkReserv(@RequestParam("air_no_from") int air_no_from,@RequestParam("air_no_to") int air_no_to, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		List<AirplaneDTO> airplaneList = eventService.checkReserv(air_no_from, air_no_to);
-		// System.out.println(airplaneList.get(0).getAir_price());
-		// System.out.println(airplaneList.get(1).getAir_price());
 		
 		int price_from = airplaneList.get(0).getAir_price();
 		int price_to = airplaneList.get(1).getAir_price();
