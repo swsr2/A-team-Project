@@ -14,9 +14,10 @@ public interface MemberController {
 //	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView memberForm(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public void addMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView memberDetail (@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+//	public ModelAndView memberDetail (@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public void modMember(@ModelAttribute("member") MemberDTO memberDTO, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public void delMember(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public void login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse resposne) throws Exception;
+	public int idChk(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

@@ -26,11 +26,7 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.addMember(member);
 	}
 
-	@Override
-	public MemberDTO selectOne(String id) {
-		// TODO Auto-generated method stub
-		return memberDAO.selectOne(id);
-	}
+	
 
 	@Override
 	public int modMember(MemberDTO member) {
@@ -48,6 +44,12 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDTO login(MemberDTO member) {
 		// TODO Auto-generated method stub
 		return memberDAO.login(member);
+	}
+
+	@Override
+	public int idChk(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return memberDAO.idChk(member);
 	}
 
 }

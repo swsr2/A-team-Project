@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,37 +23,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.project.member.dto.MemberDTO;
 import com.spring.project.member.service.MemberService;
 
+import jdk.internal.org.jline.utils.Log;
+
 @Controller("memberController")
 @EnableAspectJAutoProxy
 public class MemberControllerImpl extends MultiActionController implements MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	
-//	@Override
-//	@RequestMapping(value="/member/listMembers.do", method=RequestMethod.GET)
-//	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		// TODO Auto-generated method stub
-//		HttpSession session = request.getSession();
-//		
-//		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
-//		String viewName = (String) request.getAttribute("viewName");
-//		ModelAndView mav = new ModelAndView(viewName);
-//		
-//		if(isLogOn != null) {
-//			
-//			
-//			logger.info("info 레벨 : viewName = " + viewName);
-//			logger.debug("debug 레벨 : viewName = " + viewName);
-//			List<MemberDTO> membersList = memberService.listMembers();
-//			
-//			
-//			mav.addObject("membersList", membersList);
-//		} else {
-//			mav.setViewName("redirect:/member/loginForm.do");
-//		}
-//		return mav;
-//	}
 
 	@Override
 	@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
@@ -78,21 +56,17 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		
 		
 	}
-
+	
 	@Override
-	@RequestMapping(value="/member/memberDetail.do", method=RequestMethod.GET)
-	public ModelAndView memberDetail(@RequestParam("id") String id,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		MemberDTO member = memberService.selectOne(id);
-		
-		String viewName = (String) request.getAttribute("viewName");
-		
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("member", member);
-		
-		return mav;
+	@ResponseBody
+	@RequestMapping(value="/idChk")
+	public int idChk(MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println(member.getId());
+		int result = memberService.idChk(member);
+		return result;
 	}
+
 
 	@Override
 	@RequestMapping(value="/member/modMember.do", method=RequestMethod.POST)
@@ -177,7 +151,9 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/member/loginForm.do");
 		return mav;
-	}	
+	}
+
+	
 }
 
 

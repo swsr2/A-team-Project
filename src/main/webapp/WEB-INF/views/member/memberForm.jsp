@@ -10,6 +10,27 @@
 <head>
 <meta charset="UTF-8">
 <title>회원등록창</title>
+<script>
+	function fn_idChk(){
+		$.ajax({
+			url: "./idChk",
+			type : "post",
+			dataType : "json",
+			console.log(id);
+			data : {"id":$("#id").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 아이디입니다.");
+				} else if(data == 0){
+					$("#idChk").attr("value", "Y");
+					alert("사용가능한 아이디입니다.");					
+				}
+			}	
+		})
+		
+	}
+
+</script>
 </head>
 <body>
 	<form method="post" action="${path }/member/addMember.do">
@@ -17,7 +38,8 @@
 		<table align="center">
 			<tr>
 				<td width="200"><p align="right">아이디</p></td>
-				<td width="400"><input type="text" name="id"></td>
+				<td width="400"><input type="text" id="id" name="id"></td>
+				<td ><button onclick="fn_idChk()" >중복확인</button></td>
 			</tr>
 			<tr>
 				<td width="200"><p align="right">비밀번호</p></td>
