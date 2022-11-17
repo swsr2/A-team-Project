@@ -23,7 +23,7 @@
 	<insert id="addReview" parameterType="com.spring.project.food.dto.ReviewDTO">
 		<![CDATA[
 			insert into review (re_no, re_score, re_content, id, fd_no) 
-			values(re_seq.nextval, #{re_score}, #{re_content}, 'aaa', #{fd_no}) 
+			values(re_seq.nextval, #{re_score}, #{re_content}, #{id}, #{fd_no}) 
 		]]>
 	</insert>
 	

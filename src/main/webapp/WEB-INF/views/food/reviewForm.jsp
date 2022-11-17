@@ -31,8 +31,10 @@ form {
    	<input type="hidden" name="fd_no" value="${fd_no }">
          <table align="center">
          <tr>
-         	<td colspan="2">
+         	<td >
          		<h3 style="text-align:left">리뷰쓰기</h3>
+         		<h5>아이디: ${id }</h5>
+         		<input type="hidden" name="id" value="${id }">
          	</td>
          </tr>
          <tr>
