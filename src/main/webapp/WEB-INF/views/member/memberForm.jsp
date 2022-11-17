@@ -39,42 +39,42 @@ function fn_idChk(){
 <body>
 	<form name="frm" method="post" action="${path }/member/addMember.do">
 		<h1 style="text-align:center;">회원 가입 등록창</h1>
-		<table align="center">
+		<table align="center" >
 			<tr>
-				<td width="200"><p align="right">아이디</p></td>
-				<td width="400"><input type="text" id="id" name="id"></td>
-				<td ><button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button></td>
+				<td width="70"><p align="right">아이디</p></td>
+				<td><input type="text" id="id" name="id"></td>
+				<td align="left"><button class="idChk" type="button" id="idChk" onclick="fn_idChk();">중복확인</button></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">비밀번호</p></td>
-				<td width="400"><input type="password" name="pwd"></td>
+				<td width="70"><p align="right">비밀번호</p></td>
+				<td><input type="password" name="pwd"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">이름</p></td>
-				<td width="400"><input type="text" name="name"></td>
+				<td width="70"><p align="right">이름</p></td>
+				<td><input type="text" name="name"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">나이</p></td>
-				<td width="400"><input type="text" name="age"></td>
+				<td width="70"><p align="right">나이</p></td>
+				<td><input type="text" name="age"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">성별</p></td>
-				<td width="400">
+				<td width="70"><p align="right">성별</p></td>
+				<td>
 					<input type="radio" name="gender" value="M">남자
 					<input type="radio" name="gender" value="W">여자
 				</td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">전화번호</p></td>
-				<td width="400"><input type="text" name="tel"></td>
+				<td width="70"><p align="right">전화번호</p></td>
+				<td><input type="text" name="tel"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">이메일</p></td>
-				<td width="400"><input type="email" name="email"></td>
+				<td width="70"><p align="right">이메일</p></td>
+				<td><input type="email" name="email"></td>
 			</tr>
 			<tr>
-				<td width="200"><p>&nbsp;</td>
-				<td width="400">
+				<td width="70"><p>&nbsp;</td>
+				<td>
 					<input type="submit" value="가입하기">
 					<input type="reset" value="다시입력">
 				</td>
