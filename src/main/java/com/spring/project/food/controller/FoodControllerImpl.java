@@ -40,7 +40,6 @@ public class FoodControllerImpl implements FoodController {
 		int postNum = 12;
 		
 		int pageNum = (int)Math.ceil((double)FoodCnt/postNum);
-		
 		int start = page * postNum;
 		
 		int end = start + (postNum-1);
@@ -55,7 +54,7 @@ public class FoodControllerImpl implements FoodController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)FoodCnt / (double)pageNum_cnt));
+		int endPageNum_tmp = (int)(Math.ceil((double)FoodCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
@@ -99,8 +98,8 @@ public class FoodControllerImpl implements FoodController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)cafeCnt / (double)pageNum_cnt));
-		 
+		int endPageNum_tmp = (int)((double)cafeCnt / (double)postNum);
+		
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
 		}

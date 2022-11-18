@@ -56,7 +56,7 @@
  <span>[ <a href="${path }/food/cafe?page=${endPageNum +1 }">다음</a> ]</span>
 </c:if>
 </h3>
-</div>s
+</div>
 </body>
 </html>
 
