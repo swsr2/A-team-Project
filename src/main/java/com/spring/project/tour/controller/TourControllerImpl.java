@@ -53,7 +53,7 @@ public class TourControllerImpl implements TourController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)FoodCnt / (double)pageNum_cnt));
+		int endPageNum_tmp = (int)(Math.ceil((double)FoodCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
@@ -97,7 +97,7 @@ public class TourControllerImpl implements TourController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)cafeCnt / (double)pageNum_cnt));
+		int endPageNum_tmp = (int)(Math.ceil((double)cafeCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
@@ -141,7 +141,7 @@ public class TourControllerImpl implements TourController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)cafeCnt / (double)pageNum_cnt));
+		int endPageNum_tmp = (int)(Math.ceil((double)cafeCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;

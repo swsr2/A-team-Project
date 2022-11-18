@@ -57,7 +57,7 @@
 </c:forEach>
 
 <c:if test="${next}">
- <span>[ <a href="${path }/tour/beach?page=${endPageNum}">다음</a> ]</span>
+ <span>[ <a href="${path }/tour/beach?page=${endPageNum + 1}">다음</a> ]</span>
 </c:if>
 </h3>
 </div>
