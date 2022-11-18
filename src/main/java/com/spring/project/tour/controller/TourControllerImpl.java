@@ -33,61 +33,6 @@ public class TourControllerImpl implements TourController {
 		// 테스트 하실때 공유드라이브에 api 받아오기 텍스트 파일안 내용을 요기다 넣고 한번 돌리시면
 		// api 내용이 db에 저장이 될 겁니다 db에서 테이블 이랑 시퀀스 만들고 돌려주세요
 		
-		String API_KEY = "txwoaa25joo8ac4y";
-
-		String result = "";
-		try{
-			// api 정보를 url 을 통해서 가져오기
-			URL url = new URL("http://api.visitjeju.net/vsjApi/contents/searchList?"
-					+ "apiKey="+API_KEY+"&locale=kr&category=c1&page=19");
-			BufferedReader bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-			result = bf.readLine();
-			
-			
-			JSONParser par = new JSONParser();
-			// 받아온 api result 를 JSONObject에 저장
-			JSONObject obj = (JSONObject) par.parse(result);
-			// 저장된 object 의 값이 여러개 이기때문에 JSONArray 를 이용해서 list형식 로 분할
-			// items는 api 에서의 칼럼명 같은 거
-			JSONArray items = (JSONArray) obj.get("items");
-			
-			// 데이터를 가져와서 일반적으로 저장할 리스트
-			List<TourDTO> tourList = new ArrayList<TourDTO>();
-			
-			// items 에 있는 필요한 데이터들을 하나씩 가져와서 FoodDTO 에 저장 후 db에 보내서 insert하는 과정
-			for(int i=0;i<items.size();i++) {
-				JSONObject item = (JSONObject) items.get(i);
-				JSONObject repPhoto = (JSONObject) item.get("repPhoto");
-				JSONObject photoid = (JSONObject) repPhoto.get("photoid");
-				TourDTO tour = new TourDTO();
-				tour.setTr_title((String)item.get("title"));
-				tour.setTr_info((String)item.get("introduction"));
-				if(item.get("address") == null){
-					tour.setTr_address("없음");
-				}else {
-					tour.setTr_address((String)item.get("address"));
-				}
-				if(item.get("roadaddress") == null){
-					tour.setTr_roadAddress("없음");
-				}else {
-					tour.setTr_roadAddress((String)item.get("roadaddress"));
-				}
-				if(item.get("phoneno") == null){
-					tour.setTr_phoneNo("없음");
-				}else {
-					tour.setTr_phoneNo((String)item.get("phoneno"));
-				}	
-				tour.setTr_imgPath((String)photoid.get("imgpath"));
-				tour.setTr_thumbnailPath((String)photoid.get("thumbnailpath"));
-				tour.setTr_category((String)item.get("tag"));
-				tourService.dbInsert(tour);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-
-		
 		int FoodCnt = tourService.allTourCnt();
 		
 		int postNum = 12;

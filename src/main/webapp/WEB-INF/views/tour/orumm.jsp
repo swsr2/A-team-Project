@@ -34,8 +34,8 @@
     <table align="center">
     <tr align="center" >
     		<c:forEach var="tour" items="${orummList }" varStatus="status">
-	 			<td><a href="${path}/tour/tourDetail?tr_no=${#}" style="padding:10px;">
-	 				<img src="${tour.tr_thumbnailPath }" width="350"/></a>
+	 			<td><a href="${path}/tour/tourDetail?tr_no=${tour.tr_no}" style="padding:10px;">
+	 				<img class="imgSize" src="${tour.tr_thumbnailPath }" width="350"/></a>
 	 				<p>${tour.tr_title }</p></td>
 	 			<c:if test="${(status.count%3) == 0 }">
 	 				</tr>
@@ -47,17 +47,17 @@
  <div class="page">
  <h3>
     <c:if test="${prev}">
- <span>[ <a href="${path }/tour/main?page=${startPageNum - 1}">이전</a> ]</span>
+ <span>[ <a href="${path }/tour/orumm?page=${startPageNum - 1}">이전</a> ]</span>
 </c:if>
 
 <c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
   <span>
-   <a href="${path }/tour/main?page=${num}">${num}</a> 
+   <a href="${path }/tour/orumm?page=${num}">${num}</a> 
  </span>
 </c:forEach>
 
 <c:if test="${next}">
- <span>[ <a href="${path }/tour/main?page=${endPageNum}">다음</a> ]</span>
+ <span>[ <a href="${path }/tour/orumm?page=${endPageNum}">다음</a> ]</span>
 </c:if>
 </h3>
 </div>
