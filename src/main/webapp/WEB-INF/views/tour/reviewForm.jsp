@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path"  value="${pageContext.request.contextPath}"  />
-<c:set var="fd_no" value="${param.fd_no }" />
+<c:set var="tr_no" value="${param.tr_no }" />
 <%
   request.setCharacterEncoding("UTF-8");
 %>
@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>먹으멍 리뷰</title>
+<title>보멍 리뷰</title>
 <style>
 form {
    display: inline;
@@ -19,16 +19,15 @@ form {
 </style>
 <script>
    function backToList() {
-      let form = document.reviewForm;
-      form.action = "${path}/food/resDetail?fd_no=${fd_no}";
+      let form = document.tour_reviewForm;
+      form.action = "${path}/tour/tourDetail?tr_no=${tr_no}";
       form.submit();
    }
 </script>
 </head>
 <body>
-
-   <form name="reviewForm" method="post" action="${path }/food/addReview">
-   	<input type="hidden" name="fd_no" value="${fd_no }">
+   <form name="tour_reviewForm" method="post" action="${path }/tour/addReview">
+   	<input type="hidden" name="tr_no" value="${tr_no }">
          <table align="center">
          <tr>
          	<td >
