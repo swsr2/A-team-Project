@@ -35,7 +35,7 @@ public class TourDAOImpl implements TourDAO {
 	@Override
 	public List<TourDTO> beachList(Map<String, Integer> page) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("mapper.tour.tourList",page);
+		return sqlSession.selectList("mapper.tour.beachList",page);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class TourDAOImpl implements TourDAO {
 	@Override
 	public List<TourDTO> tourList(Map<String, Integer> page) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("mapper.tour.beachList",page);
+		return sqlSession.selectList("mapper.tour.tourList",page);
 	}
 
 	@Override

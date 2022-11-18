@@ -21,7 +21,7 @@
   				FROM (
 		        SELECT  f.*, row_number() over(order by tr_no asc) as rNum
 		          FROM tour f
-		          where not (tr_category like '%'||'관광'||'%' or tr_category like '%'||'명소'||'%')
+		          where tr_category like '%'||'관광'||'%' or tr_category like '%'||'명소'||'%'
 		        ) 
 		   WHERE rNum between #{start} and #{end}
 		]]>
@@ -30,19 +30,19 @@
 	<select id="allTourCnt" resultType="int">
 		<![CDATA[
 			select count(*) from tour
-			where not (tr_category like '%' || '관광' || '%' or tr_category like '%' || '명소' || '%')
+			where tr_category like '%' || '관광' || '%' or tr_category like '%' || '명소' || '%'
 		]]>
 	</select>
 	
 	<select id="orummList"
-		resultType="com.spring.project.tour.dto.TourDTO">
+		resultType="com.spring.project.tour.dto.TourDTO"
 		parameterType="java.util.Map">
 		<![CDATA[ 
 			SELECT *
   				FROM (
 		        SELECT  f.*, row_number() over(order by tr_no asc) as rNum
 		          FROM tour f
-		          where (tr_category like '%'||'오름'||'%')
+		          where tr_category like '%'||'오름'||'%'
 		        ) 
 		   WHERE rNum between #{start} and #{end}
 		]]>
@@ -56,14 +56,14 @@
 	</select>
 
 		<select id="beachList"
-		resultType="com.spring.project.tour.dto.TourDTO">
+		resultType="com.spring.project.tour.dto.TourDTO"
 		parameterType="java.util.Map">
 		<![CDATA[ 
 			SELECT *
   				FROM (
 		        SELECT  f.*, row_number() over(order by tr_no asc) as rNum
 		          FROM tour f
-		          where (tr_category like '%'||'해변'||'%' or tr_category like '%'||'바다'||'%')
+		          where tr_category like '%'||'해변'||'%' or tr_category like '%'||'바다'||'%'
 		        ) 
 		   WHERE rNum between #{start} and #{end}
 		]]>

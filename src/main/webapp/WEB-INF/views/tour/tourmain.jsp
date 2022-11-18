@@ -34,8 +34,8 @@
     <table align="center">
     <tr align="center" >
     		<c:forEach var="tour" items="${tourList }" varStatus="status">
-	 			<td><a href="${path}/tour/tourDetail?tr_no=${#}" style="padding:10px;">
-	 				<img src="${tour.tr_thumbnailPath }" width="350"/></a>
+	 			<td><a href="${path}/tour/tourDetail?tr_no=${tour.tr_no}" style="padding:10px;">
+	 				<img class="imgSize" src="${tour.tr_thumbnailPath }"/></a>
 	 				<p>${tour.tr_title }</p></td>
 	 			<c:if test="${(status.count%3) == 0 }">
 	 				</tr>
