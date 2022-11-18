@@ -29,10 +29,10 @@ public class EventControllerImpl implements EventController {
 	}
 
 	@Override
-	@RequestMapping("/lodging")
+	@RequestMapping("/lodmain")
 	public String lodging(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		return "/event/lodging";
+		return "/event/lodmain";
 	}
 
 	@Override

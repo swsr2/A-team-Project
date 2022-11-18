@@ -31,7 +31,7 @@
     <tr align="center" >
     		<c:forEach var="fd" items="${foodList }" varStatus="status">
 	 			<td><a href="${path}/food/resDetail?fd_no=${fd.fd_no}" style="padding:10px;">
-	 				<img src="${fd.fd_thumbnailPath }" width="350"/></a>
+	 				<img class="imgSize" src="${fd.fd_thumbnailPath }" width="350"/></a>
 	 				<p>${fd.fd_title }</p></td>
 	 			<c:if test="${(status.count%3) == 0 }">
 	 				</tr>
@@ -53,7 +53,7 @@
 </c:forEach>
 
 <c:if test="${next}">
- <span>[ <a href="${path }/food/main?page=${endPageNum}">다음</a> ]</span>
+ <span>[ <a href="${path }/food/main?page=${endPageNum+1}">다음</a> ]</span>
 </c:if>
 </h3>
 </div>

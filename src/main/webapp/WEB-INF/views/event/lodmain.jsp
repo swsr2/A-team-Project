@@ -58,7 +58,7 @@ form {
   </script>
 </head>
 <body>
-	<form name="event1" action="/project/event/airmain">
+	<form name="event1" action="/project/event/main">
 		<input class="category" type='submit' value='항공' />
 	</form>
 	<form name="event2" action="/project/event/lodmain">

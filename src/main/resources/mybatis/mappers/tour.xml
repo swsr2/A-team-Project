@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.tour">
+	<resultMap type="tourDTO" id="tourResult">
+		<result property="tr_no" column="tr_no" />
+		<result property="tr_name" column="tr_name" />
+		<result property="tr_address" column="tr_address" />
+		<result property="tr_open" column="tr_open" />
+		<result property="tr_colse" column="tr_colse" />
+		<result property="tr_score" column="tr_score" />
+		<result property="tr_category" column="tr_category" />
+	</resultMap>
+	
+	<select id="tourList"
+		resultType="com.spring.project.tour.dto.TourDTO"
+		parameterType="java.util.Map">
+		<![CDATA[
+			SELECT *
+  				FROM (
+		        SELECT  f.*, row_number() over(order by tr_no asc) as rNum
+		          FROM tour f
+		          where tr_category like '%'||'관광'||'%' or tr_category like '%'||'명소'||'%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+
+	<select id="allTourCnt" resultType="int">
+		<![CDATA[
+			select count(*) from tour
+			where tr_category like '%' || '관광' || '%' or tr_category like '%' || '명소' || '%'
+		]]>
+	</select>
+	
+	<select id="orummList"
+		resultType="com.spring.project.tour.dto.TourDTO"
+		parameterType="java.util.Map">
+		<![CDATA[ 
+			SELECT *
+  				FROM (
+		        SELECT  f.*, row_number() over(order by tr_no asc) as rNum
+		          FROM tour f
+		          where tr_category like '%'||'오름'||'%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+	
+	<select id="allOrummCnt" resultType="int">
+		<![CDATA[
+			select count(*) from tour 
+			where tr_category like '%' || '오름' || '%'
+		]]>
+	</select>
+
+		<select id="beachList"
+		resultType="com.spring.project.tour.dto.TourDTO"
+		parameterType="java.util.Map">
+		<![CDATA[ 
+			SELECT *
+  				FROM (
+		        SELECT  f.*, row_number() over(order by tr_no asc) as rNum
+		          FROM tour f
+		          where tr_category like '%'||'해변'||'%' or tr_category like '%'||'바다'||'%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+	
+	<select id="allBeachCnt" resultType="int">
+		<![CDATA[
+			select count(*) from tour 
+			where tr_category like '%' || '해변' || '%' or tr_category like '%'||'바다'||'%'
+		]]>
+	</select>
+	
+	<insert id="dbInsert" parameterType="com.spring.project.tour.dto.TourDTO">
+		<![CDATA[
+			insert into tour values(tr_seq.nextval, #{tr_title}, #{tr_info}, 
+			#{tr_address}, #{tr_roadAddress}, #{tr_phoneNo}, #{tr_imgPath}, #{tr_thumbnailPath}, #{tr_category})		
+		]]>
+	</insert>
+
+</mapper>	
