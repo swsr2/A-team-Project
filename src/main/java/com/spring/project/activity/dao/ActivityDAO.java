@@ -14,4 +14,8 @@ public interface ActivityDAO {
 
 	List<ActivityDTO> activityList(Map<String, Integer> page);
 
+	public int allActivityCnt();
+
+	public int allCrsCnt();
+
 }

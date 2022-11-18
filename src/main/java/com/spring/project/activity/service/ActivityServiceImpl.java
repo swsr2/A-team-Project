@@ -19,13 +19,13 @@ public class ActivityServiceImpl implements ActivityService{
 	@Override
 	public int allActivityCnt() {
 		// TODO Auto-generated method stub
-		return 0;
+		return activityDAO.allActivityCnt();
 	}
 
 	@Override
 	public int allCrsCnt() {
 		// TODO Auto-generated method stub
-		return 0;
+		return activityDAO.allCrsCnt();
 	}
 
 	@Override

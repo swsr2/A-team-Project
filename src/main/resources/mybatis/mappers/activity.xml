@@ -1,3 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.activity">
+	<resultMap type="activityDTO" id="activityResult">
+		<result property="ac_no" column="ac_no" />
+		<result property="ac_name" column="ac_name" />
+		<result property="ac_address" column="ac_address" />
+		<result property="ac_open" column="ac_open" />
+		<result property="ac_colse" column="ac_colse" />
+		<result property="ac_score" column="ac_score" />
+		<result property="ac_category" column="ac_category" />
+	</resultMap>
+	
+	<select id="activityList"
+		resultType="com.spring.project.activity.dto.ActivityDTO"
+		parameterType="java.util.Map">
+		<![CDATA[
+			SELECT *
+  				FROM (
+		        SELECT  f.*, row_number() over(order by ac_no asc) as rNum
+		          FROM activity f
+		          where ac_category like '%'||'체험'||'%' or ac_category like '%'||'액티비티'||'%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+
+	<select id="allActivityCnt" resultType="int">
+		<![CDATA[
+			select count(*) from activity
+			where ac_category like '%' || '체험' || '%' or ac_category like '%' || '액티비티' || '%'
+		]]>
+	</select>
+	
+	<select id="crsList"
+		resultType="com.spring.project.activity.dto.ActivityDTO"
+		parameterType="java.util.Map">
+		<![CDATA[ 
+			SELECT *
+  				FROM (
+		        SELECT  f.*, row_number() over(order by ac_no asc) as rNum
+		          FROM activity f
+		          where ac_category like '%'||'코스'||'%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+	
+	<select id="allCrsCnt" resultType="int">
+		<![CDATA[
+			select count(*) from activity 
+			where ac_category like '%' || '코스' || '%'
+		]]>
+	</select>
+
+		
+	
+	<insert id="dbInsert" parameterType="com.spring.project.activity.dto.ActivityDTO">
+		<![CDATA[
+			insert into tour values(ac_seq.nextval, #{ac_title}, #{ac_info}, 
+			#{ac_address}, #{ac_roadAddress}, #{ac_phoneNo}, #{ac_imgPath}, #{ac_thumbnailPath}, #{ac_category})		
+		]]>
+	</insert>
+	
+	
+</mapper>
