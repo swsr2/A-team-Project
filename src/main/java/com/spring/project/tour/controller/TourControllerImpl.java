@@ -1,22 +1,24 @@
 package com.spring.project.tour.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.project.tour.dto.ReviewDTO;
+import com.spring.project.member.dto.MemberDTO;
 import com.spring.project.tour.dto.TourDTO;
 import com.spring.project.tour.service.TourService;
 
@@ -30,14 +32,12 @@ public class TourControllerImpl implements TourController {
 	@RequestMapping("/main")
 	public String tourmain(@RequestParam("page") int page,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		// 테스트 하실때 공유드라이브에 api 받아오기 텍스트 파일안 내용을 요기다 넣고 한번 돌리시면
-		// api 내용이 db에 저장이 될 겁니다 db에서 테이블 이랑 시퀀스 만들고 돌려주세요
 		
-		int FoodCnt = tourService.allTourCnt();
+		int TourCnt = tourService.allTourCnt();
 		
 		int postNum = 12;
 		
-		int pageNum = (int)Math.ceil((double)FoodCnt/postNum);
+		int pageNum = (int)Math.ceil((double)TourCnt/postNum);
 		
 		int start = page * postNum;
 		
@@ -53,13 +53,13 @@ public class TourControllerImpl implements TourController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)FoodCnt / (double)postNum));
+		int endPageNum_tmp = (int)(Math.ceil((double)TourCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
 		}
 		boolean prev = startPageNum == 1 ? false : true;
-		boolean next = endPageNum * pageNum_cnt >= FoodCnt ? false : true;
+		boolean next = endPageNum * pageNum_cnt >= TourCnt ? false : true;
 
 		List<TourDTO> tourList = tourService.tourList(start, end);
 		request.setAttribute("tourList", tourList);
@@ -78,11 +78,11 @@ public class TourControllerImpl implements TourController {
 	@RequestMapping("/orumm")
 	public String orumm(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int cafeCnt = tourService.allOrummCnt();
+		int orummCnt = tourService.allOrummCnt();
 		
 		int postNum = 12;
 		
-		int pageNum = (int)Math.ceil((double)cafeCnt/postNum);
+		int pageNum = (int)Math.ceil((double)orummCnt/postNum);
 		int start = page * postNum;
 		
 		int end = start + (postNum-1);
@@ -97,13 +97,13 @@ public class TourControllerImpl implements TourController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)cafeCnt / (double)postNum));
+		int endPageNum_tmp = (int)(Math.ceil((double)orummCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
 		}
 		boolean prev = startPageNum == 1 ? false : true;
-		boolean next = endPageNum * pageNum_cnt >= cafeCnt ? false : true;
+		boolean next = endPageNum * pageNum_cnt >= orummCnt ? false : true;
 
 		List<TourDTO> orummList = tourService.orummList(start, end);
 		request.setAttribute("orummList", orummList);
@@ -122,11 +122,11 @@ public class TourControllerImpl implements TourController {
 	@RequestMapping("/beach")
 	public String beach(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int cafeCnt = tourService.allBeachCnt();
+		int beachCnt = tourService.allBeachCnt();
 		
 		int postNum = 12;
 		
-		int pageNum = (int)Math.ceil((double)cafeCnt/postNum);
+		int pageNum = (int)Math.ceil((double)beachCnt/postNum);
 		int start = page * postNum;
 		
 		int end = start + (postNum-1);
@@ -141,13 +141,13 @@ public class TourControllerImpl implements TourController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)cafeCnt / (double)postNum));
+		int endPageNum_tmp = (int)(Math.ceil((double)beachCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
 		}
 		boolean prev = startPageNum == 1 ? false : true;
-		boolean next = endPageNum * pageNum_cnt >= cafeCnt ? false : true;
+		boolean next = endPageNum * pageNum_cnt >= beachCnt ? false : true;
 
 		List<TourDTO> beachList = tourService.beachList(start, end);
 		request.setAttribute("beachList", beachList);
@@ -160,6 +160,116 @@ public class TourControllerImpl implements TourController {
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
 		return "/tour/beach";
+	}
+
+	@Override
+	@RequestMapping("/tourDetail")
+	public ModelAndView tourDetail(@RequestParam("tr_no") int tr_no, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		TourDTO tour = tourService.selectOne(tr_no);
+		List<ReviewDTO> reviewList = tourService.reviewList(tr_no);
+		
+		String[] category = tour.getTr_category().split(",");
+		
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("tour", tour);
+		mav.addObject("category", category);
+		mav.addObject("reviewList", reviewList);
+		
+		return mav;
+	}
+
+	@Override
+	@RequestMapping("/myReview")
+	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		ModelAndView mav = null;
+		if(isLogOn!=null && isLogOn==true) {
+			String viewName = (String) request.getAttribute("viewName");
+			mav = new ModelAndView(viewName);
+		} else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인 후 이용가능합니다..');");
+			out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+			out.println("</script>");
+			return null;
+		}
+		
+		return "/tour/reviewForm";
+	}
+
+	@Override
+	@RequestMapping(value="/addReview", method=RequestMethod.POST)
+	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		
+		int result = tourService.addReview(review);
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result == 1) {
+			out.println("alert('리뷰등록이 완료 되었습니다. 작성하신 리뷰는 [마이페이지 > 나의 리뷰보기]에서 확인하실 수 있습니다.')");
+		} else {
+			out.println("alert('리뷰가 등록되지 않았습니다.');");
+		}
+		out.println("location.href='"+ request.getContextPath() 
+				+ "/tour/tourDetail?tr_no="+review.getTr_no()+"';");
+		out.println("</script>");
+		
+	}
+
+	
+	@Override
+	@RequestMapping(value="/myPick", method=RequestMethod.GET)
+	public ModelAndView myPick(@RequestParam("tr_no") int tr_no,@RequestParam("pick") boolean pick,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+			response.setContentType("text/html;charset=utf-8");
+			
+			HttpSession session = request.getSession();
+			MemberDTO member = (MemberDTO) session.getAttribute("member");
+			Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+			ModelAndView mav = null;
+			if(isLogOn!=null && isLogOn==true) {
+				String viewName = (String) request.getAttribute("viewName");
+				mav = new ModelAndView(viewName);
+			} else {
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('로그인 후 이용가능합니다..');");
+				out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+				out.println("</script>");
+				return null;
+			}
+			
+			TourDTO tour = tourService.selectOne(tr_no);
+			List<ReviewDTO> reviewList = tourService.reviewList(tr_no);
+			String[] category = tour.getTr_category().split(",");
+			mav = new ModelAndView("tour/tourDetail");
+			mav.addObject("tour", tour);
+			mav.addObject("category",category);
+			mav.addObject("reviewList",reviewList);
+			
+			Map pickMap = new HashMap();
+			pickMap.put("id", member.getId());
+			pickMap.put("tr_no", tr_no);
+			
+			if(pick) {
+				tourService.myPick(pickMap);
+				mav.addObject("pick",true);
+			}else {
+				tourService.delPick(pickMap);
+				mav.addObject("pick",false);
+			}
+			return mav;
 	}
 
 

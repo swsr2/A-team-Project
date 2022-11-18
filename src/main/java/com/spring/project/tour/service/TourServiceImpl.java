@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.project.tour.dao.TourDAO;
+import com.spring.project.tour.dto.ReviewDTO;
 import com.spring.project.tour.dto.TourDTO;
 
 @Service
@@ -61,9 +62,34 @@ public class TourServiceImpl implements TourService {
 	}
 
 	@Override
-	public void dbInsert(TourDTO tour) {
+	public TourDTO selectOne(int tr_no) {
 		// TODO Auto-generated method stub
-		tourDAO.dbInsert(tour);
+		return tourDAO.selectOne(tr_no);
+	}
+
+
+	@Override
+	public int addReview(com.spring.project.tour.dto.ReviewDTO review) {
+		// TODO Auto-generated method stub
+		return tourDAO.addReview(review);
+	}
+
+	@Override
+	public List<ReviewDTO> reviewList(int tr_no) {
+		// TODO Auto-generated method stub
+		return tourDAO.reviewList(tr_no);
+	}
+
+	@Override
+	public void myPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		tourDAO.myPick(pickMap);
+	}
+
+	@Override
+	public void delPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		tourDAO.myPick(pickMap);
 	}
 
 }

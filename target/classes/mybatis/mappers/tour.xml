@@ -76,11 +76,35 @@
 		]]>
 	</select>
 	
-	<insert id="dbInsert" parameterType="com.spring.project.tour.dto.TourDTO">
+	<select id="selecttr_no" parameterType="int" resultType="com.spring.project.tour.dto.TourDTO">
 		<![CDATA[
-			insert into tour values(tr_seq.nextval, #{tr_title}, #{tr_info}, 
-			#{tr_address}, #{tr_roadAddress}, #{tr_phoneNo}, #{tr_imgPath}, #{tr_thumbnailPath}, #{tr_category})		
+			select * from tour where tr_no=#{tr_no}
+		]]>
+	</select>
+	
+
+	<insert id="addReview" parameterType="com.spring.project.tour.dto.ReviewDTO">
+		<![CDATA[
+			insert into review (re_no, re_score, re_content, id, tr_no) 
+			values(re_seq.nextval, #{re_score}, #{re_content}, #{id}, #{tr_no}) 
 		]]>
 	</insert>
-
+	
+		<select id="reviewList" parameterType="int" resultType="com.spring.project.tour.dto.ReviewDTO">
+		<![CDATA[
+			select * from review where tr_no=#{tr_no}
+		]]>
+	</select>
+	
+	<insert id="tour_myPick" parameterType="java.util.Map">
+		<![CDATA[
+			insert into mypick(id, tr_no) values(#{id}, #{tr_no})
+		]]>
+	</insert>
+	
+	<delete id="tour_delPick" parameterType="java.util.Map">
+		<![CDATA[
+			delete from mypick where id=#{id} and tr_no=#{tr_no}
+		]]>
+	</delete>
 </mapper>	

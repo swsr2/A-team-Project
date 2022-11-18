@@ -38,12 +38,12 @@
 	</definition>
 	
 	<definition name="food/resDetail" extends="baseLayout">
-		<put-attribute name="title" value="먹으멍_맛집_상세페이지" />
+		<put-attribute name="title" value="먹으멍_상세페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/food/resDetail.jsp" />
 	</definition>
 	
 	<definition name="/food/reviewForm" extends="baseLayout">
-		<put-attribute name="title" value="먹으멍_맛집_리뷰" />
+		<put-attribute name="title" value="먹으멍_리뷰" />
 		<put-attribute name="body" value="/WEB-INF/views/food/reviewForm.jsp" />
 	</definition>
 	
@@ -90,5 +90,25 @@
 	<definition name="/tour/beach" extends="baseLayout">
 		<put-attribute name="title" value="보멍_바다" />
 		<put-attribute name="body" value="/WEB-INF/views/tour/beach.jsp" />
-	</definition>	
+	</definition>
+	
+	<definition name="tour/tourDetail" extends="baseLayout">
+		<put-attribute name="title" value="보멍_상세페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/tour/tourDetail.jsp" />
+	</definition>
+	
+	<definition name="/tour/reviewForm" extends="baseLayout">
+		<put-attribute name="title" value="보멍_리뷰" />
+		<put-attribute name="body" value="/WEB-INF/views/tour/reviewForm.jsp" />
+	</definition>
+	
+		<definition name="/activity/activitymain" extends="baseLayout">
+		<put-attribute name="title" value="보멍_바다" />
+		<put-attribute name="body" value="/WEB-INF/views/activity/activitymain.jsp" />
+	</definition>
+	
+	<definition name="/activity/crs" extends="baseLayout">
+		<put-attribute name="title" value="보멍_바다" />
+		<put-attribute name="body" value="/WEB-INF/views/activity/crs.jsp" />
+	</definition>
 </tiles-definitions>
