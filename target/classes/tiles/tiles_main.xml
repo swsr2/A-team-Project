@@ -90,5 +90,5 @@
 	<definition name="/tour/beach" extends="baseLayout">
 		<put-attribute name="title" value="보멍_바다" />
 		<put-attribute name="body" value="/WEB-INF/views/tour/beach.jsp" />
-	</definition>
+	</definition>	
 </tiles-definitions>

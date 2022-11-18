@@ -28,7 +28,12 @@ public class ActivityControllerImpl implements ActivityController{
 		// TODO Auto-generated method stub
 		// 테스트 하실때 공유드라이브에 api 받아오기 텍스트 파일안 내용을 요기다 넣고 한번 돌리시면
 		// api 내용이 db에 저장이 될 겁니다 db에서 테이블 이랑 시퀀스 만들고 돌려주세요
-
+		// api 정보를 url 을 통해서 가져오기
+			// c1 : 관광, c2 : 쇼핑, c3 : 숙박, c4 : 음식점, c5 : 축제/행사/액티비티, c6 : 테마여행
+		
+		
+		
+		
 		int ActivityCnt = activityService.allActivityCnt();
 
 		int postNum = 12;
@@ -58,7 +63,7 @@ public class ActivityControllerImpl implements ActivityController{
 		boolean next = endPageNum * pageNum_cnt >= ActivityCnt ? false : true;
 
 		List<ActivityDTO> activityList = activityService.activityList(start, end);
-		request.setAttribute("foodList", activityList);
+		request.setAttribute("activityList", activityList);
 		request.setAttribute("pageNum", pageNum);
 		// 시작 및 끝 번호
 		request.setAttribute("startPageNum", startPageNum);
@@ -68,7 +73,7 @@ public class ActivityControllerImpl implements ActivityController{
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
 		
-		return "/activity/main";
+		return "/activity/activitymain";
 	}
 
 	@Override
