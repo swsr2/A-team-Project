@@ -72,6 +72,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/checkReserv.jsp" />
 	</definition>
 	
+	<definition name="/event/lodmain" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_숙박" />
+		<put-attribute name="body" value="/WEB-INF/views/event/lodmain.jsp" />
+	</definition>
+	
 	<definition name="/mypage/mypagemain" extends="baseLayout">
 		<put-attribute name="title" value="마이페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypagemain.jsp" />
@@ -96,8 +101,29 @@
 		<put-attribute name="title" value="마이페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mytravle.jsp" />
 	</definition>
-		<definition name="/member/memberDetail" extends="baseLayout">
+	
+	<definition name="/member/memberDetail" extends="baseLayout">
 		<put-attribute name="title" value="정보수정" />
 		<put-attribute name="body" value="/WEB-INF/views/member/memberDetail.jsp" />
+	</definition>
+	
+	<definition name="/tour/tourmain" extends="baseLayout">
+		<put-attribute name="title" value="투어_관광" />
+		<put-attribute name="body" value="/WEB-INF/views/tour/tourmain.jsp" />
+	</definition>
+	
+	<definition name="/tour/orumm" extends="baseLayout">
+		<put-attribute name="title" value="투어_오름" />
+		<put-attribute name="body" value="/WEB-INF/views/tour/orumm.jsp" />
+	</definition>
+	
+	<definition name="/tour/beach" extends="baseLayout">
+		<put-attribute name="title" value="투어_바다" />
+		<put-attribute name="body" value="/WEB-INF/views/tour/beach.jsp" />
+	</definition>
+	
+	<definition name="tour/tourDetail" extends="baseLayout">
+		<put-attribute name="title" value="투어_상세" />
+		<put-attribute name="body" value="/WEB-INF/views/tour/tourDetail.jsp" />
 	</definition>
 </tiles-definitions>
