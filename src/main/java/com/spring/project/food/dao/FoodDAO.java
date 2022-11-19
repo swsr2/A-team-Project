@@ -28,5 +28,7 @@ public interface FoodDAO {
 
 	public void delPick(Map pickMap);
 
+	public int checkPick(Map pickMap);
+
 
 }

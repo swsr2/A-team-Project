@@ -31,4 +31,6 @@ public interface TourDAO {
 	
 	public void delPick(Map pickMap);
 
+	public int checkPcik(Map pickMap);
+
 }

@@ -83,4 +83,10 @@ public class TourDAOImpl implements TourDAO {
 		sqlSession.insert("mapper.tour.tour_delPick", pickMap);
 	}
 
+	@Override
+	public int checkPcik(Map pickMap) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.tour.checkPick", pickMap);
+	}
+
 }

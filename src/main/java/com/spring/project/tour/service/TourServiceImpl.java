@@ -92,4 +92,10 @@ public class TourServiceImpl implements TourService {
 		tourDAO.myPick(pickMap);
 	}
 
+	@Override
+	public int checkPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		return tourDAO.checkPcik(pickMap);
+	}
+
 }
