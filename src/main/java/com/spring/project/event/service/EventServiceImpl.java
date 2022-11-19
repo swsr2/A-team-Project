@@ -54,9 +54,8 @@ public class EventServiceImpl implements EventService {
         		air.setAir_price(55000);
         		eventDAO.addAirplane(air);
         		airplaneList.add(air);
-        	}	
+        	}
         }
-		
 		return airplaneList;
 	}
 	

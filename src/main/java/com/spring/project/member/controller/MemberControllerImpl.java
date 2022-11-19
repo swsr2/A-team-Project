@@ -151,6 +151,10 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		return mav;
 	}
 
+	@RequestMapping(value="/member/memberDetail" , method=RequestMethod.GET)
+	public String memberDetail(HttpServletRequest request, HttpServletResponse resposne) throws Exception {
+		return "/member/memberDetail";
+	}
 	
 }
 

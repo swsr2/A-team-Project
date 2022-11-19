@@ -38,12 +38,12 @@
 	</definition>
 	
 	<definition name="food/resDetail" extends="baseLayout">
-		<put-attribute name="title" value="먹으멍_상세페이지" />
+		<put-attribute name="title" value="먹으멍_맛집_상세페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/food/resDetail.jsp" />
 	</definition>
 	
 	<definition name="/food/reviewForm" extends="baseLayout">
-		<put-attribute name="title" value="먹으멍_리뷰" />
+		<put-attribute name="title" value="먹으멍_맛집_리뷰" />
 		<put-attribute name="body" value="/WEB-INF/views/food/reviewForm.jsp" />
 	</definition>
 	
@@ -58,13 +58,8 @@
 	</definition>
 	
 	<definition name="/event/airmain" extends="baseLayout">
-		<put-attribute name="title" value="이벤트_항공" />
+		<put-attribute name="title" value="이벤트" />
 		<put-attribute name="body" value="/WEB-INF/views/event/airmain.jsp" />
-	</definition>
-	
-	<definition name="/event/lodmain" extends="baseLayout">
-		<put-attribute name="title" value="이벤트_숙박" />
-		<put-attribute name="body" value="/WEB-INF/views/event/lodmain.jsp" />
 	</definition>
 	
 	<definition name="event/airDetail" extends="baseLayout">
@@ -77,38 +72,32 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/checkReserv.jsp" />
 	</definition>
 	
-	<definition name="/tour/tourmain" extends="baseLayout">
-		<put-attribute name="title" value="보멍_관광지" />
-		<put-attribute name="body" value="/WEB-INF/views/tour/tourmain.jsp" />
+	<definition name="/mypage/mypagemain" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypagemain.jsp" />
 	</definition>
 	
-	<definition name="/tour/orumm" extends="baseLayout">
-		<put-attribute name="title" value="보멍_오름" />
-		<put-attribute name="body" value="/WEB-INF/views/tour/orumm.jsp" />
+	<definition name="/member/memberDetail" extends="baseLayout">
+		<put-attribute name="title" value="내 정보수정" />
+		<put-attribute name="body" value="/WEB-INF/views/member/memberDetail.jsp" />
 	</definition>
 	
-	<definition name="/tour/beach" extends="baseLayout">
-		<put-attribute name="title" value="보멍_바다" />
-		<put-attribute name="body" value="/WEB-INF/views/tour/beach.jsp" />
+	<definition name="/mypage/myreview" extends="baseLayout">
+		<put-attribute name="title" value="내가 쓴 리뷰" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/myreview.jsp" />
 	</definition>
 	
-	<definition name="tour/tourDetail" extends="baseLayout">
-		<put-attribute name="title" value="보멍_상세페이지" />
-		<put-attribute name="body" value="/WEB-INF/views/tour/tourDetail.jsp" />
+	<definition name="/mypage/myreservation" extends="baseLayout">
+		<put-attribute name="title" value="내 예약확인" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/myreservation.jsp" />
 	</definition>
 	
-	<definition name="/tour/reviewForm" extends="baseLayout">
-		<put-attribute name="title" value="보멍_리뷰" />
-		<put-attribute name="body" value="/WEB-INF/views/tour/reviewForm.jsp" />
+	<definition name="/mypage/mytravle" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mytravle.jsp" />
 	</definition>
-	
-		<definition name="/activity/activitymain" extends="baseLayout">
-		<put-attribute name="title" value="보멍_바다" />
-		<put-attribute name="body" value="/WEB-INF/views/activity/activitymain.jsp" />
-	</definition>
-	
-	<definition name="/activity/crs" extends="baseLayout">
-		<put-attribute name="title" value="보멍_바다" />
-		<put-attribute name="body" value="/WEB-INF/views/activity/crs.jsp" />
+		<definition name="/member/memberDetail" extends="baseLayout">
+		<put-attribute name="title" value="정보수정" />
+		<put-attribute name="body" value="/WEB-INF/views/member/memberDetail.jsp" />
 	</definition>
 </tiles-definitions>
