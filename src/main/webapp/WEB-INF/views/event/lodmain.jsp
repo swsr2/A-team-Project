@@ -55,6 +55,7 @@ form {
     }
   } );
   
+  
   </script>
 </head>
 <body>
@@ -68,7 +69,9 @@ form {
 	<br>
 	<br>
 	<h3>일정선택</h3>
-	<form name="selectDate" action="project/event/lodDetail">
+	<form name="selectDate" action="${path }/event/lodDetail">
+	<input type="hidden" name="page" value="1">
+	<input type="hidden" name="lodDate" value="true">
 	<label for="from">From</label>
 	<input type="text" id="from" name="from">
 	<label for="to">to</label>
