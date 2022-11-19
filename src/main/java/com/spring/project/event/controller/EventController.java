@@ -21,6 +21,10 @@ public interface EventController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public String airReserv(@RequestParam("air_no1") int air_no1, @RequestParam("air_no2") int air_no2, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception; 
+	public ModelAndView lodDetail(@RequestParam("page") int page,
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id,
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	// public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	// public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
