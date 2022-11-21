@@ -273,3 +273,7 @@ body {
 	height: 200px;
 	object-fit : fill;
 }
+
+div #map {
+	margin:0 auto;
+}
