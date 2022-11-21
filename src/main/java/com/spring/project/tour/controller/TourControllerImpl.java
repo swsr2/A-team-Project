@@ -167,13 +167,31 @@ public class TourControllerImpl implements TourController {
 	public ModelAndView tourDetail(@RequestParam("tr_no") int tr_no, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		
+
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		ModelAndView mav = null;
 		TourDTO tour = tourService.selectOne(tr_no);
 		List<ReviewDTO> reviewList = tourService.reviewList(tr_no);
 		
 		String[] category = tour.getTr_category().split(",");
 		
 		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+		mav = new ModelAndView(viewName);
+		if(isLogOn!=null && isLogOn==true) {
+			MemberDTO member = (MemberDTO) session.getAttribute("member");
+			Map pickMap = new HashMap();
+			pickMap.put("id", member.getId());
+			pickMap.put("tr_no", tr_no);
+			
+			int result = tourService.checkPick(pickMap);
+			// http://localhost:8080/project/food/myPick?fd_no=924&pick=true
+			
+			if(result==1) {
+				mav.addObject("pick", true);
+			}
+		} 
 		mav.addObject("tour", tour);
 		mav.addObject("category", category);
 		mav.addObject("reviewList", reviewList);

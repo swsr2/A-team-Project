@@ -83,4 +83,18 @@ public class FoodServiceImpl implements FoodService {
 		foodDAO.delPick(pickMap);
 	}
 
+	@Override
+	public int checkPick(int fd_no, String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int checkPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		return foodDAO.checkPick(pickMap);
+	}
+
+
+
 }

@@ -30,4 +30,6 @@ public interface TourService {
 
 	public int addReview(ReviewDTO review);
 
+	public int checkPick(Map pickMap);
+
 }

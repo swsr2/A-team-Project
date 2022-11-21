@@ -87,5 +87,11 @@
 			delete from mypick where id=#{id} and fd_no=#{fd_no}
 		]]>
 	</delete>
+	
+	<select id="checkPick" parameterType="java.util.Map" resultType="int">
+		<![CDATA[
+			select count(*) from mypick where id=#{id} and fd_no=#{fd_no}
+		]]>
+	</select>
 </mapper>
 

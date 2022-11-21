@@ -107,4 +107,10 @@
 			delete from mypick where id=#{id} and tr_no=#{tr_no}
 		]]>
 	</delete>
+	
+	<select id="checkPick" parameterType="java.util.Map" resultType="int">
+		<![CDATA[
+			select count(*) from mypick where id=#{id} and tr_no=#{tr_no}
+		]]>
+	</select>
 </mapper>	
