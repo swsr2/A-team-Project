@@ -77,9 +77,15 @@
 		]]>
 	</select>
 	
-	<select id="roomList" parameterType="int" resultType="com.spring.project.event.dto.RoomInfoDTO">
+	<select id="roomList" parameterType="int" resultType="roomInfoDTO">
 		<![CDATA[
 			select * from room_info where lod_id = #{lod_id}
+		]]>
+	</select>
+	
+	<select id="roomInfo" parameterType="roomInfoDTO" resultType="roomInfoDTO">
+		<![CDATA[
+			select * from room_info where lod_id=#{lod_id} and r_title=#{r_title}
 		]]>
 	</select>
 </mapper>

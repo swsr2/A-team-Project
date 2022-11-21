@@ -159,6 +159,12 @@ public class EventServiceImpl implements EventService {
 		return eventDAO.roomList(lod_id);
 	}
 
+	@Override
+	public RoomInfoDTO roomInfo(RoomInfoDTO room) {
+		// TODO Auto-generated method stub
+		return eventDAO.roomInfo(room);
+	}
+
 
 
 	

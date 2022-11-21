@@ -28,6 +28,8 @@ public interface EventDAO {
 
 	public List<RoomInfoDTO> roomList(int lod_id);
 
+	public RoomInfoDTO roomInfo(RoomInfoDTO room);
+
 
 
 	// public int addReview(ReviewDTO review);

@@ -87,6 +87,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/lodInfo.jsp" />
 	</definition>
 	
+	<definition name="event/roomRes" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_숙박" />
+		<put-attribute name="body" value="/WEB-INF/views/event/roomRes.jsp" />
+	</definition>
+	
 	<definition name="/mypage/mypagemain" extends="baseLayout">
 		<put-attribute name="title" value="마이페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypagemain.jsp" />

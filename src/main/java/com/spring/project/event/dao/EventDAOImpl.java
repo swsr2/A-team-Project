@@ -95,6 +95,13 @@ public class EventDAOImpl implements EventDAO{
 	}
 
 
+	@Override
+	public RoomInfoDTO roomInfo(RoomInfoDTO room) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.roomInfo",room);
+	}
+
+
 
 	/*
 	@Override

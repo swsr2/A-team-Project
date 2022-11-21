@@ -161,6 +161,21 @@ public class EventControllerImpl implements EventController {
 		mav.addObject("roomList",roomList);
 		return mav;
 	}
+
+	@Override
+	@RequestMapping("/roomRes")
+	public ModelAndView roomRes(@ModelAttribute("room") RoomInfoDTO room, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+		room = eventService.roomInfo(room);
+		LodgingDTO lodging = eventService.lodDatail(Integer.parseInt(room.getLod_id()));
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("room",room);
+		mav.addObject("lodging",lodging);
+		return mav;
+	}
 	
 	
 	
