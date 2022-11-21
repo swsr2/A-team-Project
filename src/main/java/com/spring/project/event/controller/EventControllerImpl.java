@@ -18,6 +18,7 @@ import com.spring.project.event.service.EventService;
 import com.spring.project.food.dto.FoodDTO;
 import com.spring.project.food.dto.ReviewDTO;
 import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.RoomInfoDTO;
 
 @Controller("eventController")
 @RequestMapping("/event")
@@ -151,11 +152,13 @@ public class EventControllerImpl implements EventController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		LodgingDTO lodging = eventService.lodDatail(lod_id);
+		List<RoomInfoDTO> roomList = eventService.roomList(lod_id);
 //		List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		mav.addObject("lodging",lodging);
+		mav.addObject("roomList",roomList);
 		return mav;
 	}
 	

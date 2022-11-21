@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.RoomInfoDTO;
 
 @Repository
 public class EventDAOImpl implements EventDAO{
@@ -84,6 +85,13 @@ public class EventDAOImpl implements EventDAO{
 	public LodgingDTO lodDatail(int lod_id) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.event.lodDetail",lod_id);
+	}
+
+
+	@Override
+	public List<RoomInfoDTO> roomList(int lod_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.roomList",lod_id);
 	}
 
 

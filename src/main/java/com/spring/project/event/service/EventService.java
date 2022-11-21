@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.RoomInfoDTO;
 
 public interface EventService {
 
@@ -20,6 +21,8 @@ public interface EventService {
 	public List<LodgingDTO> lodList(int start, int end);
 
 	public LodgingDTO lodDatail(int lod_id);
+
+	public List<RoomInfoDTO> roomList(int lod_id);
 
 
 	// public int addReview(ReviewDTO review);
