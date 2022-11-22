@@ -28,7 +28,6 @@ import com.spring.project.event.dto.RoomInfoDTO;
 public class EventControllerImpl implements EventController {
 	@Autowired
 	EventService eventService;
-
 	@Override
 	@RequestMapping("/main")
 	public String airport(HttpServletRequest request, HttpServletResponse response) throws Exception {
