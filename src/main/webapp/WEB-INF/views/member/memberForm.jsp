@@ -34,53 +34,78 @@ function fn_idChk(){
 	});
 }
 
+function fn_selected(obj){
+	obj.style.color= "black";
+	obj[0].setAttribute("disabled", "disabled");
+}
 </script>
+<style>
+input {
+	width: 20%;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: none;
+}
+
+.in {
+	margin-bottom: 20px;
+	border: 1px solid black;
+}
+
+#btn {
+	background-color: #FD9F28;
+	margin-bottom: 10px;
+	color: white;
+}
+
+a {
+	color: black;
+}
+
+#idChk {
+ 	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid black;
+}
+
+select {
+	width: 20%;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+	color:gray;
+}
+
+</style>
 </head>
 <body>
-	<form name="frm" method="post" action="${path }/member/addMember.do">
-		<h1 style="text-align:center;">회원 가입 등록창</h1>
-		<table align="center" >
-			<tr>
-				<td width="70"><p align="right">아이디</p></td>
-				<td><input type="text" id="id" name="id"></td>
-				<td align="left"><button class="idChk" type="button" id="idChk" onclick="fn_idChk();">중복확인</button></td>
-			</tr>
-			<tr>
-				<td width="70"><p align="right">비밀번호</p></td>
-				<td><input type="password" name="pwd"></td>
-			</tr>
-			<tr>
-				<td width="70"><p align="right">이름</p></td>
-				<td><input type="text" name="name"></td>
-			</tr>
-			<tr>
-				<td width="70"><p align="right">나이</p></td>
-				<td><input type="text" name="age"></td>
-			</tr>
-			<tr>
-				<td width="70"><p align="right">성별</p></td>
-				<td>
-					<input type="radio" name="gender" value="M">남자
-					<input type="radio" name="gender" value="W">여자
-				</td>
-			</tr>
-			<tr>
-				<td width="70"><p align="right">전화번호</p></td>
-				<td><input type="text" name="tel"></td>
-			</tr>
-			<tr>
-				<td width="70"><p align="right">이메일</p></td>
-				<td><input type="email" name="email"></td>
-			</tr>
-			<tr>
-				<td width="70"><p>&nbsp;</td>
-				<td>
-					<input type="submit" value="가입하기">
-					<input type="reset" value="다시입력">
-				</td>
-			</tr>
-		</table>
-	</form>
-	
+	<div align="center">
+		<h3>회원가입</h3>
+		<form method="post" action="/project/member/addMember.do">
+			<div style="width: 20%;">
+			    <input type="text" id="id" name="id" placeholder="아이디" class="in" style="width: 70%; margin-bottom: 0px;">
+			    <button class="idChk" type="button" id="idChk" onchange="fn_idChk();" style="width: 28%; margin-bottom: 0px;">중복확인</button>
+			</div>
+			<br>
+			<input type="password" name="pwd" placeholder="비밀번호" class="in"><br>
+			<input type="text" name="name" placeholder="이름" class="in"><br>
+			<input type="text" name="age" placeholder="나이" class="in"><br>
+			<input type="text" name="tel" placeholder="전화번호" class="in"><br>
+			<input type="email" name="email" placeholder="이메일" class="in"><br>
+			<select class="select" name="gender" onclick="fn_selected(this)">
+				<option selected disabled hidden>성별</option>
+				<option value="M">남성</option>
+				<option value="W">여성</option>
+			</select>
+			<br>
+			<input type="submit" id="btn" value="회원가입"><br>
+			<input type="reset" id="btn" value="다시입력"><br>
+		</form>
+	</div>
+	<div style="margin: 120px;"></div>	
 </body>
 </html>

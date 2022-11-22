@@ -57,6 +57,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
 	</definition>
 	
+	<definition name="/member/findIdForm" extends="baseLayout">
+		<put-attribute name="title" value="아이디 찾기" />
+		<put-attribute name="body" value="/WEB-INF/views/member/findIdForm.jsp" />
+	</definition>
+	
 	<definition name="/event/airmain" extends="baseLayout">
 		<put-attribute name="title" value="이벤트" />
 		<put-attribute name="body" value="/WEB-INF/views/event/airmain.jsp" />
