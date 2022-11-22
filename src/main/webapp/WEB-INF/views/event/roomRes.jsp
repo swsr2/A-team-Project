@@ -16,20 +16,16 @@
 <title>맛집 상세페이지</title>
 <script>
 	let openPay;
-	function myPick(){
-		let heart = document.getElementById("heart");
-		let imgName = heart.getAttribute("src");
-		if(imgName == "${path }/resources/image/empty_heart.jpg"){
-			if(confirm('찜 하시겠습니까?')){
-				location.href='${path}/food/myPick?fd_no=${food.fd_no}&pick=true';
-			}
-		} else {
-			location.href='${path}/food/myPick?fd_no=${food.fd_no}&pick=false';
-		}
-	}
 	function reservation(){
-		let reservation = document.getElementById('reservation');
-		reservation.style.display='block';
+		let id = '${member.id}';
+		if(id == null || id == ""){
+			alert('로그인 후 이용 가능합니다.');
+			location.href='${path}/member/loginForm.do';
+		} else {
+			let reservation = document.getElementById('reservation');
+			reservation.style.display='block';
+		}
+		
 	}
 	function resPay(){
 		openPay = window.open("resPay","결제창","width=570, height=350, resizable = no, scrollbars = no");
