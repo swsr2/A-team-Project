@@ -1,5 +1,6 @@
 package com.spring.project.event.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +20,7 @@ import com.spring.project.event.service.EventService;
 import com.spring.project.food.dto.FoodDTO;
 import com.spring.project.food.dto.ReviewDTO;
 import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.LodgingResDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 @Controller("eventController")
@@ -182,6 +185,30 @@ public class EventControllerImpl implements EventController {
 			throws Exception {
 		// TODO Auto-generated method stub
 		return "event/resPay";
+	}
+
+	@Override
+	@RequestMapping(value="/resConfirmation",method = RequestMethod.POST)
+	public void resPay(@ModelAttribute("res") LodgingResDTO res, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		int result = eventService.addLodRes(res);
+		out.println("<script>");
+		if(result == 1) {
+			session.removeAttribute("from");
+			session.removeAttribute("to");
+			out.println("alert('예약이 완료되었습니다. 예약 내역은 [마이페이지 > 예약내역보기]에서 확인하실 수 있습니다.')");
+		} else {
+			out.println("alert('예약에 실패했습니다. 다시 시도해 주세요.');");
+		}
+		out.println("location.href='"+ request.getContextPath() 
+				+ "/main/main.do';");
+		out.println("</script>");
+		
 	}
 	
 	

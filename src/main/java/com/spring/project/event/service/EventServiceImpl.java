@@ -19,6 +19,7 @@ import org.w3c.dom.NodeList;
 import com.spring.project.event.dao.EventDAO;
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.LodgingResDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 @Service
@@ -163,6 +164,12 @@ public class EventServiceImpl implements EventService {
 	public RoomInfoDTO roomInfo(RoomInfoDTO room) {
 		// TODO Auto-generated method stub
 		return eventDAO.roomInfo(room);
+	}
+
+	@Override
+	public int addLodRes(LodgingResDTO res) {
+		// TODO Auto-generated method stub
+		return eventDAO.addLodRes(res);
 	}
 
 

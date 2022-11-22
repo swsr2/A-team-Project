@@ -33,7 +33,14 @@
 	}
 	function resPay(){
 		openPay = window.open("resPay","결제창","width=570, height=350, resizable = no, scrollbars = no");
-
+		setTimeout( function(){ 
+		openPay.window.close();
+		let frm = document.frm;
+		
+		frm.method="post";
+		frm.action="${path}/event/resConfirmation";
+		frm.submit();
+		},5000);
 	}
 </script>
 <style>
@@ -120,20 +127,24 @@ td {
 					<c:when test="${nowMonth >= 5  and nowMonth <= 10  }">
 						<c:choose>
 							<c:when test="${nowDay == 6 or nowDay == 7 }">
-										${room.peak_weekend }
+								<c:set var="price" value="${room.peak_weekend }" />
+								${room.peak_weekend }
 							</c:when>
 							<c:otherwise>
-										${room.peak_weekDay }
+								<c:set var="price" value="${room.peak_weekDay }" />
+								${room.peak_weekDay }
 							</c:otherwise>
 						</c:choose>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${nowDay == 6 or nowDay == 7 }">
-										${room.low_weekend }
+								<c:set var="price" value="${room.low_weekend }" />
+								${room.low_weekend }
 							</c:when>
 							<c:otherwise>
-										${room.low_weekDay }
+								<c:set var="price" value="${room.low_weekDay }" />
+								${room.low_weekDay }
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
@@ -186,32 +197,41 @@ td {
 	
 	<div id="reservation" style="display: none; margin: 30px;">
 	<hr>
-		<form method="post" action="/event/">
+		<form name="frm">
+			<input type="hidden" name="lod_id" value="${lodging.lod_id }">
+			<input type="hidden" name="id" value="${member.id }">
+			<input type="hidden" name="lod_title" value="${lodging.lod_title }">
+			<input type="hidden" name="r_title" value="${room.r_title }">
+			<input type="hidden" name="lod_checkIn" value="${lodging.lod_checkIn }">
+			<input type="hidden" name="lod_checkOut" value="${lodging.lod_checkOut }">
+			<input type="hidden" name="res_from" value="${from }">
+			<input type="hidden" name="res_to" value="${to }">
+			<input type="hidden" name="price" value="${price }"> 
 			<table align="center" width="40%">
 				<tr>
 					<td colspan="2">${from } ~ ${to }</td>
 				</tr>
 				<tr>
 					<td>성명 : </td>
-					<td><input type="text" class="in" name="name" value="${member.name }" placeholder="성명을 입력해주세요" ></td>
+					<td><input type="text" class="in" name="res_name" value="${member.name }" placeholder="성명을 입력해주세요" ></td>
 				</tr>
 				<tr>
 					<td>전화번호 : </td>
-					<td><input type="text" class="in" name="tel" value="${member.tel }" placeholder="'-'는 빼고 입력해주세요" ></td>
+					<td><input type="text" class="in" name="res_tel" value="${member.tel }" placeholder="'-'는 빼고 입력해주세요" ></td>
 				</tr>
 				<tr>
 					<td colspan="2"><div class="select">
-    					 <input class="in" type="radio" id="select" name="payment" value="simple">
+    					 <input class="in" type="radio" id="select" name="payment" value="간편계좌결제">
     					 <label for="select">간편계좌결제</label>
-    					 <input class="in" type="radio" id="select2" name="payment" value="kakao">
+    					 <input class="in" type="radio" id="select2" name="payment" value="카카오페이">
     					 <label for="select2">카카오페이</label>
-    					 <input class="in" type="radio" id="select3" name="payment" value="naver">
+    					 <input class="in" type="radio" id="select3" name="payment" value="네이버페이">
     					 <label for="select3">네이버페이</label><br>
-    					 <input class="in" type="radio" id="select4" name="payment" value="toss">
+    					 <input class="in" type="radio" id="select4" name="payment" value="토스페이">
     					 <label for="select4">토스페이</label>
-    					 <input class="in" type="radio" id="select5" name="payment" value="card">
+    					 <input class="in" type="radio" id="select5" name="payment" value="카드">
     					 <label for="select5">카드</label>
-    					 <input class="in" type="radio" id="select6" name="payment" value="payco">
+    					 <input class="in" type="radio" id="select6" name="payment" value="페이코">
     					 <label for="select6">페이코</label>
 					</div></td>
 				</tr>

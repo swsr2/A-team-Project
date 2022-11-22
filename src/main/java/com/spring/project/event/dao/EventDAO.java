@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.LodgingResDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 public interface EventDAO {
@@ -29,6 +30,8 @@ public interface EventDAO {
 	public List<RoomInfoDTO> roomList(int lod_id);
 
 	public RoomInfoDTO roomInfo(RoomInfoDTO room);
+
+	public int addLodRes(LodgingResDTO res);
 
 
 

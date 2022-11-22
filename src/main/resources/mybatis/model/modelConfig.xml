@@ -10,6 +10,7 @@
 		<typeAlias type="com.spring.project.tour.dto.TourDTO" alias="tourDTO" />
 		<typeAlias type="com.spring.project.activity.dto.ActivityDTO" alias="activityDTO" />
 		<typeAlias type="com.spring.project.event.dto.RoomInfoDTO" alias="roomInfoDTO" />
+		<typeAlias type="com.spring.project.event.dto.LodgingResDTO" alias="lodgingResDTO" />
 		<!--
 		<typeAlias type="com.spring.project.board.dto.ArticleDTO" alias="articleDTO" />
 		<typeAlias type="com.spring.project.board.dto.ImageDTO" alias="imageDTO" />

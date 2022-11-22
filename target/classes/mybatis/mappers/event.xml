@@ -88,4 +88,12 @@
 			select * from room_info where lod_id=#{lod_id} and r_title=#{r_title}
 		]]>
 	</select>
+	
+	<insert id="addLodRes" parameterType="lodgingResDTO">
+		<![CDATA[
+			insert into lodging_res values
+				(#{lod_id},#{id},#{res_name},#{res_tel},#{lod_title},#{r_title},#{lod_checkIn},#{lod_checkOut},
+				#{res_from},#{res_to},#{payment},#{price})
+		]]>
+	</insert>
 </mapper>
