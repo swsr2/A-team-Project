@@ -47,6 +47,20 @@ request.setCharacterEncoding("UTF-8");
 form {
 	display: inline;
 }
+#Search td{
+	text-align:center;
+	padding: 10px;
+	font-size: 24px;
+}
+
+#date{
+  width: 220px; 
+  }
+  
+#selectFinish {
+  width: 100px; 
+  }
+  
 </style>
 </head>
 
@@ -67,6 +81,8 @@ form {
 		<tr>
 			<td><label>출발지</label></td>
 			<td><label>도착지</label></td>
+			<td><label  for="date">일정</label></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td><select name="air_departPlace">
@@ -83,7 +99,6 @@ form {
 				<option value="KPO">포항</option>
 				<option value="YNY">양양</option>
 			</select></td>
-			
 			<td ><select name="air_arrivalPlace">
 				<option value="none" selected disabled>=== 선택 ===</option>
 				<option value="GMP">김포</option>
@@ -98,16 +113,15 @@ form {
 				<option value="KPO">포항</option>
 				<option value="YNY">양양</option>
 			</select></td>
-		</tr>
-		<tr>
-			<td colspan="4"><label for="From">일정</label>
-			<input type="text" id="date" name="date" value="" /></td>
-		</tr>
-		<tr>
-			<td colspan="4"><input type="submit" value="선택완료"></td>
+			<td><input type="text" id="date" name="date" value="" /></td>
+			<td><input type="submit" id="selectFinish" value="선택완료"></td>
 		</tr>
 		</table>
 		</form>
+	<div><img src="${path }/resources/image/airevent.jpg" width="100%"></div>
 	</div>
+	<br>
+	<br>
+	<br>
 </body>
 </html>
