@@ -76,4 +76,16 @@
 			select * from lodging_list a,lodging_info b where a.lod_id = b.lod_id and a.lod_id = #{lod_id}
 		]]>
 	</select>
+	
+	<select id="roomList" parameterType="int" resultType="roomInfoDTO">
+		<![CDATA[
+			select * from room_info where lod_id = #{lod_id}
+		]]>
+	</select>
+	
+	<select id="roomInfo" parameterType="roomInfoDTO" resultType="roomInfoDTO">
+		<![CDATA[
+			select * from room_info where lod_id=#{lod_id} and r_title=#{r_title}
+		]]>
+	</select>
 </mapper>

@@ -87,6 +87,21 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/lodInfo.jsp" />
 	</definition>
 	
+	<definition name="event/roomRes" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_숙박" />
+		<put-attribute name="body" value="/WEB-INF/views/event/roomRes.jsp" />
+	</definition>
+	
+	<definition name="papUp" template="/WEB-INF/views/event/resPay.jsp">
+		<put-attribute name="title" value="결제창" />
+		<put-attribute name="body" value="/WEB-INF/views/event/resPay.jsp" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="side" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	<definition name="event/resPay" extends="papUp">
+	</definition>
+	
 	<definition name="/mypage/mypagemain" extends="baseLayout">
 		<put-attribute name="title" value="마이페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypagemain.jsp" />

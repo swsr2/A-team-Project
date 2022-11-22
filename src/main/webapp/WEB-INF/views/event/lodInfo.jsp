@@ -1,11 +1,14 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
-  
+  Date date = new Date();
 %>
+<c:set var="nowMonth" value="<%= date.getMonth()+1 %>" />
+<c:set var="nowDay" value="<%= date.getDay() %>" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +25,10 @@
 		} else {
 			location.href='${path}/food/myPick?fd_no=${food.fd_no}&pick=false';
 		}
+	}
+	function encoder(r_title,lod_id){
+		r_title = encodeURIComponent(r_title);
+		location.href='${path}/event/roomRes?lod_id='+lod_id+'&r_title='+r_title;
 	}
 </script>
 <style>
@@ -68,9 +75,10 @@ td {
 		<input class="category" type='submit' value='숙박' />
 	</form>
     <br><br><br>
-    <table align="center" width="60%">
+    <table align="center" >
     	<tr>
- 			<td colspan="2" align="center"><img src="${lodging.lod_imgPath }" width="500"/></td>
+ 			<td colspan="2" align="center"><img src="${lodging.lod_imgPath }"
+ 				onerror="this.src='${path }/resources/image/empty_img.png'" width="700"/></td>
      	</tr>
      	<tr>
  			<td colspan="2" align="center"><h2>${lodging.lod_title }</h2>
@@ -78,7 +86,7 @@ td {
      	</tr>
      	<tr>
  			<td width="100">주소 :</td>
- 			<td>${lodging.lod_address }</td> <%-- api로 추후연결하기 --%>
+ 			<td>${lodging.lod_address }</td> 
      	</tr>
      	<tr>
  			<td width="100">전화번호 :</td>
@@ -98,37 +106,64 @@ td {
      	</tr>
      	<tr>
  			<td width="100">홈페이지 :</td>
- 			<td>${lodging.lod_homePage }</td>
+ 			<td>${lodging.lod_homePage } </td>
      	</tr>
      	<tr>
  			<td width="100">설명 :</td>
- 			<td>${lodging.lod_info }</td>
+ 			<td width="600">${lodging.lod_info } </td>
      	</tr>
-     	
     </table>
-    
-    <div id="myMenu">
-	<ul id="myMenuList">
-		<!-- <li><button type="button" class="myPickBtn">찜하기</button></li>
-		<li><button type="button" class="reviewBtn">리뷰쓰기</button></li> -->
-		<li><a class="myReview" href="${path }/food/myReview?fd_no=${food.fd_no}">리뷰쓰기</a></li>
-		<li>
-			<%-- <a class="myPick" href="${path }/food/myPick">찜하기</a> --%>
-			<button id="myPick" onclick="myPick()">
-				<c:choose>
-				<c:when test="${pick }">
-					<img id="heart" src="${path }/resources/image/not_empty_heart.png" width="15">&nbsp;찜하기
-				</c:when>
-				<c:otherwise>
-					<img id="heart" src="${path }/resources/image/empty_heart.jpg" width="15">&nbsp;찜하기
-				</c:otherwise>
-				</c:choose>
-			</button>
-		</li>
-	</ul>
-	</div>
+  
 	<br><br>
 	<hr>
+	<div id="roomInfo">
+	<h4 align="center">${from } ~ ${to }</h4>
+	<c:forEach var="room" items="${roomList }">
+		<a href="javascript:encoder('${room.r_title}',${room.lod_id })" 
+					style="color:black; text-decoration: none;">
+		<table align="center" width="40%" style="border-bottom: 1px solid gray;">
+				<tr>
+					<td rowspan="3" width="200">
+						<img src="${room.r_imgPath }"
+ 						onerror="this.src='${path }/resources/image/empty_img.png'" width="200"/>
+					</td>
+					<td colspan="2"><b style="font-size: 25px;">${room.r_title }</b></td>
+				</tr>
+				<tr>
+					<td colspan="2">${room.r_info }</td>
+				</tr>
+				<tr>
+					<td>기준인원 ${room.r_person }명/최대인원 ${room.r_person+2 }명 </td>
+					<td>
+						<c:choose>
+							<c:when test="${nowMonth >= 5  and nowMonth <= 10  }">
+								<c:choose>
+									<c:when test="${nowDay == 6 or nowDay == 7 }">
+										${room.peak_weekend }
+									</c:when>
+									<c:otherwise>
+										${room.peak_weekDay }
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${nowDay == 6 or nowDay == 7 }">
+										${room.low_weekend }
+									</c:when>
+									<c:otherwise>
+										${room.low_weekDay }
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+						원
+					</td>
+				</tr>
+		</table>
+		</a>
+		</c:forEach>	
+	</div>
 	<div>
 		<table align="center" style="width: 60%;">
 			<c:forEach var="review" items="${reviewList }">

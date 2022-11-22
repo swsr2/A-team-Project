@@ -232,18 +232,18 @@ body {
   padding: 0;
 }
 
-#airSearch {
+#Search {
 	margin: 50px;
 }
-#airSearch table {
+#Search table {
 	border: 1px solid black;
 }
-#airSearch td{
+#Search td{
 	text-align:center;
 	padding: 10px;
 	font-size: 30px;
 }
-#airSearch select {
+#Search select {
   width: 200px; /* 원하는 너비설정 */
   padding: .8em .5em; /* 여백으로 높이 설정 */
   font-family: inherit;  /* 폰트 상속 */
@@ -256,7 +256,7 @@ body {
   font-size: 20px;
   text-align: center;
 }
-#airSearch input {
+#Search input {
   width: 250px; /* 원하는 너비설정 */
   padding: .8em .5em; /* 여백으로 높이 설정 */
   font-family: inherit;  /* 폰트 상속 */
@@ -276,4 +276,29 @@ body {
 
 div #map {
 	margin:0 auto;
+}
+.select {
+    padding: 15px 10px;
+}
+.select input[type=radio]{
+    display: none;
+}
+.select input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    width: 90px;
+    border: 1px solid #333;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+}
+.select input[type=radio]+label{
+    background-color: #fff;
+    color: #333;
+}
+.select input[type=radio]:checked+label{
+    background-color: #333;
+    color: #fff;
 }
