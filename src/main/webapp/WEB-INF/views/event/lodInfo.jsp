@@ -75,10 +75,10 @@ td {
 		<input class="category" type='submit' value='숙박' />
 	</form>
     <br><br><br>
-    <table align="center" width="60%">
+    <table align="center" >
     	<tr>
  			<td colspan="2" align="center"><img src="${lodging.lod_imgPath }"
- 				onerror="this.src='${path }/resources/image/empty_img.png'" width="500"/></td>
+ 				onerror="this.src='${path }/resources/image/empty_img.png'" width="700"/></td>
      	</tr>
      	<tr>
  			<td colspan="2" align="center"><h2>${lodging.lod_title }</h2>
@@ -86,7 +86,7 @@ td {
      	</tr>
      	<tr>
  			<td width="100">주소 :</td>
- 			<td>${lodging.lod_address }</td> <%-- api로 추후연결하기 --%>
+ 			<td>${lodging.lod_address }</td> 
      	</tr>
      	<tr>
  			<td width="100">전화번호 :</td>
@@ -110,7 +110,7 @@ td {
      	</tr>
      	<tr>
  			<td width="100">설명 :</td>
- 			<td>${lodging.lod_info } </td>
+ 			<td width="600">${lodging.lod_info } </td>
      	</tr>
     </table>
   

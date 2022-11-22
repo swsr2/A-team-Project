@@ -28,6 +28,8 @@ public interface EventController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView roomRes(@ModelAttribute("room")  RoomInfoDTO room,
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public String resPay(HttpServletRequest request, HttpServletResponse response)
+			throws Exception ;
 	// public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	// public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	

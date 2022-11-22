@@ -176,7 +176,13 @@ public class EventControllerImpl implements EventController {
 		mav.addObject("lodging",lodging);
 		return mav;
 	}
-	
+	@Override
+	@RequestMapping("/resPay")
+	public String resPay(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return "event/resPay";
+	}
 	
 	
 

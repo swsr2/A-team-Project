@@ -15,6 +15,7 @@
 <meta charset="UTF-8">
 <title>맛집 상세페이지</title>
 <script>
+	let openPay;
 	function myPick(){
 		let heart = document.getElementById("heart");
 		let imgName = heart.getAttribute("src");
@@ -25,6 +26,14 @@
 		} else {
 			location.href='${path}/food/myPick?fd_no=${food.fd_no}&pick=false';
 		}
+	}
+	function reservation(){
+		let reservation = document.getElementById('reservation');
+		reservation.style.display='block';
+	}
+	function resPay(){
+		openPay = window.open("resPay","결제창","width=570, height=350, resizable = no, scrollbars = no");
+
 	}
 </script>
 <style>
@@ -61,6 +70,27 @@ li button {
 td {
 	padding-top: 10px;
 }
+#reservation input {
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.in {
+	width: 100%;
+	border: 1px solid black;
+}
+
+#btn {
+	background-color: #FD9F28;
+	margin-bottom: 10px;
+	color: white;
+	border: none;
+	width: 50%;
+}
+#reservation td{
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -73,11 +103,11 @@ td {
 	<br>
 	<br>
 	<br>
-	<table align="center" width="60%">
+	<table align="center">
 		<tr>
 			<td colspan="2" align="center"><img src="${room.r_imgPath }"
 				onerror="this.src='${path }/resources/image/empty_img.png'"
-				width="500" /></td>
+				width="700" /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center"><h2>${room.r_title }</h2></td>
@@ -122,31 +152,77 @@ td {
 			<td colspan="2">${room.r_info }</td>
 		</tr>
 		<tr>
-			<td>부대시설 : </td>
-			<td>
-				<c:if test="${room.r_bathfacility == Y }">
+			<td colspan="2" align="center">
+				<h4>
+				<c:if test="${room.r_bathfacility eq 'Y    '}">
 					목욕용품 &nbsp;&nbsp;
 				</c:if>
-				<c:if test="${room.r_aircon == Y }">
+				<c:if test="${room.r_aircon eq 'Y    ' }">
 					에어컨 &nbsp;&nbsp;
 				</c:if>
-				<c:if test="${room.r_tv == Y }">
+				<c:if test="${room.r_tv eq 'Y    ' }">
 					TV &nbsp;&nbsp;
 				</c:if>
-				<c:if test="${room.r_internet == Y }">
+				<c:if test="${room.r_internet eq 'Y    ' }">
 					인터넷 &nbsp;&nbsp;
 				</c:if>
-				<c:if test="${room.r_toiletries == Y }">
+				<c:if test="${room.r_toiletries eq 'Y    ' }">
 					세면도구 &nbsp;&nbsp;
 				</c:if>
-				<c:if test="${room.r_cook == Y }">
+				<c:if test="${room.r_cook eq 'Y    ' }">
 					취사용품 &nbsp;&nbsp;
 				</c:if>
-				<c:if test="${room.r_hairdryer == Y }">
+				<c:if test="${room.r_hairdryer eq 'Y    ' }">
 					헤어드라이기 &nbsp;&nbsp;
 				</c:if>
+				</h4>
 			</td>
 		</tr>
 	</table>
+	
+	<div align="right" style="margin-right: 30px;">
+		<h3><a href="javascript:reservation()" style="text-decoration: none; color:black;">예약하기</a></h3>
+	</div>
+	
+	<div id="reservation" style="display: none; margin: 30px;">
+	<hr>
+		<form method="post" action="/event/">
+			<table align="center" width="40%">
+				<tr>
+					<td colspan="2">${from } ~ ${to }</td>
+				</tr>
+				<tr>
+					<td>성명 : </td>
+					<td><input type="text" class="in" name="name" value="${member.name }" placeholder="성명을 입력해주세요" ></td>
+				</tr>
+				<tr>
+					<td>전화번호 : </td>
+					<td><input type="text" class="in" name="tel" value="${member.tel }" placeholder="'-'는 빼고 입력해주세요" ></td>
+				</tr>
+				<tr>
+					<td colspan="2"><div class="select">
+    					 <input class="in" type="radio" id="select" name="payment" value="simple">
+    					 <label for="select">간편계좌결제</label>
+    					 <input class="in" type="radio" id="select2" name="payment" value="kakao">
+    					 <label for="select2">카카오페이</label>
+    					 <input class="in" type="radio" id="select3" name="payment" value="naver">
+    					 <label for="select3">네이버페이</label><br>
+    					 <input class="in" type="radio" id="select4" name="payment" value="toss">
+    					 <label for="select4">토스페이</label>
+    					 <input class="in" type="radio" id="select5" name="payment" value="card">
+    					 <label for="select5">카드</label>
+    					 <input class="in" type="radio" id="select6" name="payment" value="payco">
+    					 <label for="select6">페이코</label>
+					</div></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input id="btn" type="button" onclick="resPay()" value="예약하기">
+						<input id="btn" type="reset" value="취소">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
