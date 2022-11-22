@@ -28,5 +28,9 @@ public interface FoodService {
 
 	public void delPick(Map pickMap);
 
+	public int checkPick(int fd_no, String id);
+
+	public int checkPick(Map pickMap);
+
 
 }

@@ -1,8 +1,12 @@
 package com.spring.project.event.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.project.event.dto.AirplaneDTO;
+import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.RoomInfoDTO;
 
 public interface EventDAO {
 	public List<AirplaneDTO> selectList(AirplaneDTO air);
@@ -16,6 +20,18 @@ public interface EventDAO {
 	public void resetAir();
 
 	public void addAirplane(AirplaneDTO air);
+
+	public int allLodCnt();
+
+	public List<LodgingDTO> lodList(Map<String, Integer> page);
+
+	public LodgingDTO lodDatail(int lod_id);
+
+	public List<RoomInfoDTO> roomList(int lod_id);
+
+	public RoomInfoDTO roomInfo(RoomInfoDTO room);
+
+	public int addLodRes(LodgingResDTO res);
 
 
 

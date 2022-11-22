@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>맛집 리뷰</title>
+<title>먹으멍 리뷰</title>
 <style>
 form {
    display: inline;

@@ -124,14 +124,34 @@ public class FoodControllerImpl implements FoodController {
 	public ModelAndView resDetail(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		ModelAndView mav = null;
 		FoodDTO food = foodService.selectOne(fd_no);
 		List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
+		
 		String[] category = food.getFd_category().split(",");
 		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+		mav = new ModelAndView(viewName);
+		if(isLogOn!=null && isLogOn==true) {
+			MemberDTO member = (MemberDTO) session.getAttribute("member");
+			Map pickMap = new HashMap();
+			pickMap.put("id", member.getId());
+			pickMap.put("fd_no", fd_no);
+			
+			int result = foodService.checkPick(pickMap);
+			// http://localhost:8080/project/food/myPick?fd_no=924&pick=true
+			
+			if(result==1) {
+				mav.addObject("pick", true);
+			}
+		} 
+		
 		mav.addObject("food", food);
 		mav.addObject("category",category);
 		mav.addObject("reviewList",reviewList);
+		
 		
 //		Map pickMap = new hashMap();
 //		pickMap.put("id", "현재 세션에 있는 아이디값");
@@ -192,7 +212,7 @@ public class FoodControllerImpl implements FoodController {
 	
 	@Override
 	@RequestMapping(value="/myPick", method=RequestMethod.GET)
-	public ModelAndView myPick(@RequestParam("fd_no") int fd_no,@RequestParam("pick") boolean pick,
+	public ModelAndView myPick(@RequestParam("fd_no") int fd_no, @RequestParam("pick") boolean pick,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 			response.setContentType("text/html;charset=utf-8");

@@ -1,12 +1,16 @@
 package com.spring.project.event.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.project.event.dto.AirplaneDTO;
+import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.RoomInfoDTO;
 
 @Repository
 public class EventDAOImpl implements EventDAO{
@@ -61,6 +65,48 @@ public class EventDAOImpl implements EventDAO{
 	public void addAirplane(AirplaneDTO air) {
 		// TODO Auto-generated method stub
 		sqlSession.insert("mapper.event.addAirplane",air);
+	}
+
+
+	@Override
+	public int allLodCnt() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.allLodCnt");
+	}
+
+
+	@Override
+	public List<LodgingDTO> lodList(Map<String, Integer> page) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.lodList",page);
+	}
+
+
+	@Override
+	public LodgingDTO lodDatail(int lod_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.lodDetail",lod_id);
+	}
+
+
+	@Override
+	public List<RoomInfoDTO> roomList(int lod_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.roomList",lod_id);
+	}
+
+
+	@Override
+	public RoomInfoDTO roomInfo(RoomInfoDTO room) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.roomInfo",room);
+	}
+
+
+	@Override
+	public int addLodRes(LodgingResDTO res) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("mapper.event.addLodRes",res);
 	}
 
 

@@ -3,6 +3,7 @@ package com.spring.project.tour.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.project.tour.dto.ReviewDTO;
 import com.spring.project.tour.dto.TourDTO;
 
 public interface TourDAO {
@@ -19,8 +20,17 @@ public interface TourDAO {
 
 	public List<TourDTO> tourList(Map<String, Integer> page);
 
-	public void dbInsert(TourDTO tour);
+
+	public TourDTO selectOne(int tr_no);
+
+	public int addReview(com.spring.project.tour.dto.ReviewDTO review);
+
+	public List<ReviewDTO> reviewList(int tr_no);
+
+	public void myPick(Map pickMap);
 	
-	
+	public void delPick(Map pickMap);
+
+	public int checkPcik(Map pickMap);
 
 }

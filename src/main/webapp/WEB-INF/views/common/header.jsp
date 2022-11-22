@@ -11,7 +11,7 @@
 		<c:when test="${isLogOn == true && member != null }">	
 		<ul id="loginBarList">
 			<li>${member.id }님 <a href="${path }/member/logout.do"> 로그아웃</a></li>
-			<li><a href="${path}/member/memberDetail.do?id=${member.id}">마이페이지</a></li>
+			<li><a href="${path}/mypage/mypagemain?id=${member.id}">마이페이지</a></li>
 		</ul>
 		</c:when>
 		

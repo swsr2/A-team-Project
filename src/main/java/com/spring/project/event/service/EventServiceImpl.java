@@ -3,7 +3,9 @@ package com.spring.project.event.service;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -16,6 +18,9 @@ import org.w3c.dom.NodeList;
 
 import com.spring.project.event.dao.EventDAO;
 import com.spring.project.event.dto.AirplaneDTO;
+import com.spring.project.event.dto.LodgingDTO;
+import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.RoomInfoDTO;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -54,9 +59,8 @@ public class EventServiceImpl implements EventService {
         		air.setAir_price(55000);
         		eventDAO.addAirplane(air);
         		airplaneList.add(air);
-        	}	
+        	}
         }
-		
 		return airplaneList;
 	}
 	
@@ -127,6 +131,45 @@ public class EventServiceImpl implements EventService {
 	public void resetAir() {
 		// TODO Auto-generated method stub
 		eventDAO.resetAir();
+	}
+
+	@Override
+	public int allLodCnt() {
+		// TODO Auto-generated method stub
+		return eventDAO.allLodCnt();
+	}
+
+	@Override
+	public List<LodgingDTO> lodList(int start, int end) {
+		// TODO Auto-generated method stub
+		Map<String, Integer> page = new HashMap<String, Integer>();
+		page.put("start", start);
+		page.put("end", end);
+		return eventDAO.lodList(page);
+	}
+
+	@Override
+	public LodgingDTO lodDatail(int lod_id) {
+		// TODO Auto-generated method stub
+		return eventDAO.lodDatail(lod_id);
+	}
+
+	@Override
+	public List<RoomInfoDTO> roomList(int lod_id) {
+		// TODO Auto-generated method stub
+		return eventDAO.roomList(lod_id);
+	}
+
+	@Override
+	public RoomInfoDTO roomInfo(RoomInfoDTO room) {
+		// TODO Auto-generated method stub
+		return eventDAO.roomInfo(room);
+	}
+
+	@Override
+	public int addLodRes(LodgingResDTO res) {
+		// TODO Auto-generated method stub
+		return eventDAO.addLodRes(res);
 	}
 
 

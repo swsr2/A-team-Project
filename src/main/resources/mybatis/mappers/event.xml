@@ -53,4 +53,47 @@
 			#{air_departTime},#{air_arrivalTime},#{air_departPlace},#{air_arrivalPlace},#{air_price})
 		]]>
 	</insert>
+	
+	<select id="allLodCnt" resultType="int">
+		<![CDATA[
+			select count(*) from lodging_list
+		]]>
+	</select>
+	
+	<select id="lodList" resultType="com.spring.project.event.dto.LodgingDTO" parameterType="java.util.Map">
+		<![CDATA[
+			SELECT *
+  				FROM (
+		        SELECT  l.*, row_number() over(order by lod_id asc) as rNum
+		          FROM lodging_list l
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+	
+	<select id="lodDetail" parameterType="int" resultType="com.spring.project.event.dto.LodgingDTO">
+		<![CDATA[
+			select * from lodging_list a,lodging_info b where a.lod_id = b.lod_id and a.lod_id = #{lod_id}
+		]]>
+	</select>
+	
+	<select id="roomList" parameterType="int" resultType="roomInfoDTO">
+		<![CDATA[
+			select * from room_info where lod_id = #{lod_id}
+		]]>
+	</select>
+	
+	<select id="roomInfo" parameterType="roomInfoDTO" resultType="roomInfoDTO">
+		<![CDATA[
+			select * from room_info where lod_id=#{lod_id} and r_title=#{r_title}
+		]]>
+	</select>
+	
+	<insert id="addLodRes" parameterType="lodgingResDTO">
+		<![CDATA[
+			insert into lodging_res values
+				(#{lod_id},#{id},#{res_name},#{res_tel},#{lod_title},#{r_title},#{lod_checkIn},#{lod_checkOut},
+				#{res_from},#{res_to},#{payment},#{price})
+		]]>
+	</insert>
 </mapper>

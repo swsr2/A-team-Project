@@ -24,7 +24,7 @@ form {
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
   $( function() {
-    var dateFormat = "mm/dd/yy",
+    let dateFormat = "YYYY/MM/DD",
       from = $( "#from" )
         .datepicker({
           defaultDate: "+1w",
@@ -55,6 +55,7 @@ form {
     }
   } );
   
+  
   </script>
 </head>
 <body>
@@ -67,14 +68,28 @@ form {
 	<br>
 	<br>
 	<br>
-	<h3>일정선택</h3>
-	<form name="selectDate" action="project/event/lodDetail">
-	<label for="from">From</label>
-	<input type="text" id="from" name="from">
-	<label for="to">to</label>
-	<input type="text" id="to" name="to">
-	<input type="submit" value="선택완료">
-	<input type="reset" value="다시선택">
+	<div id="Search" align="center">
+	<h1>일정선택</h1>
+	<form name="selectDate" action="${path }/event/lodDetail">
+	<input type="hidden" name="page" value="1">
+	<input type="hidden" name="lodDate" value="true">
+	<table>
+		<tr>
+			<td><label for="from">From</label></td>
+			<td><input type="text" id="from" name="from"></td>
+		</tr>
+		<tr>
+			<td><label for="to">to</label></td>
+			<td><input type="text" id="to" name="to"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="선택완료">
+				<input type="reset" value="다시선택">
+			</td>
+		</tr>
+	</table>
 	</form>
+	</div>
 </body>
 </html>

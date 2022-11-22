@@ -75,4 +75,11 @@ public class FoodDAOImpl implements FoodDAO{
 		// TODO Auto-generated method stub
 		sqlSession.delete("mapper.food.delPick",pickMap);
 	}
+
+	@Override
+	public int checkPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.food.checkPick", pickMap);
+	}
+
 }
