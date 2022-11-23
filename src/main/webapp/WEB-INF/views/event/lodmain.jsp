@@ -22,39 +22,22 @@ form {
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<script>
+<script>  
   $( function() {
-    let dateFormat = "YYYY/MM/DD",
-      from = $( "#from" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#to" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
- 
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
- 
-      return date;
-    }
-  } );
+	    $( "#checkIn" ).datepicker({
+	      dateFormat: 'yy-mm-dd',
+	      showOtherMonths: true,
+	      selectOtherMonths: true
+	    });
+	  } );
   
+  $( function() {
+	    $( "#checkOut" ).datepicker({
+	      dateFormat: 'yy-mm-dd',
+	      showOtherMonths: true,
+	      selectOtherMonths: true
+	    });
+	  } );
   
   </script>
 </head>
@@ -75,12 +58,12 @@ form {
 	<input type="hidden" name="lodDate" value="true">
 	<table>
 		<tr>
-			<td><label for="from">From</label></td>
-			<td><input type="text" id="from" name="from"></td>
+			<td>체크인</td>
+			<td><input type="text" id="checkIn" name="checkIn"></td>
 		</tr>
 		<tr>
-			<td><label for="to">to</label></td>
-			<td><input type="text" id="to" name="to"></td>
+			<td>체크아웃</td>
+			<td><input type="text" id="checkOut" name="checkOut"></td>
 		</tr>
 		<tr>
 			<td colspan="2">
