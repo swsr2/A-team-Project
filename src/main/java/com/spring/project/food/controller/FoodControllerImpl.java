@@ -165,8 +165,8 @@ public class FoodControllerImpl implements FoodController {
 	}
 
 	@Override
-	@RequestMapping("/myReview")
-	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping("/reviewForm")
+	public ModelAndView reviewForm(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		
@@ -185,7 +185,7 @@ public class FoodControllerImpl implements FoodController {
 			return null;
 		}
 		
-		return "/food/reviewForm";
+		return mav;
 	}
 
 	@Override

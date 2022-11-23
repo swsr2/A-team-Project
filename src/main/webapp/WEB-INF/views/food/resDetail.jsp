@@ -147,7 +147,7 @@ li button {
 	<ul id="myMenuList">
 		<!-- <li><button type="button" class="myPickBtn">찜하기</button></li>
 		<li><button type="button" class="reviewBtn">리뷰쓰기</button></li> -->
-		<li><a class="myReview" href="${path }/food/myReview?fd_no=${food.fd_no}">리뷰쓰기</a></li>
+		<li><a class="myReview" href="${path }/food/reviewForm?fd_no=${food.fd_no}">리뷰쓰기</a></li>
 		<li>
 			<%-- <a class="myPick" href="${path }/food/myPick">찜하기</a> --%>
 			<button id="myPick" onclick="myPick()">
