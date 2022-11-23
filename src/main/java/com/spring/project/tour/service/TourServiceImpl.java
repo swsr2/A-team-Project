@@ -89,7 +89,7 @@ public class TourServiceImpl implements TourService {
 	@Override
 	public void delPick(Map pickMap) {
 		// TODO Auto-generated method stub
-		tourDAO.myPick(pickMap);
+		tourDAO.delPick(pickMap);
 	}
 
 	@Override

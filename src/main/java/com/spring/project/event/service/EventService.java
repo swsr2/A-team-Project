@@ -1,10 +1,12 @@
 package com.spring.project.event.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 public interface EventService {
@@ -29,7 +31,14 @@ public interface EventService {
 
 	public int addLodRes(LodgingResDTO res);
 
+	public void myPick(Map pickMap);
 
-	// public int addReview(ReviewDTO review);
+	public void delPick(Map pickMap);
+
+	public int checkPick(Map pickMap);
+
+	 public int addReview(ReviewDTO review);
+
+	public List<ReviewDTO> reviewList(int lod_id);
 
 }
