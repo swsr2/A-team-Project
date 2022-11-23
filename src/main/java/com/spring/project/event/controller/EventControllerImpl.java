@@ -252,10 +252,10 @@ public class EventControllerImpl implements EventController {
 			
 			LodgingDTO lodging = eventService.lodDatail(lod_id);
 			List<RoomInfoDTO> roomList = eventService.roomList(lod_id);
-//			List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
+			List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
 			mav.addObject("lodging", lodging);
 			mav.addObject("roomList",roomList);
-//			mav.addObject("reviewList",reviewList);
+			mav.addObject("reviewList",reviewList);
 			
 			Map pickMap = new HashMap();
 			pickMap.put("id", member.getId());
