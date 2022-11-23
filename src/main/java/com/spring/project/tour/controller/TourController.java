@@ -15,7 +15,7 @@ public interface TourController {
 	public String orumm(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public String beach(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public ModelAndView tourDetail(@RequestParam("tr_no") int tr_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
-	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception; 
+	public ModelAndView myReview(@RequestParam("tr_no") int tr_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView myPick(@RequestParam("tr_no") int tr_no,@RequestParam("pick") boolean pick,
 		HttpServletRequest request, HttpServletResponse response) throws Exception;

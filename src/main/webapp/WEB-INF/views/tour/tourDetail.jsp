@@ -151,7 +151,7 @@ li button {
     
     <div id="myMenu">
 	<ul id="myMenuList">
-		<li><a class="myReview" href="${path }/tour/myReview?tr_no=${tour.tr_no}">리뷰쓰기</a></li>
+		<li><a class="myReview" href="${path }/tour/reviewForm?tr_no=${tour.tr_no}">리뷰쓰기</a></li>
 		<li>
 			<button id="myPick" onclick="myPick()">
 				<c:choose>

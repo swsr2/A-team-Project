@@ -156,4 +156,9 @@
 		<put-attribute name="title" value="투어_상세" />
 		<put-attribute name="body" value="/WEB-INF/views/tour/tourDetail.jsp" />
 	</definition>
+	
+	<definition name="tour/reviewForm" extends="baseLayout">
+		<put-attribute name="title" value="투어_상세" />
+		<put-attribute name="body" value="/WEB-INF/views/tour/reviewForm.jsp" />
+	</definition>
 </tiles-definitions>
