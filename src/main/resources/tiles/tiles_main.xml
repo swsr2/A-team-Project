@@ -96,6 +96,10 @@
 		<put-attribute name="title" value="이벤트_숙박" />
 		<put-attribute name="body" value="/WEB-INF/views/event/roomRes.jsp" />
 	</definition>
+	<definition name="event/reviewForm" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_리뷰" />
+		<put-attribute name="body" value="/WEB-INF/views/event/reviewForm.jsp" />
+	</definition>
 	
 	<definition name="papUp" template="/WEB-INF/views/event/resPay.jsp">
 		<put-attribute name="title" value="결제창" />

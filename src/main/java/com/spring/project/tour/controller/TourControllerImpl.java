@@ -200,7 +200,7 @@ public class TourControllerImpl implements TourController {
 	}
 
 	@Override
-	@RequestMapping("/reviewForm")
+	@RequestMapping("/reviewForm")    
 	public ModelAndView myReview(@RequestParam("tr_no") int tr_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");

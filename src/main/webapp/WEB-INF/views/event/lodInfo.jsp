@@ -20,10 +20,10 @@
 		let imgName = heart.getAttribute("src");
 		if(imgName == "${path }/resources/image/empty_heart.jpg"){
 			if(confirm('찜 하시겠습니까?')){
-				location.href='${path}/food/myPick?fd_no=${food.fd_no}&pick=true';
+				location.href='${path}/event/myPick?lod_id=${lodging.lod_id}&pick=true';
 			}
 		} else {
-			location.href='${path}/food/myPick?fd_no=${food.fd_no}&pick=false';
+			location.href='${path}/event/myPick?lod_id=${lodging.lod_id}&pick=false';
 		}
 	}
 	function encoder(r_title,lod_id){
@@ -113,7 +113,23 @@ td {
  			<td width="600">${lodging.lod_info } </td>
      	</tr>
     </table>
-  
+   <div id="myMenu">
+	<ul id="myMenuList">
+		<li><a class="myReview" href="${path }/event/reviewForm?lod_id=${lodging.lod_id}">리뷰쓰기</a></li>
+		<li>
+			<button id="myPick" onclick="myPick()">
+				<c:choose>
+				<c:when test="${pick }">
+					<img id="heart" src="${path }/resources/image/not_empty_heart.png" width="15">&nbsp;찜하기
+				</c:when>
+				<c:otherwise>
+					<img id="heart" src="${path }/resources/image/empty_heart.jpg" width="15">&nbsp;찜하기
+				</c:otherwise>
+				</c:choose>
+			</button>
+		</li>
+	</ul>
+	</div>
 	<br><br>
 	<hr>
 	<div id="roomInfo">
@@ -164,6 +180,7 @@ td {
 		</a>
 		</c:forEach>	
 	</div>
+	<hr>
 	<div>
 		<table align="center" style="width: 60%;">
 			<c:forEach var="review" items="${reviewList }">
