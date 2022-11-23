@@ -200,12 +200,12 @@ td {
 			<input type="hidden" name="r_title" value="${room.r_title }">
 			<input type="hidden" name="lod_checkIn" value="${lodging.lod_checkIn }">
 			<input type="hidden" name="lod_checkOut" value="${lodging.lod_checkOut }">
-			<input type="hidden" name="res_from" value="${from }">
-			<input type="hidden" name="res_to" value="${to }">
+			<input type="hidden" name="res_from" value="${checkIn }">
+			<input type="hidden" name="res_to" value="${checkOut }">
 			<input type="hidden" name="price" value="${price }"> 
 			<table align="center" width="40%">
 				<tr>
-					<td colspan="2">${from } ~ ${to }</td>
+					<td colspan="2">${checkIn } ~ ${checkOut }</td>
 				</tr>
 				<tr>
 					<td>성명 : </td>

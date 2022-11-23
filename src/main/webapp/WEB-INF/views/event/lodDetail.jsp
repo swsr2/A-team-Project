@@ -25,7 +25,7 @@
 		<input class="category" type='submit' value='숙박' />
 	</form>
     <br><br><br>
-    <h3>${from } ~ ${to }</h3>
+    <h3>${checkIn } ~ ${checkOut }</h3>
     <table align="center">
     <tr align="center" >
     		<c:forEach var="lod" items="${lodList }" varStatus="status">

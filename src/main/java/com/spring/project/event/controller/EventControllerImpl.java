@@ -109,7 +109,7 @@ public class EventControllerImpl implements EventController {
 		if(!(request.getParameter("lodDate") == null)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("checkIn", request.getParameter("checkIn"));
-			session.setAttribute("checkIn", request.getParameter("checkIn"));
+			session.setAttribute("checkOut", request.getParameter("checkOut"));
 		}
 		
 		int lodCnt = eventService.allLodCnt();

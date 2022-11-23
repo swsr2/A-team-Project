@@ -117,7 +117,7 @@ td {
 	<br><br>
 	<hr>
 	<div id="roomInfo">
-	<h4 align="center">${from } ~ ${to }</h4>
+	<h4 align="center">${checkIn } ~ ${checkOut }</h4>
 	<c:forEach var="room" items="${roomList }">
 		<a href="javascript:encoder('${room.r_title}',${room.lod_id })" 
 					style="color:black; text-decoration: none;">
