@@ -20,6 +20,7 @@ import com.spring.project.event.dao.EventDAO;
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 @Service
@@ -181,14 +182,33 @@ public class EventServiceImpl implements EventService {
 		return eventDAO.addLodRes(res);
 	}
 
+	@Override
+	public void myPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		eventDAO.myPick(pickMap);
+	}
 
+	@Override
+	public void delPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		eventDAO.delPick(pickMap);
+	}
 
+	@Override
+	public int checkPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		return eventDAO.checkPcik(pickMap);
+	}
 
-	/*
 	@Override
 	public int addReview(ReviewDTO review) {
 		// TODO Auto-generated method stub
 		return eventDAO.addReview(review);
 	}
-	 */
+
+	@Override
+	public List<ReviewDTO> reviewList(int lod_id) {
+		// TODO Auto-generated method stub
+		return eventDAO.reviewList(lod_id);
+	}
 }

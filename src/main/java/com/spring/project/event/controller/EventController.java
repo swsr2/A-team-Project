@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 
@@ -33,8 +34,10 @@ public interface EventController {
 			throws Exception ;
 	public void resPay(@ModelAttribute("res")LodgingResDTO res, HttpServletRequest request, HttpServletResponse response)
 			throws Exception ;
-	// public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception; 
-	// public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView myPick(@RequestParam("lod_id") int lod_id, @RequestParam("pick") boolean pick,
+			HttpServletRequest request, HttpServletResponse response) throws Exception ;
+	public ModelAndView myReview(@RequestParam("lod_id") int lod_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 	
 }
 

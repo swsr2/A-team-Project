@@ -1,7 +1,9 @@
 package com.spring.project.event.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.service.EventService;
-import com.spring.project.food.dto.FoodDTO;
-import com.spring.project.food.dto.ReviewDTO;
+import com.spring.project.event.dto.ReviewDTO;
+import com.spring.project.member.dto.MemberDTO;
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
@@ -154,14 +156,30 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		LodgingDTO lodging = eventService.lodDatail(lod_id);
 		List<RoomInfoDTO> roomList = eventService.roomList(lod_id);
-//		List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
+		List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
+		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-		
+		if(isLogOn!=null && isLogOn==true) {
+			MemberDTO member = (MemberDTO) session.getAttribute("member");
+			Map pickMap = new HashMap();
+			pickMap.put("id", member.getId());
+			pickMap.put("lod_id", lod_id);
+			
+			int result = eventService.checkPick(pickMap);
+			// http://localhost:8080/project/food/myPick?fd_no=924&pick=true
+			
+			if(result==1) {
+				mav.addObject("pick", true);
+			}
+		} 
 		mav.addObject("lodging",lodging);
 		mav.addObject("roomList",roomList);
+		mav.addObject("reviewList",reviewList);
 		return mav;
 	}
 
@@ -211,8 +229,92 @@ public class EventControllerImpl implements EventController {
 		
 	}
 	
-	
+	@Override
+	@RequestMapping(value="/myPick", method=RequestMethod.GET)
+	public ModelAndView myPick(@RequestParam("lod_id") int lod_id, @RequestParam("pick") boolean pick,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+			response.setContentType("text/html;charset=utf-8");
+			
+			HttpSession session = request.getSession();
+			MemberDTO member = (MemberDTO) session.getAttribute("member");
+			Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+			
+			ModelAndView  mav = new ModelAndView("event/lodInfo");
+			if(!(isLogOn!=null && isLogOn==true)) {
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('로그인 후 이용가능합니다..');");
+				out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+				out.println("</script>");
+				return null;
+			}
+			
+			LodgingDTO lodging = eventService.lodDatail(lod_id);
+			List<RoomInfoDTO> roomList = eventService.roomList(lod_id);
+//			List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
+			mav.addObject("lodging", lodging);
+			mav.addObject("roomList",roomList);
+//			mav.addObject("reviewList",reviewList);
+			
+			Map pickMap = new HashMap();
+			pickMap.put("id", member.getId());
+			pickMap.put("lod_id", lod_id);
+			
+			if(pick) {
+				eventService.myPick(pickMap);
+				mav.addObject("pick",true);
+			}else {
+				eventService.delPick(pickMap);
+				mav.addObject("pick",false);
+			}
+			return mav;
+	}
+	@Override
+	@RequestMapping("/reviewForm")    
+	public ModelAndView myReview(@RequestParam("lod_id") int lod_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		ModelAndView mav = null;
+		if(isLogOn!=null && isLogOn==true) {
+			String viewName = (String) request.getAttribute("viewName");
+			mav = new ModelAndView(viewName);
+			mav.addObject("lod_id",lod_id);
+		} else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인 후 이용가능합니다..');");
+			out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+			out.println("</script>");
+			return null;
+		}
+		
+		return mav;
+	}
 
+	@Override
+	@RequestMapping(value="/addReview", method=RequestMethod.POST)
+	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		
+		int result = eventService.addReview(review);
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result == 1) {
+			out.println("alert('리뷰등록이 완료 되었습니다. 작성하신 리뷰는 [마이페이지 > 나의 리뷰보기]에서 확인하실 수 있습니다.')");
+		} else {
+			out.println("alert('리뷰가 등록되지 않았습니다.');");
+		}
+		out.println("location.href='"+ request.getContextPath() 
+				+ "/event/lodInfo?lod_id="+review.getLod_id()+"';"); 
+		out.println("</script>");
+		
+	}
 
 	
 }

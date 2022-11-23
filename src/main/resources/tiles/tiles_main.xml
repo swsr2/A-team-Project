@@ -96,6 +96,10 @@
 		<put-attribute name="title" value="이벤트_숙박" />
 		<put-attribute name="body" value="/WEB-INF/views/event/roomRes.jsp" />
 	</definition>
+	<definition name="event/reviewForm" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_리뷰" />
+		<put-attribute name="body" value="/WEB-INF/views/event/reviewForm.jsp" />
+	</definition>
 	
 	<definition name="papUp" template="/WEB-INF/views/event/resPay.jsp">
 		<put-attribute name="title" value="결제창" />
@@ -160,5 +164,15 @@
 	<definition name="tour/reviewForm" extends="baseLayout">
 		<put-attribute name="title" value="투어_상세" />
 		<put-attribute name="body" value="/WEB-INF/views/tour/reviewForm.jsp" />
+	</definition>
+	
+		<definition name="/activity/activitymain" extends="baseLayout">
+		<put-attribute name="title" value="즐기멍_액티비티" />
+		<put-attribute name="body" value="/WEB-INF/views/activity/activitymain.jsp" />
+	</definition>
+	
+	<definition name="/activity/crs" extends="baseLayout">
+		<put-attribute name="title" value="즐기멍_여행코스" />
+		<put-attribute name="body" value="/WEB-INF/views/activity/crs.jsp" />
 	</definition>
 </tiles-definitions>

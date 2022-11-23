@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 @Repository
@@ -124,12 +125,37 @@ public class EventDAOImpl implements EventDAO{
 	}
 
 
+	@Override
+	public void myPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.event.lod_myPick", pickMap);
+	}
 
-	/*
+
+	@Override
+	public void delPick(Map pickMap) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.event.lod_delPick", pickMap);
+	}
+
+
+	@Override
+	public int checkPcik(Map pickMap) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.checkPick", pickMap);
+	}
+
 	@Override
 	public int addReview(ReviewDTO review) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("mapper.food.addReview", review);
+		return sqlSession.insert("mapper.event.addReview", review);
 	}
-	*/
+
+
+	@Override
+	public List<ReviewDTO> reviewList(int lod_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.reviewList",lod_id);
+	}
+	
 }
