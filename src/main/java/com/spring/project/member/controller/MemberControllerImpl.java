@@ -124,15 +124,12 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("isLogOn", true);
 			out.println("alert('"+memberDTO.getId()+"님 로그인 되었습니다');");
-		out.println("location.href='"+request.getContextPath() +"/main/main.do';"); 
-			out.println("</script>");
+			out.println("location.href='"+request.getContextPath() +"/main/main.do';"); 
 		} else {
-			rAttr.addAttribute("result", "loginFailed");
-			
+			out.println("alert('아이디나 비밀번호가 틀립니다. 다시 로그인 하세요!.');");
 			out.println("location.href='"+request.getContextPath() +"/member/loginForm.do';");
-		
 		}
-		
+		out.println("</script>");
 	}
 
 	@Override
