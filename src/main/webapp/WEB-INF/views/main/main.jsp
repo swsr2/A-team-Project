@@ -41,6 +41,14 @@ setTimeout(slideShow, 3000);   //함수를 4초마다 호출
     padding-left:25%; /* 15%가 중앙 */
  }
 
+#youtube, .mainSample {
+	padding-left:25%;
+}
+h3 {
+	text-align:center;
+	color:orange;
+}
+
 
 </style>
 </head>
@@ -53,6 +61,15 @@ setTimeout(slideShow, 3000);   //함수를 4초마다 호출
 		<a href="${path }/event/lodmain"><img class="slide1" src="${path }/resources/image/001.png" width="70%"></a>
 		<a href="${path }/event/main"><img class="slide1" src="${path }/resources/image/006.png" width="70%"></a>
 	</div>
-	
+		<br>
+		<h3>[제주도 액티비티 여행 미리보기]</h3>
+	<div id="youtube">
+		<iframe width="730" height="450" src="https://www.youtube.com/embed/g1bviu_L_fE" title="(한국관광공사)두 남자가 떠나는 제주도 액티비티 여행 [Exploring Jeju]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<br>
+	<div>
+		<img class="mainSample" src="${path }/resources/image/mainSample.png" width="730">
+	</div>
+	<br>
 </body>
 </html>
