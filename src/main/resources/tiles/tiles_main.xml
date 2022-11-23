@@ -161,4 +161,14 @@
 		<put-attribute name="title" value="투어_상세" />
 		<put-attribute name="body" value="/WEB-INF/views/tour/reviewForm.jsp" />
 	</definition>
+	
+		<definition name="/activity/activitymain" extends="baseLayout">
+		<put-attribute name="title" value="즐기멍_액티비티" />
+		<put-attribute name="body" value="/WEB-INF/views/activity/activitymain.jsp" />
+	</definition>
+	
+	<definition name="/activity/crs" extends="baseLayout">
+		<put-attribute name="title" value="즐기멍_여행코스" />
+		<put-attribute name="body" value="/WEB-INF/views/activity/crs.jsp" />
+	</definition>
 </tiles-definitions>
