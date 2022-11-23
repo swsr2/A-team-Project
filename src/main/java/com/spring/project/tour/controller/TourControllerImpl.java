@@ -200,8 +200,8 @@ public class TourControllerImpl implements TourController {
 	}
 
 	@Override
-	@RequestMapping("/myReview")
-	public String myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping("/reviewForm")
+	public ModelAndView myReview(@RequestParam("tr_no") int tr_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		
@@ -211,6 +211,7 @@ public class TourControllerImpl implements TourController {
 		if(isLogOn!=null && isLogOn==true) {
 			String viewName = (String) request.getAttribute("viewName");
 			mav = new ModelAndView(viewName);
+			mav.addObject("tr_no",tr_no);
 		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -220,7 +221,7 @@ public class TourControllerImpl implements TourController {
 			return null;
 		}
 		
-		return "/tour/reviewForm";
+		return mav;
 	}
 
 	@Override

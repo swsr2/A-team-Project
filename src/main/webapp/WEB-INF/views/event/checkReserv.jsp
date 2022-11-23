@@ -97,6 +97,20 @@ h1 {
 				<td>${sum}</td>
 		</table>
 		<br>
+		<div align="center">
+			<h3>탑승자 정보</h3>
+			<table>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name" placeholder="이름"></td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><input type="text" name="birth" placeholder="예) 19000101"></td>
+				</tr>
+			</table>
+		</div>
+		<br>
 		<div class="cautionBx">
 			<div>
 				<h3 style="color: red;">&nbsp;! 유의사항</h3>
