@@ -11,6 +11,20 @@ request.setCharacterEncoding("UTF-8");
 <head>
 <meta charset="UTF-8">
 <title>이벤트 항공 상세페이지_오는편</title>
+<script>
+	let openPay;
+	function resPay(){
+		openPay = window.open("resPay","결제창","width=570, height=350, resizable = no, scrollbars = no");
+		setTimeout( function(){ 
+		openPay.window.close();
+		let frm = document.frm;
+		
+		frm.method="post";
+		frm.action="${path}/event/airReserve";
+		frm.submit();
+		},5000);
+	}
+</script>
 <style>
 form {
 	display: inline;
@@ -54,7 +68,7 @@ h1 {
 	</form>
 	<br>
 	<br>
-	<form action="/project/event/airReserve">
+	<form name="frm">
 		<h1>내가 선택한 여정</h1>
 		<table align="center" style="border: 1px solid black;">
 			<tr>
@@ -91,10 +105,12 @@ h1 {
 			<tr bgcolor="lightgray">
 				<td colspan="8" align="center">총 금액</td>
 				<td>${sum}</td>
+			</tr>
 		</table>
 		<br>
 		<div align="center">
 			<h3>탑승자 정보</h3>
+			<input type="hidden" name="id" value="${member.id }">
 			<table>
 				<tr>
 					<td>성명 : </td>
@@ -156,7 +172,7 @@ h1 {
 		</div>
 		<br>
 		<div align="center">
-			<input type="submit" value="예약하기">
+			<input type="button" onclick="resPay()" value="예약하기">
 		</div>
 	</form>
 	<br>

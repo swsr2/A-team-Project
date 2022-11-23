@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.ResAirplaneDTO;
 import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
@@ -156,6 +157,20 @@ public class EventDAOImpl implements EventDAO{
 	public List<ReviewDTO> reviewList(int lod_id) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.event.reviewList",lod_id);
+	}
+
+
+	@Override
+	public ResAirplaneDTO selectAir(int air_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.selectAir",air_no);
+	}
+
+
+	@Override
+	public void resAirplane(ResAirplaneDTO resAir) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.event.resAirplane",resAir);
 	}
 	
 }

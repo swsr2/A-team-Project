@@ -23,6 +23,7 @@ import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.member.dto.MemberDTO;
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.ResAirplaneDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 @Controller("eventController")
@@ -95,7 +96,19 @@ public class EventControllerImpl implements EventController {
 	public String airReserv(int air_no1, int air_no2, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		ResAirplaneDTO depart = eventService.selectAir(air_no1);
+		depart.setId(request.getParameter("id"));
+		depart.setName(request.getParameter("name"));
+		depart.setBirth(Integer.parseInt(request.getParameter("birth")));
+		depart.setPayment(request.getParameter("payment"));
+		eventService.resAirplane(depart);
 		
+		ResAirplaneDTO comeBack = eventService.selectAir(air_no2);
+		comeBack.setId(request.getParameter("id"));
+		comeBack.setName(request.getParameter("name"));
+		comeBack.setBirth(Integer.parseInt(request.getParameter("birth")));
+		comeBack.setPayment(request.getParameter("payment"));
+		eventService.resAirplane(comeBack);
 		return null;
 	}
 

@@ -6,6 +6,7 @@ import java.util.Map;
 import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
+import com.spring.project.event.dto.ResAirplaneDTO;
 import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
@@ -40,5 +41,9 @@ public interface EventService {
 	 public int addReview(ReviewDTO review);
 
 	public List<ReviewDTO> reviewList(int lod_id);
+
+	public ResAirplaneDTO selectAir(int air_no1);
+
+	public void resAirplane(ResAirplaneDTO depart);
 
 }
