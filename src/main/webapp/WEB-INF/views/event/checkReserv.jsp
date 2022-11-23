@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="path"  value="${pageContext.request.contextPath}"  />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <%
-  request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,32 +14,38 @@
 <style>
 form {
 	display: inline;
-	border:1px;
+	border: 1px;
 }
+
 table {
-	border:1px solid black;
+	border: 1px solid black;
 }
+
 th {
-	background-color:#9ACD32;
-	width:100px;
-	text-align:center;
+	background-color: #9ACD32;
+	width: 100px;
+	text-align: center;
 }
+
 td {
-	width:100px;
-	text-align:center;
-	font-weight:lighter; 
+	width: 100px;
+	text-align: center;
+	font-weight: lighter;
 }
+
 h1 {
-	text-align:center;
-	color:orange;
+	text-align: center;
+	color: orange;
 }
+
 .cautionBx {
-	margin:auto;
-	width:940px;
+	margin: auto;
+	width: 940px;
 	border: dotted;
 }
-.red{
-	color:red;
+
+.red {
+	color: red;
 }
 </style>
 </head>
@@ -53,47 +59,48 @@ h1 {
 	<br>
 	<br>
 	<form action="/project/event/airReserve">
-	<h1>내가 선택한 여정</h1>
-	<table align="center">
-	<tr>
-			<th align="center">구분</th>
-			<th align="center">항공번호</th>
-			<th align="center">항공사</th>
-			<th align="center">출발일자</th>
-			<th align="center">출발장소</th>
-			<th align="center">출발시간</th>
-			<th align="center">도착장소</th>
-			<th align="center">도착시간</th>
-			<th align="center">금액</th>
-		</tr>
-		<c:forEach var="airplane" items="${airplaneList }" varStatus="status" >
-				<tr>	
-				<c:if test="${status.first }">
-					<td>가는편</td>
-				</c:if>
-				<c:if test="${status.last }">
+		<h1>내가 선택한 여정</h1>
+		<table align="center">
+			<tr>
+				<th align="center">구분</th>
+				<th align="center">항공번호</th>
+				<th align="center">항공사</th>
+				<th align="center">출발일자</th>
+				<th align="center">출발장소</th>
+				<th align="center">출발시간</th>
+				<th align="center">도착장소</th>
+				<th align="center">도착시간</th>
+				<th align="center">금액</th>
+			</tr>
+			<c:forEach var="airplane" items="${airplaneList }" varStatus="status">
+				<tr>
+					<c:if test="${status.first }">
+						<td>가는편</td>
+					</c:if>
+					<c:if test="${status.last }">
 						<td>오는편</td>
-				</c:if>
-			<td>${airplane.air_no }</td>
-			<td>${airplane.air_airline }</td>
-			<td>${airplane.air_date }</td>
-			<td>${airplane.air_departPlace }</td>
-			<td>${airplane.air_departTime }</td>
-			<td>${airplane.air_arrivalPlace }</td>
-			<td>${airplane.air_arrivalTime }</td>
-			<td>${airplane.air_price }</td>
-		</tr>
-		<input type="hidden" name="air_no${status.count }" value="${airplane.air_no }">
-		</c:forEach>
-		<tr bgcolor="lightgray" >
-		<td colspan="8" align="center">총 금액</td>
-		<td>${sum}</td>
+					</c:if>
+					<td>${airplane.air_no }</td>
+					<td>${airplane.air_airline }</td>
+					<td>${airplane.air_date }</td>
+					<td>${airplane.air_departPlace }</td>
+					<td>${airplane.air_departTime }</td>
+					<td>${airplane.air_arrivalPlace }</td>
+					<td>${airplane.air_arrivalTime }</td>
+					<td>${airplane.air_price }</td>
+				</tr>
+				<input type="hidden" name="air_no${status.count }"
+					value="${airplane.air_no }">
+			</c:forEach>
+			<tr bgcolor="lightgray">
+				<td colspan="8" align="center">총 금액</td>
+				<td>${sum}</td>
 		</table>
 		<br>
 		<div class="cautionBx">
-			<div >
-				<h3  style="color:red;">&nbsp;! 유의사항</h3>
-				<h4 >
+			<div>
+				<h3 style="color: red;">&nbsp;! 유의사항</h3>
+				<h4>
 					<ul class="wt-ul">
 						<li><strong class="red">항공권 예약완료 후 즉시결제하지 않으시면 예약은
 								자동취소됩니다.</strong></li>
@@ -119,11 +126,14 @@ h1 {
 				<p class="cb"></p>
 			</div>
 			<p class="rb"></p>
-		</div><br>
+		</div>
+		<br>
 		<div align="center">
-	<input type="submit" value="예약하기">
-	</div>
+			<input type="submit" value="예약하기">
+		</div>
 	</form>
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>

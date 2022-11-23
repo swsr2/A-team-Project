@@ -29,13 +29,13 @@
 		]]>
 	</select>
 
-	<select id="selectAir_no_from" parameterType="int" resultType="com.spring.project.event.dto.AirplaneDTO">
+	<select id="selectAir_no_from" parameterType="int" resultType="airplaneDTO">
 		<![CDATA[
 			select * from airplane where air_no=#{air_no_from}
 		]]>
 	</select>
 	
-		<select id="selectAir_no_to" parameterType="int" resultType="com.spring.project.event.dto.AirplaneDTO">
+		<select id="selectAir_no_to" parameterType="int" resultType="airplaneDTO">
 		<![CDATA[
 			select * from airplane where air_no=#{air_no_to}
 		]]>
@@ -53,6 +53,23 @@
 			#{air_departTime},#{air_arrivalTime},#{air_departPlace},#{air_arrivalPlace},#{air_price})
 		]]>
 	</insert>
+	
+	<select id="airListFrom" resultType="airplaneDTO">
+		<![CDATA[
+			select * from (select * from airplane where 
+				air_airline='아시아나 항공' or air_airline='진에어' or air_airline='에어부산' or 
+				air_airline='대한항공' or air_airline='플라이강원') 
+			where air_no >= 100 and air_no < 499 order by air_no asc
+		]]>
+	</select>
+	<select id="airListTo" resultType="airplaneDTO">
+		<![CDATA[
+			select * from (select * from airplane where 
+				air_airline='아시아나 항공' or air_airline='진에어' or air_airline='에어부산' or 
+				air_airline='대한항공' or air_airline='플라이강원') 
+			where air_no >= 500 and air_no < 1000 order by air_no asc
+		]]>
+	</select>
 	
 	<select id="allLodCnt" resultType="int">
 		<![CDATA[

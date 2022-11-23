@@ -89,10 +89,11 @@ public class EventControllerImpl implements EventController {
 	}
 
 	@Override
-	@RequestMapping("/airReserv")
+	@RequestMapping("/airReserve")
 	public String airReserv(int air_no1, int air_no2, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -107,8 +108,8 @@ public class EventControllerImpl implements EventController {
 		
 		if(!(request.getParameter("lodDate") == null)) {
 			HttpSession session = request.getSession();
-			session.setAttribute("from", request.getParameter("from"));
-			session.setAttribute("to", request.getParameter("to"));
+			session.setAttribute("checkIn", request.getParameter("checkIn"));
+			session.setAttribute("checkIn", request.getParameter("checkIn"));
 		}
 		
 		int lodCnt = eventService.allLodCnt();
@@ -200,7 +201,7 @@ public class EventControllerImpl implements EventController {
 		if(result == 1) {
 			session.removeAttribute("from");
 			session.removeAttribute("to");
-			out.println("alert('예약이 완료되었습니다. 예약 내역은 [마이페이지 > 예약내역보기]에서 확인하실 수 있습니다.')");
+			out.println("alert('예약이 완료되었습니다. 예약 내역은 [마이페이지 > 내 예약보기]에서 확인하실 수 있습니다.')");
 		} else {
 			out.println("alert('예약에 실패했습니다. 다시 시도해 주세요.');");
 		}

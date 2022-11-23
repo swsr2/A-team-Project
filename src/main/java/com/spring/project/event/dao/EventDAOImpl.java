@@ -110,6 +110,20 @@ public class EventDAOImpl implements EventDAO{
 	}
 
 
+	@Override
+	public List<AirplaneDTO> airListTo() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.airListTo");
+	}
+
+
+	@Override
+	public List<AirplaneDTO> airListFrom() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.airListFrom");
+	}
+
+
 
 	/*
 	@Override

@@ -33,6 +33,10 @@ public interface EventDAO {
 
 	public int addLodRes(LodgingResDTO res);
 
+	public List<AirplaneDTO> airListTo();
+
+	public List<AirplaneDTO> airListFrom();
+
 
 
 	// public int addReview(ReviewDTO review);
