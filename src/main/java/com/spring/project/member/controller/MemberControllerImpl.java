@@ -194,7 +194,6 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 			out.println("alert('입력하신 정보가 일치하지 않습니다.');");
 			out.println("location.href='"+request.getContextPath() +"/member/findPwdForm.do';");
 		}
-		System.out.println("수정해야돼");
 		out.println("</script>");
 	}
 }
