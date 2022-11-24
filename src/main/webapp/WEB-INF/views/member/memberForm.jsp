@@ -12,48 +12,23 @@
 <title>회원가입</title>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-/* function fn_idChk(){
-	$.ajax({
-		url : "${path}/idChk",
-		type : "get",
-		dataType : "json",
-		data : {"id" : $("#id").val()},
-		success : function(result){
-			console.log(result);
-			if(result == 1){
-				alert("중복된 아이디입니다.");
-			}else if(result == 0){
-				$("#idChk").attr("value", "Y");
-				alert("사용가능한 아이디입니다.");
-			}
-			
-		},
-		error:function(result){
-			console.log(result);
-		}
-	});
-} */
 
 function fn_selected(obj){
 	obj.style.color= "black";
 }
 
 window.onload = function() {
+	$("#telChk").text("ex) 01012345678");
+	$("#emailChk").text("ex) test@test.com");
 	// id 와 pw 적합여부 검사(4~12자리, 영어대소문자, 숫자만 가능)
 	/* let val = /^[a-zA-Z0-9]{4,15}$/ */
 	let val = /^[a-z]{3,15}$/
 	
 	// 이메일형식 적합여부 검사
-	let mail_val = /^[a-zA-Z0-9]([-_\.]?[a-zA-Z0-9])*@[a-zA-Z0-9]([-_\.]?[a-zA-Z0-9])*\.[a-zA-Z0-9]{2,3}$/i
+	let email_val = /^[a-zA-Z0-9]([-_\.]?[a-zA-Z0-9])*@[a-zA-Z0-9]([-_\.]?[a-zA-Z0-9])*\.[a-zA-Z0-9]{2,3}$/i
 	
 	// 폰번호 적합여부 검사
-	let phone_val = /^010-(?:\d{4})-\d{4}$/
-	
-	// 이름 유효성 검사
-	let name_val = /^[a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,15}$/
-	
-	// 나이 유효성 검사
-	let age_val = /^(?:\d{1}|\d{2}|\d{3})$/
+	let tel_val = /^010\d{8}$/
 	
 	// 형식검사 메서드
 	function check(val,target){
@@ -117,6 +92,63 @@ window.onload = function() {
 		}
 	})
 	
+	// pwd , pwd확인 검사
+	$("#pwdpwd").blur(function(){
+		var pwd = $("#pwd").val();
+		var pwdpwd = $("#pwdpwd").val();
+		if(pwdpwd != '') {
+			if(pwdpwd == pwd){
+				$("#pwdpwdChk").text("패스워드가 일치 합니다.");
+				$("#pwdpwdChk").css("color", "blue");
+				$("#submit1").attr("disabled", false);
+			} else {
+				$("#pwdpwdChk").text("패스워드가 일치하지 않습니다.");
+				$("#pwdpwdChk").css("color", "red");
+				$("#pwdpwdChk").val("");
+				$("#submit1").attr("disabled", true);
+			}
+		} else {
+			$("#pwdpwdChk").text("");
+		}
+	})
+	
+	// 전화번호 형식 검사
+	$("#tel").blur(function(){
+		var tel = $("#tel").val();
+		if(tel != '') {
+			if(check(tel_val, tel)){
+				$("#telChk").text("");
+				$("#telChk").css("color", "blue");
+				$("#submit1").attr("disabled", false);
+			} else {
+				$("#telChk").text("전화번호가 형식에 맞지않습니다. ex) 01012345678");
+				$("#telChk").css("color", "red");
+				$("#tel").val("");
+				$("#submit1").attr("disabled", true);
+			}
+		} else {
+			$("#telChk").text("ex) 01012345678");
+		}
+	})
+	
+	// 이메일 형식 검사
+	$("#email").blur(function(){
+		var email = $("#email").val();
+		if(email != '') {
+			if(check(email_val, email)){
+				$("#emailChk").text("");
+				$("#emailChk").css("color", "blue");
+				$("#submit1").attr("disabled", false);
+			} else {
+				$("#emailChk").text("이메일이 형식에 맞지않습니다. ex) test@test.com");
+				$("#emailChk").css("color", "red");
+				$("#email").val("");
+				$("#submit1").attr("disabled", true);
+			}
+		} else {
+			$("#emailChk").text("ex) test@test.com");
+		}
+	})
 }
 </script>
 <style>
@@ -175,16 +207,16 @@ select {
 			<span id="idChk" class="check"></span><br>
 			<input type="password" id="pwd" name="pwd" placeholder="비밀번호" class="in"><br>
 			<span id="pwdChk" class="check"></span><br>
-			<input type="password" name="pwdChk" placeholder="비밀번호 확인" class="in"><br>
-			<p id="idChk" class="check"></p><br>
+			<input type="password" id="pwdpwd" name="pwdpwd" placeholder="비밀번호 확인" class="in"><br>
+			<p id="pwdpwdChk" class="check"></p><br>
 			<input type="text" name="name" placeholder="이름" class="in"><br>
-			<p id="idChk" class="check"></p><br>
-			<input type="number" name="age" placeholder="나이" class="in"><br>
-			<p id="idChk" class="check"></p><br>
-			<input type="text" name="tel" placeholder="전화번호" class="in"><br>
-			<p id="idChk" class="check"></p><br>
-			<input type="email" name="email" placeholder="이메일" class="in"><br>
-			<p id="idChk" class="check"></p><br>
+			<p class="check"></p><br>
+			<input type="text" name="age" placeholder="나이" class="in"><br>
+			<p class="check"></p><br>
+			<input type="text" id="tel" name="tel" placeholder="전화번호" class="in"><br>
+			<p id="telChk" class="check"></p><br>
+			<input type="email" id="email" name="email" placeholder="이메일" class="in"><br>
+			<p id="emailChk" class="check"></p><br>
 			<select class="select" name="gender" onclick="fn_selected(this)">
 				<option selected disabled hidden>성별</option>
 				<option value="M">남성</option>
