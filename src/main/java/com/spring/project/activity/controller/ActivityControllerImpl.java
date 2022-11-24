@@ -42,8 +42,6 @@ public class ActivityControllerImpl implements ActivityController{
 		// c1 : 관광, c2 : 쇼핑, c3 : 숙박, c4 : 음식점, c5 : 축제/행사/액티비티, c6 : 테마여행
 
 
-
-
 		int ActivityCnt = activityService.allActivityCnt();
 
 		int postNum = 12;
@@ -64,7 +62,7 @@ public class ActivityControllerImpl implements ActivityController{
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)ActivityCnt / (double)pageNum_cnt));
+		int endPageNum_tmp = (int)(Math.ceil((double)ActivityCnt / (double)postNum));
 
 		if(endPageNum > endPageNum_tmp) {
 			endPageNum = endPageNum_tmp;
@@ -109,7 +107,7 @@ public class ActivityControllerImpl implements ActivityController{
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)crsCnt / (double)pageNum_cnt));
+		int endPageNum_tmp = (int)((double)crsCnt / (double)postNum);
 
 		if(endPageNum > endPageNum_tmp) {
 			endPageNum = endPageNum_tmp;
