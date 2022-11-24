@@ -168,9 +168,9 @@ public class EventDAOImpl implements EventDAO{
 
 
 	@Override
-	public void resAirplane(ResAirplaneDTO resAir) {
+	public int resAirplane(ResAirplaneDTO resAir) {
 		// TODO Auto-generated method stub
-		sqlSession.insert("mapper.event.resAirplane",resAir);
+		return sqlSession.insert("mapper.event.resAirplane",resAir);
 	}
 	
 }

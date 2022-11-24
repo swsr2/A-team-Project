@@ -93,23 +93,39 @@ public class EventControllerImpl implements EventController {
 
 	@Override
 	@RequestMapping("/airReserve")
-	public String airReserv(int air_no1, int air_no2, HttpServletRequest request, HttpServletResponse response)
+	public void airReserv(int air_no1, int air_no2, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		// 가는편 예약 테이블 인서트
 		ResAirplaneDTO depart = eventService.selectAir(air_no1);
 		depart.setId(request.getParameter("id"));
 		depart.setName(request.getParameter("name"));
 		depart.setBirth(Integer.parseInt(request.getParameter("birth")));
 		depart.setPayment(request.getParameter("payment"));
-		eventService.resAirplane(depart);
+		int result = eventService.resAirplane(depart);
 		
-		ResAirplaneDTO comeBack = eventService.selectAir(air_no2);
-		comeBack.setId(request.getParameter("id"));
-		comeBack.setName(request.getParameter("name"));
-		comeBack.setBirth(Integer.parseInt(request.getParameter("birth")));
-		comeBack.setPayment(request.getParameter("payment"));
-		eventService.resAirplane(comeBack);
-		return null;
+		out.println("<script>");
+		if(result == 1) {
+			// 오는편 예약 테이블 인서트
+			ResAirplaneDTO comeBack = eventService.selectAir(air_no2);
+			comeBack.setId(request.getParameter("id"));
+			comeBack.setName(request.getParameter("name"));
+			comeBack.setBirth(Integer.parseInt(request.getParameter("birth")));
+			comeBack.setPayment(request.getParameter("payment"));
+			int result2 = eventService.resAirplane(comeBack);
+		
+			if(result2 == 1) {
+				out.println("alert('항공권 예약이 완료 되었습니다. 예약된 내역은 [마이페이지 > 내 예약확인]에서 확인하실 수 있습니다.')");
+			}else {
+				out.println("alert('예약이 되지 않았습니다. 다시 시도해 주세요.');");
+			}
+		} else {
+			out.println("alert('예약이 되지 않았습니다. 다시 시도해 주세요.');");
+		}
+		out.println("location.href='"+ request.getContextPath()+ "/main/main.do';");
+		out.println("</script>");
 	}
 
 	@Override

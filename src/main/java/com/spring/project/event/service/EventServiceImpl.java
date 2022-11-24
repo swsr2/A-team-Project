@@ -220,8 +220,8 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public void resAirplane(ResAirplaneDTO resAir) {
+	public int resAirplane(ResAirplaneDTO resAir) {
 		// TODO Auto-generated method stub
-		eventDAO.resAirplane(resAir);
+		return eventDAO.resAirplane(resAir);
 	}
 }
