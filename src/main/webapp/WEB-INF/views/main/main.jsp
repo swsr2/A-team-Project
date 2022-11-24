@@ -68,7 +68,7 @@ h3 {
 	</div>
 	<br>
 	<div>
-		<img class="mainSample" src="${path }/resources/image/mainSample.png" width="730">
+		<a href="#"><img class="mainSample" src="${path }/resources/image/mainSample.png" width="730"></a>
 	</div>
 	<br>
 </body>
