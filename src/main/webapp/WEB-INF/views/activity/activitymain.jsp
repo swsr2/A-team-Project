@@ -23,7 +23,7 @@
         <input class="category" type='submit' value='액티비티'/>
     </form>
 	<form name="crs" action="/project/activity/crs">
-		<input type="hidden" name="page" value="2">
+		<input type="hidden" name="page" value="1">
         <input class="category" type='submit' value='여행코스'/>
     </form>
     <br><br><br>

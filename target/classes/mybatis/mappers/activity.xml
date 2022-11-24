@@ -21,7 +21,7 @@
   				FROM (
 		        SELECT  f.*, row_number() over(order by ac_no asc) as rNum
 		          FROM activity f
-		          where ac_category like '%'||'체험'||'%' or ac_category like '%'||'액티비티'||'%'
+		          where ac_category like '%'||'체험'||'%' or ac_category like '%'||'액티비티'||'%'  or ac_category like '%'||'행사'||'%'
 		        ) 
 		   WHERE rNum between #{start} and #{end}
 		]]>
@@ -30,7 +30,7 @@
 	<select id="allActivityCnt" resultType="int">
 		<![CDATA[
 			select count(*) from activity
-			where ac_category like '%' || '체험' || '%' or ac_category like '%' || '액티비티' || '%'
+			where ac_category like '%' || '체험' || '%' or ac_category like '%' || '액티비티' || '%'  or ac_category like '%'||'행사'||'%'
 		]]>
 	</select>
 	
@@ -42,7 +42,7 @@
   				FROM (
 		        SELECT  f.*, row_number() over(order by ac_no asc) as rNum
 		          FROM activity f
-		          where ac_category like '%'||'코스'||'%'
+		          where ac_category like '%'||'같이가치'||'%' and ac_title not like '%' || '빈칸채우기' || '%'
 		        ) 
 		   WHERE rNum between #{start} and #{end}
 		]]>
@@ -51,7 +51,7 @@
 	<select id="allCrsCnt" resultType="int">
 		<![CDATA[
 			select count(*) from activity 
-			where ac_category like '%' || '코스' || '%'
+			where ac_category like '%'||'같이가치'||'%' and ac_title not like '%' || '빈칸채우기' || '%'
 		]]>
 	</select>
 
