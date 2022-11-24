@@ -84,7 +84,7 @@ li button {
      	</tr>
      	<tr>
  			<td width="100">설명 :</td>
- 			<td>${activity.ac_info }</td>
+ 			<td width="600">${activity.ac_info }</td>
      	</tr>
      	<tr>
  			<td width="100">전화번호 :</td>
