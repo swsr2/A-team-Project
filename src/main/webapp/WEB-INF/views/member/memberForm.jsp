@@ -160,6 +160,12 @@ input {
 	border: none;
 }
 
+/* input type number 일 때 우측에 화살표 없애기 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .in {
 	border: 1px solid black;
 }
@@ -211,7 +217,7 @@ select {
 			<p id="pwdpwdChk" class="check"></p><br>
 			<input type="text" name="name" placeholder="이름" class="in"><br>
 			<p class="check"></p><br>
-			<input type="text" name="age" placeholder="나이" class="in"><br>
+			<input type="number" name="age" placeholder="나이" class="in"><br>
 			<p class="check"></p><br>
 			<input type="text" id="tel" name="tel" placeholder="전화번호" class="in"><br>
 			<p id="telChk" class="check"></p><br>
