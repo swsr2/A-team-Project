@@ -167,7 +167,7 @@ public class ActivityControllerImpl implements ActivityController{
 	@RequestMapping("/reviewForm")
 	public ModelAndView myReview(@RequestParam("ac_no") int ac_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html;charse=utf-8");
+		response.setContentType("text/html;charset=utf-8");
 
 		HttpSession session = request.getSession();
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
@@ -179,7 +179,7 @@ public class ActivityControllerImpl implements ActivityController{
 		}else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('로그인 후 이용가능합니다..');");
+			out.println("alert('로그인 후 이용가능합니다..!');");
 			out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
 			out.println("</script>");
 			return null;
@@ -203,7 +203,7 @@ public class ActivityControllerImpl implements ActivityController{
 			out.println("alert('리뷰가 등록되지 않았습니다.');");
 		}
 		out.println("location.href='"+ request.getContextPath() 
-		+ "/tour/tourDetail?tr_no="+review.getAc_no()+"';");
+		+ "/activity/activityDetail?ac_no="+review.getAc_no()+"';");
 		out.println("</script>");
 	}
 
