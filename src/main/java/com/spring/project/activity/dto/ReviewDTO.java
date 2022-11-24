@@ -1,4 +1,4 @@
-package com.spring.project.food.dto;
+package com.spring.project.activity.dto;
 
 import java.sql.Date;
 
@@ -13,17 +13,12 @@ public class ReviewDTO {
     private int ac_no;
     private int fd_no;
     
+    
 	public int getRe_no() {
 		return re_no;
 	}
 	public void setRe_no(int re_no) {
 		this.re_no = re_no;
-	}
-	public Date getRe_writeDate() {
-		return re_writeDate;
-	}
-	public void setRe_writeDate(Date re_writeDate) {
-		this.re_writeDate = re_writeDate;
 	}
 	public int getRe_score() {
 		return re_score;
@@ -36,6 +31,12 @@ public class ReviewDTO {
 	}
 	public void setRe_content(String re_content) {
 		this.re_content = re_content;
+	}
+	public Date getRe_writeDate() {
+		return re_writeDate;
+	}
+	public void setRe_writeDate(Date re_writeDate) {
+		this.re_writeDate = re_writeDate;
 	}
 	public String getRe_img() {
 		return re_img;
@@ -58,7 +59,7 @@ public class ReviewDTO {
 	public int getAc_no() {
 		return ac_no;
 	}
-	public void setAct_no(int ac_no) {
+	public void setAc_no(int ac_no) {
 		this.ac_no = ac_no;
 	}
 	public int getFd_no() {

@@ -55,14 +55,40 @@
 		]]>
 	</select>
 
-		
-	
-	<insert id="dbInsert" parameterType="com.spring.project.activity.dto.ActivityDTO">
+		<select id="selectac_no" parameterType="int" resultType="com.spring.project.activity.dto.ActivityDTO">
 		<![CDATA[
-			insert into tour values(ac_seq.nextval, #{ac_title}, #{ac_info}, 
-			#{ac_address}, #{ac_roadAddress}, #{ac_phoneNo}, #{ac_imgPath}, #{ac_thumbnailPath}, #{ac_category})		
+			select * from activity where ac_no=#{ac_no}
+		]]>
+	</select>
+	
+	<insert id="addReview" parameterType="com.spring.project.activity.dto.ReviewDTO">
+		<![CDATA[
+			insert into review (re_no, re_score, re_content, id, ac_no) 
+			values(re_seq.nextval, #{re_score}, #{re_content}, #{id}, #{ac_no}) 
 		]]>
 	</insert>
 	
+	<select id="reviewList" parameterType="int" resultType="com.spring.project.activity.dto.ReviewDTO">
+		<![CDATA[
+			select * from review where ac_no=#{ac_no}
+		]]>
+	</select>
 	
+	<insert id="activity_myPick" parameterType="java.util.Map">
+		<![CDATA[
+			insert into mypick(id, ac_no) values(#{id}, #{ac_no})
+		]]>
+	</insert>
+	
+	<delete id="activity_delPick" parameterType="java.util.Map">
+		<![CDATA[
+			delete from mypick where id=#{id} and ac_no=#{ac_no}
+		]]>
+	</delete>
+	
+	<select id="checkPick" parameterType="java.util.Map" resultType="int">
+		<![CDATA[
+			select count(*) from mypick where id=#{id} and ac_no=#{ac_no}
+		]]>
+	</select>
 </mapper>

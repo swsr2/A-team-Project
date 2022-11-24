@@ -1,18 +1,28 @@
 package com.spring.project.activity.controller;
 
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.activity.dto.ActivityDTO;
+import com.spring.project.activity.dto.ReviewDTO;
 import com.spring.project.activity.service.ActivityService;
 import com.spring.project.food.dto.FoodDTO;
+import com.spring.project.member.dto.MemberDTO;
+import com.spring.project.tour.dto.TourDTO;
 
 
 @Controller("activityController")
@@ -29,11 +39,11 @@ public class ActivityControllerImpl implements ActivityController{
 		// 테스트 하실때 공유드라이브에 api 받아오기 텍스트 파일안 내용을 요기다 넣고 한번 돌리시면
 		// api 내용이 db에 저장이 될 겁니다 db에서 테이블 이랑 시퀀스 만들고 돌려주세요
 		// api 정보를 url 을 통해서 가져오기
-			// c1 : 관광, c2 : 쇼핑, c3 : 숙박, c4 : 음식점, c5 : 축제/행사/액티비티, c6 : 테마여행
-		
-		
-		
-		
+		// c1 : 관광, c2 : 쇼핑, c3 : 숙박, c4 : 음식점, c5 : 축제/행사/액티비티, c6 : 테마여행
+
+
+
+
 		int ActivityCnt = activityService.allActivityCnt();
 
 		int postNum = 12;
@@ -72,7 +82,7 @@ public class ActivityControllerImpl implements ActivityController{
 		// 이전 및 다음 
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
-		
+
 		return "/activity/activitymain";
 	}
 
@@ -102,8 +112,8 @@ public class ActivityControllerImpl implements ActivityController{
 		int endPageNum_tmp = (int)(Math.ceil((double)crsCnt / (double)pageNum_cnt));
 
 		if(endPageNum > endPageNum_tmp) {
-			 endPageNum = endPageNum_tmp;
-			}
+			endPageNum = endPageNum_tmp;
+		}
 		boolean prev = startPageNum == 1 ? false : true;
 		boolean next = endPageNum * pageNum_cnt >= crsCnt ? false : true;
 
@@ -120,4 +130,123 @@ public class ActivityControllerImpl implements ActivityController{
 		return "/activity/crs";
 	}
 
+	@Override
+	@RequestMapping("/activityDetail")
+	public ModelAndView activityDetail(@RequestParam("ac_no") int ac_no, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn") ;
+		ModelAndView mav = null;
+		ActivityDTO activity = activityService.selectOne(ac_no);
+		List<ReviewDTO> reviewList = activityService.reviewList(ac_no);
+
+		String[] category = activity.getAc_category().split(",");
+
+		String viewName = (String) request.getAttribute("viewName");
+		mav = new ModelAndView(viewName);
+		if(isLogOn!=null && isLogOn ==true) {
+			MemberDTO member = (MemberDTO) session.getAttribute("member");
+			Map pickMap = new HashMap();
+			pickMap.put("id", member.getId());
+			pickMap.put("ac_no", ac_no);
+
+			int result = activityService.checkPick(pickMap);
+			if(result == 1) {
+				mav.addObject("pick", true);
+			}
+		}
+		mav.addObject("activity", activity);
+		mav.addObject("category", category);
+		mav.addObject("reviewList", reviewList);
+		return mav;		
+	}
+
+	@Override
+	@RequestMapping("/reviewForm")
+	public ModelAndView myReview(@RequestParam("ac_no") int ac_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charse=utf-8");
+
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		ModelAndView mav = null;
+		if(isLogOn!=null && isLogOn==true) {
+			String viewName = (String) request.getAttribute("viewName");
+			mav = new ModelAndView(viewName);
+			mav.addObject("ac_no", ac_no);
+		}else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인 후 이용가능합니다..');");
+			out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+			out.println("</script>");
+			return null;
+		}
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/addReview", method=RequestMethod.POST)
+	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+
+		int result = activityService.addReview(review);
+
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(result == 1) {
+			out.println("alert('리뷰등록이 완료 되었습니다. 작성하신 리뷰는 [마이페이지 > 나의 리뷰보기]에서 확인하실 수 있습니다.')");
+		} else {
+			out.println("alert('리뷰가 등록되지 않았습니다.');");
+		}
+		out.println("location.href='"+ request.getContextPath() 
+		+ "/tour/tourDetail?tr_no="+review.getAc_no()+"';");
+		out.println("</script>");
+	}
+
+	@Override
+	@RequestMapping(value="/myPick", method=RequestMethod.GET)
+	public ModelAndView myPick(int ac_no, boolean pick, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		ModelAndView mav = null;
+		if(isLogOn!=null && isLogOn==true) {
+			String viewName = (String) request.getAttribute("viewName");
+			mav = new ModelAndView(viewName);
+		} else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인 후 이용가능합니다..');");
+			out.println("location.href='" + request.getContextPath() +"/member/loginForm.do';");
+			out.println("</script>");
+			return null;
+		}
+		ActivityDTO activity = activityService.selectOne(ac_no);
+		List<ReviewDTO> reviewList = activityService.reviewList(ac_no);
+		String[] category = activity.getAc_category().split(",");
+		mav = new ModelAndView("activity/activityDetail");
+		mav.addObject("activity", activity);
+		mav.addObject("category",category);
+		mav.addObject("reviewList",reviewList);
+
+		Map pickMap = new HashMap();
+		pickMap.put("id", member.getId());
+		pickMap.put("ac_no", ac_no);
+
+		if(pick) {
+			activityService.myPick(pickMap);
+			mav.addObject("pick",true);
+		}else {
+			activityService.delPick(pickMap);
+			mav.addObject("pick",false);
+		}
+		return mav;
+	}
 }
