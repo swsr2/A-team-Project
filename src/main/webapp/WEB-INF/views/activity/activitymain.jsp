@@ -18,7 +18,7 @@
 </style>
 </head>
 <body>
-	<form name="activity" action="/project/activity/main">
+	<form name="activity1" action="/project/activity/main">
 		<input type="hidden" name="page" value="1">
         <input class="category" type='submit' value='액티비티'/>
     </form>
