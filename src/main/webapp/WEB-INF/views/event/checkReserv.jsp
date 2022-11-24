@@ -11,14 +11,24 @@ request.setCharacterEncoding("UTF-8");
 <head>
 <meta charset="UTF-8">
 <title>이벤트 항공 상세페이지_오는편</title>
+<script>
+	let openPay;
+	function resPay(){
+		openPay = window.open("resPay","결제창","width=570, height=350, resizable = no, scrollbars = no");
+		setTimeout( function(){ 
+		openPay.window.close();
+		let frm = document.frm;
+		
+		frm.method="post";
+		frm.action="${path}/event/airReserve";
+		frm.submit();
+		},5000);
+	}
+</script>
 <style>
 form {
 	display: inline;
 	border: 1px;
-}
-
-table {
-	border: 1px solid black;
 }
 
 th {
@@ -58,9 +68,9 @@ h1 {
 	</form>
 	<br>
 	<br>
-	<form action="/project/event/airReserve">
+	<form name="frm">
 		<h1>내가 선택한 여정</h1>
-		<table align="center">
+		<table align="center" style="border: 1px solid black;">
 			<tr>
 				<th align="center">구분</th>
 				<th align="center">항공번호</th>
@@ -95,18 +105,37 @@ h1 {
 			<tr bgcolor="lightgray">
 				<td colspan="8" align="center">총 금액</td>
 				<td>${sum}</td>
+			</tr>
 		</table>
 		<br>
 		<div align="center">
 			<h3>탑승자 정보</h3>
+			<input type="hidden" name="id" value="${member.id }">
 			<table>
 				<tr>
-					<td>이름</td>
-					<td><input type="text" name="name" placeholder="이름"></td>
+					<td>성명 : </td>
+					<td><input type="text" name="name" placeholder="성명"></td>
 				</tr>
 				<tr>
-					<td>생년월일</td>
+					<td>생년월일 : </td>
 					<td><input type="text" name="birth" placeholder="예) 19000101"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><div class="select">
+						<span>결제수단</span><br><br>
+    					 <input class="in" type="radio" id="select" name="payment" value="간편계좌결제">
+    					 <label for="select">간편계좌결제</label>
+    					 <input class="in" type="radio" id="select2" name="payment" value="카카오페이">
+    					 <label for="select2">카카오페이</label><br>
+    					 <input class="in" type="radio" id="select3" name="payment" value="네이버페이">
+    					 <label for="select3">네이버페이</label>
+    					 <input class="in" type="radio" id="select4" name="payment" value="토스페이">
+    					 <label for="select4">토스페이</label><br>
+    					 <input class="in" type="radio" id="select5" name="payment" value="카드">
+    					 <label for="select5">카드</label>
+    					 <input class="in" type="radio" id="select6" name="payment" value="페이코">
+    					 <label for="select6">페이코</label>
+					</div></td>
 				</tr>
 			</table>
 		</div>
@@ -143,7 +172,7 @@ h1 {
 		</div>
 		<br>
 		<div align="center">
-			<input type="submit" value="예약하기">
+			<input type="button" onclick="resPay()" value="예약하기">
 		</div>
 	</form>
 	<br>

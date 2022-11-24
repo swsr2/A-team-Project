@@ -16,6 +16,12 @@
 form {
 	display: inline;
 }
+
+#Search td{
+	text-align:center;
+	padding: 10px;
+	font-size: 24px;
+}
 </style>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -49,8 +55,6 @@ form {
 		<input class="category" type='submit' value='숙박' />
 	</form>
 	<br>
-	<br>
-	<br>
 	<div id="Search" align="center">
 	<h1>일정선택</h1>
 	<form name="selectDate" action="${path }/event/lodDetail">
@@ -74,5 +78,6 @@ form {
 	</table>
 	</form>
 	</div>
+	<br>
 </body>
 </html>
