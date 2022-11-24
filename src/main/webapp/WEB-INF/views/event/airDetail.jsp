@@ -11,6 +11,22 @@
 <head>
 <meta charset="UTF-8">
 <title>이벤트 항공 상세페이지</title>
+<script>
+	function airRes(){
+		let id = '${member.id}';
+		if(id == null || id == ""){
+			alert('로그인 후 이용 가능합니다.');
+			location.href='${path}/member/loginForm.do';
+		} else {
+			let airFrm = document.airFrm;
+			
+			airFrm.method="GET";
+			airFrm.action="${path}/event/checkReserv"
+			airFrm.submit();
+		}
+		
+	}
+</script>
 <style>
 form {
 	display: inline;
@@ -42,7 +58,7 @@ h1 {
 	</form>
 	<br>
 	<br>
-	<form action="/project/event/checkReserv">
+	<form name="airFrm">
 	<h1>가는 편 선택</h1>
 	<table align="center" border="1">
 		<tr>
@@ -101,7 +117,7 @@ h1 {
 	</table>
 	<br>
 	<div align="center">
-	<input type="submit" value="선택완료">
+	<input type="button" onclick="airRes()" value="선택완료">
 	<input type="reset" value="다시선택">
 	</div>
 	</form>

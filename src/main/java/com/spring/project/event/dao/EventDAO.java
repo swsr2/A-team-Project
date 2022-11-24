@@ -51,7 +51,7 @@ public interface EventDAO {
 
 	public ResAirplaneDTO selectAir(int air_no);
 
-	public void resAirplane(ResAirplaneDTO resAir);
+	public int resAirplane(ResAirplaneDTO resAir);
 
 
 

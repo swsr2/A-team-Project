@@ -44,6 +44,6 @@ public interface EventService {
 
 	public ResAirplaneDTO selectAir(int air_no1);
 
-	public void resAirplane(ResAirplaneDTO depart);
+	public int resAirplane(ResAirplaneDTO depart);
 
 }
