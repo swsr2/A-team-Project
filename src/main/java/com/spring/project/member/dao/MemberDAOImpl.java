@@ -64,6 +64,22 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
+	@Override
+	public String findId(MemberDTO member) {
+		// TODO Auto-generated method stub
+		String findId = sqlSession.selectOne("mapper.member.findId", member);
+		return findId;
+	}
+
+
+	@Override
+	public String findPwd(MemberDTO member) {
+		// TODO Auto-generated method stub
+		String findPwd = sqlSession.selectOne("mapper.member.findPwd", member);
+		return findPwd;
+	}
+
+
 }
 
 

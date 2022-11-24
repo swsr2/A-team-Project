@@ -162,6 +162,18 @@
 			select * from member where id=#{id} and pwd=#{pwd}
 		]]>
 	</select>
+
+	<select id="findId" parameterType="memberDTO" resultType="String">
+		<![CDATA[
+			select id from member where name=#{name} and tel=#{tel}
+		]]>
+	</select>
+
+	<select id="findPwd" parameterType="memberDTO" resultType="String">
+		<![CDATA[
+			select pwd from member where id=#{id} and name=#{name} and tel=#{tel}
+		]]>
+	</select>
 	
 </mapper>
 
