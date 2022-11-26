@@ -26,8 +26,8 @@ form {
 </head>
 <body>
 	<div id="btn_res" align="center">
-		<button type="button" onClick="location.href='${path }/lodreservation/lodreservation'">항공예약보기</button>
-		<button type="button" onClick="location.href='${path }/airreservation/reservation'">숙소예약보기</button>
+		<button type="button" onClick="location.href='${path }/myreservation/airreservation'">항공예약보기</button>
+		<button type="button" onClick="location.href='${path }/mylodreservation/lodreservation'">숙소예약보기</button>
 	</div>
 </body>
 </html>

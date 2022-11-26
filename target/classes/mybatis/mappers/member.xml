@@ -30,7 +30,8 @@
 
 	<update id="updateMember" parameterType="memberDTO">
 		<![CDATA[
-			update member set pwd=#{pwd}, name=#{name}, email=#{email} where id=#{id}
+			update member set pwd=#{pwd}, name=#{name}, email=#{email}, age=#{age}, tel=#{tel}
+			, gender=#{gender} where id=#{id}
 		]]>
 	</update>
 

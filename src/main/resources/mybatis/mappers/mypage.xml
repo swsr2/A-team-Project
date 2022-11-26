@@ -58,9 +58,9 @@
 		<result property="price" column="price"></result>
 	</resultMap>
 	
-	<select id="lodreservationcheck" resultType="com.spring.project.mypage.dto.LodReservationDTO">
+	<select id="lodreservationcheck" resultType="lodReservationDTO">
 		<![CDATA[
-			select * from lodgin_res where id=#{id}
+			select * from lodging_res where id=#{id}
 		]]>
 	</select>
 	
