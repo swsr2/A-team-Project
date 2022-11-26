@@ -10,8 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>예약확인</title>
+<meta charset="EUC-KR">
+<title>항공예약보기</title>
 <style>
 form {
    display: inline;
@@ -25,9 +25,30 @@ form {
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
-	<div id="btn_res" align="center">
-		<button type="button" onClick="location.href='${path }/lodreservation/lodreservation'">항공예약보기</button>
-		<button type="button" onClick="location.href='${path }/airreservation/reservation'">숙소예약보기</button>
-	</div>
+		<div id="airreservation" align="center">
+			<h1>항공예약보기</h1>
+		</div>
+		<table align="center" border="1">
+			<tr>
+				<td>예약자아이디</td>
+				<td>예약자이름</td>
+				<td>출발날짜</td>
+				<td>출발시간</td>
+				<td>출발장소</td>
+				<td>도착시간</td>
+				<td>도착장소</td>
+			</tr>
+			<c:forEach var="mypage" items="${mypage }">
+			<tr>
+				<td>${mypage.id}</td>
+				<td>${mypage.name}</td>
+				<td>${mypage.air_date}</td>
+				<td>${mypage.air_departTime}</td>
+				<td>${mypage.air_departPlace}</td>
+				<td>${mypage.air_arrivalTime}</td>
+				<td>${mypage.air_arrivalPlace}</td>
+			</tr>
+			</c:forEach>
+		</table>
 </body>
 </html>
