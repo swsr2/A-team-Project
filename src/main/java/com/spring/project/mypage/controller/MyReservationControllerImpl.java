@@ -2,6 +2,7 @@ package com.spring.project.mypage.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,7 @@ import com.spring.project.mypage.dto.MyReservationDTO;
 import com.spring.project.mypage.service.MyReservationService;
 
 @Controller
-@RequestMapping("/myreservation")
+@RequestMapping("/airreservation")
 public class MyReservationControllerImpl implements MyReservationController{
 	@Autowired
 	MyReservationService reservationService;
