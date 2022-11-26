@@ -53,6 +53,10 @@ public interface EventDAO {
 
 	public int resAirplane(ResAirplaneDTO resAir);
 
+	public int allHotelCnt();
+
+	public List<LodgingDTO> hotelList(Map<String, Integer> page);
+
 
 
 

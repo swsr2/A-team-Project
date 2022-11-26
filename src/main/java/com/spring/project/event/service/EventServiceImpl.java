@@ -224,4 +224,19 @@ public class EventServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		return eventDAO.resAirplane(resAir);
 	}
+
+	@Override
+	public int allHotelCnt() {
+		// TODO Auto-generated method stub
+		return eventDAO.allHotelCnt();
+	}
+
+	@Override
+	public List<LodgingDTO> hotelList(int start, int end) {
+		// TODO Auto-generated method stub
+		Map<String, Integer> page = new HashMap<String, Integer>();
+		page.put("start", start);
+		page.put("end", end);
+		return eventDAO.hotelList(page);
+	}
 }

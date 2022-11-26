@@ -46,4 +46,8 @@ public interface EventService {
 
 	public int resAirplane(ResAirplaneDTO depart);
 
+	public int allHotelCnt();
+
+	public List<LodgingDTO> hotelList(int start, int end);
+
 }
