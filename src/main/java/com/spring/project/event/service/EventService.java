@@ -50,4 +50,12 @@ public interface EventService {
 
 	public List<LodgingDTO> hotelList(int start, int end);
 
+	public int allResortCnt();
+
+	public List<LodgingDTO> resortList(int start, int end);
+
+	public int allHouseCnt();
+
+	public List<LodgingDTO> houseList(int start, int end);
+
 }

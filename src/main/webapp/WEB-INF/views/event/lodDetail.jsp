@@ -16,7 +16,7 @@
 		display:inline;
 	}
 	
-	h3{
+	.inout{
 		text-align:center;
 	}
 	
@@ -34,12 +34,13 @@
 		<input class="category" type='submit' value='숙박' />
 	</form>
     <br><br><br>
-    <h3>일정: ${checkIn } ~ ${checkOut }</h3>
+    <h3 class="inout">일정: ${checkIn } ~ ${checkOut }</h3>
     <div class="list">
-    	<a href="${path }/event/lodDetail/hotel">#호텔</a>&emsp;
-    	<a href="">#리조트</a>&emsp;
-    	<a href="">#펜션/게하</a>
-    </div><br><br>
+    	<a href="${path }/event/lodDetail_hotel?page=1">#호텔</a>&emsp;
+    	<a href="${path }/event/lodDetail_resort?page=1">#리조트</a>&emsp;
+    	<a href="${path }/event/lodDetail_house?page=1">#펜션/게하</a>
+    </div>
+    <br><br>
     <table align="center">
     <tr align="center" >
     		<c:forEach var="lod" items="${lodList }" varStatus="status">
@@ -74,7 +75,3 @@
 </body>
 </html>
 
-<%-- <td><a href="${path}/food/resDetail?fd_no=1"><img src="${path }/resources/image/1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/1.png" width="450"/></a></td> --%>
-    	<!-- </tr> -->

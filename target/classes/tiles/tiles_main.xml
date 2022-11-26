@@ -201,8 +201,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/activity/reviewForm.jsp" />
 	</definition>
 	
-	<definition name="event/lodDetail/hotel" extends="baseLayout">
+	<definition name="event/lodDetail_hotel" extends="baseLayout">
 		<put-attribute name="title" value="이벤트_숙박" />
 		<put-attribute name="body" value="/WEB-INF/views/event/lodDetail_hotel.jsp" />
+	</definition> 
+	
+	<definition name="event/lodDetail_resort" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_숙박" />
+		<put-attribute name="body" value="/WEB-INF/views/event/lodDetail_resort.jsp" />
+	</definition> 
+	
+	<definition name="event/lodDetail_house" extends="baseLayout">
+		<put-attribute name="title" value="이벤트_숙박" />
+		<put-attribute name="body" value="/WEB-INF/views/event/lodDetail_house.jsp" />
 	</definition> 
 </tiles-definitions>

@@ -170,9 +170,45 @@
 		<![CDATA[
 			SELECT *
   				FROM (
-		        SELECT  l.*, row_number() over(order by lod_id asc) as rNum
-		          FROM lodging_list l
+		        SELECT  h.*, row_number() over(order by lod_id asc) as rNum
+		          FROM lodging_list h
 		          where lod_title like '%' || '호텔' || '%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+	
+	<select id="allResortCnt" resultType="int">
+		<![CDATA[
+			select count(*) from lodging_list where lod_title like '%' || '리조트' || '%'
+		]]>
+	</select>
+	
+	<select id="resortList" resultType="com.spring.project.event.dto.LodgingDTO" parameterType="java.util.Map">
+		<![CDATA[
+			SELECT *
+  				FROM (
+		        SELECT  r.*, row_number() over(order by lod_id asc) as rNum
+		          FROM lodging_list r
+		          where lod_title like '%' || '리조트' || '%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
+	
+	<select id="allHouseCnt" resultType="int">
+		<![CDATA[
+			select count(*) from lodging_list where not (lod_title like '%' || '호텔' || '%' or lod_title like '%' || '리조트' || '%')
+		]]>
+	</select>
+	
+	<select id="houseList" resultType="com.spring.project.event.dto.LodgingDTO" parameterType="java.util.Map">
+		<![CDATA[
+			SELECT *
+  				FROM (
+		        SELECT  r.*, row_number() over(order by lod_id asc) as rNum
+		          FROM lodging_list r
+		          where not (lod_title like '%' || '호텔' || '%' or lod_title like '%' || '리조트' || '%')
 		        ) 
 		   WHERE rNum between #{start} and #{end}
 		]]>

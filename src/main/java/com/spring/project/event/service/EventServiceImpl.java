@@ -239,4 +239,34 @@ public class EventServiceImpl implements EventService {
 		page.put("end", end);
 		return eventDAO.hotelList(page);
 	}
+
+	@Override
+	public int allResortCnt() {
+		// TODO Auto-generated method stub
+		return eventDAO.allResortCnt();
+	}
+
+	@Override
+	public List<LodgingDTO> resortList(int start, int end) {
+		// TODO Auto-generated method stub
+		Map<String, Integer> page = new HashMap<String, Integer>();
+		page.put("start", start);
+		page.put("end", end);
+		return eventDAO.resortList(page);
+	}
+
+	@Override
+	public int allHouseCnt() {
+		// TODO Auto-generated method stub
+		return eventDAO.allHouseCnt();
+	}
+
+	@Override
+	public List<LodgingDTO> houseList(int start, int end) {
+		// TODO Auto-generated method stub
+		Map<String, Integer> page = new HashMap<String, Integer>();
+		page.put("start", start);
+		page.put("end", end);
+		return eventDAO.houseList(page);
+	}
 }
