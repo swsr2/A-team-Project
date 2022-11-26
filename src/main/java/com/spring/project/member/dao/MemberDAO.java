@@ -11,4 +11,6 @@ public interface MemberDAO {
 	public int delMember(String id);
 	public MemberDTO login(MemberDTO member);
 	public int idChk(String id);
+	public String findId(MemberDTO member);
+	public String findPwd(MemberDTO member);
 }

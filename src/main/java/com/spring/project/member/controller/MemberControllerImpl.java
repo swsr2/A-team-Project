@@ -153,6 +153,49 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		return "/member/memberDetail";
 	}
 	
+	@Override
+	@RequestMapping(value="/member/findId.do", method=RequestMethod.POST)
+	public void findId(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		String findId = memberService.findId(member);
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(findId != null) {
+			out.println("alert('찾으시는 아이디는 "+findId+" 입니다.');");
+			out.println("location.href='"+request.getContextPath() +"/member/findIdForm.do';"); 
+		} else {
+			out.println("alert('입력하신 정보와 일치한 아이디가 없습니다.');");
+			out.println("location.href='"+request.getContextPath() +"/member/findIdForm.do';");
+		}
+		out.println("</script>");
+	}
+	
+	@Override
+	@RequestMapping(value="/member/findPwd.do", method=RequestMethod.POST)
+	public void findPwd(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		String findPwd = memberService.findPwd(member);
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(findPwd != null) {
+			out.println("alert('찾으시는 아이디의 비밀번호는 "+findPwd+" 입니다.');");
+			out.println("location.href='"+request.getContextPath() +"/member/findPwdForm.do';"); 
+		} else {
+			out.println("alert('입력하신 정보가 일치하지 않습니다.');");
+			out.println("location.href='"+request.getContextPath() +"/member/findPwdForm.do';");
+		}
+		out.println("</script>");
+	}
 }
 
 

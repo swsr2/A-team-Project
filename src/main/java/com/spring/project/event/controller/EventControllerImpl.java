@@ -146,7 +146,12 @@ public class EventControllerImpl implements EventController {
 		int lodCnt = eventService.allLodCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)lodCnt/postNum);
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = page * postNum;
+		}
 		int end = start + (postNum-1);
 		
 		// 한번에 표시할 페이징 번호의 갯수
