@@ -17,14 +17,23 @@ import com.spring.project.mypage.dto.MyReservationDTO;
 import com.spring.project.mypage.service.MyReservationService;
 
 @Controller
-@RequestMapping("/airreservation")
+@RequestMapping("/myreservation")
 public class MyReservationControllerImpl implements MyReservationController{
 	@Autowired
 	MyReservationService reservationService;
 
 	@Override
 	@RequestMapping("/reservation")
-	public ModelAndView mypagereservation(String id, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView mypagereservation(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName); 
+		return mav;
+	}
+	@Override
+	@RequestMapping("/airreservation")
+	public ModelAndView airreservation(String id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");

@@ -80,7 +80,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		out.println("<script>");
 		if(result == 1) {
 			out.println("alert('수정이 완료되었습니다');");
-			out.println("location.href='"+ request.getContextPath() +"/member/listMembers.do';");
+			out.println("location.href='"+ request.getContextPath() +"/mypage/mypagemain';");
 		} else {
 			out.println("alert('수정이 완료되지 못했습니다. 다시 수정하세요');");
 			out.println("location.href='"+ request.getContextPath() +"/member/modMember.do?id="+member.getId()+"';");

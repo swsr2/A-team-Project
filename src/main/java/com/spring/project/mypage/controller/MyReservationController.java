@@ -9,5 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface MyReservationController {
-	public ModelAndView mypagereservation(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView mypagereservation( HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView airreservation(String id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
 }

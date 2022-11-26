@@ -16,7 +16,7 @@ import com.spring.project.mypage.dto.LodReservationDTO;
 import com.spring.project.mypage.service.LodReservationService;
 
 @Controller
-@RequestMapping("/lodreservation")
+@RequestMapping("/mylodreservation")
 public class LodReservationControllerImpl implements LodReservationController {
 	
 	@Autowired
