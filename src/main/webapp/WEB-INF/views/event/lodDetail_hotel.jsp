@@ -36,9 +36,9 @@
     <br><br><br>
     <h3>일정: ${checkIn } ~ ${checkOut }</h3>
     <div class="list">
-    	<a href="${path }/event/lodDetail/hotel">#호텔</a>&emsp;
-    	<a href="">#리조트</a>&emsp;
-    	<a href="">#펜션/게하</a>
+    	<a href="${path }/event/lodDetail_hotel?page=1">#호텔</a>&emsp;
+    	<a href="${path }/event/lodDetail_resort?page=1">#리조트</a>&emsp;
+    	<a href="${path }/event/lodDetail_house?page=1">#펜션/게하</a>
     </div><br><br>
     <table align="center">
     <tr align="center" >
@@ -57,24 +57,20 @@
  <div class="page">
  <h3>
     <c:if test="${prev}">
- <span>[ <a href="${path }/event/lodDetail/hotel?page=${startPageNum - 1}">이전</a> ]</span>
+ <span>[ <a href="${path }/event/lodDetail_hotel?page=${startPageNum - 1}">이전</a> ]</span>
 </c:if>
 
 <c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
   <span>
-   <a href="${path }/event/lodDetail/hotel?page=${num}">${num}</a> 
+   <a href="${path }/event/lodDetail_hotel?page=${num}">${num}</a> 
  </span>
 </c:forEach>
 
 <c:if test="${next}">
- <span>[ <a href="${path }/event/lodDetail?page=${endPageNum+1}">다음</a> ]</span>
+ <span>[ <a href="${path }/event/lodDetail_hotel?page=${endPageNum+1}">다음</a> ]</span>
 </c:if>
 </h3>
 </div>
 </body>
 </html>
 
-<%-- <td><a href="${path}/food/resDetail?fd_no=1"><img src="${path }/resources/image/1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/1.png" width="450"/></a></td> --%>
-    	<!-- </tr> -->

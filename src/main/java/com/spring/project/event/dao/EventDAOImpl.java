@@ -186,5 +186,33 @@ public class EventDAOImpl implements EventDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.event.hotelList",page);
 	}
+
+
+	@Override
+	public int allResortCnt() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.allResortCnt");
+	}
+
+
+	@Override
+	public List<LodgingDTO> resortList(Map<String, Integer> page) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.resortList",page);
+	}
+
+
+	@Override
+	public int allHouseCnt() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.allHouseCnt");
+	}
+
+
+	@Override
+	public List<LodgingDTO> houseList(Map<String, Integer> page) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.houseList",page);
+	}
 	
 }

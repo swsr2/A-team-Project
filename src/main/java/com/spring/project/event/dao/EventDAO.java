@@ -57,6 +57,14 @@ public interface EventDAO {
 
 	public List<LodgingDTO> hotelList(Map<String, Integer> page);
 
+	public int allResortCnt();
+
+	public List<LodgingDTO> resortList(Map<String, Integer> page);
+
+	public int allHouseCnt();
+
+	public List<LodgingDTO> houseList(Map<String, Integer> page);
+
 
 
 

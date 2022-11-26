@@ -185,73 +185,19 @@ public class EventControllerImpl implements EventController {
 		return mav;
 	}
 	
+
 	@Override
-	@RequestMapping("/lodDetail/reosrt")
-	public ModelAndView lodDetailHotel(@RequestParam("page") int page,
-			HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping("/lodDetail_hotel")
+	public ModelAndView lodDetailHotel(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
-		if(!(request.getParameter("lodDate") == null)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("checkIn", request.getParameter("checkIn"));
-			session.setAttribute("checkOut", request.getParameter("checkOut"));
-		}
-		
-		int lodCnt = eventService.allLodCnt();
-		int postNum = 12;
-		int pageNum = (int)Math.ceil((double)lodCnt/postNum);
-		int start = page * postNum;
-		int end = start + (postNum-1);
-		
-		// 한번에 표시할 페이징 번호의 갯수
-		int pageNum_cnt = 10;
-
-		// 표시되는 페이지 번호 중 마지막 번호
-		int endPageNum = (int)(Math.ceil((double)page / (double)pageNum_cnt) * pageNum_cnt);
-
-		// 표시되는 페이지 번호 중 첫번째 번호
-		int startPageNum = endPageNum - (pageNum_cnt - 1);
-		
-		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)lodCnt / (double)postNum));
-		 
-		if(endPageNum > endPageNum_tmp) {
-		 endPageNum = endPageNum_tmp;
-		}
-		boolean prev = startPageNum == 1 ? false : true;
-		boolean next = endPageNum * pageNum_cnt >= lodCnt ? false : true;
-
-		List<LodgingDTO> lodList = eventService.lodList(start, end);
-		mav.addObject("lodList", lodList);
-		mav.addObject("pageNum", pageNum);
-		// 시작 및 끝 번호
-		mav.addObject("startPageNum", startPageNum);
-		mav.addObject("endPageNum", endPageNum);
-
-		// 이전 및 다음 
-		mav.addObject("prev", prev);
-		mav.addObject("next", next);
-		return mav;
-	}
+		HttpSession session = request.getSession();
+		session.getAttribute("checkIn");
+		session.getAttribute("checkOut");
 	
-	@Override
-	@RequestMapping("/lodDetail/hotel")
-	public ModelAndView lodDetailResort(@RequestParam("page") int page,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		
-		if(!(request.getParameter("lodDate") == null)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("checkIn", request.getParameter("checkIn"));
-			session.setAttribute("checkOut", request.getParameter("checkOut"));
-		}
-		
 		int HotelCnt = eventService.allHotelCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)HotelCnt/postNum);
@@ -289,24 +235,22 @@ public class EventControllerImpl implements EventController {
 		return mav;
 	}
 	
+	
 	@Override
-	@RequestMapping("/lodDetail/house")
-	public ModelAndView lodDetailHouse(@RequestParam("page") int page,
-			HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping("/lodDetail_resort")
+	public ModelAndView lodDetailResort(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
-		if(!(request.getParameter("lodDate") == null)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("checkIn", request.getParameter("checkIn"));
-			session.setAttribute("checkOut", request.getParameter("checkOut"));
-		}
+		HttpSession session = request.getSession();
+		session.getAttribute("checkIn");
+		session.getAttribute("checkOut");
 		
-		int lodCnt = eventService.allLodCnt();
+		int ResortCnt = eventService.allResortCnt();
 		int postNum = 12;
-		int pageNum = (int)Math.ceil((double)lodCnt/postNum);
+		int pageNum = (int)Math.ceil((double)ResortCnt/postNum);
 		int start = page * postNum;
 		int end = start + (postNum-1);
 		
@@ -320,16 +264,16 @@ public class EventControllerImpl implements EventController {
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)lodCnt / (double)postNum));
+		int endPageNum_tmp = (int)(Math.ceil((double)ResortCnt / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 		 endPageNum = endPageNum_tmp;
 		}
 		boolean prev = startPageNum == 1 ? false : true;
-		boolean next = endPageNum * pageNum_cnt >= lodCnt ? false : true;
+		boolean next = endPageNum * pageNum_cnt >= ResortCnt ? false : true;
 
-		List<LodgingDTO> lodList = eventService.lodList(start, end);
-		mav.addObject("lodList", lodList);
+		List<LodgingDTO> resortList = eventService.resortList(start, end);
+		mav.addObject("resortList", resortList);
 		mav.addObject("pageNum", pageNum);
 		// 시작 및 끝 번호
 		mav.addObject("startPageNum", startPageNum);
@@ -340,7 +284,58 @@ public class EventControllerImpl implements EventController {
 		mav.addObject("next", next);
 		return mav;
 	}
+	
+	
+	
+	@Override
+	@RequestMapping("/lodDetail_house")
+	public ModelAndView lodDetailHouse(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		HttpSession session = request.getSession();
+		session.getAttribute("checkIn");
+		session.getAttribute("checkOut");
+		
+		int HouseCnt = eventService.allHouseCnt();
+		int postNum = 12;
+		int pageNum = (int)Math.ceil((double)HouseCnt/postNum);
+		int start = page * postNum;
+		int end = start + (postNum-1);
+		
+		// 한번에 표시할 페이징 번호의 갯수
+		int pageNum_cnt = 10;
 
+		// 표시되는 페이지 번호 중 마지막 번호
+		int endPageNum = (int)(Math.ceil((double)page / (double)pageNum_cnt) * pageNum_cnt);
+
+		// 표시되는 페이지 번호 중 첫번째 번호
+		int startPageNum = endPageNum - (pageNum_cnt - 1);
+		
+		// 마지막 번호 재계산
+		int endPageNum_tmp = (int)(Math.ceil((double)HouseCnt / (double)postNum));
+		 
+		if(endPageNum > endPageNum_tmp) {
+		 endPageNum = endPageNum_tmp;
+		}
+		boolean prev = startPageNum == 1 ? false : true;
+		boolean next = endPageNum * pageNum_cnt >= HouseCnt ? false : true;
+
+		List<LodgingDTO> houseList = eventService.houseList(start, end);
+		mav.addObject("houseList", houseList);
+		mav.addObject("pageNum", pageNum);
+		// 시작 및 끝 번호
+		mav.addObject("startPageNum", startPageNum);
+		mav.addObject("endPageNum", endPageNum);
+
+		// 이전 및 다음 
+		mav.addObject("prev", prev);
+		mav.addObject("next", next);
+		return mav;
+	}
+	
 	@Override
 	@RequestMapping("/lodInfo")
 	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id, 

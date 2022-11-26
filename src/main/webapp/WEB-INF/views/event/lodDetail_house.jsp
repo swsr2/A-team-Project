@@ -39,15 +39,14 @@
     	<a href="${path }/event/lodDetail_hotel?page=1">#호텔</a>&emsp;
     	<a href="${path }/event/lodDetail_resort?page=1">#리조트</a>&emsp;
     	<a href="${path }/event/lodDetail_house?page=1">#펜션/게하</a>
-    </div>
-    <br><br>
+    </div><br><br>
     <table align="center">
     <tr align="center" >
-    		<c:forEach var="lod" items="${lodList }" varStatus="status">
-	 			<td><a href="${path}/event/lodInfo?lod_id=${lod.lod_id}" style="padding:10px;">
-	 				<img class="imgSize" src="${lod.lod_imgPath }" 
+    		<c:forEach var="house" items="${houseList }" varStatus="status">
+	 			<td><a href="${path}/event/lodInfo?lod_id=${house.lod_id}" style="padding:10px;">
+	 				<img class="imgSize" src="${house.lod_imgPath }" 
 	 						onerror="this.src='${path }/resources/image/empty_img.png'" width="350"/></a>
-	 				<p>${lod.lod_title }</p></td>
+	 				<p>${house.lod_title }</p></td>
 	 			<c:if test="${(status.count%3) == 0 }">
 	 				</tr>
 	 				<tr align="center">
@@ -58,17 +57,17 @@
  <div class="page">
  <h3>
     <c:if test="${prev}">
- <span>[ <a href="${path }/event/lodDetail?page=${startPageNum - 1}">이전</a> ]</span>
+ <span>[ <a href="${path }/event/lodDetail_house?page=${startPageNum - 1}">이전</a> ]</span>
 </c:if>
 
 <c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
   <span>
-   <a href="${path }/event/lodDetail?page=${num}">${num}</a> 
+   <a href="${path }/event/lodDetail_house?page=${num}">${num}</a> 
  </span>
 </c:forEach>
 
 <c:if test="${next}">
- <span>[ <a href="${path }/event/lodDetail?page=${endPageNum+1}">다음</a> ]</span>
+ <span>[ <a href="${path }/event/lodDetail_house?page=${endPageNum+1}">다음</a> ]</span>
 </c:if>
 </h3>
 </div>
