@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.project.member.dto.MemberDTO;
+
 
 @Controller
 @RequestMapping("/main")
@@ -39,12 +41,12 @@ public class MainControllerImpl implements MainController{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		
-		String id = "id"; // request.getParameter("id");
+		String id = "id";
+		String email =request.getParameter("email");
 		String title =request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		mailService.sendMail("jjkjadm@gmail.com", id+"님의 문의:: "+ title, content);
+		mailService.sendMail(email, id+"님의 문의 내용:: "+ title, content);
 		
 		PrintWriter out = response.getWriter();
 		out.println("<script>");

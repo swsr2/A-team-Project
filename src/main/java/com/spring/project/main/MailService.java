@@ -21,7 +21,7 @@ public class MailService {
 		try {
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "utf-8");
 			messageHelper.setCc("jjkjadm@gmail.com"); 
-			messageHelper.setFrom("jjkjadm@gmail.com", "admin");
+			messageHelper.setFrom("jjkjadm@gmail.com", "제주가고싶조_admin");
 			messageHelper.setSubject(title);
 			messageHelper.setTo(to);
 			messageHelper.setText(body, true);
