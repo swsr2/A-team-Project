@@ -141,6 +141,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mytravle.jsp" />
 	</definition>
 	
+	<definition name="/mypage/airreservation" extends="baseLayout">
+		<put-attribute name="title" value="항공예약보기" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/airreservation.jsp" />
+	</definition>
+	
+	<definition name="/mypage/lodreservation" extends="baseLayout">
+		<put-attribute name="title" value="숙소예약보기" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/lodreservation.jsp" />
+	</definition>
+	
 	<definition name="/member/memberDetail" extends="baseLayout">
 		<put-attribute name="title" value="정보수정" />
 		<put-attribute name="body" value="/WEB-INF/views/member/memberDetail.jsp" />
