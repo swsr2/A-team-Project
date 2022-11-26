@@ -10,6 +10,7 @@
 
 <meta charset="UTF-8">
 <title>로그인</title>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <style>
 input {
 	width: 20%;
@@ -43,6 +44,19 @@ a {
 			<input type="password" name="pwd" placeholder="비밀번호" class="in"><br>
 			<input type="submit" id="btn" value="로그인"><br>
 			<input type="reset" id="btn" value="다시입력"><br>
+			
+		<ul>
+			<li onclick="kakaoLogin();">
+		      <a href="javascript:void(0)">
+		          <span>카카오 로그인</span>
+		      </a>
+			</li>
+			<li onclick="kakaoLogout();">
+		      <a href="javascript:void(0)">
+		          <span>카카오 로그아웃</span>
+		      </a>
+			</li>
+		</ul>
 			
 			<br><br>
 			<a href="${contextPath}/project/member/findIdForm.do" style="text-decoration: none;">아이디 찾기</a>  | 

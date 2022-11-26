@@ -43,4 +43,25 @@
 		]]>
 	</select>
 	
+	<resultMap type="lodReservationDTO" id="lodreservationResult">
+		<result property="lod_id" column="lod_id"></result>
+		<result property="id" column="id"></result>
+		<result property="res_name" column="res_name"></result>
+		<result property="res_tel" column="res_tel"></result>
+		<result property="lod_title" column="lod_title"></result>
+		<result property="r_title" column="r_title"></result>
+		<result property="lod_checkIn" column="lod_checkIn"></result>
+		<result property="lod_checkOut" column="lod_checkOut"></result>
+		<result property="res_from" column="res_from"></result>
+		<result property="res_to" column="res_to"></result>
+		<result property="payment" column="payment"></result>
+		<result property="price" column="price"></result>
+	</resultMap>
+	
+	<select id="lodreservationcheck" resultType="com.spring.project.mypage.dto.LodReservationDTO">
+		<![CDATA[
+			select * from lodging_res where id=#{id}
+		]]>
+	</select>
+	
 </mapper>

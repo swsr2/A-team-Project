@@ -60,7 +60,7 @@
 	
 	<select id="lodreservationcheck" resultType="com.spring.project.mypage.dto.LodReservationDTO">
 		<![CDATA[
-			select * from lodgin_res where id=#{id}
+			select * from lodging_res where id=#{id}
 		]]>
 	</select>
 	
