@@ -17,10 +17,10 @@
 	<h1 style="text-align:center;">마이페이지</h1>
 	<div id="btn_group1" align="center">
 		<button type="button" onClick="location.href='${path }/member/memberDetail'">내 정보수정</button>
-		<button type="button" onClick="location.href='${path }/mypage/myreview'">내가 쓴리뷰</button>
+		<button type="button" onClick="location.href='${path }/myreview/review'">내가 쓴리뷰</button>
 	</div>
 	<div id="btn_group2" align="center">
-		<button type="button" onClick="location.href='${path }/mypage/myreservation'">내 예약확인</button>
+		<button type="button" onClick="location.href='${path }/myreservation/reservation'">내 예약확인</button>
 		<button type="button" onClick="location.href='${path }/mypage/mytravle'">내 여행일정</button>
 	</div>
 </body>

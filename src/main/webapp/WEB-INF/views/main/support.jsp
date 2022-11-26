@@ -10,6 +10,7 @@
 	function success(){
 		let form = document.supportForm;
 		
+		let email = form.email.value;
 		let title = form.title.value;
   		let content = form.content.value;
 		
@@ -28,6 +29,10 @@
 	<h1 style="text-align:center;">1:1 문의하기</h1>
 	<form name="supportForm" method="post" action="${path }/main/sendEmail">
 		<table border="0" align="center">
+			<tr>
+				<th align="right">메일주소 : </th>
+				<td colspan="2"><input type="email" size="63" maxlength="500" name="email"></td>
+			</tr>
 			<tr>
 				<th align="right">문의제목 : </th>
 				<td colspan="2"><input type="text" size="63" maxlength="500" name="title"></td>
