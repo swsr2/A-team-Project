@@ -20,4 +20,8 @@ public interface MemberController {
 	public void login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse resposne) throws Exception;
 	public int idChk(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public void findId(MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
+	public void findPwd(MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
 }

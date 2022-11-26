@@ -39,14 +39,14 @@ a {
 
 	<div align="center">
 		<h3>아이디 찾기</h3>
-		<form method="post" action="/project/member/aaa.do">
-			<input type="text" name="id" placeholder="이름" class="in"><br>
-			<input type="text" name="pwd" placeholder="전화번호" class="in"><br>
+		<form method="post" action="/project/member/findId.do">
+			<input type="text" name="name" placeholder="이름" class="in"><br>
+			<input type="text" name="tel" placeholder="전화번호" class="in"><br>
 			<input type="submit" id="btn" value="아이디 찾기"><br>
 			<input type="reset" id="btn" value="다시입력"><br>
 			
 			<br><br>
-			<a href="#" style="text-decoration: none;">비밀번호 찾기</a> | 
+			<a href="${contextPath}/project/member/findPwdForm.do" style="text-decoration: none;">비밀번호 찾기</a> | 
 			<a href="${contextPath}/project/member/memberForm.do" style="text-decoration: none;">회원가입</a> 
 		</form>
 	</div>
