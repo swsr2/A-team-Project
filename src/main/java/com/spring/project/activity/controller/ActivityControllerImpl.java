@@ -48,10 +48,16 @@ public class ActivityControllerImpl implements ActivityController{
 
 		int pageNum = (int)Math.ceil((double)ActivityCnt/postNum);
 
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 
 		int end = start + (postNum-1);
-
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
 		// 한번에 표시할 페이징 번호의 갯수
 		int pageNum_cnt = 10;
 
@@ -93,7 +99,12 @@ public class ActivityControllerImpl implements ActivityController{
 		int postNum = 12;
 
 		int pageNum = (int)Math.ceil((double)crsCnt/postNum);
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 
 		int end = start + (postNum-1);
 

@@ -39,7 +39,12 @@ public class TourControllerImpl implements TourController {
 		
 		int pageNum = (int)Math.ceil((double)TourCnt/postNum);
 		
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		
 		int end = start + (postNum-1);
 		
@@ -83,7 +88,12 @@ public class TourControllerImpl implements TourController {
 		int postNum = 12;
 		
 		int pageNum = (int)Math.ceil((double)orummCnt/postNum);
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		
 		int end = start + (postNum-1);
 		
@@ -127,7 +137,12 @@ public class TourControllerImpl implements TourController {
 		int postNum = 12;
 		
 		int pageNum = (int)Math.ceil((double)beachCnt/postNum);
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		
 		int end = start + (postNum-1);
 		

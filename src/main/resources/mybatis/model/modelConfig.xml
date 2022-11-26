@@ -14,6 +14,7 @@
 		<typeAlias type="com.spring.project.event.dto.ResAirplaneDTO" alias="resAirplaneDTO" />
 		<typeAlias type="com.spring.project.mypage.dto.ReviewDTO" alias="myReviewDTO" />
 		<typeAlias type="com.spring.project.mypage.dto.MyReservationDTO" alias="myReservationDTO" />
+		<typeAlias type="com.spring.project.mypage.dto.LodReservationDTO" alias="lodReservationDTO" />
 		<!--
 		<typeAlias type="com.spring.project.board.dto.ArticleDTO" alias="articleDTO" />
 		<typeAlias type="com.spring.project.board.dto.ImageDTO" alias="imageDTO" />
