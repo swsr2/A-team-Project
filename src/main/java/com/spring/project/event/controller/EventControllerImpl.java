@@ -146,11 +146,12 @@ public class EventControllerImpl implements EventController {
 		int lodCnt = eventService.allLodCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)lodCnt/postNum);
+		
 		int start = 0;
 		if(page == 1) {
 			start = 1;
 		}else {
-			start = page * postNum;
+			start = (page-1) * postNum + 1;
 		}
 		int end = start + (postNum-1);
 		
@@ -201,7 +202,13 @@ public class EventControllerImpl implements EventController {
 		int HotelCnt = eventService.allHotelCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)HotelCnt/postNum);
-		int start = page * postNum;
+		
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		int end = start + (postNum-1);
 		
 		// 한번에 표시할 페이징 번호의 갯수
@@ -251,7 +258,13 @@ public class EventControllerImpl implements EventController {
 		int ResortCnt = eventService.allResortCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)ResortCnt/postNum);
-		int start = page * postNum;
+		
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		int end = start + (postNum-1);
 		
 		// 한번에 표시할 페이징 번호의 갯수
@@ -302,7 +315,13 @@ public class EventControllerImpl implements EventController {
 		int HouseCnt = eventService.allHouseCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)HouseCnt/postNum);
-		int start = page * postNum;
+		
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		int end = start + (postNum-1);
 		
 		// 한번에 표시할 페이징 번호의 갯수

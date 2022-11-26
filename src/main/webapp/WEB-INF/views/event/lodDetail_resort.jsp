@@ -16,7 +16,7 @@
 		display:inline;
 	}
 	
-	h3{
+	.inout{
 		text-align:center;
 	}
 	
@@ -34,7 +34,7 @@
 		<input class="category" type='submit' value='숙박' />
 	</form>
     <br><br><br>
-    <h3>일정: ${checkIn } ~ ${checkOut }</h3>
+    <h3 class="inout">일정: ${checkIn } ~ ${checkOut }</h3>
     <div class="list">
     	<a href="${path }/event/lodDetail_hotel?page=1">#호텔</a>&emsp;
     	<a href="${path }/event/lodDetail_resort?page=1">#리조트</a>&emsp;
