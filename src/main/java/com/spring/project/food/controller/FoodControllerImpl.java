@@ -40,7 +40,12 @@ public class FoodControllerImpl implements FoodController {
 		int postNum = 12;
 		
 		int pageNum = (int)Math.ceil((double)FoodCnt/postNum);
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		
 		int end = start + (postNum-1);
 		
@@ -84,7 +89,12 @@ public class FoodControllerImpl implements FoodController {
 		int postNum = 12;
 		
 		int pageNum = (int)Math.ceil((double)cafeCnt/postNum);
-		int start = page * postNum;
+		int start = 0;
+		if(page == 1) {
+			start = 1;
+		}else {
+			start = (page-1) * postNum + 1;
+		}
 		
 		int end = start + (postNum-1);
 		
