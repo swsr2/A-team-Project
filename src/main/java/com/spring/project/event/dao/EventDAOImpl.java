@@ -172,5 +172,19 @@ public class EventDAOImpl implements EventDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.insert("mapper.event.resAirplane",resAir);
 	}
+
+
+	@Override
+	public int allHotelCnt() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.event.allHotelCnt");
+	}
+
+
+	@Override
+	public List<LodgingDTO> hotelList(Map<String, Integer> page) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.event.hotelList",page);
+	}
 	
 }

@@ -159,4 +159,22 @@
 			select * from review where lod_id=#{lod_id}
 		]]>
 	</select>
+	
+	<select id="allHotelCnt" resultType="int">
+		<![CDATA[
+			select count(*) from lodging_list where lod_title like '%' || '호텔' || '%'
+		]]>
+	</select>
+	
+	<select id="hotelList" resultType="com.spring.project.event.dto.LodgingDTO" parameterType="java.util.Map">
+		<![CDATA[
+			SELECT *
+  				FROM (
+		        SELECT  l.*, row_number() over(order by lod_id asc) as rNum
+		          FROM lodging_list l
+		          where lod_title like '%' || '호텔' || '%'
+		        ) 
+		   WHERE rNum between #{start} and #{end}
+		]]>
+	</select>
 </mapper>
