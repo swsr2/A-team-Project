@@ -33,19 +33,18 @@ table {
   border: 1px solid #ddd;
 }
 #airmyres td {
-  padding: 8px;
+  padding: 10px;
   width:100px;
+  text-align:center;
 }
 
 #airmyres th {
   font-weight: lighter;
   padding: 8px;
-  padding-top: 8px;
   padding-bottom: 12px;
   text-align: left;
-  background-color:#9ACD32;
+  background-color:#B8E6E1;
   color: black;
-}
 
 #airmyres tr:nth-child(even){background-color:white;}
 
@@ -53,7 +52,6 @@ table {
 
 h1 {
 	text-align:center;
-	color:orange;
 }
 >>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 </style>
@@ -82,10 +80,10 @@ h1 {
 >>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 			<tr>
 				<th colspan="4"><c:choose>
-						<c:when test="${status.first}">
+						<c:when test="${(status.count%2)==1}">
 						가는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
 						</c:when>
-						<c:when test="${status.last}">
+						<c:when test="${(status.count%2)==0}">
 						오는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
 						</c:when>
 					</c:choose>
