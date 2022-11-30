@@ -64,11 +64,11 @@ h3 {
 		<br>
 		<h3>[제주도 액티비티 여행 미리보기]</h3>
 	<div id="youtube">
-		<iframe width="730" height="450" src="https://www.youtube.com/embed/g1bviu_L_fE" title="(한국관광공사)두 남자가 떠나는 제주도 액티비티 여행 [Exploring Jeju]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe width="70%" height="500px" src="https://www.youtube.com/embed/g1bviu_L_fE" title="(한국관광공사)두 남자가 떠나는 제주도 액티비티 여행 [Exploring Jeju]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
 	<br>
 	<div>
-		<a href="#"><img class="mainSample" src="${path }/resources/image/mainSample.png" width="730"></a>
+		<a href="#"><img class="mainSample" src="${path }/resources/image/mainSample.png" width="52.5%"></a>
 	</div>
 	<br>
 </body>

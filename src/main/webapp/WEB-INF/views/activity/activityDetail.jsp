@@ -11,9 +11,6 @@
 <head>
 <meta charset="UTF-8">
 <title>즐기멍 상세페이지</title>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 <script>
 	function myPick(){
 		let heart = document.getElementById("heart");
@@ -86,65 +83,8 @@ li button {
  			<td width="100">설명 :</td>
  			<td width="600">${activity.ac_info }</td>
      	</tr>
-     	<tr>
- 			<td width="100">전화번호 :</td>
- 			<td>${activity.ac_phoneNo }</td>
-     	</tr>
-     	<tr>
- 			<td width="100">지번주소 :</td>
- 			<td>${activity.ac_address }</td> 
-     	</tr>
-     	<tr>
- 			<td width="100">도로명 주소 :</td>
- 			<td>${activity.ac_roadAddress }</td>
-     	</tr>
-     	<tr>
- 			<td colspan="2">
- 				
- 			</td>
-     	</tr>
     </table>
     
-    <div id="map" style="width:500px;height:400px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=257ccbeb673c6cdd4c24640b36fbfb68&libraries=services"></script>
-	<script type="text/javascript">
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
-
-	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new kakao.maps.services.Geocoder();
-
-	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch("${activity.ac_roadAddress}", function(result, status) {
-
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
-
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;"><a href="https://map.kakao.com/link/search/${activity.ac_title}">${activity.ac_title}</a></div>'
-        });
-        infowindow.open(map, marker);
-		
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-    	} 
-    	
-	});  
-	</script>
     
     <div id="myMenu">
 	<ul id="myMenuList">

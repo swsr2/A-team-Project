@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>맛집 상세페이지</title>
+<title>숙소 상세페이지</title>
 <script>
 	let openPay;
 	function reservation(){
@@ -38,6 +38,31 @@
 		frm.submit();
 		},5000);
 	}
+</script>
+
+<script type="text/javascript">
+	var strDate1 = '${checkIn}';
+	var strDate2 = '${checkOut}';
+	var arr1 = strDate1.split('-');
+	var arr2 = strDate2.split('-');
+	var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+	var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+	
+	
+	// 날짜 차이 알아 내기 
+	var diff = dat2 - dat1;
+	var currDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+	var currMonth = currDay * 30;// 월 만듬
+	var currYear = currMonth * 12; // 년 만듬
+	
+	//document.write("* 날짜 두개 : " + strDate1 + ", " + strDate2 + "<br/>");
+	//document.write("* 일수 차이 : " + parseInt(diff/currYear) + " 년<br/>");
+	//document.write("* 월수 차이 : " + parseInt(diff/currMonth) + " 월<br/>");
+	//document.write("* 년수 차이 : " + parseInt(diff/currdate) + " 일<br/><br/>");
+	
+	// 또 다른 날짜 구하는 방법 
+	//dat1.setMonth(dat1.getMonth() + 3);
+	//document.write("* 3개월 더하기 : " + dat1.toLocaleString() + "<br/>");
 </script>
 <style>
 form {
