@@ -16,12 +16,10 @@
 form {
    display: inline;
 }
-<<<<<<< HEAD
 table {
     border-spacing: 0px;
     border-style: none;
     padding: 0px;}
-=======
 #airmyres {
   border-collapse:collapse;
   border-radius:25px;
@@ -65,19 +63,8 @@ h1 {
 		<div id="airreservation" align="center">
 			<h1>내 항공예약 보기</h1>
 		</div>
-<<<<<<< HEAD
-		<div>
-		<td>가는날</td>
-		</div>
-		<div>
-		<td>오는날</td>
-		</div>
-		
-		<table align="center" border="1" >
-=======
 		<table id="airmyres">
 		<c:forEach var="mypage" items="${mypage }" varStatus="status">
->>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 			<tr>
 				<th colspan="4"><c:choose>
 						<c:when test="${(status.count%2)==1}">
