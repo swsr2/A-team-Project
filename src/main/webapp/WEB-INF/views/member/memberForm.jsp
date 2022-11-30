@@ -22,7 +22,7 @@ window.onload = function() {
 	$("#emailChk").text("ex) test@test.com");
 	// id 와 pw 적합여부 검사(4~12자리, 영어대소문자, 숫자만 가능)
 	/* let val = /^[a-zA-Z0-9]{4,15}$/ */
-	let val = /^[a-z]{3,15}$/
+	let val = /^[a-z|A-Z|0-9]{3,15}$/
 	
 	// 이메일형식 적합여부 검사
 	let email_val = /^[a-zA-Z0-9]([-_\.]?[a-zA-Z0-9])*@[a-zA-Z0-9]([-_\.]?[a-zA-Z0-9])*\.[a-zA-Z0-9]{2,3}$/i
@@ -219,7 +219,7 @@ select {
 			<p class="check"></p><br>
 			<input type="number" name="age" placeholder="나이" class="in"><br>
 			<p class="check"></p><br>
-			<input type="text" id="tel" name="tel" placeholder="전화번호(숫자만 입력하세요)" class="in"><br>
+			<input type="text" id="tel" name="tel" placeholder="전화번호" class="in"><br>
 			<p id="telChk" class="check"></p><br>
 			<input type="email" id="email" name="email" placeholder="이메일" class="in"><br>
 			<p id="emailChk" class="check"></p><br>
