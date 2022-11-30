@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>맛집 상세페이지</title>
+<title>숙소 리스트 페이지</title>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
@@ -29,9 +29,9 @@
 			location.href='${path}/event/myPick?lod_id=${lodging.lod_id}&pick=false';
 		}
 	}
-	function encoder(r_title,lod_id){
+	function encoder(r_title, lod_id, resultDay){
 		r_title = encodeURIComponent(r_title);
-		location.href='${path}/event/roomRes?lod_id='+lod_id+'&r_title='+r_title;
+		location.href='${path}/event/roomRes?lod_id='+lod_id+'&r_title='+r_title+'&resultDay='+resultDay;
 	}
 </script>
 <style>
@@ -178,10 +178,11 @@ td {
 	</div>
 	<br><br>
 	<hr>
+	<!-- 숙박업체 룸정보 -->
 	<div id="roomInfo">
-	<h4 align="center">${checkIn } ~ ${checkOut }</h4>
+	<h4 align="center">${checkIn } ~ ${checkOut } [${resultDay }박]</h4>
 	<c:forEach var="room" items="${roomList }">
-		<a href="javascript:encoder('${room.r_title}',${room.lod_id })" 
+		<a href="javascript:encoder('${room.r_title}', ${room.lod_id }, ${resultDay })" 
 					style="color:black; text-decoration: none;">
 		<table align="center" width="40%" style="border-bottom: 1px solid gray;">
 				<tr>
@@ -201,20 +202,20 @@ td {
 							<c:when test="${nowMonth >= 5  and nowMonth <= 10  }">
 								<c:choose>
 									<c:when test="${nowDay == 6 or nowDay == 7 }">
-										${room.peak_weekend }
+										[1박 기준]${room.peak_weekend }
 									</c:when>
 									<c:otherwise>
-										${room.peak_weekDay }
+										[1박 기준]${room.peak_weekDay }
 									</c:otherwise>
 								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<c:choose>
 									<c:when test="${nowDay == 6 or nowDay == 7 }">
-										${room.low_weekend }
+										[1박 기준]${room.low_weekend }
 									</c:when>
 									<c:otherwise>
-										${room.low_weekDay }
+										[1박 기준]${room.low_weekDay }
 									</c:otherwise>
 								</c:choose>
 							</c:otherwise>

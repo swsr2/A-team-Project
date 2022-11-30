@@ -34,7 +34,7 @@
 		<input class="category" type='submit' value='숙박' />
 	</form>
     <br><br><br>
-    <h3 class="inout">일정: ${checkIn } ~ ${checkOut }</h3>
+    <h3 class="inout">일정: ${checkIn } ~ ${checkOut } [${resultDay }박]</h3>
     <div class="list">
     	<a href="${path }/event/lodDetail_hotel?page=1">#호텔</a>&emsp;
     	<a href="${path }/event/lodDetail_resort?page=1">#리조트</a>&emsp;
@@ -44,7 +44,7 @@
     <table align="center">
     <tr align="center" >
     		<c:forEach var="lod" items="${lodList }" varStatus="status">
-	 			<td><a href="${path}/event/lodInfo?lod_id=${lod.lod_id}" style="padding:10px;">
+	 			<td><a href="${path}/event/lodInfo?lod_id=${lod.lod_id}&resultDay=${resultDay}" style="padding:10px;">
 	 				<img class="imgSize" src="${lod.lod_imgPath }" 
 	 						onerror="this.src='${path }/resources/image/empty_img.png'" width="350"/></a>
 	 				<p>${lod.lod_title }</p></td>

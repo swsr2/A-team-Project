@@ -31,9 +31,9 @@ public interface EventController {
 	public ModelAndView lodDetailResort(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView lodDetailHouse(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
-	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id,
+	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id, @RequestParam("resultDay") int resultDay,
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView roomRes(@ModelAttribute("room")  RoomInfoDTO room,
+	public ModelAndView roomRes(@ModelAttribute("room")  RoomInfoDTO room, @RequestParam("resultDay") int resultDay, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public String resPay(HttpServletRequest request, HttpServletResponse response)
 			throws Exception ;

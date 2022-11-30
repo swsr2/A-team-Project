@@ -1,6 +1,9 @@
 package com.spring.project.event.controller;
 
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +24,9 @@ import com.spring.project.event.dto.AirplaneDTO;
 import com.spring.project.event.service.EventService;
 import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.member.dto.MemberDTO;
+
+import jdk.internal.org.jline.utils.Log;
+
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
 import com.spring.project.event.dto.ResAirplaneDTO;
@@ -130,7 +136,7 @@ public class EventControllerImpl implements EventController {
 
 	@Override
 	@RequestMapping("/lodDetail")
-	public ModelAndView lodDetail(@RequestParam("page") int page,
+	public ModelAndView lodDetail(@RequestParam("page") int page, 
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
@@ -141,8 +147,23 @@ public class EventControllerImpl implements EventController {
 			HttpSession session = request.getSession();
 			session.setAttribute("checkIn", request.getParameter("checkIn"));
 			session.setAttribute("checkOut", request.getParameter("checkOut"));
+
+			// 숙박일 수 계산
+			String CheckIn = (String) session.getAttribute("checkIn");
+			String CheckOut = (String) session.getAttribute("checkOut");
+
+			LocalDate StartDate = LocalDate.parse(CheckIn);
+			LocalDate EndDate = LocalDate.parse(CheckOut);
+
+			//System.out.println("localDate1: " + StartDate);
+			//System.out.println("localDate2: " + EndDate);
+
+			Period period = Period.between(StartDate, EndDate);
+			//System.out.println(period.getDays());
+
+			int resultDay = period.getDays();
+			mav.addObject("resultDay", resultDay); 
 		}
-		
 		int lodCnt = eventService.allLodCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)lodCnt/postNum);
@@ -198,7 +219,19 @@ public class EventControllerImpl implements EventController {
 		HttpSession session = request.getSession();
 		session.getAttribute("checkIn");
 		session.getAttribute("checkOut");
-	
+		
+		// 숙박일 수 계산
+		String CheckIn = (String) session.getAttribute("checkIn");
+		String CheckOut = (String) session.getAttribute("checkOut");
+				
+		LocalDate StartDate = LocalDate.parse(CheckIn);
+		LocalDate EndDate = LocalDate.parse(CheckOut);
+
+		Period period = Period.between(StartDate, EndDate);
+				
+		int resultDay = period.getDays();
+		mav.addObject("resultDay", resultDay); //
+				
 		int HotelCnt = eventService.allHotelCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)HotelCnt/postNum);
@@ -254,6 +287,18 @@ public class EventControllerImpl implements EventController {
 		HttpSession session = request.getSession();
 		session.getAttribute("checkIn");
 		session.getAttribute("checkOut");
+		
+		// 숙박일 수 계산
+		String CheckIn = (String) session.getAttribute("checkIn");
+		String CheckOut = (String) session.getAttribute("checkOut");
+				
+		LocalDate StartDate = LocalDate.parse(CheckIn);
+		LocalDate EndDate = LocalDate.parse(CheckOut);
+
+		Period period = Period.between(StartDate, EndDate);
+				
+		int resultDay = period.getDays();
+		mav.addObject("resultDay", resultDay); //
 		
 		int ResortCnt = eventService.allResortCnt();
 		int postNum = 12;
@@ -312,6 +357,18 @@ public class EventControllerImpl implements EventController {
 		session.getAttribute("checkIn");
 		session.getAttribute("checkOut");
 		
+		// 숙박일 수 계산
+		String CheckIn = (String) session.getAttribute("checkIn");
+		String CheckOut = (String) session.getAttribute("checkOut");
+				
+		LocalDate StartDate = LocalDate.parse(CheckIn);
+		LocalDate EndDate = LocalDate.parse(CheckOut);
+
+		Period period = Period.between(StartDate, EndDate);
+				
+		int resultDay = period.getDays();
+		mav.addObject("resultDay", resultDay); //
+		
 		int HouseCnt = eventService.allHouseCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)HouseCnt/postNum);
@@ -357,7 +414,7 @@ public class EventControllerImpl implements EventController {
 	
 	@Override
 	@RequestMapping("/lodInfo")
-	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id, 
+	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id, @RequestParam("resultDay") int resultDay,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
@@ -365,7 +422,6 @@ public class EventControllerImpl implements EventController {
 		LodgingDTO lodging = eventService.lodDatail(lod_id);
 		List<RoomInfoDTO> roomList = eventService.roomList(lod_id);
 		List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
-		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		if(isLogOn!=null && isLogOn==true) {
@@ -381,6 +437,7 @@ public class EventControllerImpl implements EventController {
 				mav.addObject("pick", true);
 			}
 		} 
+		mav.addObject("resultDay", resultDay);
 		mav.addObject("lodging",lodging);
 		mav.addObject("roomList",roomList);
 		mav.addObject("reviewList",reviewList);
@@ -389,8 +446,8 @@ public class EventControllerImpl implements EventController {
 
 	@Override
 	@RequestMapping("/roomRes")
-	public ModelAndView roomRes(@ModelAttribute("room") RoomInfoDTO room, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ModelAndView roomRes(@ModelAttribute("room") RoomInfoDTO room, @RequestParam("resultDay") int resultDay,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		
 		room = eventService.roomInfo(room);
@@ -399,8 +456,11 @@ public class EventControllerImpl implements EventController {
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("room",room);
 		mav.addObject("lodging",lodging);
+		mav.addObject("resultDay", resultDay);
 		return mav;
 	}
+	
+	
 	@Override
 	@RequestMapping("/resPay")
 	public String resPay(HttpServletRequest request, HttpServletResponse response)
