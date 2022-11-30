@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>맛집 상세페이지</title>
+<title>숙소 상세페이지</title>
 <script>
 	let openPay;
 	function reservation(){
@@ -119,16 +119,18 @@ td {
 			<td colspan="2" align="center">기준인원 ${room.r_person }명/최대인원 ${room.r_person+2 }명</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><c:choose>
+			<td colspan="2" align="center" style="color:blue;"><c:choose>
 					<c:when test="${nowMonth >= 5  and nowMonth <= 10  }">
 						<c:choose>
 							<c:when test="${nowDay == 6 or nowDay == 7 }">
 								<c:set var="price" value="${room.peak_weekend }" />
-								${room.peak_weekend }
+								${price }원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:when>
 							<c:otherwise>
 								<c:set var="price" value="${room.peak_weekDay }" />
-								${room.peak_weekDay }
+								${price }원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:otherwise>
 						</c:choose>
 					</c:when>
@@ -136,15 +138,17 @@ td {
 						<c:choose>
 							<c:when test="${nowDay == 6 or nowDay == 7 }">
 								<c:set var="price" value="${room.low_weekend }" />
-								${room.low_weekend }
+								${price }원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:when>
 							<c:otherwise>
 								<c:set var="price" value="${room.low_weekDay }" />
-								${room.low_weekDay }
+								${price}원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
-				</c:choose> 원
+				</c:choose> 
 			</td>
 			</tr>
 		<tr>
@@ -190,7 +194,7 @@ td {
 	<div align="right" style="margin-right: 30px;">
 		<h3><a href="javascript:reservation()" style="text-decoration: none; color:black;">예약하기</a></h3>
 	</div>
-	
+	<!-- 예약진행 -->
 	<div id="reservation" style="display: none; margin: 30px;">
 	<hr>
 		<form name="frm">
@@ -202,10 +206,10 @@ td {
 			<input type="hidden" name="lod_checkOut" value="${lodging.lod_checkOut }">
 			<input type="hidden" name="res_from" value="${checkIn }">
 			<input type="hidden" name="res_to" value="${checkOut }">
-			<input type="hidden" name="price" value="${price }"> 
+			<input type="hidden" name="price" value="${price * resultDay}"> 
 			<table align="center" width="40%">
 				<tr>
-					<td colspan="2">${checkIn } ~ ${checkOut }</td>
+					<td colspan="2">${checkIn } ~ ${checkOut } [${resultDay }박]</td>
 				</tr>
 				<tr>
 					<td>성명 : </td>

@@ -71,7 +71,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 
 	@Override
-	@RequestMapping(value="/member/modMember.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/modMember.do", method= {RequestMethod.POST,RequestMethod.GET})
 	public void modMember(@ModelAttribute("member") MemberDTO member,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub

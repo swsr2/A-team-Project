@@ -15,8 +15,32 @@
 <title>내가 쓴 리뷰</title>
 <style>
 form {
-   display: inline;
+	display: inline;
 }
+
+table, td, th {
+	border: 1px solid;
+	text-align:left;
+}
+table {
+	border-collapse: collapse;
+	width: 30%;
+}
+tr:hover {background-color: #ddd;}
+
+.button {
+  background-color: #EEEEEE;
+  border: none;
+  color: black;
+  padding: 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin-left:90%;
+  cursor: pointer;
+}
+.button4 {border-radius: 8px;}
 
 </style>
 <link rel="stylesheet"
@@ -29,25 +53,30 @@ form {
 		<div id="review" align="center">
 			<h1>내가 쓴 리뷰</h1>
 		</div>
-		<table align="center" border="1">
-			<tr>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>리뷰번호</td>
-				<td>평점</td>
-				<td>코멘트</td>
-			</tr>
+		<table align="center">
 			<c:forEach var="mypage" items="${mypage }">
-				<tr>
-					<td>${mypage.id}</td>
-					<td>${mypage.re_writeDate}</td>
-					<td>${mypage.re_no}</td>
-					<td>${mypage.re_score}</td>
-					<td>${mypage.re_content}</td>
-				</tr>
+			<tr>
+				<th height="30px" bgcolor="#EEEEEE">${mypage.re_writeDate }</th>
+				<th height="30px" bgcolor="#EEEEEE"><div class="star-ratings">
+					<div 
+				    class="star-ratings-fill space-x-2 text-lg"
+				    style=" width: ${mypage.re_score * 20}%">
+						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+					</div>
+					<div class="star-ratings-base space-x-2 text-lg">
+						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+					</div>
+				</div></th>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<span>${mypage.re_content }</span>
+					<span><button class="button button4">삭제</button></span>
+				</td>
+			</tr>
 			</c:forEach>
 		</table>
-		
-
+		<br>
+		<br>
 </body>
 </html>
