@@ -219,7 +219,7 @@ select {
 			<p class="check"></p><br>
 			<input type="number" name="age" placeholder="나이" class="in"><br>
 			<p class="check"></p><br>
-			<input type="text" id="tel" name="tel" placeholder="전화번호" class="in"><br>
+			<input type="text" id="tel" name="tel" placeholder="전화번호(숫자만 입력하세요)" class="in"><br>
 			<p id="telChk" class="check"></p><br>
 			<input type="email" id="email" name="email" placeholder="이메일" class="in"><br>
 			<p id="emailChk" class="check"></p><br>

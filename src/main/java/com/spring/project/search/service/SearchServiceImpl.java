@@ -1,14 +1,15 @@
 package com.spring.project.search.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.project.activity.dto.ActivityDTO;
+import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.food.dto.FoodDTO;
 import com.spring.project.search.dao.SearchDAO;
+import com.spring.project.tour.dto.TourDTO;
 
 @Service
 public class SearchServiceImpl implements SearchService{
@@ -16,17 +17,26 @@ public class SearchServiceImpl implements SearchService{
 	private SearchDAO searchDAO;
 
 	@Override
-	public List<String> columnsList(String tableName) {
+	public List<FoodDTO> foodSearch(String search) throws Exception {
 		// TODO Auto-generated method stub
-		return searchDAO.columnsList(tableName);
+		return searchDAO.foodSearch(search);
 	}
 
 	@Override
-	public List<FoodDTO> foodSearch(List<String> foodColumns,String search) {
+	public List<LodgingDTO> lodgingSearch(String search) {
 		// TODO Auto-generated method stub
-		Map map = new HashMap();
-		map.put("columns", foodColumns);
-		map.put("search", search);
-		return searchDAO.foodSearch(map);
+		return searchDAO.lodgingSearch(search);
+	}
+
+	@Override
+	public List<ActivityDTO> activitySearch(String search) {
+		// TODO Auto-generated method stub
+		return searchDAO.activitySearch(search);
+	}
+
+	@Override
+	public List<TourDTO> tourSearch(String search) {
+		// TODO Auto-generated method stub
+		return searchDAO.tourSearch(search);
 	}
 }
