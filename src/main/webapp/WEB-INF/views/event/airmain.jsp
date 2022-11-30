@@ -72,8 +72,6 @@ form {
 		<input class="category" type='submit' value='숙박' />
 	</form>
 	<br>
-	<br>
-	<br>
 	<div align="center" id="Search">
 		<h1>일정선택</h1>
 		<form name="form" action="/project/event/airDetail">

@@ -33,7 +33,7 @@ form {
 	border:1px;
 }
 th {
-	background-color:#9ACD32;
+	background-color:#B8E6E1;
 	width:100px;
 	text-align:center;
 }
@@ -44,7 +44,6 @@ td {
 }
 h1 {
 	text-align:center;
-	color:orange;
 }
 
 </style>

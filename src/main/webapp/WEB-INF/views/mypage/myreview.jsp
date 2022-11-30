@@ -26,7 +26,7 @@ table {
 	border-collapse: collapse;
 	width: 30%;
 }
-tr:hover {background-color: #FD9F28;}
+tr:hover {background-color: #ddd;}
 
 .button {
   background-color: #EEEEEE;
