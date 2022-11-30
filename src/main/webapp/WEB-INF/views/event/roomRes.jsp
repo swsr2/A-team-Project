@@ -39,31 +39,6 @@
 		},5000);
 	}
 </script>
-
-<script type="text/javascript">
-	var strDate1 = '${checkIn}';
-	var strDate2 = '${checkOut}';
-	var arr1 = strDate1.split('-');
-	var arr2 = strDate2.split('-');
-	var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
-	var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
-	
-	
-	// 날짜 차이 알아 내기 
-	var diff = dat2 - dat1;
-	var currDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
-	var currMonth = currDay * 30;// 월 만듬
-	var currYear = currMonth * 12; // 년 만듬
-	
-	//document.write("* 날짜 두개 : " + strDate1 + ", " + strDate2 + "<br/>");
-	//document.write("* 일수 차이 : " + parseInt(diff/currYear) + " 년<br/>");
-	//document.write("* 월수 차이 : " + parseInt(diff/currMonth) + " 월<br/>");
-	//document.write("* 년수 차이 : " + parseInt(diff/currdate) + " 일<br/><br/>");
-	
-	// 또 다른 날짜 구하는 방법 
-	//dat1.setMonth(dat1.getMonth() + 3);
-	//document.write("* 3개월 더하기 : " + dat1.toLocaleString() + "<br/>");
-</script>
 <style>
 form {
 	display: inline;
@@ -144,16 +119,18 @@ td {
 			<td colspan="2" align="center">기준인원 ${room.r_person }명/최대인원 ${room.r_person+2 }명</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><c:choose>
+			<td colspan="2" align="center" style="color:blue;"><c:choose>
 					<c:when test="${nowMonth >= 5  and nowMonth <= 10  }">
 						<c:choose>
 							<c:when test="${nowDay == 6 or nowDay == 7 }">
 								<c:set var="price" value="${room.peak_weekend }" />
-								${room.peak_weekend }
+								${price }원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:when>
 							<c:otherwise>
 								<c:set var="price" value="${room.peak_weekDay }" />
-								${room.peak_weekDay }
+								${price }원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:otherwise>
 						</c:choose>
 					</c:when>
@@ -161,15 +138,17 @@ td {
 						<c:choose>
 							<c:when test="${nowDay == 6 or nowDay == 7 }">
 								<c:set var="price" value="${room.low_weekend }" />
-								${room.low_weekend }
+								${price }원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:when>
 							<c:otherwise>
 								<c:set var="price" value="${room.low_weekDay }" />
-								${room.low_weekDay }
+								${price}원 * ${resultDay }박
+								= 총 ${price * resultDay }원
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
-				</c:choose> 원
+				</c:choose> 
 			</td>
 			</tr>
 		<tr>
@@ -215,7 +194,7 @@ td {
 	<div align="right" style="margin-right: 30px;">
 		<h3><a href="javascript:reservation()" style="text-decoration: none; color:black;">예약하기</a></h3>
 	</div>
-	
+	<!-- 예약진행 -->
 	<div id="reservation" style="display: none; margin: 30px;">
 	<hr>
 		<form name="frm">
@@ -227,10 +206,10 @@ td {
 			<input type="hidden" name="lod_checkOut" value="${lodging.lod_checkOut }">
 			<input type="hidden" name="res_from" value="${checkIn }">
 			<input type="hidden" name="res_to" value="${checkOut }">
-			<input type="hidden" name="price" value="${price }"> 
+			<input type="hidden" name="price" value="${price * resultDay}"> 
 			<table align="center" width="40%">
 				<tr>
-					<td colspan="2">${checkIn } ~ ${checkOut }</td>
+					<td colspan="2">${checkIn } ~ ${checkOut } [${resultDay }박]</td>
 				</tr>
 				<tr>
 					<td>성명 : </td>

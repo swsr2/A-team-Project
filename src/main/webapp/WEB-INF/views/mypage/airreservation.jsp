@@ -16,10 +16,46 @@
 form {
    display: inline;
 }
+<<<<<<< HEAD
 table {
     border-spacing: 0px;
     border-style: none;
     padding: 0px;}
+=======
+#airmyres {
+  border-collapse:collapse;
+  border-radius:25px;
+  width: 80%;
+  margin-left:auto;
+  margin-right:auto;
+}
+#airmyres tr{
+  border: 1px solid #ddd;
+}
+#airmyres td {
+  padding: 8px;
+  width:100px;
+}
+
+#airmyres th {
+  font-weight: lighter;
+  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#9ACD32;
+  color: black;
+}
+
+#airmyres tr:nth-child(even){background-color:white;}
+
+#airmyres tr:hover {background-color: #ddd;}
+
+h1 {
+	text-align:center;
+	color:orange;
+}
+>>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 </style>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -29,8 +65,9 @@ table {
 </head>
 <body>
 		<div id="airreservation" align="center">
-			<h1>항공예약보기</h1>
+			<h1>내 항공예약 보기</h1>
 		</div>
+<<<<<<< HEAD
 		<div>
 		<td>가는날</td>
 		</div>
@@ -39,26 +76,31 @@ table {
 		</div>
 		
 		<table align="center" border="1" >
+=======
+		<table id="airmyres">
+		<c:forEach var="mypage" items="${mypage }" varStatus="status">
+>>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 			<tr>
-				<td>예약자아이디</td>
-				<td>예약자이름</td>
-				<td>출발날짜</td>
-				<td>출발시간</td>
-				<td>출발장소</td>
-				<td>도착시간</td>
-				<td>도착장소</td>
+				<th colspan="4"><c:choose>
+						<c:when test="${status.first}">
+						가는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
+						</c:when>
+						<c:when test="${status.last}">
+						오는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
+						</c:when>
+					</c:choose>
+				</th>
+				<th style="text-align:right;">${mypage.air_date}</th>
 			</tr>
-			<c:forEach var="mypage" items="${mypage }">
 			<tr>
-				<td>${mypage.id}</td>
-				<td>${mypage.name}</td>
-				<td>${mypage.air_date}</td>
-				<td>${mypage.air_departTime}</td>
-				<td>${mypage.air_departPlace}</td>
-				<td>${mypage.air_arrivalTime}</td>
-				<td>${mypage.air_arrivalPlace}</td>
+				<td><pre>항공사</pre>${mypage.air_airline }</td>
+				<td><pre>출발시간</pre>${mypage.air_departTime }</td>
+				<td>〓〓〓〓〓〓▶</td>
+				<td><pre>도착시간</pre>${mypage.air_arrivalTime}</td>
+				<td><pre>항공가</pre>${mypage.air_price }</td>
 			</tr>
-			</c:forEach>
+	</c:forEach>
 		</table>
+		<br><br>
 </body>
 </html>

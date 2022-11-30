@@ -26,7 +26,7 @@
 
 <div id="head">
 <a href="${path}/main/main.do"><img src="${path }/resources/image/logo.png" width="150" height="150" ></a>
-<form action="${path}/search/key">
+<form action="${path}/search/search.do">
 	<div class="search">
      	<input type="text" name="search" id="inputSearch" placeholder="검색어를 입력해주세요." style="width:500px;">
       	<button class="search_btn">검색</button>

@@ -27,6 +27,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/main/support.jsp" />
 	</definition>
 	
+	<definition name="/search/search" extends="baseLayout">
+		<put-attribute name="title" value="검색결과" />
+		<put-attribute name="body" value="/WEB-INF/views/main/search.jsp" />
+	</definition>
+	
  	<definition name="/food/foodmain" extends="baseLayout">
 		<put-attribute name="title" value="먹으멍_맛집" />
 		<put-attribute name="body" value="/WEB-INF/views/food/foodmain.jsp" />
