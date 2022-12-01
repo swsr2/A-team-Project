@@ -56,23 +56,23 @@ tr{
 }
 .button4 {border-radius: 8px;}
 /* 클릭전 */
-a:link {
+#review_a:link {
   color: black;
   text-decoration: none;
 }
 /* 클릭후 */
-a:visited {
+#review_a:visited {
   color: gray;
   font-size:12px;
   text-decoration: none;
 }
 /* 마우스오버 */
-a:hover {
+#review_a:hover {
   color: orange;
   text-decoration: underline;
 }
 /* 클릭시 */
-a:active {
+#review_a:active {
   color: blue;
   text-decoration: none;
 }
@@ -90,7 +90,7 @@ a:active {
 		<table>
 			<c:forEach var="mypage" items="${mypage }">
 			<tr>
-				<th width="80%" align="left" >&nbsp;#업체명&nbsp;<a href="${path }/food/resDetail?fd_no=${mypage.fd_no }">>></a></th>
+				<th width="80%" align="left" >&nbsp;#업체명&nbsp;<a id="review_a" href="${path }/food/resDetail?fd_no=${mypage.fd_no }">>></a></th>
 				<th align="right"><div class="star-ratings">
 					<div 
 				    class="star-ratings-fill space-x-2 text-lg"
