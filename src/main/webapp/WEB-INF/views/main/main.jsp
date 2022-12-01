@@ -8,7 +8,7 @@
   request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>main페이지</title>
 <meta charset="utf-8">
