@@ -16,11 +16,11 @@
 form {
    display: inline;
 }
-table {
-    border-spacing: 0px;
-    border-style: none;
-    padding: 0px;}
+
 #airmyres {
+  border-spacing: 0px;
+  border-style: none;
+  padding: 0px;
   border-collapse:collapse;
   border-radius:25px;
   width: 80%;
