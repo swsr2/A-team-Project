@@ -175,10 +175,6 @@ input::-webkit-inner-spin-button {
 	color: white;
 }
 
-a {
-	color: black;
-}
-
 select {
 	width: 20%;
 	padding: 10px;
@@ -186,7 +182,7 @@ select {
 	border-radius: 5px;
 	margin-bottom: 20px;
 	border: 1px solid black;
-	color: gray;
+	color: black;
 }
 
 .check{
@@ -218,7 +214,16 @@ select {
 			<p id="telChk" class="check"></p><br>
 		<input type="email" id="email" name="email" value="${member.email }" class="in"><br>
 			<p id="emailChk" class="check"></p><br>
-		<select class="select" name="gender" value="${member.gender}" onclick="fn_selected(this)">
+		<select class="select" name="gender" onclick="fn_selected(this)">
+				<option selected disabled hidden>
+					<c:set var="gender" value="${member.gender }" />
+					<c:if test="${gender eq 'M' }">
+						<a>남성</a>
+					</c:if>
+					<c:if test="${gender eq 'W' }">
+						<a>여성</a>
+					</c:if>
+				</option>
 				<option value="M">남성</option>
 				<option value="W">여성</option>
 			</select>
