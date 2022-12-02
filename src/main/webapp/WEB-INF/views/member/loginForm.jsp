@@ -8,17 +8,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <title>로그인</title>
-<!-- 카카오 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js" integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/" crossorigin="anonymous"></script>
 <script>
-	//SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해야 합니다.
-	window.Kakao.init('19304f7b1ee5a07ed9d039dba756e0bb');
-	// SDK 초기화 여부를 판단합니다.
-    console.log(Kakao.isInitialized());
+		Kakao.init('19304f7b1ee5a07ed9d039dba756e0bb');
+		console.log(Kakao.isInitialized());
 	
     function loginWithKakao() {
         window.Kakao.Auth.authorize({
@@ -42,8 +38,12 @@
         		
         	}
         	        		
+	function kakaoLogin() {
+        Kakao.Auth.authorize({
+        	redirectUri: 'http://localhost:8080/project/member/kakao.do',
         });
       }
+	
 </script>
 <style>
 input {
@@ -73,22 +73,15 @@ a {
 <body>
 	<div align="center">
 		<h3>로그인</h3>
-		<form method="post" action="/project/member/login.do">
+		<form name="login_frm" method="post" action="/project/member/login.do">
 			<input type="text" name="id" placeholder="아이디" class="in"><br>
 			<input type="password" name="pwd" placeholder="비밀번호" class="in"><br>
 			<input type="submit" id="btn" value="로그인"><br>
 			<input type="reset" id="btn" value="다시입력"><br>
 			
-			
-			<div class="form-group row" id="kakaologin">
-					<div class="kakaobtn">
-						<input type="hidden" name="kakaoemail" id="kakaoemail" />
-						<input type="hidden" name="kakaoname" id="kakaoname" />
-						<a href="javascript:loginWithKakao();">
-							<img src='../resources/image/kakao_login_medium_narrow.png' />
-						</a>
-					</div>
-            </div>
+			<a href="javascript:kakaoLogin()">
+				<img src='../resources/image/kakao_login_medium_narrow.png' />
+			</a>
 			
 			<br><br>
 			<a href="${contextPath}/project/member/findIdForm.do" style="text-decoration: none;">아이디 찾기</a>  | 
@@ -96,10 +89,6 @@ a {
 			<a href="${contextPath}/project/member/memberForm.do" style="text-decoration: none;">회원가입</a> 
 		</form>
 		
-		<%-- kakaoemail을 넘기기 위한 숨겨진  form --%>
-		<form action="./kakaologin.do" method="post" name="lfrm" hidden>
-			<input type="text" name="kakaoemail" id="kakaoemail" value="" />
-		</form>
 	</div>
 	<div style="margin: 120px;"></div>
 </body>

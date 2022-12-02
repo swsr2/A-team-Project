@@ -45,12 +45,12 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right"></td>
-				<td colspan="2" align="center">
+				<td colspan="3" align="center">
 					<input type="button" value="문의하기" onClick="success()">
 					<input type="button" value="돌아가기" onClick="backToList()">
 				</td>
 		</table>	
 	</form>
+	<br><br>
 	</body>
 </html>

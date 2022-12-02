@@ -54,7 +54,7 @@ h3 {
 </head>
 <body>
 	<div id="slide">
-		<a href="${path }"><img class="slide1" src="${path }/resources/image/004.png" width="70%"></a>
+		<a href="${path }/activity/main?page=1"><img class="slide1" src="${path }/resources/image/004.png" width="70%"></a>
 		<a href="${path }/tour/orumm?page=2"><img class="slide1" src="${path }/resources/image/002.png" width="70%"></a>
 		<a href="${path }/tour/beach?page=3"><img class="slide1" src="${path }/resources/image/003.png" width="70%"></a>
 		<a href="${path }/food/main?page=1"><img class="slide1" src="${path }/resources/image/005.png" width="70%"></a>
