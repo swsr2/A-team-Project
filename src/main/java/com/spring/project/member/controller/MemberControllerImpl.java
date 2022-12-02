@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.Session;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.spring.project.kakao.KakaoLoginBO;
+import com.spring.project.member.dao.MemberDAO;
 import com.spring.project.member.dto.MemberDTO;
 import com.spring.project.member.service.MemberService;
 
@@ -76,6 +78,10 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
+		HttpSession session = request.getSession();
+		session.setAttribute("member", member);
+		session.setAttribute("isLogOn", true);
+		
 		
 		int result = memberService.modMember(member);
 		
@@ -91,12 +97,15 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		out.println("</script>");
 	}
 
-	@Override
+
+ 	@Override
 	@RequestMapping(value="/member/delMember.do", method=RequestMethod.GET)
 	public void delMember(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		
+		
 		
 		int result = memberService.delMember(id);
 		
@@ -107,7 +116,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		} else {
 			out.println("alert('삭제가 완료되지 못했습니다. 다시 삭제하세요');");
 		}
-		out.println("location.href='"+ request.getContextPath() +"/member/listMembers.do';");
+		out.println("location.href='"+ request.getContextPath() +"/main/main.do';");
 		out.println("</script>");
 	}
 
@@ -200,6 +209,10 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		}
 		out.println("</script>");
 	}
+
+
+
+
 }
 
 

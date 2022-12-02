@@ -60,10 +60,9 @@ public class EventControllerImpl implements EventController {
 		String date = request.getParameter("date");
 		String fromdate = date.substring(0,10);
 		String todate= date.substring(13);
+		
 		air.setAir_date(fromdate);
-		
 		List<AirplaneDTO> airplaneList = eventService.arrivalList(air);
-		
 		air.setAir_date(todate);
 		//System.out.println(air.getAir_date());
 		//System.out.println(air.getAir_arrivalPlace());

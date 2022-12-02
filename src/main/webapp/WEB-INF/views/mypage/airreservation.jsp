@@ -11,16 +11,16 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>항공예약보기</title>
+<title>항공 예약보기</title>
 <style>
 form {
    display: inline;
 }
-table {
-    border-spacing: 0px;
-    border-style: none;
-    padding: 0px;}
+
 #airmyres {
+  border-spacing: 0px;
+  border-style: none;
+  padding: 0px;
   border-collapse:collapse;
   border-radius:25px;
   width: 80%;
@@ -60,17 +60,17 @@ h1 {
 </head>
 <body>
 		<div id="airreservation" align="center">
-			<h1>내 항공예약 보기</h1>
+			<h1>내 항공 예약보기</h1>
 		</div>
 		<table id="airmyres">
 		<c:forEach var="mypage" items="${mypage }" varStatus="status">
 			<tr>
 				<th colspan="4"><c:choose>
 						<c:when test="${(status.count%2)==1}">
-						가는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
+						&nbsp;&nbsp;&nbsp;&nbsp;가는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
 						</c:when>
 						<c:when test="${(status.count%2)==0}">
-						오는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
+						&nbsp;&nbsp;&nbsp;&nbsp;오는 편 일정 [${mypage.air_departPlace } → ${mypage.air_arrivalPlace }]
 						</c:when>
 					</c:choose>
 				</th>
