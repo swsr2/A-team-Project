@@ -220,4 +220,9 @@
 		<put-attribute name="title" value="이벤트_숙박" />
 		<put-attribute name="body" value="/WEB-INF/views/event/lodDetail_house.jsp" />
 	</definition> 
+	
+	<definition name="/member/kakao" extends="baseLayout">
+		<put-attribute name="title" value="카카오 로그인" />
+		<put-attribute name="body" value="/WEB-INF/views/member/kakao.jsp" />
+	</definition> 
 </tiles-definitions>

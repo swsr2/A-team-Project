@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.kakao">
+
+
+	<resultMap type="kakaoVO" id="kakaoResult">
+		<result property="id" column="id" />
+		<result property="nickname" column="nickname" />
+	</resultMap>
+
+	<select id="kakao" parameterType="java.util.HashMap" resultType="kakaoVO">
+		<![CDATA[
+			select * from kakao where k_nickname=#{k_nickname}
+		]]>
+	</select>
+	 
+	<insert id="insert" parameterType="java.util.HashMap">
+		<![CDATA[
+			insert into kakao k_nickname values(#{k_nickname})
+		]]>
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

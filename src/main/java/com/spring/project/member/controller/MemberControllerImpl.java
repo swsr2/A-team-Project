@@ -24,10 +24,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.spring.project.kakao.KakaoLoginBO;
 import com.spring.project.member.dao.MemberDAO;
 import com.spring.project.member.dto.MemberDTO;
+import com.spring.project.member.kakao.KakaoService;
+import com.spring.project.member.kakao.KakaoVO;
 import com.spring.project.member.service.MemberService;
 
 
@@ -36,6 +36,7 @@ import com.spring.project.member.service.MemberService;
 public class MemberControllerImpl extends MultiActionController implements MemberController {
 	@Autowired
 	private MemberService memberService;
+	private KakaoService kakaoService;
 
 	@Override
 	@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
@@ -144,7 +145,22 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		}
 		out.println("</script>");
 	}
+	
+	@RequestMapping(value="/member/kakao.do", method= {RequestMethod.POST,RequestMethod.GET})
+	public String kakaoLogin(HttpSession session) {
+		String code = kakaoService.getKakaoCode();
+		System.out.println("#######" + code);
+		
+		String access_Token = kakaoService.getAccessToken(code);
+		KakaoVO userInfo = kakaoService.getUserInfo(access_Token);
+		
+		System.out.println("###access_Token#### : " + access_Token);
+		System.out.println("###nickname#### : " + userInfo.getK_nickname());
 
+		return code;
+	}
+	
+		
 	@Override
 	@RequestMapping(value="/member/logout.do", method=RequestMethod.GET)
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse resposne) throws Exception {
