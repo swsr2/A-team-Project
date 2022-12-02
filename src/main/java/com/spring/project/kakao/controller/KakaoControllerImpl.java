@@ -42,7 +42,7 @@ public class KakaoControllerImpl implements KakaoController {
 		System.out.println("###access_Token#### : " + access_Token);
 		System.out.println("###nickname#### : " + userInfo.getK_nickname());
 
-		return code;
+		return "/kakao/kakaoLogin";
 	}
 	
 	@Override
@@ -140,9 +140,9 @@ public class KakaoControllerImpl implements KakaoController {
 			
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
-			JsonObject property_keys = element.getAsJsonObject().get("property_keys").getAsJsonObject();
+			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			
-			String k_nickname = property_keys.getAsJsonObject().get("kakao_acount.name").getAsString();
+			String k_nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			userInfo.put("k_nickname", k_nickname);
 		} catch(Exception e) {
 			e.printStackTrace();

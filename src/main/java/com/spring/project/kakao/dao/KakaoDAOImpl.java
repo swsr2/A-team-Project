@@ -12,7 +12,7 @@ import com.spring.project.kakao.vo.KakaoVO;
 public class KakaoDAOImpl implements KakaoDAO {
 	
 	@Autowired
-	private static SqlSession sqlSession;
+	private SqlSession sqlSession;
 	
 	// 정보 저장
 	@Override
