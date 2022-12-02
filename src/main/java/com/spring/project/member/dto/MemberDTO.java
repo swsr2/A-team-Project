@@ -1,7 +1,5 @@
 package com.spring.project.member.dto;
 
-import java.sql.Date;
-
 import org.springframework.stereotype.Component;
 
 @Component("memberDTO")
@@ -57,7 +55,5 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 	
 }

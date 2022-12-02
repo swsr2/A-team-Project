@@ -6,8 +6,7 @@
 
 
 	<resultMap type="kakaoVO" id="kakaoResult">
-		<result property="id" column="id" />
-		<result property="nickname" column="nickname" />
+		<result property="k_nickname" column="k_nickname" />
 	</resultMap>
 
 	<select id="kakao" parameterType="java.util.HashMap" resultType="kakaoVO">
@@ -18,7 +17,7 @@
 	 
 	<insert id="insert" parameterType="java.util.HashMap">
 		<![CDATA[
-			insert into kakao k_nickname values(#{k_nickname})
+			insert into kakao values(#{k_nickname})
 		]]>
 	</insert>
 	

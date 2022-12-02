@@ -1,4 +1,4 @@
-package com.spring.project.member.kakao;
+package com.spring.project.kakao.controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,30 +8,51 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-import org.springframework.stereotype.Service;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.spring.project.kakao.service.KakaoService;
+import com.spring.project.kakao.vo.KakaoVO;
 
-@Service("kakaoService")
-public class KakaoService {
+@Controller("kakaoController")
+@EnableAspectJAutoProxy
+public class KakaoControllerImpl implements KakaoController {
+
+	@Autowired
+	private KakaoService kakaoService;
 	
-	public String getKakaoCode() {
-		try {
-			return "https://kauth.kakao.com/oauth/authorize?client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d&redirect_uri=http://localhost:8080/project/member/kakao.do&response_type=code";
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			throw new RuntimeException("getKakaoCode 오류 발생");
-		}
-	}
+	@Override
+	@RequestMapping(value="/kakao/kakaoLogin.do", method= {RequestMethod.POST,RequestMethod.GET})
+	public String kakaoLogin(@RequestParam(value="code", required = false) String code, HttpSession session) {
+//		String code = kakaoService.getKakaoCode();
+		System.out.println("인가코드를 받아왔으면 인가코드는" + code);
+		
+		String access_Token = getAccessToken(code);
+		KakaoVO userInfo = getUserInfo(access_Token);
+		
+		System.out.println("###access_Token#### : " + access_Token);
+		System.out.println("###nickname#### : " + userInfo.getK_nickname());
 
+		return code;
+	}
+	
+	@Override
 	public String getAccessToken(String authorize_code) {
 		// TODO Auto-generated method stub
 		String access_Token = "";
 		String refresh_Token = "";
+		System.out.println("reqURL 잘되는지 검사하기전");
 		String reqURL = "https://kauth.kakao.com/oauth/token";
+		System.out.println("reqURL 잘되는지 검사 후");
 		
 		try {
 			URL url = new URL(reqURL);
@@ -51,7 +72,7 @@ public class KakaoService {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d");
-			sb.append("&redirect_uri=http://localhost:8080/project/member/kakao.do");
+			sb.append("&redirect_uri=http://localhost:8080/project/kakao/kakaoLogin.do");
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();
@@ -91,6 +112,7 @@ public class KakaoService {
 		return access_Token;
 	}
 
+	@Override
 	public KakaoVO getUserInfo(String access_Token) {
 		// TODO Auto-generated method stub
 		
@@ -118,25 +140,23 @@ public class KakaoService {
 			
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
-			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+			JsonObject property_keys = element.getAsJsonObject().get("property_keys").getAsJsonObject();
 			
-			String k_nickname = properties.getAsJsonObject().get("k_nickname").getAsString();
+			String k_nickname = property_keys.getAsJsonObject().get("kakao_acount.name").getAsString();
 			userInfo.put("k_nickname", k_nickname);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		KakaoVO result = KakaoDAO.findKakao(userInfo);
+		KakaoVO result = kakaoService.findKakao(userInfo);
 		
 		System.out.println("S : " + result);
 		
 		if(result == null) {
-			KakaoDAO.kakaoInsert(userInfo);
-			return KakaoDAO.findKakao(userInfo);
+			kakaoService.kakaoInsert(userInfo);
+			return kakaoService.findKakao(userInfo);
 		} else {
 			return result;
 		}
 	}
-
 }
