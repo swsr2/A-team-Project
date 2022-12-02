@@ -84,7 +84,7 @@
 	<table align="center">
 		<c:forEach var="lod" items="${lodgingSearch }">
 			<tr>
-				<td rowspan="2"><a href="${path }/event/lodInfo?lod_id=${lod.lod_id}">
+				<td rowspan="2"><a href="${path }/event/lodInfo?lod_id=${lod.lod_id}&resultDay=0">
 				<img class="img"  src="${lod.lod_imgPath }"
 				onerror="this.src='${path }/resources/image/empty_img.png'"></a></td>
 				<td><span style="font-size: 20px;">${lod.lod_title }</span></td>

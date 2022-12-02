@@ -155,11 +155,7 @@ public class EventControllerImpl implements EventController {
 			LocalDate StartDate = LocalDate.parse(CheckIn);
 			LocalDate EndDate = LocalDate.parse(CheckOut);
 
-			//System.out.println("localDate1: " + StartDate);
-			//System.out.println("localDate2: " + EndDate);
-
 			Period period = Period.between(StartDate, EndDate);
-			//System.out.println(period.getDays());
 
 			int resultDay = period.getDays();
 			mav.addObject("resultDay", resultDay); 
@@ -217,8 +213,6 @@ public class EventControllerImpl implements EventController {
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		HttpSession session = request.getSession();
-		session.getAttribute("checkIn");
-		session.getAttribute("checkOut");
 		
 		// 숙박일 수 계산
 		String CheckIn = (String) session.getAttribute("checkIn");
@@ -285,8 +279,6 @@ public class EventControllerImpl implements EventController {
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		HttpSession session = request.getSession();
-		session.getAttribute("checkIn");
-		session.getAttribute("checkOut");
 		
 		// 숙박일 수 계산
 		String CheckIn = (String) session.getAttribute("checkIn");
@@ -354,8 +346,6 @@ public class EventControllerImpl implements EventController {
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		HttpSession session = request.getSession();
-		session.getAttribute("checkIn");
-		session.getAttribute("checkOut");
 		
 		// 숙박일 수 계산
 		String CheckIn = (String) session.getAttribute("checkIn");

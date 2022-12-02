@@ -21,7 +21,7 @@
     console.log(Kakao.isInitialized());
 	
     function loginWithKakao() {
-        window.Kakao.Auth.login({
+        window.Kakao.Auth.authorize({
         	scope:'profile,account_email',
         	success: function(authObj){
         		//console.log(authObj);
