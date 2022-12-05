@@ -26,11 +26,6 @@ import com.spring.project.member.service.MemberService;
 public class MemberControllerImpl extends MultiActionController implements MemberController {
 	@Autowired
 	private MemberService memberService;
-<<<<<<< HEAD
-	@Autowired
-	private KakaoService kakaoService;
-=======
->>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 
 	@Override
 	@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
