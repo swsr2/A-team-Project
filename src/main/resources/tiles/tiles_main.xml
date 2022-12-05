@@ -141,7 +141,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/mypage/myreservation.jsp" />
 	</definition>
 	
-	<definition name="/mypage/mytravle" extends="baseLayout">
+	<definition name="travle/mytravle" extends="baseLayout">
 		<put-attribute name="title" value="내 여행일정" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mytravle.jsp" />
 	</definition>

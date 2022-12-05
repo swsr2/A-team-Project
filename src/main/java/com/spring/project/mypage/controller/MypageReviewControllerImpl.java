@@ -37,7 +37,8 @@ public class MypageReviewControllerImpl implements MypageReviewController {
 		String viewName = (String) request.getAttribute("viewName");
 		mav = new ModelAndView(viewName);
 		List<ReviewDTO> review =  reviewService.reviewList(member.getId());
-		mav.addObject("mypage",review);
+		
+		mav.addObject("reviewList",review);
 		return mav;
 	}
 

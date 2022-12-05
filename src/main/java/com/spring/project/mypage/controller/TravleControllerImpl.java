@@ -18,7 +18,7 @@ import com.spring.project.mypage.dto.TravleDTO;
 import com.spring.project.mypage.service.TravleService;
 
 @Controller
-@RequestMapping("/mypage")
+@RequestMapping("/travle")
 public class TravleControllerImpl implements TravleController{
 	@Autowired
 	TravleService travleService;

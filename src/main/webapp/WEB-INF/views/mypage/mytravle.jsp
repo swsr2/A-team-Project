@@ -74,7 +74,32 @@
     <!-- 드래그 박스 -->
     <div id='external-events'>
       <h4>찜목록</h4>
-      <div id='external-events-list'></div>
+      <div id='external-events-list'>
+      	<c:forEach var="travle" items="${travleList }">
+	<c:choose>
+		<c:when test="${travle.lod_id !=0 }">
+			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+				<div class='fc-event-main'>${travle.lod_id }</div>
+			</div>
+		</c:when>
+		<c:when test="${travle.ac_no != 0}">
+			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+				<div class='fc-event-main'>${travle.ac_no}</div>
+			</div>
+		</c:when>
+		<c:when test="${travle.fd_no != 0}">
+			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+				<div class='fc-event-main'>${travle.fd_no }</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+				<div class='fc-event-main'>${travle.tr_no }</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
+</c:forEach>
+      </div>
     </div>
     <!-- calendar 태그 -->
     <div id='calendar-wrap'>
@@ -95,26 +120,7 @@
           }
         }
       });
-      // 드래그 아이템 추가하기
-      for(var i=1; i<='${travleList.size()}';i++) {
-        if ('${travleList.lod_id}'!=null) {
-        	var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
-        	$event = $("<div class='fc-event-main'></div>").text(${travleList.lod_id});
-        	$('#external-events-list').append($div.append($event));
-		} else if ('${travleList.ac_no}'!=null) {
-			var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
-        	$event = $("<div class='fc-event-main'></div>").text(${travleList.ac_no});
-        	$('#external-events-list').append($div.append($event));
-		} else if ('${travleList.fd_no}'!=null) {
-			var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
-        	$event = $("<div class='fc-event-main'></div>").text(${travleList.fd_no});
-        	$('#external-events-list').append($div.append($event));
-		} else {
-			var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
-        	$event = $("<div class='fc-event-main'></div>").text(${travleList.tr_no});
-        	$('#external-events-list').append($div.append($event));	
-		}	
-      }
+
       // calendar element 취득
       var calendarEl = $('#calendar1')[0];
       // full-calendar 생성하기

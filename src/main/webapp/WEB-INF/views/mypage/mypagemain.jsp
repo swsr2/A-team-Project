@@ -81,7 +81,7 @@
 	</div>
 	<div id="btn_group2" align="center">
 		<button class="button button3" type="button" onClick="location.href='${path }/myreservation/reservation'">내 예약확인</button>
-		<button class="button button4" type="button" onClick="location.href='${path }/mypage/mytravle'">내 여행일정</button>
+		<button class="button button4" type="button" onClick="location.href='${path }/travle/mytravle'">내 여행일정</button>
 	</div>
 	<br><br>
 </body>
