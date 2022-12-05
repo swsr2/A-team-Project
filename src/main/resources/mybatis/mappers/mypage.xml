@@ -79,7 +79,7 @@
 	
 	<select id="travlecheck" resultType="travleDTO">
 		<![CDATA[
-			select * from schedule where id=#{id}
+			select * from mypick where id=#{id}
 		]]>
 	</select>
 	

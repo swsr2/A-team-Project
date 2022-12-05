@@ -36,7 +36,7 @@ public class TravleControllerImpl implements TravleController{
 		String viewName = (String) request.getAttribute("viewName");
 		mav = new ModelAndView(viewName);
 		List<TravleDTO> mytra = travleService.travleList(member.getId());
-		mav.addObject("mypage", mytra);
+		mav.addObject("travleList", mytra);
 		return mav;
 	}
 

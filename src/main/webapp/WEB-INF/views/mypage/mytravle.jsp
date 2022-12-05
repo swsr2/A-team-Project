@@ -81,7 +81,7 @@
       <div id='calendar1'></div>
     </div>
   </div>
-  <script var="travleList" items="${travleList}">
+  <script>
   (function(){
     $(function(){
       // 드래그 박스 취득
@@ -96,16 +96,16 @@
         }
       });
       // 드래그 아이템 추가하기
-      for(var i=1; i<=${travleList};i++) {
-        if (${travleList.lod_id}=!null) {
+      for(var i=1; i<='${travleList.size()}';i++) {
+        if ('${travleList.lod_id}'!=null) {
         	var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
         	$event = $("<div class='fc-event-main'></div>").text(${travleList.lod_id});
         	$('#external-events-list').append($div.append($event));
-		} else if (${travleList.ac_no}=!null) {
+		} else if ('${travleList.ac_no}'!=null) {
 			var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
         	$event = $("<div class='fc-event-main'></div>").text(${travleList.ac_no});
         	$('#external-events-list').append($div.append($event));
-		} else if (${travleList.fd_no}=!null) {
+		} else if ('${travleList.fd_no}'!=null) {
 			var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
         	$event = $("<div class='fc-event-main'></div>").text(${travleList.fd_no});
         	$('#external-events-list').append($div.append($event));
