@@ -2,19 +2,13 @@ package com.spring.project.member.controller;
 
 import java.io.PrintWriter;
 
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,20 +18,19 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.project.member.dao.MemberDAO;
 import com.spring.project.member.dto.MemberDTO;
-import com.spring.project.member.kakao.KakaoService;
-import com.spring.project.member.kakao.KakaoVO;
 import com.spring.project.member.service.MemberService;
-
 
 @Controller("memberController")
 @EnableAspectJAutoProxy
 public class MemberControllerImpl extends MultiActionController implements MemberController {
 	@Autowired
 	private MemberService memberService;
+<<<<<<< HEAD
 	@Autowired
 	private KakaoService kakaoService;
+=======
+>>>>>>> branch 'master' of https://github.com/swsr2/A-team-Project.git
 
 	@Override
 	@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
@@ -146,22 +139,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		}
 		out.println("</script>");
 	}
-	
-	@RequestMapping(value="/member/kakao.do", method= {RequestMethod.POST,RequestMethod.GET})
-	public String kakaoLogin(HttpSession session) {
-		String code = kakaoService.getKakaoCode();
-		System.out.println("#######" + code);
-		
-		String access_Token = kakaoService.getAccessToken(code);
-		KakaoVO userInfo = kakaoService.getUserInfo(access_Token);
-		
-		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("###nickname#### : " + userInfo.getK_nickname());
-
-		return code;
-	}
-	
-		
+			
 	@Override
 	@RequestMapping(value="/member/logout.do", method=RequestMethod.GET)
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse resposne) throws Exception {

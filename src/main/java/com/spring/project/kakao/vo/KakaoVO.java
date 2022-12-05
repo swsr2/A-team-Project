@@ -1,15 +1,11 @@
-package com.spring.project.member.kakao;
+package com.spring.project.kakao.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component("kakaoVO")
 public class KakaoVO {
-	private String k_id;
 	private String k_nickname;
 	
-	public String getK_id() {
-		return k_id;
-	}
-	public void setK_id(String k_id) {
-		this.k_id = k_id;
-	}
 	public String getK_nickname() {
 		return k_nickname;
 	}
