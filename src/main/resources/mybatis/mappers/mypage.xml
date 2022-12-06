@@ -105,4 +105,11 @@
 		]]>
 	</delete>
 	
+	
+	<delete id="reviewDel" parameterType="int">
+		<![CDATA[
+			delete from review where re_no=#{re_no}
+		]]>
+	</delete>
+	
 </mapper>

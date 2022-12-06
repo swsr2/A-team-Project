@@ -13,7 +13,7 @@ public class ReviewDTO {
     private int ac_no;
     private int fd_no;
     private int tr_no;
-    private String title;
+    private String title; //추가
     
 	public String getTitle() {
 		return title;
