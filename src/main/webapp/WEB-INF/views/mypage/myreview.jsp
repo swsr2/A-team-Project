@@ -88,13 +88,32 @@ tr{
 			<h1>내가 쓴 리뷰</h1>
 		</div>
 		<table>
-			<c:forEach var="mypage" items="${mypage }">
+			<c:forEach var="review" items="${reviewList }">
 			<tr>
-				<th width="80%" align="left" >&nbsp;#업체명&nbsp;<a id="review_a" href="${path }/food/resDetail?fd_no=${mypage.fd_no }">>></a></th>
+				<th width="80%" align="left" >&nbsp;#업체명&nbsp;
+					<c:choose>
+					<c:when test="${ review.fd_no != 0 }">
+						<a id="review_a" href="${path }/food/resDetail?fd_no=${review.fd_no }">
+						>>${review.title }</a>
+					</c:when>
+					<c:when test="${review.lod_id != 0 }">
+						<a id="review_a" href="${path}/event/lodInfo?lod_id=${review.lod_id}&resultDay=0">
+						>>${review.title }</a>
+					</c:when>
+					<c:when test="${review.ac_no != 0 }">
+						<a id="review_a" href="${path}/activity/activityDetail?ac_no=${review.ac_no}">
+						>>${review.title }</a>
+					</c:when>
+					<c:otherwise>
+						<a id="review_a" href="${path}/tour/tourDetail?tr_no=${review.tr_no}">
+						>>${review.title }</a>
+					</c:otherwise>
+				</c:choose>
+			</th>
 				<th align="right"><div class="star-ratings">
 					<div 
 				    class="star-ratings-fill space-x-2 text-lg"
-				    style=" width:${mypage.re_score * 20}%">
+				    style=" width:${review.re_score * 20}%">
 						<span>&nbsp;★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 					</div>
 					<div class="star-ratings-base space-x-2 text-lg">
@@ -103,7 +122,7 @@ tr{
 				</div></th>
 			</tr>
 			<tr>
-				<td>&nbsp;${mypage.re_writeDate }일 리뷰<br>&nbsp;"${mypage.re_content }"</td>
+				<td>&nbsp;${review.re_writeDate }일 리뷰<br>&nbsp;"${review.re_content }"</td>
 				<td><button class="button button4">삭제</button></td>
 			</tr>
 			</c:forEach>

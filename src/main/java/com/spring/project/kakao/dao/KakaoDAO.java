@@ -10,4 +10,6 @@ public interface KakaoDAO {
 
 	KakaoVO findKakao(HashMap<String, Object> userInfo);
 
+	KakaoVO kakaoLogin(KakaoVO userInfo);
+
 }

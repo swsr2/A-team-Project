@@ -25,4 +25,10 @@ public class KakaoServiceImpl implements KakaoService {
 		kakaoDAO.kakaoInsert(userInfo);
 	}
 
+	@Override
+	public KakaoVO kakaoLogin(KakaoVO userInfo) {
+		// TODO Auto-generated method stub
+		return kakaoDAO.kakaoLogin(userInfo);
+	}
+
 }

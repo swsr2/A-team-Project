@@ -56,8 +56,6 @@ public class ActivityControllerImpl implements ActivityController{
 		}
 
 		int end = start + (postNum-1);
-		System.out.println("start : " + start);
-		System.out.println("end : " + end);
 		// 한번에 표시할 페이징 번호의 갯수
 		int pageNum_cnt = 10;
 

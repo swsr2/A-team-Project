@@ -9,11 +9,18 @@ public class ReviewDTO {
 	private Date re_writeDate;
 	private String re_img;	
 	private String id;
-    private int lod_no;
-    private int act_no;
+    private int lod_id;
+    private int ac_no;
     private int fd_no;
     private int tr_no;
+    private String title;
     
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public int getRe_no() {
 		return re_no;
 	}
@@ -50,17 +57,17 @@ public class ReviewDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getLod_no() {
-		return lod_no;
+	public int getLod_id() {
+		return lod_id;
 	}
-	public void setLod_no(int lod_no) {
-		this.lod_no = lod_no;
+	public void setLod_id(int lod_id) {
+		this.lod_id = lod_id;
 	}
-	public int getAct_no() {
-		return act_no;
+	public int getAc_no() {
+		return ac_no;
 	}
-	public void setAct_no(int act_no) {
-		this.act_no = act_no;
+	public void setAc_no(int ac_no) {
+		this.ac_no = ac_no;
 	}
 	public int getFd_no() {
 		return fd_no;

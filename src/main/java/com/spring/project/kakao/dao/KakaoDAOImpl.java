@@ -23,8 +23,16 @@ public class KakaoDAOImpl implements KakaoDAO {
 	// 정보 확인
 	@Override
 	public KakaoVO findKakao(HashMap<String, Object> userInfo) {
-		System.out.println("RN : " + userInfo.get("k_nickname"));
+		System.out.println("RN : " + userInfo.get("name"));
+		System.out.println("daoimpl의 id email gender" + userInfo.get("id") + userInfo.get("gender") + userInfo.get("email"));
 		
 		return sqlSession.selectOne("mapper.kakao.kakao", userInfo);
+	}
+
+	@Override
+	public KakaoVO kakaoLogin(KakaoVO userInfo) {
+		// TODO Auto-generated method stub
+		KakaoVO kakaoVO = sqlSession.selectOne("mapper.kakao.kakaoLogin");
+		return kakaoVO;
 	}
 }
