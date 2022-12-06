@@ -141,7 +141,7 @@ public class EventControllerImpl implements EventController {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-		
+				
 		if(!(request.getParameter("lodDate") == null)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("checkIn", request.getParameter("checkIn"));
@@ -412,6 +412,9 @@ public class EventControllerImpl implements EventController {
 		List<RoomInfoDTO> roomList = eventService.roomList(lod_id);
 		List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
 		String viewName = (String) request.getAttribute("viewName");
+		// 평점
+		int avg = eventService.average(lod_id);
+				
 		ModelAndView mav = new ModelAndView(viewName);
 		if(isLogOn!=null && isLogOn==true) {
 			MemberDTO member = (MemberDTO) session.getAttribute("member");
@@ -426,6 +429,7 @@ public class EventControllerImpl implements EventController {
 				mav.addObject("pick", true);
 			}
 		} 
+		mav.addObject("avg", avg);
 		mav.addObject("resultDay", resultDay);
 		mav.addObject("lodging",lodging);
 		mav.addObject("roomList",roomList);

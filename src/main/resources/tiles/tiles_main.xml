@@ -136,6 +136,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/mypage/myreview.jsp" />
 	</definition>
 	
+	<definition name="myreview/reviewModForm" extends="baseLayout">
+		<put-attribute name="title" value="내 리뷰 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/reviewModForm.jsp" />
+	</definition>
+	
 	<definition name="myreservation/reservation" extends="baseLayout">
 		<put-attribute name="title" value="내 예약확인" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/myreservation.jsp" />

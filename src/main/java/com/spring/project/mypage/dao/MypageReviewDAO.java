@@ -12,4 +12,8 @@ public interface MypageReviewDAO {
 
 	public void reviewDel(int re_no);
 
+	public ReviewDTO reviewModForm(int re_no);
+
+	public int modReview(ReviewDTO review);
+
 }

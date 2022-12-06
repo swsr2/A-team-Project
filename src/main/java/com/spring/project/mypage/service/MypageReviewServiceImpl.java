@@ -25,4 +25,16 @@ public class MypageReviewServiceImpl implements MypageReviewService{
 		mypagereviewDAO.reviewDel(re_no);
 	}
 
+	@Override
+	public ReviewDTO reviewModList(int re_no) {
+		// TODO Auto-generated method stub
+		return mypagereviewDAO.reviewModForm(re_no);
+	}
+
+	@Override
+	public int modReview(ReviewDTO review) {
+		// TODO Auto-generated method stub
+		return mypagereviewDAO.modReview(review);
+	}
+
 }

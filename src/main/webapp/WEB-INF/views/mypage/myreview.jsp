@@ -83,11 +83,10 @@ tr{
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
-function fn_reviewDel(url){
+function fn_reviewDel(url, re_no){
 	if(confirm('정말로 삭제하시겠습니까?')){
 		let form = document.createElement("form");
 
-		let re_no = parseInt(document.getElementById("re_no").value);
 		let Input = document.createElement("Input");
 		Input.setAttribute("type", "hidden");
 		Input.setAttribute("name", "re_no");
@@ -102,13 +101,29 @@ function fn_reviewDel(url){
 		alert("삭제가 취소 되었습니다.");
 	}
 }
+
+function fn_reviewModForm(url, re_no){
+	let form = document.createElement("form");
+	
+	let Input = document.createElement("Input");
+	Input.setAttribute("type", "hidden");
+	Input.setAttribute("name", "re_no");
+	Input.setAttribute("value", re_no);
+	form.appendChild(Input);
+
+	document.body.appendChild(form);
+	 
+	form.action=url;
+	form.submit();
+	
+}
 </script>
 </head>
 <body>
 		<div id="review" align="center">
 			<h1>내가 쓴 리뷰</h1>
 		</div>
-		<form>
+		<form name="reviewForm" method="POST">
 		<table>
 			<c:forEach var="review" items="${reviewList }">
 			<tr>
@@ -131,7 +146,6 @@ function fn_reviewDel(url){
 						${review.title }</a>
 					</c:otherwise>
 				</c:choose>
-				<input type="hidden" value="${review.re_no  }" name="re_no" id="re_no">
 			</th>
 				<th align="right"><div class="star-ratings">
 					<div 
@@ -146,8 +160,8 @@ function fn_reviewDel(url){
 			</tr>
 			<tr>
 				<td>&nbsp;${review.re_writeDate }일 리뷰<br>&nbsp;"${review.re_content }"</td>
-				<td><div id="btn"><input type="button" class="button button4" value="수정" onClick="fn_reviewMod('${path}/myreview/reviewDel')">
-				<input type="button" class="button button4" value="삭제" onClick="fn_reviewDel('${path}/myreview/reviewDel')"></div></td>
+				<td><div id="btn"><input type="button" class="button button4" value="수정" onClick="fn_reviewModForm('${path}/myreview/reviewModForm', ${review.re_no })">
+				<input type="button" class="button button4" value="삭제" onClick="fn_reviewDel('${path}/myreview/reviewDel', ${review.re_no })"></div></td>
 			</tr>
 			</c:forEach>
 		</table>

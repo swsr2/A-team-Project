@@ -97,4 +97,16 @@
 		]]>
 	</delete>
 	
+	<select id="reviewModForm" parameterType="int" resultType="myReviewDTO">
+		<![CDATA[
+			select * from review where re_no=#{re_no}
+		]]>
+	</select>
+	
+	<update id="modReview" parameterType="myReviewDTO">
+		<![CDATA[
+			update review set re_score=#{re_score}, re_content=#{re_content} where re_no=#{re_no}
+		]]>
+	</update>
+	
 </mapper>

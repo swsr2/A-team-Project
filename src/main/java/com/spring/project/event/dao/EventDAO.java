@@ -65,6 +65,8 @@ public interface EventDAO {
 
 	public List<LodgingDTO> houseList(Map<String, Integer> page);
 
+	public int average(int lod_id);
+
 
 
 
