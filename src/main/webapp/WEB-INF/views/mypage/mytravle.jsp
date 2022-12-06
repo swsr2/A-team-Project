@@ -79,22 +79,22 @@
 	<c:choose>
 		<c:when test="${travle.lod_id !=0 }">
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.lod_id }</div>
+				<div class='fc-event-main'>${travle.title }</div>
 			</div>
 		</c:when>
 		<c:when test="${travle.ac_no != 0}">
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.ac_no}</div>
+				<div class='fc-event-main'>${travle.title}</div>
 			</div>
 		</c:when>
 		<c:when test="${travle.fd_no != 0}">
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.fd_no }</div>
+				<div class='fc-event-main'>${travle.title }</div>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.tr_no }</div>
+				<div class='fc-event-main'>${travle.title }</div>
 			</div>
 		</c:otherwise>
 	</c:choose>
