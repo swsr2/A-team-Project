@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.member.dto.MemberDTO;
+import com.spring.project.mypage.dto.PickDTO;
 import com.spring.project.mypage.dto.TravleDTO;
 import com.spring.project.mypage.service.TravleService;
 
@@ -40,7 +41,7 @@ public class TravleControllerImpl implements TravleController{
 		
 		String viewName = (String) request.getAttribute("viewName");
 		mav = new ModelAndView(viewName);
-		List<TravleDTO> mytra = travleService.travleList(member.getId());
+		List<PickDTO> mytra = travleService.travleList(member.getId());
 		mav.addObject("travleList", mytra);
 		return mav;
 	}
