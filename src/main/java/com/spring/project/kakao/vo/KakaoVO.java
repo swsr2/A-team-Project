@@ -4,12 +4,34 @@ import org.springframework.stereotype.Component;
 
 @Component("kakaoVO")
 public class KakaoVO {
-	private String k_nickname;
+	private String id;
+	private String name;
+	private String gender;
+	private String email;
 	
-	public String getK_nickname() {
-		return k_nickname;
+	public String getId() {
+		return id;
 	}
-	public void setK_nickname(String k_nickname) {
-		this.k_nickname = k_nickname;
-	}	
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }

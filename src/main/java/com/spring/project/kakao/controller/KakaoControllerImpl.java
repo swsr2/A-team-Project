@@ -4,15 +4,19 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,17 +36,36 @@ public class KakaoControllerImpl implements KakaoController {
 	
 	@Override
 	@RequestMapping(value="/kakao/kakaoLogin.do", method= {RequestMethod.POST,RequestMethod.GET})
-	public String kakaoLogin(@RequestParam(value="code", required = false) String code, HttpSession session) {
-//		String code = kakaoService.getKakaoCode();
+	public void kakaoLogin(@RequestParam(value="code", required = false) String code, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
 		System.out.println("인가코드를 받아왔으면 인가코드는" + code);
 		
 		String access_Token = getAccessToken(code);
 		KakaoVO userInfo = getUserInfo(access_Token);
+		System.out.println("userInfo = getUserInfo 진입!" + userInfo);
+//		KakaoVO kakaoVO = kakaoService.kakaoLogin(userInfo);
+//		System.out.println("kakaoVO = kakaoService.kakaoLogin(userInfo); 진입!" + kakaoVO);
 		
 		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("###nickname#### : " + userInfo.getK_nickname());
+//		System.out.println("###nickname#### : " + userInfo.getK_nickname());
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		if(userInfo != null) {
+			System.out.println("if문 진입@@");
+			HttpSession session = request.getSession();
+			session.setAttribute("member", userInfo);
+			session.setAttribute("isLogOn", true);
+			out.println("alert('"+userInfo.getId()+"님 로그인 되었습니다');");
+			out.println("location.href='"+request.getContextPath() +"/main/main.do';"); 
+		} else {
+			out.println("alert('아이디나 비밀번호가 틀립니다. 다시 로그인 하세요!.');");
+			out.println("location.href='"+request.getContextPath() +"/member/loginForm.do';");
+		}
+		out.println("</script>");
 
-		return "/kakao/kakaoLogin";
 	}
 	
 	@Override
@@ -140,10 +163,17 @@ public class KakaoControllerImpl implements KakaoController {
 			
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
-			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+			JsonObject profile = kakao_account.getAsJsonObject().get("profile").getAsJsonObject();
 			
-			String k_nickname = properties.getAsJsonObject().get("nickname").getAsString();
-			userInfo.put("k_nickname", k_nickname);
+			String id = kakao_account.getAsJsonObject().get("email").getAsString();
+			String name = profile.getAsJsonObject().get("nickname").getAsString();
+			String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
+			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			userInfo.put("id", id);
+			userInfo.put("name", name);
+			userInfo.put("gender", gender);
+			userInfo.put("email", email);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -151,7 +181,6 @@ public class KakaoControllerImpl implements KakaoController {
 		KakaoVO result = kakaoService.findKakao(userInfo);
 		
 		System.out.println("S : " + result);
-		
 		if(result == null) {
 			kakaoService.kakaoInsert(userInfo);
 			return kakaoService.findKakao(userInfo);

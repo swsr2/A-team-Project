@@ -18,20 +18,23 @@
 	
     function loginWithKakao() {
         window.Kakao.Auth.authorize({
-        	scope:'profile,account_email',
+        	scope:'profile',
         	success: function(authObj){
         		//console.log(authObj);
         		window.Kakao.API.request({
         			uri: '/v2/user/me',
         			success: res => {
-        				const email = res.kakao_account.email;
-        				const name = res.properties.nickname;
+        				const nickname = res.properties.nickname;
+/*         				const email = res.kakao_account.email;
+        				const getder = res.kakao_account.gender; */
         				
-        				console.log(email);
-        				console.log(name);
+        				console.log(nickname);
+/*         				console.log(email);
+        				console.log(gender); */
         				
-        				$('#kakaoemail').val(email);
-        				$('#kakaoname').val(name);
+        				$('#kakaonickname').val(nickname);
+/*         				$('#kakaoemail').val(email);
+        				$('#kakaogender').val(gender); */
         				document.login_frm.submit();
         			}
         		});

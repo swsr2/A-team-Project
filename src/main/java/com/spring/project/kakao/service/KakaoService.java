@@ -10,4 +10,6 @@ public interface KakaoService {
 
 	public void kakaoInsert(HashMap<String, Object> userInfo);
 
+	public KakaoVO kakaoLogin(KakaoVO userInfo);
+
 }
