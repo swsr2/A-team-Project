@@ -89,12 +89,14 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 
  	@Override
-	@RequestMapping(value="/member/delMember.do", method=RequestMethod.GET)
+	@RequestMapping(value="/member/delMember.do", method= {RequestMethod.POST,RequestMethod.GET})
 	public void delMember(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		
+ 		
+ 		request.setCharacterEncoding("utf-8");
+ 		response.setContentType("text/html;charset=utf-8");
+ 		HttpSession session = request.getSession();
+
 		
 		
 		int result = memberService.delMember(id);
@@ -102,9 +104,10 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		if(result == 1) {
-			out.println("alert('삭제 완료되었습니다');");
+			out.println("alert('탈퇴가 완료되었습니다');");
+			session.invalidate();
 		} else {
-			out.println("alert('삭제가 완료되지 못했습니다. 다시 삭제하세요');");
+			out.println("alert('탈퇴가 완료되지 못했습니다. 다시 진행해주세요.');");
 		}
 		out.println("location.href='"+ request.getContextPath() +"/main/main.do';");
 		out.println("</script>");
