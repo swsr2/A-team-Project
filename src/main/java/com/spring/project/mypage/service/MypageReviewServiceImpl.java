@@ -19,4 +19,10 @@ public class MypageReviewServiceImpl implements MypageReviewService{
 		return mypagereviewDAO.reviewList(id);
 	}
 
+	@Override
+	public void reviewDel(int re_no) {
+		// TODO Auto-generated method stub
+		mypagereviewDAO.reviewDel(re_no);
+	}
+
 }
