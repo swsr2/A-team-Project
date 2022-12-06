@@ -22,4 +22,10 @@ public class MypageReviewDAOImpl implements MypageReviewDAO{
 
 	}
 
+	@Override
+	public void reviewDel(int re_no) {
+		// TODO Auto-generated method stub
+			sqlSession.delete("mapper.mypage.reviewDel", re_no);
+	}
+
 }

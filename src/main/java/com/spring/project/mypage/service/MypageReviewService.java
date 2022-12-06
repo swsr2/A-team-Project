@@ -9,4 +9,6 @@ public interface MypageReviewService {
 
 	public List<ReviewDTO> reviewList(String id);
 
+	public void reviewDel(int re_no);
+
 }

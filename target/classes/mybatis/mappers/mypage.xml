@@ -65,42 +65,35 @@
 		]]>
 	</select>
 	
-	<resultMap type="travleDTO" id="travleResult">
-		<result property="id" column="id"></result>
-		<result property="year" column="year"></result>
-		<result property="month" column="month"></result>
-		<result property="day" column="day"></result>
-		<result property="schedule" column="schedule"></result>
-		<result property="scheduleDetail" column="scheduleDetail"></result>
-		<result property="fd_no" column="fd_no"></result>
-		<result property="lod_id" column="lod_id"></result>
-		<result property="ac_no" column="ac_no"></result>
-		<result property="tr_no" column="tr_no"></result>
-	</resultMap>
-	
-	<select id="travlecheck" resultType="travleDTO">
+	<select id="travlecheck" resultType="pickDTO">
 		<![CDATA[
-			select * from mypick where id=#{id}
+			select m.*, f.fd_title||l.lod_title||a.ac_title||t.tr_title as title from mypick m,food f, lodging_list l, activity a, tour t
+   			 where  (m.fd_no = f.fd_no(+) and m.lod_id = l.lod_id(+) and m.ac_no = a.ac_no(+) and m.tr_no = t.tr_no(+))  and m.id=#{id}
 		]]>
 	</select>
 	
 	<insert id="insertTravle" parameterType="travleDTO">
 		<![CDATA[
-			insert into schedule values(#{id}, #{year}, #{month}, #{day}, #{schedule}, #{scheduleDetail}, #{fd_no}, #{lod_id},
-			#{ac_no}, #{tr_no})
+			insert into schedule values(#{id},#{date},#{title})
 		]]>
 	</insert>
 	
 	<update id="updateTravle" parameterType="travleDTO">
 		<![CDATA[
-			update schedule set id=#{id}, year=#{year}, month=#{month}, day=#{day}, schedule=#{schedule}
-			, scheduleDetail=#{scheduleDetail}, fd_no=#{fd_no}, #lod_id=#{lod_id}, ac_no=#{ac_no}, tr_no=#{tr_no} where id=#{id}
+			update schedule set date=#{date},title=#{title} where id=#{id},title=#{title}
 		]]>
 	</update>
 	
 	<delete id="deleteTravle" parameterType="String">
 		<![CDATA[
 			delete from schedule where id=#{id}
+		]]>
+	</delete>
+	
+	
+	<delete id="reviewDel" parameterType="int">
+		<![CDATA[
+			delete from review where re_no=#{re_no}
 		]]>
 	</delete>
 	

@@ -68,6 +68,7 @@
     margin: 0 auto;
   }
 </style>
+
 </head>
 <body>
   <div id='wrap'>
@@ -79,22 +80,22 @@
 	<c:choose>
 		<c:when test="${travle.lod_id !=0 }">
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.lod_id }</div>
+				<div class='fc-event-main'>${travle.title }</div>
 			</div>
 		</c:when>
 		<c:when test="${travle.ac_no != 0}">
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.ac_no}</div>
+				<div class='fc-event-main'>${travle.title}</div>
 			</div>
 		</c:when>
 		<c:when test="${travle.fd_no != 0}">
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.fd_no }</div>
+				<div class='fc-event-main'>${travle.title }</div>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>${travle.tr_no }</div>
+				<div class='fc-event-main'>${travle.title }</div>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -103,7 +104,7 @@
     </div>
     <!-- calendar 태그 -->
     <div id='calendar-wrap'>
-      <div id='calendar1'></div>
+      <div id='calendar1' onchange="ff()"></div>
     </div>
   </div>
   <script>
@@ -129,7 +130,7 @@
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          right: 'dayGridMonth'
         },
         initialDate: '2022-11-30', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
         locale: 'ko', // 한국어 설정
@@ -138,12 +139,51 @@
         drop: function(arg) { // 드래그 엔 드롭 성공시
           // 드래그 박스에서 아이템을 삭제한다.
           arg.draggedEl.parentNode.removeChild(arg.draggedEl);
-        }
+        },
+        eventDrop: function(info){
+        	console.log(info);
+        	$.ajax({
+        		type:'post',
+        		url:'${path}/travle/schedule',
+        		dataType:'text',
+        		data:JSON.stringify({
+        			'date' : info.event.startStr,
+        			'title' : info.event.title
+        		}),
+        		contentType:'application/json; charset=utf-8',
+        		success: function(response){
+        			alert('일정추가');
+        		},
+        		error: function(response){
+        			alert("실패");
+        		}
+        	}); 
+         },
+        eventReceive: function(info){
+        	$.ajax({
+        		type:'post',
+        		url:'${path}/travle/schedule',
+        		dataType:'text',
+        		data:JSON.stringify({
+        			'date' : info.event.startStr,
+        			'title' : info.event.title
+        		}),
+        		contentType:'application/json; charset=utf-8',
+        		success: function(response){
+        			alert('일정추가');
+        		},
+        		error: function(response){
+        			alert("실패");
+        		}
+        	}); 
+         }
       });
       // 캘린더 랜더링
       calendar.render();
+     
     });
   })();
+
 </script>
 </body>
 </html>

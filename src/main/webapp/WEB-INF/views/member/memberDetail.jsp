@@ -144,9 +144,9 @@
 		})
 	}
 	
-	function deleteMember(){
+	function deleteMember(id){
 		if(window.confirm('탈퇴하시겠습니까?')){
-			location.href="/member/delMember.do";
+			location.href="/project/member/delMember.do?id="+id;
 		}
 	}
 </script>
@@ -231,7 +231,7 @@ select {
 				<td width="400">
 					<input type="submit" id="btn" value="수정하기"><br>
 					<input type="button" id="btn" value="뒤로가기" onclick="location.href='${path }/mypage/mypagemain'"><br>
-					<input type="button" id="btn" value="회원탈퇴" onclick="deleteMember();">
+					<input type="button" id="${member.id }" value="회원탈퇴" onclick="deleteMember(id);"><br>
 				</td>
 	</form>
 	</div>

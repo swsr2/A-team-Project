@@ -181,7 +181,6 @@ public class KakaoControllerImpl implements KakaoController {
 		KakaoVO result = kakaoService.findKakao(userInfo);
 		
 		System.out.println("S : " + result);
-		
 		if(result == null) {
 			kakaoService.kakaoInsert(userInfo);
 			return kakaoService.findKakao(userInfo);
