@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.project.kakao.dao.KakaoDAO;
-import com.spring.project.kakao.vo.KakaoVO;
+import com.spring.project.member.dto.MemberDTO;
 
 @Service("kakaoService")
 public class KakaoServiceImpl implements KakaoService {
@@ -14,7 +14,7 @@ public class KakaoServiceImpl implements KakaoService {
 	private KakaoDAO kakaoDAO;
 
 	@Override
-	public KakaoVO findKakao(HashMap<String, Object> userInfo) {
+	public MemberDTO findKakao(HashMap<String, Object> userInfo) {
 		// TODO Auto-generated method stub
 		return kakaoDAO.findKakao(userInfo);
 	}
@@ -26,7 +26,7 @@ public class KakaoServiceImpl implements KakaoService {
 	}
 
 	@Override
-	public KakaoVO kakaoLogin(KakaoVO userInfo) {
+	public MemberDTO kakaoLogin(MemberDTO userInfo) {
 		// TODO Auto-generated method stub
 		return kakaoDAO.kakaoLogin(userInfo);
 	}
