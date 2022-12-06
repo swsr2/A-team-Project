@@ -93,5 +93,11 @@
 			select count(*) from mypick where id=#{id} and fd_no=#{fd_no}
 		]]>
 	</select>
+	
+	<select id="average" parameterType="int" resultType="String">
+		<![CDATA[
+			select avg(re_score) from review where fd_no=#{fd_no}
+		]]>
+	</select>
 </mapper>
 

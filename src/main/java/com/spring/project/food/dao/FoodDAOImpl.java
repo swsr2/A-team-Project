@@ -82,4 +82,19 @@ public class FoodDAOImpl implements FoodDAO{
 		return sqlSession.selectOne("mapper.food.checkPick", pickMap);
 	}
 
+	@Override
+	public int average(int fd_no) {
+		// TODO Auto-generated method stub
+		String avg_result = sqlSession.selectOne("mapper.food.average", fd_no);
+		int avg = 0;
+		if(avg_result==null) {
+			avg_result = "0";
+			avg = Integer.parseInt(avg_result);
+			return avg;
+		} else {
+			avg = Integer.parseInt(avg_result);
+		}
+		return avg;
+	}
+
 }

@@ -54,7 +54,9 @@ li button {
 .myPick:hover, .myReview:hover {
 	color: black;
 }
-
+h3{
+	color:orange;
+}
 </style>
 </head>
 <body>
@@ -73,7 +75,7 @@ li button {
  			<td colspan="2" align="center"><img src="${activity.ac_imgPath }" width="700"/></td>
      	</tr>
      	<tr>
- 			<td colspan="2" align="center"><h2>${activity.ac_title }</h2>
+ 			<td colspan="2" align="center"><h2>${activity.ac_title }&nbsp;</h2><h3>평점&nbsp;${avg }</h3>
  			<c:forEach var="tag" items="${category}">
  					#${tag }
  				</c:forEach>

@@ -98,4 +98,10 @@ public class TourServiceImpl implements TourService {
 		return tourDAO.checkPcik(pickMap);
 	}
 
+	@Override
+	public int average(int tr_no) {
+		// TODO Auto-generated method stub
+		return tourDAO.average(tr_no);
+	}
+	
 }
