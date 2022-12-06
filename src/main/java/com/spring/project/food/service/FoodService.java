@@ -32,5 +32,7 @@ public interface FoodService {
 
 	public int checkPick(Map pickMap);
 
+	public int average(int fd_no);
+
 
 }

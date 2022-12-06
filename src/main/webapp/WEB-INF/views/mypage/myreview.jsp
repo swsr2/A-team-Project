@@ -39,7 +39,9 @@ table {
 tr{
  border: 1px solid #ddd;
 }
-
+#btn{
+	display:inline-block;
+}
 .button4:hover {background-color: #ddd;}
 
 .button {
@@ -47,11 +49,9 @@ tr{
   border: none;
   color: black;
   padding: 5px;
-  text-align: center;
+  text-align:center;
   text-decoration: none;
-  display: inline-block;
   font-size: 12px;
-  margin-left:60%;
   cursor: pointer;
 }
 .button4 {border-radius: 8px;}
@@ -146,7 +146,8 @@ function fn_reviewDel(url){
 			</tr>
 			<tr>
 				<td>&nbsp;${review.re_writeDate }일 리뷰<br>&nbsp;"${review.re_content }"</td>
-				<td><input type="button" class="button button4" value="삭제" onClick="fn_reviewDel('${path}/myreview/reviewDel')"></td>
+				<td><div id="btn"><input type="button" class="button button4" value="수정" onClick="fn_reviewMod('${path}/myreview/reviewDel')">
+				<input type="button" class="button button4" value="삭제" onClick="fn_reviewDel('${path}/myreview/reviewDel')"></div></td>
 			</tr>
 			</c:forEach>
 		</table>

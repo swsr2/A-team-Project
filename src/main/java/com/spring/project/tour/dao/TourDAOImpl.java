@@ -89,4 +89,19 @@ public class TourDAOImpl implements TourDAO {
 		return sqlSession.selectOne("mapper.tour.checkPick", pickMap);
 	}
 
+	@Override
+	public int average(int tr_no) {
+		// TODO Auto-generated method stub
+		String avg_result = sqlSession.selectOne("mapper.tour.average", tr_no);
+		int avg = 0;
+		if(avg_result==null) {
+			avg_result = "0";
+			avg = Integer.parseInt(avg_result);
+			return avg;
+		} else {
+			avg = Integer.parseInt(avg_result);
+		}
+		return avg;
+	}
+
 }
