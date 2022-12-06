@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +24,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.spring.project.kakao.service.KakaoService;
-import com.spring.project.kakao.vo.KakaoVO;
+import com.spring.project.member.dto.MemberDTO;
 
 @Controller("kakaoController")
 @EnableAspectJAutoProxy
@@ -43,7 +42,7 @@ public class KakaoControllerImpl implements KakaoController {
 		System.out.println("인가코드를 받아왔으면 인가코드는" + code);
 		
 		String access_Token = getAccessToken(code);
-		KakaoVO userInfo = getUserInfo(access_Token);
+		MemberDTO userInfo = getUserInfo(access_Token);
 		System.out.println("userInfo = getUserInfo 진입!" + userInfo);
 //		KakaoVO kakaoVO = kakaoService.kakaoLogin(userInfo);
 //		System.out.println("kakaoVO = kakaoService.kakaoLogin(userInfo); 진입!" + kakaoVO);
@@ -136,7 +135,7 @@ public class KakaoControllerImpl implements KakaoController {
 	}
 
 	@Override
-	public KakaoVO getUserInfo(String access_Token) {
+	public MemberDTO getUserInfo(String access_Token) {
 		// TODO Auto-generated method stub
 		
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
@@ -178,7 +177,7 @@ public class KakaoControllerImpl implements KakaoController {
 			e.printStackTrace();
 		}
 		
-		KakaoVO result = kakaoService.findKakao(userInfo);
+		MemberDTO result = kakaoService.findKakao(userInfo);
 		
 		System.out.println("S : " + result);
 		if(result == null) {

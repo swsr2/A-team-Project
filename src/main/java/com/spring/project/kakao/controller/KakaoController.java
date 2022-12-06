@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.spring.project.kakao.vo.KakaoVO;
+import com.spring.project.member.dto.MemberDTO;
 
 public interface KakaoController {
 
@@ -14,5 +15,5 @@ public interface KakaoController {
 
 	String getAccessToken(String authorize_code);
 
-	KakaoVO getUserInfo(String access_Token);
+	MemberDTO getUserInfo(String access_Token);
 }

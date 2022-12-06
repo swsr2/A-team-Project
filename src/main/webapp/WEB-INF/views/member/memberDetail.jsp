@@ -49,7 +49,7 @@
 					$("#pwdChk").css("color", "blue");
 					$("#submit1").attr("disabled", false);
 				} else {
-					$("#pwdChk").text("패스워드가 형식에 맞지않습니다.");
+					$("#pwdChk").text("패스워드가 형식에 맞지않습니다. ( 영어대소문자 또는 숫자 3 ~ 15자리 )");
 					$("#pwdChk").css("color", "red");
 					$("#pwd").val("");
 					$("#submit1").attr("disabled", true);

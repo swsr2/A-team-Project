@@ -17,7 +17,7 @@
 		<typeAlias type="com.spring.project.mypage.dto.MyReservationDTO" alias="myReservationDTO" />
 		<typeAlias type="com.spring.project.mypage.dto.LodReservationDTO" alias="lodReservationDTO" />
 		<typeAlias type="com.spring.project.mypage.dto.TravleDTO" alias="travleDTO" />
-		<typeAlias type="com.spring.project.kakao.vo.KakaoVO" alias="kakaoVO" />
+<!-- 		<typeAlias type="com.spring.project.kakao.vo.KakaoVO" alias="kakaoVO" /> -->
 		<typeAlias type="com.spring.project.mypage.dto.PickDTO" alias="pickDTO" />
 		
 		<!--

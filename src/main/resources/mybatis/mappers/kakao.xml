@@ -5,26 +5,26 @@
 <mapper namespace="mapper.kakao">
 
 
-	<resultMap type="kakaoVO" id="kakaoResult">
+	<resultMap type="memberDTO" id="kakaoResult">
 		<result property="id" column="id" />
 		<result property="name" column="name" />
 		<result property="gender" column="gender" />
 		<result property="email" column="email" />
 	</resultMap>
 
-	<select id="kakao" parameterType="kakaoVO" resultType="kakaoVO">
+	<select id="kakao" parameterType="memberDTO" resultType="memberDTO">
 		<![CDATA[
 			select * from kakao where id=#{id}
 		]]>
 	</select>
 	 
-	<insert id="insert" parameterType="kakaoVO">
+	<insert id="insert" parameterType="memberDTO">
 		<![CDATA[
 			insert into kakao values(#{id}, #{name}, #{gender}, #{email})
 		]]>
 	</insert>
 	
-	<select id="kakaoLogin" parameterType="kakaoVO" resultType="kakaoVO">
+	<select id="kakaoLogin" parameterType="memberDTO" resultType="memberDTO">
 		<![CDATA[
 			select * from kakao where id=#{id} and name=#{name}
 		]]>
