@@ -90,23 +90,23 @@ tr{
 		<table>
 			<c:forEach var="review" items="${reviewList }">
 			<tr>
-				<th width="80%" align="left" >&nbsp;#업체명&nbsp;
+				<th width="80%" align="left" >
 					<c:choose>
 					<c:when test="${ review.fd_no != 0 }">
 						<a id="review_a" href="${path }/food/resDetail?fd_no=${review.fd_no }">
-						>>${review.title }</a>
+						${review.title }</a>
 					</c:when>
 					<c:when test="${review.lod_id != 0 }">
 						<a id="review_a" href="${path}/event/lodInfo?lod_id=${review.lod_id}&resultDay=0">
-						>>${review.title }</a>
+						${review.title }</a>
 					</c:when>
 					<c:when test="${review.ac_no != 0 }">
 						<a id="review_a" href="${path}/activity/activityDetail?ac_no=${review.ac_no}">
-						>>${review.title }</a>
+						${review.title }</a>
 					</c:when>
 					<c:otherwise>
 						<a id="review_a" href="${path}/tour/tourDetail?tr_no=${review.tr_no}">
-						>>${review.title }</a>
+						${review.title }</a>
 					</c:otherwise>
 				</c:choose>
 			</th>

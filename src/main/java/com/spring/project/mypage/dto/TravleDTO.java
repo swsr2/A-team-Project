@@ -17,8 +17,20 @@ public class TravleDTO {
     private int ac_no;
     private int fd_no;
     private int tr_no;
-
+    private String title;
 	
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getYear() {
 		return year;
 	}
@@ -30,12 +42,6 @@ public class TravleDTO {
 	}
 	public void setMonth(String month) {
 		this.month = month;
-	}
-	public String getDate() {
-		return day;
-	}
-	public void setDate(String day) {
-		this.day = day;
 	}
 	public String getValue() {
 		return value;
