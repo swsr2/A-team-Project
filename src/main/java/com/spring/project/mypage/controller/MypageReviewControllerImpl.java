@@ -1,11 +1,16 @@
 package com.spring.project.mypage.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
@@ -41,5 +46,30 @@ public class MypageReviewControllerImpl implements MypageReviewController {
 		mav.addObject("reviewList",review);
 		return mav;
 	}
+	
+	@Override
+	@RequestMapping("/reviewDel")
+	public void reviewDel(int re_no, HttpServletRequest request, 
+			HttpServletResponse response) throws IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
 
+		String msg = null;
+		String url = null;
+
+			try {
+				reviewService.reviewDel(re_no);
+				msg = "삭제가 완료 되었습니다.";
+				url = request.getContextPath() + "/myreview/review";
+			} catch(Exception e) {
+				msg = "삭제에 실패했습니다. 다시 시도하세요.";
+				url = request.getContextPath() + "/myreview/review";
+				e.printStackTrace();
+			}
+			out.println("<script>");
+			out.println("alert('" + msg + "');");
+			out.println("location.href='" + url + "';");
+			out.println("</script>");
+	}
 }
