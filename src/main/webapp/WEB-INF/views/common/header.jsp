@@ -8,13 +8,12 @@
 <div id="loginBar">
 
 	<c:choose>	
-<%-- 		<c:when test="${isLogOn == true && member != null && kakao == true }">	
+  		<c:when test="${isLogOn == true && member != null && kakao == true }">	
 		<ul id="loginBarList">
-			<li>kakao로그인중</li>
-			<li>${kakao.name }님 <a href="https://kauth.kakao.com/oauth/logout?client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d&logout_redirect_uri=${path }/main/main.do"> 로그아웃</a></li>
-			<li><a href="${path}/mypage/mypagemain?id=${kakao.id}">마이페이지</a></li>
+			<li>${member.name }님 <a href="https://kauth.kakao.com/oauth/logout?client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d&logout_redirect_uri=http://localhost:8080/project/kakao/kakaoLogout.do"> 로그아웃</a></li>
+			<li><a href="${path}/mypage/mypagemain?id=${member.id}">마이페이지</a></li>
 		</ul>
-		</c:when> --%>
+		</c:when>
 		
 		<c:when test="${isLogOn == true && member != null }">	
 		<ul id="loginBarList">

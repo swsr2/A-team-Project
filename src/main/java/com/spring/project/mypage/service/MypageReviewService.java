@@ -11,4 +11,8 @@ public interface MypageReviewService {
 
 	public void reviewDel(int re_no);
 
+	public ReviewDTO reviewModList(int re_no);
+
+	public int modReview(ReviewDTO review);
+
 }

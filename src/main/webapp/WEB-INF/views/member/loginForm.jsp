@@ -16,31 +16,6 @@
 		Kakao.init('19304f7b1ee5a07ed9d039dba756e0bb');
 		console.log(Kakao.isInitialized());
 	
-    function loginWithKakao() {
-        window.Kakao.Auth.authorize({
-        	scope:'profile',
-        	success: function(authObj){
-        		//console.log(authObj);
-        		window.Kakao.API.request({
-        			uri: '/v2/user/me',
-        			success: res => {
-        				const nickname = res.properties.nickname;
-/*         				const email = res.kakao_account.email;
-        				const getder = res.kakao_account.gender; */
-        				
-        				console.log(nickname);
-/*         				console.log(email);
-        				console.log(gender); */
-        				
-        				$('#kakaonickname').val(nickname);
-/*         				$('#kakaoemail').val(email);
-        				$('#kakaogender').val(gender); */
-        				document.login_frm.submit();
-        			}
-        		});
-        	}
-        });
-       }       		
 	function kakaoLogin() {
         Kakao.Auth.authorize({
         	redirectUri: 'http://localhost:8080/project/kakao/kakaoLogin.do',

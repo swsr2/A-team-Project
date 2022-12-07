@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -32,6 +33,19 @@ public class KakaoControllerImpl implements KakaoController {
 
 	@Autowired
 	private KakaoService kakaoService;
+	
+	@Override
+	@RequestMapping(value="/kakao/kakaoLogout.do", method=RequestMethod.GET)
+	public ModelAndView kakaoLogout(HttpServletRequest request, HttpServletResponse resposne) throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		
+		session.invalidate();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/main/main.do");
+		return mav;
+	}
 	
 	@Override
 	@RequestMapping(value="/kakao/kakaoLogin.do", method= {RequestMethod.POST,RequestMethod.GET})
@@ -58,6 +72,7 @@ public class KakaoControllerImpl implements KakaoController {
 			session.setAttribute("member", userInfo);
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("kakao", true);
+			System.out.println(session.getAttribute("kakao"));
 			out.println("alert('"+userInfo.getId()+"님 로그인 되었습니다');");
 			out.println("location.href='"+request.getContextPath() +"/main/main.do';"); 
 		} else {

@@ -129,6 +129,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("isLogOn", true);
+			session.setAttribute("kakao", false);
 			out.println("alert('"+memberDTO.getId()+"님 로그인 되었습니다');");
 			out.println("location.href='"+request.getContextPath() +"/main/main.do';"); 
 		} else {

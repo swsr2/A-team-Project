@@ -76,7 +76,12 @@
 <body>
 	<h1 style="text-align:center;">마이페이지</h1>
 	<div id="btn_group1" align="center">
-		<button class="button button1" type="button" onClick="location.href='${path }/member/memberDetail'">내 정보수정</button>
+		<c:if test="${kakao == true }">
+			<button class="button button1" type="button" onClick="alert('카카오 계정은 정보를 수정할 수 없습니다.');">내 정보수정</button>
+		</c:if>
+		<c:if test="${kakao == false }">
+			<button class="button button1" type="button" onClick="location.href='${path }/member/memberDetail'">내 정보수정</button>
+		</c:if>
 		<button class="button button2" type="button" onClick="location.href='${path }/myreview/review'">내가 쓴리뷰</button>
 	</div>
 	<div id="btn_group2" align="center">
