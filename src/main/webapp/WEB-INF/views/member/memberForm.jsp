@@ -18,6 +18,8 @@ function fn_selected(obj){
 }
 
 window.onload = function() {
+	$("#idChk").text("영어대소문자 또는 숫자 3 ~ 15자리");
+	$("#pwdChk").text("영어대소문자 또는 숫자 3 ~ 15자리");
 	$("#telChk").text("ex) 01012345678");
 	$("#emailChk").text("ex) test@test.com");
 	// id 와 pw 적합여부 검사(4~12자리, 영어대소문자, 숫자만 가능)

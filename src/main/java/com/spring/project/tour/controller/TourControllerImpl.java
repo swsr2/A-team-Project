@@ -190,6 +190,9 @@ public class TourControllerImpl implements TourController {
 		TourDTO tour = tourService.selectOne(tr_no);
 		List<ReviewDTO> reviewList = tourService.reviewList(tr_no);
 		
+		//평점
+		int avg = tourService.average(tr_no);
+		
 		String[] category = tour.getTr_category().split(",");
 		
 		String viewName = (String) request.getAttribute("viewName");
@@ -207,6 +210,7 @@ public class TourControllerImpl implements TourController {
 				mav.addObject("pick", true);
 			}
 		} 
+		mav.addObject("avg", avg);
 		mav.addObject("tour", tour);
 		mav.addObject("category", category);
 		mav.addObject("reviewList", reviewList);

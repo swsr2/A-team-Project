@@ -148,7 +148,10 @@ public class ActivityControllerImpl implements ActivityController{
 		ModelAndView mav = null;
 		ActivityDTO activity = activityService.selectOne(ac_no);
 		List<ReviewDTO> reviewList = activityService.reviewList(ac_no);
-
+		
+		// 평점
+		int avg = activityService.average(ac_no);
+				
 		String[] category = activity.getAc_category().split(",");
 
 		String viewName = (String) request.getAttribute("viewName");
@@ -164,6 +167,7 @@ public class ActivityControllerImpl implements ActivityController{
 				mav.addObject("pick", true);
 			}
 		}
+		mav.addObject("avg", avg);
 		mav.addObject("activity", activity);
 		mav.addObject("category", category);
 		mav.addObject("reviewList", reviewList);

@@ -5,22 +5,30 @@
 <mapper namespace="mapper.kakao">
 
 
-	<resultMap type="kakaoVO" id="kakaoResult">
-		<result property="k_nickname" column="k_nickname" />
+	<resultMap type="memberDTO" id="kakaoResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="email" column="email" />
 	</resultMap>
 
-	<select id="kakao" parameterType="java.util.HashMap" resultType="kakaoVO">
+	<select id="kakao" parameterType="memberDTO" resultType="memberDTO">
 		<![CDATA[
-			select * from kakao where k_nickname=#{k_nickname}
+			select * from kakao where id=#{id}
 		]]>
 	</select>
 	 
-	<insert id="insert" parameterType="java.util.HashMap">
+	<insert id="insert" parameterType="memberDTO">
 		<![CDATA[
-			insert into kakao values(#{k_nickname})
+			insert into kakao values(#{id}, #{name}, #{gender}, #{email})
 		]]>
 	</insert>
 	
+	<select id="kakaoLogin" parameterType="memberDTO" resultType="memberDTO">
+		<![CDATA[
+			select * from kakao where id=#{id} and name=#{name}
+		]]>
+	</select>
 </mapper>
 
 

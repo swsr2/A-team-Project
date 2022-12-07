@@ -214,5 +214,21 @@ public class EventDAOImpl implements EventDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.event.houseList",page);
 	}
+
+
+	@Override
+	public int average(int lod_id) {
+		// TODO Auto-generated method stub
+		String avg_result = sqlSession.selectOne("mapper.event.average", lod_id);
+		int avg = 0;
+		if(avg_result==null) {
+			avg_result = "0";
+			avg = Integer.parseInt(avg_result);
+			return avg;
+		} else {
+			avg = Integer.parseInt(avg_result);
+		}
+		return avg;
+	}
 	
 }

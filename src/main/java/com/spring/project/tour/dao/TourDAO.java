@@ -33,4 +33,6 @@ public interface TourDAO {
 
 	public int checkPcik(Map pickMap);
 
+	public int average(int tr_no);
+
 }

@@ -139,11 +139,15 @@ public class FoodControllerImpl implements FoodController {
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		ModelAndView mav = null;
 		FoodDTO food = foodService.selectOne(fd_no);
+		
 		List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
+		//평점
+		int avg = foodService.average(fd_no);
 		
 		String[] category = food.getFd_category().split(",");
 		String viewName = (String) request.getAttribute("viewName");
 		mav = new ModelAndView(viewName);
+		
 		if(isLogOn!=null && isLogOn==true) {
 			MemberDTO member = (MemberDTO) session.getAttribute("member");
 			Map pickMap = new HashMap();
@@ -157,7 +161,7 @@ public class FoodControllerImpl implements FoodController {
 				mav.addObject("pick", true);
 			}
 		} 
-		
+		mav.addObject("avg", avg);
 		mav.addObject("food", food);
 		mav.addObject("category",category);
 		mav.addObject("reviewList",reviewList);

@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.project.kakao.vo.KakaoVO;
+import com.spring.project.member.dto.MemberDTO;
 
 @Repository("kakaoDAO")
 public class KakaoDAOImpl implements KakaoDAO {
@@ -22,9 +22,17 @@ public class KakaoDAOImpl implements KakaoDAO {
 	
 	// 정보 확인
 	@Override
-	public KakaoVO findKakao(HashMap<String, Object> userInfo) {
-		System.out.println("RN : " + userInfo.get("k_nickname"));
+	public MemberDTO findKakao(HashMap<String, Object> userInfo) {
+		System.out.println("RN : " + userInfo.get("name"));
+		System.out.println("daoimpl의 id email gender" + userInfo.get("id") + userInfo.get("gender") + userInfo.get("email"));
 		
 		return sqlSession.selectOne("mapper.kakao.kakao", userInfo);
+	}
+
+	@Override
+	public MemberDTO kakaoLogin(MemberDTO userInfo) {
+		// TODO Auto-generated method stub
+		MemberDTO memberDTO = sqlSession.selectOne("mapper.kakao.kakaoLogin");
+		return memberDTO;
 	}
 }

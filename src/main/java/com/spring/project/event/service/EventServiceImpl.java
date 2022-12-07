@@ -269,4 +269,10 @@ public class EventServiceImpl implements EventService {
 		page.put("end", end);
 		return eventDAO.houseList(page);
 	}
+
+	@Override
+	public int average(int lod_id) {
+		// TODO Auto-generated method stub
+		return eventDAO.average(lod_id);
+	}
 }

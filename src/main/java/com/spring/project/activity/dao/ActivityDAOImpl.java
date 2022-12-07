@@ -83,4 +83,19 @@ public class ActivityDAOImpl implements ActivityDAO{
 		return sqlSession.insert("mapper.activity.addReview", review);
 	}
 
+	@Override
+	public int average(int ac_no) {
+		// TODO Auto-generated method stub
+		String avg_result = sqlSession.selectOne("mapper.activity.average", ac_no);
+		int avg = 0;
+		if(avg_result==null) {
+			avg_result = "0";
+			avg = Integer.parseInt(avg_result);
+			return avg;
+		} else {
+			avg = Integer.parseInt(avg_result);
+		}
+		return avg;
+	}
+
 }

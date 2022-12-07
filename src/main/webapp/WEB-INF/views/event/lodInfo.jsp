@@ -67,7 +67,9 @@ li button {
 td {
 	padding-top: 10px;
 }
-
+h3 {
+	color:orange;
+}
 </style>
 </head>
 <body>
@@ -84,7 +86,7 @@ td {
  				onerror="this.src='${path }/resources/image/empty_img.png'" width="700"/></td>
      	</tr>
      	<tr>
- 			<td colspan="2" align="center"><h2>${lodging.lod_title }</h2>
+ 			<td colspan="2" align="center"><h2>${lodging.lod_title }&nbsp;</h2><h3>평점&nbsp;${avg }</h3>
  			</td>
      	</tr>
      	<tr>
