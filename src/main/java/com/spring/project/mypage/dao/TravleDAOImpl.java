@@ -33,4 +33,10 @@ public class TravleDAOImpl implements TravleDAO{
 		return sqlSession.selectList("mapper.mypage.schedulecheck",id);
 	}
 
+	@Override
+	public int modSchedule(TravleDTO travle) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("mapper.mypage.updateTravle",travle);
+	}
+
 }

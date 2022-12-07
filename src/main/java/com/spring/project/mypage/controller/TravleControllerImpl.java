@@ -72,5 +72,19 @@ public class TravleControllerImpl implements TravleController{
 		List<TravleDTO> mytra = travleService.scheduleList(member.getId());
 		return mytra;
 	}
+	
+	@RequestMapping("/modSchedule")
+	@Override
+	public List<TravleDTO> modSchedule(TravleDTO travleDTO, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		List<TravleDTO> tra = travleService.scheduleList(member.getId());
+		return tra;
+	}
+
+	
+	
 
 }
