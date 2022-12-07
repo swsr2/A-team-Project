@@ -57,6 +57,7 @@ public class KakaoControllerImpl implements KakaoController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", userInfo);
 			session.setAttribute("isLogOn", true);
+			session.setAttribute("kakao", true);
 			out.println("alert('"+userInfo.getId()+"님 로그인 되었습니다');");
 			out.println("location.href='"+request.getContextPath() +"/main/main.do';"); 
 		} else {
