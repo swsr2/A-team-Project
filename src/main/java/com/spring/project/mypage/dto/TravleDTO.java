@@ -2,7 +2,7 @@ package com.spring.project.mypage.dto;
 
 public class TravleDTO {
 	private String id;
-	private String date;
+	private String day;
     private String title;
     
 	public String getId() {
@@ -11,11 +11,11 @@ public class TravleDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDate() {
-		return date;
+	public String getDay() {
+		return day;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setDay(String day) {
+		this.day = day;
 	}
 	public String getTitle() {
 		return title;

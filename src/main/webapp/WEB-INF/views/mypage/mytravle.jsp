@@ -6,6 +6,7 @@
 <c:set var="path"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
+	int i= 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -20,16 +21,11 @@
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
   <!-- fullcalendar 언어 CDN -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <style>
-  /* body 스타일 */
-  body {
-    margin-top: 40px;
-    font-size: 14px;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  }
   /* 드래그 박스의 스타일 */
   #external-events {
-    position: fixed;
+  /*   position: absolute; */
     left: 20px;
     top: 20px;
     width: 100px;
@@ -104,8 +100,9 @@
     </div>
     <!-- calendar 태그 -->
     <div id='calendar-wrap'>
-      <div id='calendar1' onchange="ff()"></div>
+      <div id='calendar1'></div>
     </div>
+    
   </div>
   <script>
   (function(){
@@ -132,6 +129,7 @@
           center: 'title',
           right: 'dayGridMonth'
         },
+        timeZone: 'local',
         initialDate: '2022-11-30', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
         locale: 'ko', // 한국어 설정
         editable: true, // 수정 가능
@@ -152,7 +150,7 @@
         		}),
         		contentType:'application/json; charset=utf-8',
         		success: function(response){
-        			alert('일정추가');
+        			
         		},
         		error: function(response){
         			alert("실패");
@@ -176,7 +174,26 @@
         			alert("실패");
         		}
         	}); 
+         },
+         
+         events : function(info, successCallback, failureCallback) {
+		 			$.ajax({
+		 				url: '${path}/travle/setSchedule',
+		 				type: 'GET',
+		 				dataType : 'json',
+		 				success: function(data) {
+		 					let events = [];
+		 					$(data).each(function() {
+		 						events.push({
+		 							title : this.title,
+		 							start : this.day
+		 						});
+		 					});
+		 					successCallback(events);
+		 				}
+		 			});
          }
+        
       });
       // 캘린더 랜더링
       calendar.render();

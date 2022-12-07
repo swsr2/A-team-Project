@@ -21,4 +21,16 @@ public class TravleServiceImpl implements TravleService{
 		return travleDAO.travleList(id);
 	}
 
+	@Override
+	public int addSchedule(TravleDTO travle) {
+		// TODO Auto-generated method stub
+		return travleDAO.addSchedule(travle);
+	}
+
+	@Override
+	public List<TravleDTO> scheduleList(String id) {
+		// TODO Auto-generated method stub
+		return travleDAO.scheduleList(id);
+	}
+
 }

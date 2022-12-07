@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.project.member.dto.MemberDTO;
@@ -41,8 +42,10 @@ public class TravleControllerImpl implements TravleController{
 		
 		String viewName = (String) request.getAttribute("viewName");
 		mav = new ModelAndView(viewName);
-		List<PickDTO> mytra = travleService.travleList(member.getId());
-		mav.addObject("travleList", mytra);
+		List<PickDTO> myp = travleService.travleList(member.getId());
+		
+		mav.addObject("travleList", myp);
+		
 		return mav;
 	}
 	
@@ -53,10 +56,21 @@ public class TravleControllerImpl implements TravleController{
 		JSONObject obj = (JSONObject) parser.parse(json);
 		HttpSession session = request.getSession();
 		MemberDTO mem = (MemberDTO) session.getAttribute("member");
-		travle.setDate((String) obj.get("date"));
+		travle.setDay((String) obj.get("date"));
 		travle.setTitle((String) obj.get("title"));
 		travle.setId(mem.getId());
+		
+		int result = travleService.addSchedule(travle);
 		return "travle/mytravle";
+	}
+	
+	@RequestMapping("/setSchedule")
+	@ResponseBody
+	public List<TravleDTO> setSchedule(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		List<TravleDTO> mytra = travleService.scheduleList(member.getId());
+		return mytra;
 	}
 
 }

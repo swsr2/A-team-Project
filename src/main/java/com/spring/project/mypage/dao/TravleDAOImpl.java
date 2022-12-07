@@ -21,4 +21,16 @@ public class TravleDAOImpl implements TravleDAO{
 		return sqlSession.selectList("mapper.mypage.travlecheck", id);
 	}
 
+	@Override
+	public int addSchedule(TravleDTO travle) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("mapper.mypage.insertTravle",travle);
+	}
+
+	@Override
+	public List<TravleDTO> scheduleList(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.mypage.schedulecheck",id);
+	}
+
 }
