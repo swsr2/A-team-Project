@@ -25,9 +25,7 @@
 <style>
   /* 드래그 박스의 스타일 */
   #external-events {
-  /*   position: absolute; */
-    left: 20px;
-    top: 20px;
+  	position : absolute;
     width: 100px;
     padding: 0 10px;
     border: 1px solid #ccc;
@@ -118,7 +116,6 @@
           }
         }
       });
-
       // calendar element 취득
       var calendarEl = $('#calendar1')[0];
       // full-calendar 생성하기
@@ -139,20 +136,19 @@
           arg.draggedEl.parentNode.removeChild(arg.draggedEl);
         },
         eventDrop: function(info){
-        	console.log(info);
         	$.ajax({
         		type:'post',
-        		url:'${path}/travle/schedule',
+        		url:'${path}/travle/modSchedule',
         		dataType:'text',
         		data:JSON.stringify({
         			'date' : info.event.startStr,
         			'title' : info.event.title
         		}),
         		contentType:'application/json; charset=utf-8',
-        		success: function(response){
+        		success: function(data){
         			
         		},
-        		error: function(response){
+        		error: function(data){
         			alert("실패");
         		}
         	}); 
@@ -167,10 +163,10 @@
         			'title' : info.event.title
         		}),
         		contentType:'application/json; charset=utf-8',
-        		success: function(response){
-        			alert('일정추가');
+        		success: function(data){
+        			
         		},
-        		error: function(response){
+        		error: function(data){
         			alert("실패");
         		}
         	}); 
@@ -192,8 +188,30 @@
 		 					successCallback(events);
 		 				}
 		 			});
+         },
+         eventClick : function(info){
+        	 console.log(info);
+        	if(confirm(info.event.title + ' 일정을 삭제하시겠습니까?')){
+        		$.ajax({
+	 				url: '${path}/travle/delSchedule',
+	 				type: 'POST',
+	 				dataType : 'text',
+	 				contentType:'application/json; charset=utf-8',
+	 				data:JSON.stringify({
+	        			'date' : info.event.startStr,
+	        			'title' : info.event.title
+	        		}),
+	 				success: function(data) {
+	 					info.event.remove();
+	 					location.href="${path }/travle/mytravle";
+	 				},
+	 				error : function(data){
+	 					alert('실패');
+	 				}
+        	});
+        		
+        	 }
          }
-        
       });
       // 캘린더 랜더링
       calendar.render();

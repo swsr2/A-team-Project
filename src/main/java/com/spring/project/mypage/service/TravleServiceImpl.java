@@ -39,4 +39,10 @@ public class TravleServiceImpl implements TravleService{
 		return travleDAO.modSchedule(travle);
 	}
 
+	@Override
+	public int delSchedule(TravleDTO travle) {
+		// TODO Auto-generated method stub
+		return travleDAO.delSchedule(travle);
+	}
+
 }

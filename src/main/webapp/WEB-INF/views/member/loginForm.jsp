@@ -18,7 +18,7 @@
 	
 	function kakaoLogin() {
         Kakao.Auth.authorize({
-        	redirectUri: 'http://localhost:8080/project/kakao/kakaoLogin.do',
+        	redirectUri: 'http://제주가고싶조.메인.한국:8080/project/kakao/kakaoLogin.do',
         });
       }
 	

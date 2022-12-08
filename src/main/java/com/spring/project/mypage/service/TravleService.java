@@ -14,4 +14,6 @@ public interface TravleService {
 	
 	public int modSchedule(TravleDTO travle);
 
+	public int delSchedule(TravleDTO travle);
+
 }
