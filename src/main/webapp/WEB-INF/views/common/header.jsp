@@ -10,7 +10,7 @@
 	<c:choose>	
   		<c:when test="${isLogOn == true && member != null && kakao == true }">	
 		<ul id="loginBarList">
-			<li>${member.name }님 <a href="https://kauth.kakao.com/oauth/logout?client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d&logout_redirect_uri=http://localhost:8080/project/kakao/kakaoLogout.do"> 로그아웃</a></li>
+			<li>${member.name }님 <a href="https://kauth.kakao.com/oauth/logout?client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d&logout_redirect_uri=http://제주가고싶조.메인.한국:8080/project/kakao/kakaoLogout.do"> 로그아웃</a></li>
 			<li><a href="${path}/mypage/mypagemain?id=${member.id}">마이페이지</a></li>
 		</ul>
 		</c:when>

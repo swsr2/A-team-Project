@@ -31,6 +31,6 @@ public interface ActivityDAO {
 
 	public int addReview(ReviewDTO review);
 
-	public int average(int ac_no);
+	public Double average(int ac_no);
 
 }

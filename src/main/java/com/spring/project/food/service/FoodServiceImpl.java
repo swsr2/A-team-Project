@@ -96,9 +96,9 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public int average(int fd_no) {
+	public Double average(int fd_no) {
 		// TODO Auto-generated method stub
-		int avg = foodDAO.average(fd_no);
+		Double avg = foodDAO.average(fd_no);
 		System.out.println(avg);
 		return avg;
 	}

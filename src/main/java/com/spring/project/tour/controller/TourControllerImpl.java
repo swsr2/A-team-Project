@@ -191,7 +191,7 @@ public class TourControllerImpl implements TourController {
 		List<ReviewDTO> reviewList = tourService.reviewList(tr_no);
 		
 		//평점
-		int avg = tourService.average(tr_no);
+		Double avg = tourService.average(tr_no);
 		
 		String[] category = tour.getTr_category().split(",");
 		

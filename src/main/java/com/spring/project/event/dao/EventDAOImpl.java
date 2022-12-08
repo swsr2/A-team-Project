@@ -217,16 +217,15 @@ public class EventDAOImpl implements EventDAO{
 
 
 	@Override
-	public int average(int lod_id) {
+	public Double average(int lod_id) {
 		// TODO Auto-generated method stub
 		String avg_result = sqlSession.selectOne("mapper.event.average", lod_id);
-		int avg = 0;
+		Double avg = 0.0;
 		if(avg_result==null) {
-			avg_result = "0";
-			avg = Integer.parseInt(avg_result);
+			avg = Double.parseDouble(avg_result)/1.0;
 			return avg;
 		} else {
-			avg = Integer.parseInt(avg_result);
+			avg = Double.parseDouble(avg_result)/1.0;
 		}
 		return avg;
 	}
