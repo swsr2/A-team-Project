@@ -64,9 +64,6 @@ public class EventControllerImpl implements EventController {
 		air.setAir_date(fromdate);
 		List<AirplaneDTO> airplaneList = eventService.arrivalList(air);
 		air.setAir_date(todate);
-		//System.out.println(air.getAir_date());
-		//System.out.println(air.getAir_arrivalPlace());
-		//System.out.println(air.getAir_departPlace());
 		
 		List<AirplaneDTO> airplaneList2 = eventService.departList(air);
 		
