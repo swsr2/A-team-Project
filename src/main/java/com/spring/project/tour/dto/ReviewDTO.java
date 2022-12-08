@@ -75,7 +75,4 @@ public class ReviewDTO {
 	public void setFd_no(int fd_no) {
 		this.fd_no = fd_no;
 	}
-	
-	
-    
 }
