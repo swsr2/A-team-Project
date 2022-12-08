@@ -15,6 +15,12 @@
 	form {
 		display:inline;
 	}
+	#line {
+		word-wrap: break-word;
+		width:350px;
+		height:32px;
+		text-align:center;
+	}
 </style>
 </head>
 <body>
@@ -27,12 +33,12 @@
         <input class="category" type='submit' value='여행코스'/>
     </form>
     <br><br><br>
-    <table align="center">
-    <tr align="center" >
+    <table align="center" style="border-spacing:0;">
+    <tr>
     		<c:forEach var="activity" items="${activityList }" varStatus="status">
-	 			<td><a href="${path}/activity/activityDetail?ac_no=${activity.ac_no}" style="padding:10px;">
+	 			<td style="border-spacing:0;"><a href="${path}/activity/activityDetail?ac_no=${activity.ac_no}" style="padding:10px;">
 	 				<img class="imgSize" src="${activity.ac_thumbnailPath }"/></a>
-	 				<p>${activity.ac_title }</p></td>
+	 				<p id="line">${activity.ac_title }</p></td>
 	 			<c:if test="${(status.count%3) == 0 }">
 	 				</tr>
 	 				<tr align="center">
