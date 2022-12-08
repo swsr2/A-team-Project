@@ -13,7 +13,6 @@ public interface FoodController {
 	public String restaurant(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public String cafe(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public ModelAndView resDetail(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
-	// public void myPick(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public ModelAndView reviewForm(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception; 
 	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView myPick(@RequestParam("fd_no") int fd_no,@RequestParam("pick") boolean pick,

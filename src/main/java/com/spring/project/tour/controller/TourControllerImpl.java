@@ -309,7 +309,4 @@ public class TourControllerImpl implements TourController {
 			}
 			return mav;
 	}
-
-
-	
 }
