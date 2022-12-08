@@ -30,7 +30,7 @@ public interface FoodDAO {
 
 	public int checkPick(Map pickMap);
 
-	public int average(int fd_no);
+	public Double average(int fd_no);
 
 
 }

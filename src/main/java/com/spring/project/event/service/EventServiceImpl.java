@@ -271,7 +271,7 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public int average(int lod_id) {
+	public Double average(int lod_id) {
 		// TODO Auto-generated method stub
 		return eventDAO.average(lod_id);
 	}

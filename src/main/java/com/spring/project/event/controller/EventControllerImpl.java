@@ -413,7 +413,7 @@ public class EventControllerImpl implements EventController {
 		List<ReviewDTO> reviewList = eventService.reviewList(lod_id);
 		String viewName = (String) request.getAttribute("viewName");
 		// 평점
-		int avg = eventService.average(lod_id);
+		Double avg = eventService.average(lod_id);
 				
 		ModelAndView mav = new ModelAndView(viewName);
 		if(isLogOn!=null && isLogOn==true) {

@@ -142,7 +142,7 @@ public class FoodControllerImpl implements FoodController {
 		
 		List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
 		//평점
-		int avg = foodService.average(fd_no);
+		Double avg = foodService.average(fd_no);
 		
 		String[] category = food.getFd_category().split(",");
 		String viewName = (String) request.getAttribute("viewName");
