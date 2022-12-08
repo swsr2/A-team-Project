@@ -62,6 +62,7 @@ h3 {
 </style>
 </head>
 <body>
+<!-- 카테고리 -->
 	<form name="food1" action="/project/food/main">
 		<input type="hidden" name="page" value="1">
         <input class="category" type='submit' value='맛집'/>
@@ -71,40 +72,41 @@ h3 {
         <input class="category" type='submit' value='카페'/>
     </form>
     <br><br><br>
-    <table align="center">
-    	<tr>
- 			<td colspan="2" align="center"><img src="${food.fd_imgPath }" width="700"/></td>
-     	</tr>
-     	<tr>
- 			<td colspan="2" align="center"><h2>${food.fd_title }&nbsp;</h2><h3>평점&nbsp;${avg }</h3>
- 			<c:forEach var="tag" items="${category}">
+<!-- 먹으멍 상세정보 테이블 -->
+	<table align="center">
+		<tr>
+			<td colspan="2" align="center"><img src="${food.fd_imgPath }"
+				width="700" /></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><h2>${food.fd_title }&nbsp;</h2>
+				<h3>평점&nbsp;${avg }</h3> <c:forEach var="tag" items="${category}">
  					#${tag }
- 				</c:forEach>
- 			</td>
-     	</tr>
-     	<tr>
- 			<td width="100">설명 :</td>
- 			<td width="600">${food.fd_info }</td>
-     	</tr>
-     	<tr>
- 			<td width="100">전화번호 :</td>
- 			<td>${food.fd_phoneNo }</td>
-     	</tr>
-     	<tr>
- 			<td width="100">지번주소 :</td>
- 			<td>${food.fd_address }</td> <%-- api로 추후연결하기 --%>
-     	</tr>
-     	<tr>
- 			<td width="100">도로명 주소 :</td>
- 			<td>${food.fd_roadAddress }</td>
-     	</tr>
-     	<tr>
- 			<td colspan="2">
- 			</td>
-     	</tr>
-    </table>
-    
-    <div id="map" style="width:500px;height:400px;"></div>
+ 				</c:forEach></td>
+		</tr>
+		<tr>
+			<td width="100">설명 :</td>
+			<td width="600">${food.fd_info }</td>
+		</tr>
+		<tr>
+			<td width="100">전화번호 :</td>
+			<td>${food.fd_phoneNo }</td>
+		</tr>
+		<tr>
+			<td width="100">지번주소 :</td>
+			<td>${food.fd_address }</td>
+			<%-- api로 추후연결하기 --%>
+		</tr>
+		<tr>
+			<td width="100">도로명 주소 :</td>
+			<td>${food.fd_roadAddress }</td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+	</table>
+<!-- 지도 -->
+	<div id="map" style="width:500px;height:400px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=19304f7b1ee5a07ed9d039dba756e0bb&libraries=services"></script>
 	<script type="text/javascript">
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -141,14 +143,11 @@ h3 {
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
     	} 
-    	
 	});  
 	</script>
-    
+    <!-- 찜&리뷰 -->
     <div id="myMenu">
 	<ul id="myMenuList">
-		<!-- <li><button type="button" class="myPickBtn">찜하기</button></li>
-		<li><button type="button" class="reviewBtn">리뷰쓰기</button></li> -->
 		<li><a class="myReview" href="${path }/food/reviewForm?fd_no=${food.fd_no}">리뷰쓰기</a></li>
 		<li>
 			<%-- <a class="myPick" href="${path }/food/myPick">찜하기</a> --%>
@@ -166,6 +165,7 @@ h3 {
 	</ul>
 	</div>
 	<br><br>
+	<!-- 리뷰리스트 -->
 	<hr>
 	<div>
 		<table align="center" style="width: 60%;">

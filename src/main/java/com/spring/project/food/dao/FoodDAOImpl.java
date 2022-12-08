@@ -17,20 +17,20 @@ public class FoodDAOImpl implements FoodDAO{
 
 	@Override
 	public FoodDTO selectOne(int fd_no) {
-		// TODO Auto-generated method stub
+		// 맛집 정보 리스트
 		FoodDTO food = (FoodDTO) sqlSession.selectOne("mapper.food.selectfd_no", fd_no);
 		return food;
 	}
 
 	@Override
 	public int addReview(ReviewDTO review) {
-		// TODO Auto-generated method stub
+		// 리뷰쓰기
 		return sqlSession.insert("mapper.food.addReview", review);
 	}
 
 	@Override
 	public List<FoodDTO> foodList(Map<String, Integer> page) {
-		// TODO Auto-generated method stub
+		// 맛집 정보 리스트
 		return sqlSession.selectList("mapper.food.foodList",page);
 	}
 
@@ -42,49 +42,49 @@ public class FoodDAOImpl implements FoodDAO{
 
 	@Override
 	public List<FoodDTO> cafeList(Map<String, Integer> page) {
-		// TODO Auto-generated method stub
+		// 카페 정보 리스트
 		return sqlSession.selectList("mapper.food.cafeList",page);
 	}
 
 	@Override
 	public int allFoodCnt() {
-		// TODO Auto-generated method stub
+		// 맛집 정보 갯수
 		return sqlSession.selectOne("mapper.food.allFoodCnt");
 	}
 
 	@Override
 	public int allCafeCnt() {
-		// TODO Auto-generated method stub
+		// 카페 정보 갯수 
 		return sqlSession.selectOne("mapper.food.allCafeCnt");
 	}
 
 	@Override
 	public List<ReviewDTO> reviewList(int fd_no) {
-		// TODO Auto-generated method stub
+		// 먹으멍 상세 리뷰리스트
 		return sqlSession.selectList("mapper.food.reviewList",fd_no);
 	}
 
 	@Override
 	public void myPick(Map pickMap) {
-		// TODO Auto-generated method stub
+		// 내가 찜한 내용
 		sqlSession.insert("mapper.food.myPick",pickMap);
 	}
 
 	@Override
 	public void delPick(Map pickMap) {
-		// TODO Auto-generated method stub
+		// 찜취소
 		sqlSession.delete("mapper.food.delPick",pickMap);
 	}
 
 	@Override
 	public int checkPick(Map pickMap) {
-		// TODO Auto-generated method stub
+		// 찜하기
 		return sqlSession.selectOne("mapper.food.checkPick", pickMap);
 	}
 
 	@Override
 	public Double average(int fd_no) {
-		// TODO Auto-generated method stub
+		// 평점
 		String avg_result = sqlSession.selectOne("mapper.food.average", fd_no);
 		Double avg = 0.0;
 		if(avg_result==null) {

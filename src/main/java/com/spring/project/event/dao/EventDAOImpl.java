@@ -223,6 +223,7 @@ public class EventDAOImpl implements EventDAO{
 		String avg_result = sqlSession.selectOne("mapper.event.average", lod_id);
 		Double avg = 0.0;
 		if(avg_result==null) {
+			avg_result = "0";
 			avg = Double.parseDouble(avg_result)/1.0;
 			return avg;
 		} else {

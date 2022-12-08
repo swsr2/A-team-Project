@@ -32,9 +32,8 @@ public class FoodControllerImpl implements FoodController {
 	@RequestMapping("/main")
 	public String restaurant(@RequestParam("page") int page,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		// 테스트 하실때 공유드라이브에 api 받아오기 텍스트 파일안 내용을 요기다 넣고 한번 돌리시면
-		// api 내용이 db에 저장이 될 겁니다 db에서 테이블 이랑 시퀀스 만들고 돌려주세요
 		
+		// 맛집 정보 갯수 불러오기
 		int FoodCnt = foodService.allFoodCnt();
 		
 		int postNum = 12;
@@ -66,7 +65,8 @@ public class FoodControllerImpl implements FoodController {
 		}
 		boolean prev = startPageNum == 1 ? false : true;
 		boolean next = endPageNum * pageNum_cnt >= FoodCnt ? false : true;
-
+		
+		// 맛집 정보 리스트로 가져오기
 		List<FoodDTO> foodList = foodService.foodList(start, end);
 		request.setAttribute("foodList", foodList);
 		request.setAttribute("pageNum", pageNum);
@@ -84,6 +84,7 @@ public class FoodControllerImpl implements FoodController {
 	@RequestMapping("/cafe")
 	public String cafe(@RequestParam("page") int page, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 카페 정보 갯수 불러오기
 		int cafeCnt = foodService.allCafeCnt();
 		
 		int postNum = 12;
@@ -116,6 +117,7 @@ public class FoodControllerImpl implements FoodController {
 		boolean prev = startPageNum == 1 ? false : true;
 		boolean next = endPageNum * pageNum_cnt >= cafeCnt ? false : true;
 
+		// 카페 정보 리스트로 불러오기 
 		List<FoodDTO> cafeList = foodService.cafeList(start, end);
 		request.setAttribute("cafeList", cafeList);
 		request.setAttribute("pageNum", pageNum);
@@ -134,20 +136,22 @@ public class FoodControllerImpl implements FoodController {
 	public ModelAndView resDetail(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
-		
 		HttpSession session = request.getSession();
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		ModelAndView mav = null;
-		FoodDTO food = foodService.selectOne(fd_no);
 		
+		// 먹으멍(맛집,카페) 상세정보
+		FoodDTO food = foodService.selectOne(fd_no);
+		// 리뷰 리스트
 		List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
-		//평점
+		// 평점
 		Double avg = foodService.average(fd_no);
 		
 		String[] category = food.getFd_category().split(",");
 		String viewName = (String) request.getAttribute("viewName");
 		mav = new ModelAndView(viewName);
 		
+		// 찜한 내역 보기
 		if(isLogOn!=null && isLogOn==true) {
 			MemberDTO member = (MemberDTO) session.getAttribute("member");
 			Map pickMap = new HashMap();
@@ -155,7 +159,6 @@ public class FoodControllerImpl implements FoodController {
 			pickMap.put("fd_no", fd_no);
 			
 			int result = foodService.checkPick(pickMap);
-			// http://localhost:8080/project/food/myPick?fd_no=924&pick=true
 			
 			if(result==1) {
 				mav.addObject("pick", true);
@@ -166,15 +169,6 @@ public class FoodControllerImpl implements FoodController {
 		mav.addObject("category",category);
 		mav.addObject("reviewList",reviewList);
 		
-		
-//		Map pickMap = new hashMap();
-//		pickMap.put("id", "현재 세션에 있는 아이디값");
-//		pickMap.put("fd_no", fd_no);
-//		if(foodService.checkPick(pickMap)) {
-//			mav.addObject("pick",true);
-//		}else {
-//			mav.addObject("pick",false);
-//		}
 		return mav;
 	}
 
@@ -183,10 +177,11 @@ public class FoodControllerImpl implements FoodController {
 	public ModelAndView reviewForm(@RequestParam("fd_no") int fd_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
-		
 		HttpSession session = request.getSession();
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		ModelAndView mav = null;
+		
+		// 리뷰쓰기 클릭시 - 회원만 이용
 		if(isLogOn!=null && isLogOn==true) {
 			String viewName = (String) request.getAttribute("viewName");
 			mav = new ModelAndView(viewName);
@@ -198,7 +193,6 @@ public class FoodControllerImpl implements FoodController {
 			out.println("</script>");
 			return null;
 		}
-		
 		return mav;
 	}
 
@@ -207,7 +201,7 @@ public class FoodControllerImpl implements FoodController {
 	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
-		
+		// 리뷰작성
 		int result = foodService.addReview(review);
 		
 		PrintWriter out = response.getWriter();
@@ -220,9 +214,7 @@ public class FoodControllerImpl implements FoodController {
 		out.println("location.href='"+ request.getContextPath() 
 				+ "/food/resDetail?fd_no="+review.getFd_no()+"';");
 		out.println("</script>");
-		
 	}
-
 	
 	@Override
 	@RequestMapping(value="/myPick", method=RequestMethod.GET)
@@ -235,6 +227,8 @@ public class FoodControllerImpl implements FoodController {
 			MemberDTO member = (MemberDTO) session.getAttribute("member");
 			Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 			ModelAndView mav = null;
+			
+			// 찜하기 - 회원만 이용
 			if(isLogOn!=null && isLogOn==true) {
 				String viewName = (String) request.getAttribute("viewName");
 				mav = new ModelAndView(viewName);
@@ -249,16 +243,18 @@ public class FoodControllerImpl implements FoodController {
 			
 			FoodDTO food = foodService.selectOne(fd_no);
 			List<ReviewDTO> reviewList = foodService.reviewList(fd_no);
+			
 			String[] category = food.getFd_category().split(",");
+			
 			mav = new ModelAndView("food/resDetail");
 			mav.addObject("food", food);
 			mav.addObject("category",category);
 			mav.addObject("reviewList",reviewList);
 			
+			// 찜하기 기능 
 			Map pickMap = new HashMap();
 			pickMap.put("id", member.getId());
 			pickMap.put("fd_no", fd_no);
-			
 			if(pick) {
 				foodService.myPick(pickMap);
 				mav.addObject("pick",true);
@@ -268,6 +264,4 @@ public class FoodControllerImpl implements FoodController {
 			}
 			return mav;
 	}
-	
-	
 }
