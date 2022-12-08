@@ -90,13 +90,13 @@
 	
 	<update id="updateTravle" parameterType="travleDTO">
 		<![CDATA[
-			update schedule set day=#{day},title=#{title} where id=#{id},title=#{title}
+			update schedule set day=#{day},title=#{title} where id=#{id} and title=#{title}
 		]]>
 	</update>
 	
-	<delete id="deleteTravle" parameterType="String">
+	<delete id="deleteTravle" parameterType="travleDTO">
 		<![CDATA[
-			delete from schedule where id=#{id}
+			delete from schedule where id=#{id} and title=#{title} and day=#{day}
 		]]>
 	</delete>
 	

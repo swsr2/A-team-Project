@@ -18,5 +18,5 @@ public interface TravleController {
 	public ModelAndView travle(@RequestParam("id")String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public String schedule(@RequestBody String json , HttpServletRequest request) throws Exception;
 	public List<TravleDTO> setSchedule(HttpServletRequest request, HttpServletResponse response)throws Exception;
-	public List<TravleDTO> modSchedule(@ModelAttribute("id") TravleDTO travleDTO, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public String modSchedule(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
