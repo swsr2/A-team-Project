@@ -71,7 +71,8 @@ window.onload = function() {
 				$("#submit1").attr("disabled", true);
 			}
 		} else {
-			$("#idChk").text("");
+			$("#idChk").text("영어대소문자 또는 숫자 3 ~ 15자리");
+			$("#idChk").css("color", "black");
 		}
 	})
 	
@@ -90,7 +91,8 @@ window.onload = function() {
 				$("#submit1").attr("disabled", true);
 			}
 		} else {
-			$("#pwdChk").text("");
+			$("#pwdChk").text("영어대소문자 또는 숫자 3 ~ 15자리");
+			$("#pwdChk").css("color", "black");
 		}
 	})
 	
