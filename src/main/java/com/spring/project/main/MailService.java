@@ -20,11 +20,11 @@ public class MailService {
 		
 		try {
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "utf-8");
-			messageHelper.setCc("jjkjadm@gmail.com"); 
-			messageHelper.setFrom("jjkjadm@gmail.com", "제주가고싶조_admin");
-			messageHelper.setSubject(title);
-			messageHelper.setTo(to);
-			messageHelper.setText(body, true);
+			messageHelper.setCc("jjkjadm@gmail.com"); // 참조
+			messageHelper.setFrom("jjkjadm@gmail.com", "제주가고싶조_admin"); // 보낸이
+			messageHelper.setSubject(title); // 제목
+			messageHelper.setTo(to); // 문의한사람
+			messageHelper.setText(body, true); // 내용
 			mailSender.send(message);
 		} catch(Exception e) {
 			e.printStackTrace();
