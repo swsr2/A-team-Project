@@ -39,4 +39,10 @@ public class TravleDAOImpl implements TravleDAO{
 		return sqlSession.update("mapper.mypage.updateTravle",travle);
 	}
 
+	@Override
+	public int delSchedule(TravleDTO travle) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("mapper.mypage.deleteTravle",travle);
+	}
+
 }

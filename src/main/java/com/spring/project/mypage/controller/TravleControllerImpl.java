@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.aspectj.org.eclipse.jdt.internal.core.Member;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,8 +50,9 @@ public class TravleControllerImpl implements TravleController{
 		
 		return mav;
 	}
-	
+	@Override
 	@RequestMapping("/schedule")
+	@ResponseBody
 	public String schedule(@RequestBody String json , HttpServletRequest request) throws Exception {
 		TravleDTO travle = new TravleDTO();
 		JSONParser parser = new JSONParser();
@@ -61,9 +64,9 @@ public class TravleControllerImpl implements TravleController{
 		travle.setId(mem.getId());
 		
 		int result = travleService.addSchedule(travle);
-		return "travle/mytravle";
+		return "success";
 	}
-	
+	@Override
 	@RequestMapping("/setSchedule")
 	@ResponseBody
 	public List<TravleDTO> setSchedule(HttpServletRequest request, HttpServletResponse response)throws Exception{
@@ -73,17 +76,41 @@ public class TravleControllerImpl implements TravleController{
 		return mytra;
 	}
 	
-	@RequestMapping("/modSchedule")
 	@Override
-	public List<TravleDTO> modSchedule(TravleDTO travleDTO, HttpServletRequest request, HttpServletResponse response)
+	@ResponseBody
+	@RequestMapping("/modSchedule")
+	public String modSchedule(@RequestBody String json, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		TravleDTO travle = new TravleDTO();
+		JSONParser parser = new JSONParser();
+		JSONObject obj = (JSONObject) parser.parse(json);
 		HttpSession session = request.getSession();
-		MemberDTO member = (MemberDTO) session.getAttribute("member");
-		List<TravleDTO> tra = travleService.scheduleList(member.getId());
-		return tra;
+		MemberDTO mem = (MemberDTO) session.getAttribute("member");
+		travle.setDay((String) obj.get("date"));
+		travle.setTitle((String) obj.get("title"));
+		travle.setId(mem.getId());
+		
+		int result = travleService.modSchedule(travle);
+		return "successMod";
 	}
-
+	
+	@RequestMapping(value="/delSchedule",method=RequestMethod.POST)
+	@ResponseBody
+	public String delSchedule(@RequestBody String json, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		TravleDTO travle = new TravleDTO();
+		JSONParser parser = new JSONParser();
+		JSONObject obj = (JSONObject) parser.parse(json);
+		HttpSession session = request.getSession();
+		MemberDTO mem = (MemberDTO) session.getAttribute("member");
+		travle.setDay((String) obj.get("date"));
+		travle.setTitle((String) obj.get("title"));
+		travle.setId(mem.getId());
+		
+		int result = travleService.delSchedule(travle);
+		return "success";
+	}
 	
 	
 
