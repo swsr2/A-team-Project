@@ -25,7 +25,7 @@ table {
 #lodmyres {
   border-collapse:collapse;
   border-radius:25px;
-  width: 80%;
+  width: 90%;
   margin-left:auto;
   margin-right:auto;
 }

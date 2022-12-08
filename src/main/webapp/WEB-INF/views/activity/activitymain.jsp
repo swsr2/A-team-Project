@@ -31,7 +31,7 @@
     <tr align="center" >
     		<c:forEach var="activity" items="${activityList }" varStatus="status">
 	 			<td><a href="${path}/activity/activityDetail?ac_no=${activity.ac_no}" style="padding:10px;">
-	 				<img class="imgSize" src="${activity.ac_thumbnailPath }"/></a>
+	 				<img class="imgSize" src="${activity.ac_thumbnailPath }" /></a>
 	 				<p>${activity.ac_title }</p></td>
 	 			<c:if test="${(status.count%3) == 0 }">
 	 				</tr>

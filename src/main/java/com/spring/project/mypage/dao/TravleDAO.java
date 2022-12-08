@@ -11,5 +11,7 @@ public interface TravleDAO {
 	public int addSchedule(TravleDTO travle);
 	
 	public List<TravleDTO> scheduleList(String id);
+	
+	public int modSchedule(TravleDTO travle);
 
 }
