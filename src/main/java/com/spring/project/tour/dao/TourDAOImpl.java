@@ -95,6 +95,7 @@ public class TourDAOImpl implements TourDAO {
 		String avg_result = sqlSession.selectOne("mapper.tour.average", tr_no);
 		Double avg = 0.0;
 		if(avg_result==null) {
+			avg_result = "0";
 			avg = Double.parseDouble(avg_result)/1.0;
 			return avg;
 		} else {

@@ -77,7 +77,7 @@
 			(select m.*, f.fd_title||l.lod_title||a.ac_title||t.tr_title as title 
 			from mypick m,food f, lodging_list l, activity a, tour t
    			 where  (m.fd_no = f.fd_no(+) and m.lod_id = l.lod_id(+) and 
-   			 m.ac_no = a.ac_no(+) and m.tr_no = t.tr_no(+))  and m.id='test') p left join 
+   			 m.ac_no = a.ac_no(+) and m.tr_no = t.tr_no(+))  and m.id=#{id}) p left join 
    			 schedule s on p.title=s.title where s.title is null
 		]]>
 	</select>
