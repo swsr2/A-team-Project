@@ -15,7 +15,6 @@
 form {
    display: inline;
 }
-
 </style>
 <script>
    function backToList() {
@@ -26,7 +25,7 @@ form {
 </script>
 </head>
 <body>
-
+<!-- 리뷰폼 -->
    <form name="reviewForm" method="post" action="${path }/food/addReview">
    	<input type="hidden" name="fd_no" value="${fd_no }">
          <table align="center">
@@ -46,7 +45,9 @@ form {
          <tr>
          	<td align="left">별점: 
          	<div class="star-rating">
-			<input type="radio" id="5-stars" name="re_score" value="5" />
+         	<!-- 라디오 값 선택 -->
+			<input type="radio" id="5-stars" name="re_score" value="5" /> 
+			<!-- 별모양 -->
 			<label for="5-stars" class="star">&#9733;</label>
 			<input type="radio" id="4-stars" name="re_score" value="4" />
 			<label for="4-stars" class="star">&#9733;</label>

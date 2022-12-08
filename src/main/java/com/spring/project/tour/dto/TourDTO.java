@@ -1,8 +1,8 @@
 package com.spring.project.tour.dto;
 
 public class TourDTO {
-	private int tr_no;
-	private String tr_title;
+	private int tr_no; 
+	private String tr_title; 
 	private String tr_info;
 	private String tr_address;
 	private String tr_roadAddress;
@@ -10,6 +10,7 @@ public class TourDTO {
 	private String tr_imgPath;
 	private String tr_thumbnailPath;
 	private String tr_category;
+	
 	public int getTr_no() {
 		return tr_no;
 	}

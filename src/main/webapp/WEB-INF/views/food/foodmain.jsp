@@ -18,6 +18,7 @@
 </style>
 </head>
 <body>
+<!-- 카테고리 -->
 	<form name="food1" action="/project/food/main">
 		<input type="hidden" name="page" value="1">
         <input class="category" type='submit' value='맛집'/>
@@ -27,6 +28,7 @@
         <input class="category" type='submit' value='카페'/>
     </form>
     <br><br><br>
+<!-- 맛집 정보 테이블 -->    
     <table align="center">
     <tr align="center" >
     		<c:forEach var="fd" items="${foodList }" varStatus="status">
@@ -40,27 +42,26 @@
  			</c:forEach>
  				</tr>
     </table>
- <div class="page">
- <h3>
-    <c:if test="${prev}">
- <span>[ <a href="${path }/food/main?page=${startPageNum - 1}">이전</a> ]</span>
-</c:if>
+<!-- 페이지 이동 -->
+	<div class="page">
+		<h3>
+			<c:if test="${prev}">
+				<span>[ <a href="${path }/food/main?page=${startPageNum - 1}">이전</a>
+					]
+				</span>
+			</c:if>
 
-<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
-  <span>
-   <a href="${path }/food/main?page=${num}">${num}</a> 
- </span>
-</c:forEach>
+			<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+				<span> <a href="${path }/food/main?page=${num}">${num}</a>
+				</span>
+			</c:forEach>
 
-<c:if test="${next}">
- <span>[ <a href="${path }/food/main?page=${endPageNum+1}">다음</a> ]</span>
-</c:if>
-</h3>
-</div>
+			<c:if test="${next}">
+				<span>[ <a href="${path }/food/main?page=${endPageNum+1}">다음</a>
+					]
+				</span>
+			</c:if>
+		</h3>
+	</div>
 </body>
 </html>
-
-<%-- <td><a href="${path}/food/resDetail?fd_no=1"><img src="${path }/resources/image/1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/1.png" width="450"/></a></td>
- 				<td><a href="#"><img src="${path }/resources/image/1.png" width="450"/></a></td> --%>
-    	<!-- </tr> -->
