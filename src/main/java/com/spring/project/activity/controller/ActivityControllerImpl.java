@@ -145,7 +145,7 @@ public class ActivityControllerImpl implements ActivityController{
 		
 		// 평점
 		Double avg = activityService.average(ac_no);
-				
+		
 		String[] category = activity.getAc_category().split(",");
 
 		String viewName = (String) request.getAttribute("viewName");

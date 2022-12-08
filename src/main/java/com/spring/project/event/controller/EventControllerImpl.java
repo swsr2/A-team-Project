@@ -578,10 +578,9 @@ public class EventControllerImpl implements EventController {
 			out.println("alert('리뷰가 등록되지 않았습니다.');");
 		}
 		out.println("location.href='"+ request.getContextPath() 
-				+ "/event/lodInfo?lod_id="+review.getLod_id()+"';"); 
+				+ "/event/lodInfo?lod_id="+review.getLod_id()+"&resultDay=0';"); 
 		out.println("</script>");
 		
 	}
 
-	
 }
