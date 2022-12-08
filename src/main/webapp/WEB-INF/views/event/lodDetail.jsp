@@ -33,6 +33,7 @@
 	<form name="event2" action="/project/event/lodmain">
 		<input class="category" type='submit' value='숙박' />
 	</form>
+	<!-- 전체 숙박 정보를 보여주는 페이지 -->
     <br><br><br>
     <h3 class="inout">일정: ${checkIn } ~ ${checkOut } [${resultDay }박]</h3>
     <div class="list">

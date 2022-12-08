@@ -20,14 +20,6 @@ form {
 }
 </style>
 <script>
-/* 	function re_test() {
-		let star_ratings = document.getElementsByClassName("star-ratings");
-		star_ratings[0].style.display = "none";
-		let star_rating = document.getElementsByClassName("star-rating");
-		star_rating[0].style.display = "block";
-		
-	} */
-
 	function backToList() {
 		let form = document.modReview;
 		form.action = "${path}/myreview/review";
@@ -54,15 +46,6 @@ form {
          </tr>
          <tr>
          	<td align="left">별점: 
-         	<%-- <div class="star-ratings" onClick="re_test()">
-					<div 
-				    class="star-ratings-fill space-x-2 text-lg"
-				    style=" width:${selectReview.re_score * 20}%">
-						<span>&nbsp;★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-					</div>
-					<div class="star-ratings-base space-x-2 text-lg">
-						<span>&nbsp;★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-			</div> --%>
          	<div class="star-rating">
 						<c:choose>
 							<c:when test="${selectReview.re_score == 5}">

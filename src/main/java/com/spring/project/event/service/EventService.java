@@ -58,6 +58,7 @@ public interface EventService {
 
 	public List<LodgingDTO> houseList(int start, int end);
 
-	public int average(int lod_id);
+	public Double average(int lod_id);
+	
 
 }

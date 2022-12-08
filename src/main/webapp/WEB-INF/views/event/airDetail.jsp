@@ -12,6 +12,7 @@
 <meta charset="UTF-8">
 <title>이벤트 항공 상세페이지</title>
 <script>
+	// 로그인 확인
 	function airRes(){
 		let id = '${member.id}';
 		if(id == null || id == ""){
@@ -57,6 +58,7 @@ h1 {
 	</form>
 	<br>
 	<br>
+	<!-- 가는 편 오는 편 선택 -->
 	<form name="airFrm">
 	<h1>가는 편 선택</h1>
 	<table align="center" border="1">

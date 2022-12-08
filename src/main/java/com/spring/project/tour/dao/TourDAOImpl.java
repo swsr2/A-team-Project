@@ -90,16 +90,16 @@ public class TourDAOImpl implements TourDAO {
 	}
 
 	@Override
-	public int average(int tr_no) {
+	public Double average(int tr_no) {
 		// TODO Auto-generated method stub
 		String avg_result = sqlSession.selectOne("mapper.tour.average", tr_no);
-		int avg = 0;
+		Double avg = 0.0;
 		if(avg_result==null) {
 			avg_result = "0";
-			avg = Integer.parseInt(avg_result);
+			avg = Double.parseDouble(avg_result)/1.0;
 			return avg;
 		} else {
-			avg = Integer.parseInt(avg_result);
+			avg = Double.parseDouble(avg_result)/1.0;
 		}
 		return avg;
 	}

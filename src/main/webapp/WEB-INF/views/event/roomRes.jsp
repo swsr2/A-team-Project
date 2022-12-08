@@ -106,6 +106,7 @@ td {
 	<br>
 	<br>
 	<br>
+	<!-- 객실 상세 정보와 예약 페이지 -->
 	<table align="center">
 		<tr>
 			<td colspan="2" align="center"><img src="${room.r_imgPath }"

@@ -32,6 +32,6 @@ public interface TourService {
 
 	public int checkPick(Map pickMap);
 
-	public int average(int tr_no);
+	public Double average(int tr_no);
 
 }

@@ -32,7 +32,7 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public List<AirplaneDTO> departList(AirplaneDTO air) throws Exception {
 		// TODO Auto-generated method stub\
-		
+		// 오는 날 항공편 api 검색
 		int num = 500;
 		String date = air.getAir_date();
 		String arrival  = air.getAir_arrivalPlace();
@@ -74,6 +74,7 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public List<AirplaneDTO> arrivalList(AirplaneDTO air) throws Exception {
 		// TODO Auto-generated method stub
+		// 가는 날 항공편 api 검색
 		int num = 100;
 		String date = air.getAir_date();
 		String arrival  = air.getAir_departPlace();
@@ -116,6 +117,7 @@ public class EventServiceImpl implements EventService {
 
 	private static String getTagValue(String tag, Element eElement) {
 		// TODO Auto-generated method stub
+		// api 에서 키로 값을 가져오기 위한 메서드
 		NodeList nList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 		Node nValue = nList.item(0);
 		if(nValue == null) {
@@ -128,6 +130,7 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public List<AirplaneDTO> checkReserv(int air_no_from, int air_no_to) {
 		// TODO Auto-generated method stub
+		// 예약 전 확인을 위한 정보를 가져오기 위한 메서드
 		AirplaneDTO airplane_from = eventDAO.selectAir_no_from(air_no_from);
 		AirplaneDTO airplane_to = eventDAO.selectAir_no_to(air_no_to);
 
@@ -147,12 +150,14 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public int allLodCnt() {
 		// TODO Auto-generated method stub
+		// 페이징 기능을 위한 숙박 테이블 전체 갯수
 		return eventDAO.allLodCnt();
 	}
 
 	@Override
 	public List<LodgingDTO> lodList(int start, int end) {
 		// TODO Auto-generated method stub
+		// 페이지에 맞게 숙박 정보를 가져오는 메서드
 		Map<String, Integer> page = new HashMap<String, Integer>();
 		page.put("start", start);
 		page.put("end", end);
@@ -162,78 +167,91 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public LodgingDTO lodDatail(int lod_id) {
 		// TODO Auto-generated method stub
+		// 선택한 숙박의 정보를 가져오는 메서드
 		return eventDAO.lodDatail(lod_id);
 	}
 
 	@Override
 	public List<RoomInfoDTO> roomList(int lod_id) {
 		// TODO Auto-generated method stub
+		// 선택한 숙박업체의 객실 리스트를 가져오는 메서드
 		return eventDAO.roomList(lod_id);
 	}
 
 	@Override
 	public RoomInfoDTO roomInfo(RoomInfoDTO room) {
 		// TODO Auto-generated method stub
+		// 선택한 객실의 정보를 가져오는 메서드
 		return eventDAO.roomInfo(room);
 	}
 
 	@Override
 	public int addLodRes(LodgingResDTO res) {
 		// TODO Auto-generated method stub
+		// 숙박 예약이 완료되어 db에 저장하도록 하는 메서드
 		return eventDAO.addLodRes(res);
 	}
 
 	@Override
 	public void myPick(Map pickMap) {
 		// TODO Auto-generated method stub
+		// 찜하기
 		eventDAO.myPick(pickMap);
 	}
 
 	@Override
 	public void delPick(Map pickMap) {
 		// TODO Auto-generated method stub
+		// 찜하기 취소
 		eventDAO.delPick(pickMap);
 	}
 
 	@Override
 	public int checkPick(Map pickMap) {
 		// TODO Auto-generated method stub
+		// 재접속 시 찜 한 표시 보여주기
 		return eventDAO.checkPcik(pickMap);
 	}
 
 	@Override
 	public int addReview(ReviewDTO review) {
 		// TODO Auto-generated method stub
+		// 리뷰 등록
 		return eventDAO.addReview(review);
 	}
 
 	@Override
 	public List<ReviewDTO> reviewList(int lod_id) {
 		// TODO Auto-generated method stub
+		// 한 업체의 리뷰 리스트
 		return eventDAO.reviewList(lod_id);
 	}
 
 	@Override
 	public ResAirplaneDTO selectAir(int air_no) {
 		// TODO Auto-generated method stub
+		// 항공편 예약을 위한 정보를 가져오는 메서드
 		return eventDAO.selectAir(air_no);
 	}
 
 	@Override
 	public int resAirplane(ResAirplaneDTO resAir) {
 		// TODO Auto-generated method stub
+		// 항공 예약 인서트
 		return eventDAO.resAirplane(resAir);
 	}
 
 	@Override
 	public int allHotelCnt() {
 		// TODO Auto-generated method stub
+		// 슉박 테이블 호텔관련 총 갯수
 		return eventDAO.allHotelCnt();
 	}
 
 	@Override
 	public List<LodgingDTO> hotelList(int start, int end) {
 		// TODO Auto-generated method stub
+		// 숙박 테이블 호텔 관련 리스트
 		Map<String, Integer> page = new HashMap<String, Integer>();
 		page.put("start", start);
 		page.put("end", end);
@@ -243,12 +261,14 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public int allResortCnt() {
 		// TODO Auto-generated method stub
+		// 숙박 테이블 리조트 관련 총 갯수
 		return eventDAO.allResortCnt();
 	}
 
 	@Override
 	public List<LodgingDTO> resortList(int start, int end) {
 		// TODO Auto-generated method stub
+		// 숙박 테이블 리조트 관련 리스트
 		Map<String, Integer> page = new HashMap<String, Integer>();
 		page.put("start", start);
 		page.put("end", end);
@@ -258,12 +278,14 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public int allHouseCnt() {
 		// TODO Auto-generated method stub
+		// 숙박 테이블 펜션/게하 관련 총갯수
 		return eventDAO.allHouseCnt();
 	}
 
 	@Override
 	public List<LodgingDTO> houseList(int start, int end) {
 		// TODO Auto-generated method stub
+		// 숙박 테이블 펜션/게하 관련 리스트
 		Map<String, Integer> page = new HashMap<String, Integer>();
 		page.put("start", start);
 		page.put("end", end);
@@ -271,8 +293,9 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public int average(int lod_id) {
+	public Double average(int lod_id) {
 		// TODO Auto-generated method stub
+		// 평점
 		return eventDAO.average(lod_id);
 	}
 }

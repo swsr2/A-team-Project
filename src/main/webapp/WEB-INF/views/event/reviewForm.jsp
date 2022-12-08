@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>보멍 리뷰</title>
+<title>숙박 리뷰</title>
 <style>
 form {
    display: inline;
@@ -26,6 +26,7 @@ form {
 </script>
 </head>
 <body>
+<!-- 리뷰 작성 페이지 -->
    <form name="lod_reviewForm" method="post" action="${path }/event/addReview">
    	<input type="hidden" name="lod_id" value="${lod_id }">
          <table align="center">

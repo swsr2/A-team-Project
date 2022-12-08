@@ -86,7 +86,7 @@ public class ActivityServiceImpl implements ActivityService{
 	}
 
 	@Override
-	public int average(int ac_no) {
+	public Double average(int ac_no) {
 		// TODO Auto-generated method stub
 		return activityDAO.average(ac_no);
 	}

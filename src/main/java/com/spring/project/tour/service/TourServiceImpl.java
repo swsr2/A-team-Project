@@ -99,7 +99,7 @@ public class TourServiceImpl implements TourService {
 	}
 
 	@Override
-	public int average(int tr_no) {
+	public Double average(int tr_no) {
 		// TODO Auto-generated method stub
 		return tourDAO.average(tr_no);
 	}

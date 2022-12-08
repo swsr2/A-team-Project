@@ -79,6 +79,7 @@ h3 {
 	<form name="event2" action="/project/event/lodmain">
 		<input class="category" type='submit' value='숙박' />
 	</form>
+	<!-- 선택한 숙박업소 상세 페이지 -->
     <br><br><br>
     <table align="center" >
     	<tr>

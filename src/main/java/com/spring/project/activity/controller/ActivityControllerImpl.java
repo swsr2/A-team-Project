@@ -150,7 +150,7 @@ public class ActivityControllerImpl implements ActivityController{
 		List<ReviewDTO> reviewList = activityService.reviewList(ac_no);
 		
 		// 평점
-		int avg = activityService.average(ac_no);
+		Double avg = activityService.average(ac_no);
 				
 		String[] category = activity.getAc_category().split(",");
 
