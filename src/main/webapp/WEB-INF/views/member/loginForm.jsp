@@ -18,7 +18,7 @@
 	
 	function kakaoLogin() {
         Kakao.Auth.authorize({
-        	redirectUri: 'http://54.180.105.105:8080/project/kakao/kakaoLogin.do',
+        	redirectUri: 'http://localhost:8080/project/kakao/kakaoLogin.do',
         });
       }
 	
@@ -37,7 +37,7 @@ input {
 	border: 1px solid black;
 }
 
-#btn {
+.btn {
 	background-color: #FD9F28;
 	margin-bottom: 10px;
 	color: white;
@@ -54,8 +54,8 @@ a {
 		<form name="login_frm" method="post" action="/project/member/login.do">
 			<input type="text" name="id" placeholder="아이디" class="in"><br>
 			<input type="password" name="pwd" placeholder="비밀번호" class="in"><br>
-			<input type="submit" id="btn" value="로그인"><br>
-			<input type="reset" id="btn" value="다시입력"><br>
+			<input type="submit" class="btn" value="로그인"><br>
+			<input type="reset" class="btn" value="다시입력"><br>
 			
 			<a href="javascript:kakaoLogin()">
 				<img src='../resources/image/kakao_login_medium_narrow.png' />

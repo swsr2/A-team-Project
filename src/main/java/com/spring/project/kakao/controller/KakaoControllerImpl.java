@@ -107,7 +107,7 @@ public class KakaoControllerImpl implements KakaoController {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d");
-			sb.append("&redirect_uri=http://54.180.105.105:8080/project/kakao/kakaoLogin.do");
+			sb.append("&redirect_uri=http://localhost:8080/project/kakao/kakaoLogin.do");
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();

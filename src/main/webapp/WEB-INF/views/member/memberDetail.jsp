@@ -18,17 +18,11 @@
 
 	window.onload = function(){
 		$("#pwdChk").text("변경할 비밀번호를 입력하세요.");
-		$("#pwdChk").attr("ok", true);
-		$("#pwdpwdChk").text("변경할 비밀번호를 한번 더 입력하세요.");
-		$("#pwdpwdChk").attr("ok", true);
+		$("#pwdpwdChk").text("정보를 수정하려면 비밀번호를 한번 더 입력하세요.");
 		$("#nameChk").text("변경할 이름을 입력하세요.");
-		$("#nameChk").attr("ok", true);
 		$("#ageChk").text("변경할 나이를 입력하세요.");
-		$("#ageChk").attr("ok", true);
 		$("#telChk").text("변경할 전화번호를 입력하세요.");
-		$("#telChk").attr("ok", true);
 		$("#emailChk").text("변경할 이메일을 입력하세요.");
-		$("#emailChk").attr("ok", true);
 		
 		
 		let val = /^[a-z|A-Z|0-9]{3,15}$/
@@ -53,17 +47,14 @@
 				if(check(val, pwd)){
 					$("#pwdChk").text("사용할 수 있는 패스워드입니다.");
 					$("#pwdChk").css("color", "blue");
-					$("#pwdChk").attr("ok", true);
 				} else {
 					$("#pwdChk").text("패스워드가 형식에 맞지않습니다. ( 영어대소문자 또는 숫자 3 ~ 15자리 )");
 					$("#pwdChk").css("color", "red");
 					$("#pwd").val("");
-					$("#pwdChk").attr("ok", false);
 				}
 			} else {
-				$("#pwdChk").text("영어대소문자 또는 숫자 3 ~ 15자리 ( 영어대소문자 또는 숫자 3 ~ 15자리 )");
+				$("#pwdChk").text("영어대소문자 또는 숫자 3 ~ 15자리");
 				$("#pwdChk").css("color", "black");
-				$("#pwdChk").attr("ok", false);
 			}
 		})
 		
@@ -75,16 +66,13 @@
 				if(pwdpwd == pwd){
 					$("#pwdpwdChk").text("패스워드가 일치 합니다.");
 					$("#pwdpwdChk").css("color", "blue");
-					$("#pwdpwdChk").attr("ok", true);
 				} else {
 					$("#pwdpwdChk").text("패스워드가 일치하지 않습니다.");
 					$("#pwdpwdChk").css("color", "red");
 					$("#pwdpwdChk").val("");
-					$("#pwdpwdChk").attr("ok", false);
 				}
 			} else {
 				$("#pwdpwdChk").text("");
-				$("#pwdpwdChk").attr("ok", false);
 			}
 		})
 		
@@ -94,11 +82,9 @@
 			if(name != ''){
 					$("#nameChk").text("이름이 변경되었습니다.");
 					$("#nameChk").css("color", "blue");
-					$("#nameChk").attr("ok", true);
 			}else {
 				$("#nameChk").text("변경할 이름을 입력하세요.");
 				$("#nameChk").css("color", "black");
-				$("#nameChk").attr("ok", false);
 				
 			}
 		})
@@ -109,11 +95,9 @@
 			if(age != ''){
 					$("#ageChk").text("나이가 변경되었습니다.");
 					$("#ageChk").css("color", "blue");
-					$("#ageChk").attr("ok", true);
 			}else {
 				$("#ageChk").text("변경할 나이를 입력하세요.");
 				$("#ageChk").css("color", "black");
-				$("#ageChk").attr("ok", false);
 			}
 		})
 		
@@ -126,17 +110,14 @@
 				if(check(tel_val, tel)){
 					$("#telChk").text("");
 					$("#telChk").css("color", "blue");
-					$("#telChk").attr("ok", true);
 				} else {
 					$("#telChk").text("전화번호가 형식에 맞지않습니다. ex) 01012345678");
 					$("#telChk").css("color", "red");
 					$("#tel").val("");
-					$("#telChk").attr("ok", false);
 				}
 			} else {
 				$("#telChk").text("ex) 01012345678");
 				$("#telChk").css("color", "black");
-				$("#telChk").attr("ok", false);
 			}
 		})
 		
@@ -147,17 +128,14 @@
 				if(check(email_val, email)){
 					$("#emailChk").text("");
 					$("#emailChk").css("color", "blue");
-					$("#emailChk").attr("ok", true);
 				} else {
 					$("#emailChk").text("이메일이 형식에 맞지않습니다. ex) test@test.com");
 					$("#emailChk").css("color", "red");
 					$("#email").val("");
-					$("#emailChk").attr("ok", false);
 				}
 			} else {
 				$("#emailChk").text("ex) test@test.com");
 				$("#emailChk").css("color", "black");
-				$("#emailChk").attr("ok", false);
 			}
 		})
 	}
@@ -168,24 +146,34 @@
 		}
 	}
 	
-	function fn_sumbmit() {
-		if(${"#pwdChk"}.attr("ok") == true && ${"#pwdpwdChk"}.attr("ok") == true && ${"#telChk"}.attr("ok") == true && ${"#emailChk"}.attr("ok") == true){
-			${"form"}.submit();
+	function fn_checkForm(){
+		var checkForm = document.checkForm;
+		var pwd = checkForm.pwd.value;
+		var pwdpwd = checkForm.pwdpwd.value;
+		var name = checkForm.name.value;
+		var age = checkForm.age.value;
+		var tel = checkForm.tel.value;
+		var email = checkForm.email.value;
+		
+		if (!pwd){
+			alert("비밀번호가 입력되지 않았습니다.")
+		} else if (!pwdpwd){
+			alert("비밀번호 확인이 입력되지 않았습니다.")
+		} else if (!name){
+			alert("이름이 입력되지 않았습니다.")
+		} else if (!age){
+			alert("나이가 입력되지 않았습니다.")
+		} else if (!tel){
+			alert("전화번호가 입력되지 않았습니다.")
+		} else if (!email){
+			alert("이메일이 입력되지 않았습니다.")
 		} else {
-			alert("변경한 회원정보 형식이 잘못되었습니다.");
+			checkForm.submit();
 		}
 	}
 </script>
 <style>
 input {
-	width: 20%;
-	padding: 10px;
-	box-sizing: border-box;
-	border-radius: 5px;
-	border: none;
-}
-
-button {
 	width: 20%;
 	padding: 10px;
 	box-sizing: border-box;
@@ -203,7 +191,7 @@ input::-webkit-inner-spin-button {
 	border: 1px solid black;
 }
 
-#btn {
+.btn {
 	background-color: #FD9F28;
 	margin-bottom: 10px;
 	color: white;
@@ -232,7 +220,7 @@ select {
 </head>
 <body>
 <div align="center">
-	<form method="post" id="form" action="/project/member/modMember.do">
+	<form method="post" name="checkForm" action="/project/member/modMember.do">
 		<h1 style="text-align:center;">회원 정보 상세창</h1>
 		<input type="text" id="id" name="id" class="in" value="${member.id }" readonly="readonly"><br>
 			<span id="idChk" class="check"></span><br>
@@ -248,25 +236,19 @@ select {
 			<p id="telChk" class="check"></p><br>
 		<input type="email" id="email" name="email" value="${member.email }" class="in"><br>
 			<p id="emailChk" class="check"></p><br>
-		<select class="select" name="gender" onclick="fn_selected(this)">
-				<option selected disabled hidden selected="selected">
-					<c:set var="gender" value="${member.gender }" />
-					<c:if test="${gender eq 'M' }">
-						<a>남성</a>
-					</c:if>
-					<c:if test="${gender eq 'W' }">
-						<a>여성</a>
-					</c:if>
-				</option>
-				<option value="M">남성</option>
-				<option value="W">여성</option>
-		</select>
+		<c:set var="gender" value="${member.gender }" />
+			<c:if test="${gender eq 'M' }">
+				<input type="text" value="남성" class="in" readonly="readonly">
+				<input type="hidden" id="gender" name="gender" value="${member.gender }">
+			</c:if>
+			<c:if test="${gender eq 'W' }">
+				<input type="text" value="여성" class="in" readonly="readonly">
+				<input type="hidden" id="gender" name="gender" value="${member.gender }">
+			</c:if>
 		<br>
 		<td width="400">
-			<button id="btn" onclick="fn_submit()">수정하기</button><br>
-			<!-- <input type="submit" id="btn" value="수정하기"><br> -->
-			<!-- <input type="button" id="btn" value="수정하기" onclick="fn_submit()"><br> -->
-			<input type="button" id="btn" value="뒤로가기" onclick="location.href='${path }/mypage/mypagemain'"><br>
+			<input type="button" class="btn" value="수정하기" onclick="fn_checkForm()"><br>
+			<input type="button" class="btn" value="뒤로가기" onclick="location.href='${path }/mypage/mypagemain'"><br>
 			<input type="button" id="${member.id }" value="회원탈퇴" onclick="deleteMember(id);"><br>
 		</td>
 	</form>

@@ -45,7 +45,7 @@
 			if(id != '') {
 				if(check(val, id)){
 					$.ajax({
-						url: '${path}/idChk',
+						url: '/project/idChk',
 						type: 'GET',
 						dataType : "json",
 						data : {"id" : $("#id").val()},
@@ -53,11 +53,10 @@
 							if(data == "0") {
 								$("#idChk").text("사용할 수 있는 ID입니다.");
 								$("#idChk").css("color", "blue");
-								$("#idChk").attr("ok", true);
 							} else if(data == "1") {
 								$("#idChk").text("사용중인 ID입니다.");
 								$("#idChk").css("color", "red");
-								$("#idChk").attr("ok", false);
+								$("#id").val("");
 							}
 						},
 						error: function(){
@@ -68,12 +67,10 @@
 					$("#idChk").text("ID가 형식에 맞지않습니다.");
 					$("#idChk").css("color", "red");
 					$("#id").val("");
-					$("#idChk").attr("ok", false);
 				}
 			} else {
 				$("#idChk").text("영어대소문자 또는 숫자 3 ~ 15자리");
 				$("#idChk").css("color", "black");
-				$("#idChk").attr("ok", false);
 			}
 		})
 		
@@ -84,17 +81,14 @@
 				if(check(val, pwd)){
 					$("#pwdChk").text("사용할 수 있는 패스워드입니다.");
 					$("#pwdChk").css("color", "blue");
-					$("#pwdChk").attr("ok", true);
 				} else {
 					$("#pwdChk").text("패스워드가 형식에 맞지않습니다. ( 영어대소문자 또는 숫자 3 ~ 15자리 )");
 					$("#pwdChk").css("color", "red");
 					$("#pwd").val("");
-					$("#pwdChk").attr("ok", false);
 				}
 			} else {
-				$("#pwdChk").text("영어대소문자 또는 숫자 3 ~ 15자리 ( 영어대소문자 또는 숫자 3 ~ 15자리 )");
+				$("#pwdChk").text("영어대소문자 또는 숫자 3 ~ 15자리");
 				$("#pwdChk").css("color", "black");
-				$("#pwdChk").attr("ok", false);
 			}
 		})
 		
@@ -106,16 +100,13 @@
 				if(pwdpwd == pwd){
 					$("#pwdpwdChk").text("패스워드가 일치 합니다.");
 					$("#pwdpwdChk").css("color", "blue");
-					$("#pwdpwdChk").attr("ok", true);
 				} else {
 					$("#pwdpwdChk").text("패스워드가 일치하지 않습니다.");
 					$("#pwdpwdChk").css("color", "red");
 					$("#pwdpwdChk").val("");
-					$("#pwdpwdChk").attr("ok", false);
 				}
 			} else {
 				$("#pwdpwdChk").text("");
-				$("#pwdpwdChk").attr("ok", false);
 			}
 		})
 		
@@ -126,17 +117,14 @@
 				if(check(tel_val, tel)){
 					$("#telChk").text("");
 					$("#telChk").css("color", "blue");
-					$("#telChk").attr("ok", true);
 				} else {
 					$("#telChk").text("전화번호가 형식에 맞지않습니다. ex) 01012345678");
 					$("#telChk").css("color", "red");
 					$("#tel").val("");
-					$("#telChk").attr("ok", false);
 				}
 			} else {
 				$("#telChk").text("ex) 01012345678");
 				$("#telChk").css("color", "black");
-				$("#telChk").attr("ok", false);
 			}
 		})
 		
@@ -147,39 +135,59 @@
 				if(check(email_val, email)){
 					$("#emailChk").text("");
 					$("#emailChk").css("color", "blue");
-					$("#emailChk").attr("ok", true);
 				} else {
 					$("#emailChk").text("이메일이 형식에 맞지않습니다. ex) test@test.com");
 					$("#emailChk").css("color", "red");
 					$("#email").val("");
-					$("#emailChk").attr("ok", false);
 				}
 			} else {
 				$("#emailChk").text("ex) test@test.com");
 				$("#emailChk").css("color", "black");
-				$("#emailChk").attr("ok", false);
 			}
 		})
+		
 	}
 	
-	function fn_sumbmit() {
-		if(${"#idChk"}.attr("ok") == true && ${"#pwdChk"}.attr("ok") == true && ${"#pwdpwdChk"}.attr("ok") == true && ${"#telChk"}.attr("ok") == true && ${"#emailChk"}.attr("ok") == true){
-			${"form"}.submit();
+	function fn_genderCheck(){
+		var gender = document.getElementById("gender");
+		var genderValue = gender.options[gender.selectedIndex].value;
+		return genderValue;
+	}	
+	
+	function fn_checkForm(){
+		var checkForm = document.checkForm;
+		var id = checkForm.id.value;
+		var pwd = checkForm.pwd.value;
+		var pwdpwd = checkForm.pwdpwd.value;
+		var name = checkForm.name.value;
+		var age = checkForm.age.value;
+		var tel = checkForm.tel.value;
+		var email = checkForm.email.value;
+		var gender = fn_genderCheck();
+
+		if(!id){
+			alert("아이디가 입력되지 않았습니다.")
+		} else if (!pwd){
+			alert("비밀번호가 입력되지 않았습니다.")
+		} else if (!pwdpwd){
+			alert("비밀번호 확인이 입력되지 않았습니다.")
+		} else if (!name){
+			alert("이름이 입력되지 않았습니다.")
+		} else if (!age){
+			alert("나이가 입력되지 않았습니다.")
+		} else if (!tel){
+			alert("전화번호가 입력되지 않았습니다.")
+		} else if (!email){
+			alert("이메일이 입력되지 않았습니다.")
+		} else if (gender == "N"){
+			alert("성별이 선택되지 않았습니다.")
 		} else {
-			alert("회원가입 형식이 잘못되었습니다.");
+			checkForm.submit();
 		}
 	}
 </script>
 <style>
 input {
-	width: 20%;
-	padding: 10px;
-	box-sizing: border-box;
-	border-radius: 5px;
-	border: none;
-}
-
-button {
 	width: 20%;
 	padding: 10px;
 	box-sizing: border-box;
@@ -197,7 +205,7 @@ input::-webkit-inner-spin-button {
 	border: 1px solid black;
 }
 
-#btn {
+.btn {
 	background-color: #FD9F28;
 	margin-bottom: 10px;
 	color: white;
@@ -231,11 +239,7 @@ select {
 <body>
 	<div align="center">
 		<h3>회원가입</h3>
-		<form method="post" id="form" action="/project/member/addMember.do">
-			<!-- <div style="width: 20%;">
-			    <input type="text" onchange="idChk;" id="id" name="id" placeholder="아이디" class="in" style="width: 70%; margin-bottom: 0px;">
-			<button class="idChk" type="button" id="idChk" onchange="fn_idChk();" style="width: 28%; margin-bottom: 0px;">중복확인</button>
-			</div> -->
+		<form method="post" name="checkForm" action="/project/member/addMember.do">
 			<input type="text" id="id" name="id" placeholder="아이디" class="in"><br>
 			<span id="idChk" class="check"></span><br>
 			<input type="password" id="pwd" name="pwd" placeholder="비밀번호" class="in"><br>
@@ -250,15 +254,14 @@ select {
 			<p id="telChk" class="check"></p><br>
 			<input type="email" id="email" name="email" placeholder="이메일" class="in"><br>
 			<p id="emailChk" class="check"></p><br>
-			<select class="select" name="gender" onclick="fn_selected(this)">
-				<option selected disabled hidden>성별</option>
+			<select class="select" id="gender" name="gender" onclick="fn_selected(this)">
+				<option selected disabled hidden value="N">성별</option>
 				<option value="M">남성</option>
 				<option value="W">여성</option>
 			</select>
 			<br>
-			<button id="btn" onclick="fn_submit()">회원가입</button><br>
-			<!-- <input type="submit" id="btn" value="회원가입"><br> -->
-			<input type="reset" id="btn" value="다시입력"><br>
+			<input type="button" class="btn" value="회원가입" onclick="fn_checkForm()"><br>
+			<input type="reset" class="btn" value="다시입력"><br>
 		</form>
 	</div>
 	<div style="margin: 120px;"></div>	
