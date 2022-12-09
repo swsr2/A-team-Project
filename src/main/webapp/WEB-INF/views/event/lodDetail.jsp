@@ -57,6 +57,7 @@
  				</tr>
     </table>
  <div class="page">
+ <form>
  <h3>
     <c:if test="${prev}">
  <span>[ <a href="${path }/event/lodDetail?page=${startPageNum - 1}">이전</a> ]</span>
@@ -72,6 +73,8 @@
  <span>[ <a href="${path }/event/lodDetail?page=${endPageNum+1}">다음</a> ]</span>
 </c:if>
 </h3>
+<input type="hidden" name="resultDay" value="${resultDay }">
+</form>
 </div>
 </body>
 </html>
