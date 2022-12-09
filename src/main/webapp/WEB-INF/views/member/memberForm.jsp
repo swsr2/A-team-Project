@@ -179,6 +179,14 @@ input {
 	border: none;
 }
 
+button {
+	width: 20%;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: none;
+}
+
 /* input type number 일 때 우측에 화살표 없애기 */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -248,7 +256,7 @@ select {
 				<option value="W">여성</option>
 			</select>
 			<br>
-			<button id="btn" value="회원가입" onclick="fn_submit()"><br>
+			<button id="btn" onclick="fn_submit()">회원가입</button><br>
 			<!-- <input type="submit" id="btn" value="회원가입"><br> -->
 			<input type="reset" id="btn" value="다시입력"><br>
 		</form>

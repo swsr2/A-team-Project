@@ -185,6 +185,14 @@ input {
 	border: none;
 }
 
+button {
+	width: 20%;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: none;
+}
+
 /* input type number 일 때 우측에 화살표 없애기 */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -255,7 +263,7 @@ select {
 		</select>
 		<br>
 		<td width="400">
-			<button id="btn" value="수정하기" onclick="fn_submit()"><br>
+			<button id="btn" onclick="fn_submit()">수정하기</button><br>
 			<!-- <input type="submit" id="btn" value="수정하기"><br> -->
 			<!-- <input type="button" id="btn" value="수정하기" onclick="fn_submit()"><br> -->
 			<input type="button" id="btn" value="뒤로가기" onclick="location.href='${path }/mypage/mypagemain'"><br>
