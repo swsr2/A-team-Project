@@ -12,13 +12,13 @@
 		<result property="email" column="email" />
 	</resultMap>
 
-	<select id="kakao" parameterType="memberDTO" resultType="memberDTO">
+	<select id="kakao" parameterType="java.util.HashMap" resultType="memberDTO">
 		<![CDATA[
 			select * from kakao where id=#{id}
 		]]>
 	</select>
 	 
-	<insert id="insert" parameterType="memberDTO">
+	<insert id="insert" parameterType="java.util.HashMap">
 		<![CDATA[
 			insert into kakao values(#{id}, #{name}, #{gender}, #{email})
 		]]>

@@ -18,11 +18,17 @@
 
 	window.onload = function(){
 		$("#pwdChk").text("변경할 비밀번호를 입력하세요.");
+		$("#pwdChk").attr("ok", true);
 		$("#pwdpwdChk").text("변경할 비밀번호를 한번 더 입력하세요.");
+		$("#pwdpwdChk").attr("ok", true);
 		$("#nameChk").text("변경할 이름을 입력하세요.");
+		$("#nameChk").attr("ok", true);
 		$("#ageChk").text("변경할 나이를 입력하세요.");
+		$("#ageChk").attr("ok", true);
 		$("#telChk").text("변경할 전화번호를 입력하세요.");
+		$("#telChk").attr("ok", true);
 		$("#emailChk").text("변경할 이메일을 입력하세요.");
+		$("#emailChk").attr("ok", true);
 		
 		
 		let val = /^[a-z|A-Z|0-9]{3,15}$/
@@ -47,15 +53,17 @@
 				if(check(val, pwd)){
 					$("#pwdChk").text("사용할 수 있는 패스워드입니다.");
 					$("#pwdChk").css("color", "blue");
-					$("#submit1").attr("disabled", false);
+					$("#pwdChk").attr("ok", true);
 				} else {
 					$("#pwdChk").text("패스워드가 형식에 맞지않습니다. ( 영어대소문자 또는 숫자 3 ~ 15자리 )");
 					$("#pwdChk").css("color", "red");
 					$("#pwd").val("");
-					$("#submit1").attr("disabled", true);
+					$("#pwdChk").attr("ok", false);
 				}
 			} else {
-				$("#pwdChk").text("");
+				$("#pwdChk").text("영어대소문자 또는 숫자 3 ~ 15자리 ( 영어대소문자 또는 숫자 3 ~ 15자리 )");
+				$("#pwdChk").css("color", "black");
+				$("#pwdChk").attr("ok", false);
 			}
 		})
 		
@@ -67,15 +75,16 @@
 				if(pwdpwd == pwd){
 					$("#pwdpwdChk").text("패스워드가 일치 합니다.");
 					$("#pwdpwdChk").css("color", "blue");
-					$("#submit1").attr("disabled", false);
+					$("#pwdpwdChk").attr("ok", true);
 				} else {
 					$("#pwdpwdChk").text("패스워드가 일치하지 않습니다.");
 					$("#pwdpwdChk").css("color", "red");
 					$("#pwdpwdChk").val("");
-					$("#submit1").attr("disabled", true);
+					$("#pwdpwdChk").attr("ok", false);
 				}
 			} else {
 				$("#pwdpwdChk").text("");
+				$("#pwdpwdChk").attr("ok", false);
 			}
 		})
 		
@@ -85,9 +94,12 @@
 			if(name != ''){
 					$("#nameChk").text("이름이 변경되었습니다.");
 					$("#nameChk").css("color", "blue");
-					$("#submit1").attr("disabled", false);
+					$("#nameChk").attr("ok", true);
 			}else {
 				$("#nameChk").text("변경할 이름을 입력하세요.");
+				$("#nameChk").css("color", "black");
+				$("#nameChk").attr("ok", false);
+				
 			}
 		})
 		
@@ -97,9 +109,11 @@
 			if(age != ''){
 					$("#ageChk").text("나이가 변경되었습니다.");
 					$("#ageChk").css("color", "blue");
-					$("#submit1").attr("disabled", false);
+					$("#ageChk").attr("ok", true);
 			}else {
 				$("#ageChk").text("변경할 나이를 입력하세요.");
+				$("#ageChk").css("color", "black");
+				$("#ageChk").attr("ok", false);
 			}
 		})
 		
@@ -110,17 +124,19 @@
 			var tel = $("#tel").val();
 			if(tel != '') {
 				if(check(tel_val, tel)){
-					$("#telChk").text("전화번호가 변경되었습니다.");
+					$("#telChk").text("");
 					$("#telChk").css("color", "blue");
-					$("#submit1").attr("disabled", false);
+					$("#telChk").attr("ok", true);
 				} else {
 					$("#telChk").text("전화번호가 형식에 맞지않습니다. ex) 01012345678");
 					$("#telChk").css("color", "red");
 					$("#tel").val("");
-					$("#submit1").attr("disabled", true);
+					$("#telChk").attr("ok", false);
 				}
 			} else {
 				$("#telChk").text("ex) 01012345678");
+				$("#telChk").css("color", "black");
+				$("#telChk").attr("ok", false);
 			}
 		})
 		
@@ -129,17 +145,19 @@
 			var email = $("#email").val();
 			if(email != '') {
 				if(check(email_val, email)){
-					$("#emailChk").text("이메일이 변경되었습니다.");
+					$("#emailChk").text("");
 					$("#emailChk").css("color", "blue");
-					$("#submit1").attr("disabled", false);
+					$("#emailChk").attr("ok", true);
 				} else {
 					$("#emailChk").text("이메일이 형식에 맞지않습니다. ex) test@test.com");
 					$("#emailChk").css("color", "red");
 					$("#email").val("");
-					$("#submit1").attr("disabled", true);
+					$("#emailChk").attr("ok", false);
 				}
 			} else {
 				$("#emailChk").text("ex) test@test.com");
+				$("#emailChk").css("color", "black");
+				$("#emailChk").attr("ok", false);
 			}
 		})
 	}
@@ -147,6 +165,14 @@
 	function deleteMember(id){
 		if(window.confirm('탈퇴하시겠습니까?')){
 			location.href="/project/member/delMember.do?id="+id;
+		}
+	}
+	
+	function fn_sumbmit() {
+		if(${"#pwdChk"}.attr("ok") == true && ${"#pwdpwdChk"}.attr("ok") == true && ${"#telChk"}.attr("ok") == true && ${"#emailChk"}.attr("ok") == true){
+			${"form"}.submit();
+		} else {
+			alert("변경한 회원정보 형식이 잘못되었습니다.");
 		}
 	}
 </script>
@@ -198,7 +224,7 @@ select {
 </head>
 <body>
 <div align="center">
-	<form method="post" action="/project/member/modMember.do">
+	<form method="post" id="form" action="/project/member/modMember.do">
 		<h1 style="text-align:center;">회원 정보 상세창</h1>
 		<input type="text" id="id" name="id" class="in" value="${member.id }" readonly="readonly"><br>
 			<span id="idChk" class="check"></span><br>
@@ -215,7 +241,7 @@ select {
 		<input type="email" id="email" name="email" value="${member.email }" class="in"><br>
 			<p id="emailChk" class="check"></p><br>
 		<select class="select" name="gender" onclick="fn_selected(this)">
-				<option selected disabled hidden>
+				<option selected disabled hidden selected="selected">
 					<c:set var="gender" value="${member.gender }" />
 					<c:if test="${gender eq 'M' }">
 						<a>남성</a>
@@ -226,13 +252,15 @@ select {
 				</option>
 				<option value="M">남성</option>
 				<option value="W">여성</option>
-			</select>
-			<br>
-				<td width="400">
-					<input type="submit" id="btn" value="수정하기"><br>
-					<input type="button" id="btn" value="뒤로가기" onclick="location.href='${path }/mypage/mypagemain'"><br>
-					<input type="button" id="${member.id }" value="회원탈퇴" onclick="deleteMember(id);"><br>
-				</td>
+		</select>
+		<br>
+		<td width="400">
+			<button id="btn" value="수정하기" onclick="fn_submit()"><br>
+			<!-- <input type="submit" id="btn" value="수정하기"><br> -->
+			<!-- <input type="button" id="btn" value="수정하기" onclick="fn_submit()"><br> -->
+			<input type="button" id="btn" value="뒤로가기" onclick="location.href='${path }/mypage/mypagemain'"><br>
+			<input type="button" id="${member.id }" value="회원탈퇴" onclick="deleteMember(id);"><br>
+		</td>
 	</form>
 	</div>
 		<div style="margin: 120px;"></div>	

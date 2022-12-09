@@ -7,7 +7,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,11 +58,8 @@ public class KakaoControllerImpl implements KakaoController {
 		String access_Token = getAccessToken(code);
 		MemberDTO userInfo = getUserInfo(access_Token);
 		System.out.println("userInfo = getUserInfo 진입!" + userInfo);
-//		KakaoVO kakaoVO = kakaoService.kakaoLogin(userInfo);
-//		System.out.println("kakaoVO = kakaoService.kakaoLogin(userInfo); 진입!" + kakaoVO);
 		
 		System.out.println("###access_Token#### : " + access_Token);
-//		System.out.println("###nickname#### : " + userInfo.getK_nickname());
 		
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
@@ -111,7 +107,7 @@ public class KakaoControllerImpl implements KakaoController {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d");
-			sb.append("&redirect_uri=http://15.164.48.50:8080/project/kakao/kakaoLogin.do");
+			sb.append("&redirect_uri=http://54.180.105.105:8080/project/kakao/kakaoLogin.do");
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();
@@ -162,6 +158,7 @@ public class KakaoControllerImpl implements KakaoController {
 		try {
 			URL url = new URL(requestURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 			
@@ -183,7 +180,6 @@ public class KakaoControllerImpl implements KakaoController {
 			JsonObject profile = kakao_account.getAsJsonObject().get("profile").getAsJsonObject();
 			
 			String id = kakao_account.getAsJsonObject().get("email").getAsString();
-//			String name = URLEncoder.encode(profile.getAsJsonObject().get("nickname").getAsString(),"UTF-8");
 			String name = profile.getAsJsonObject().get("nickname").getAsString();
 			String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();

@@ -18,7 +18,7 @@
 	
 	function kakaoLogin() {
         Kakao.Auth.authorize({
-        	redirectUri: 'http://15.164.48.50:8080/project/kakao/kakaoLogin.do',
+        	redirectUri: 'http://54.180.105.105:8080/project/kakao/kakaoLogin.do',
         });
       }
 	
