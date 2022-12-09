@@ -12,6 +12,7 @@ request.setCharacterEncoding("UTF-8");
 <meta charset="UTF-8">
 <title>이벤트 항공 상세페이지_오는편</title>
 <script>
+	// 팝업 스크립트 5초뒤 닫고 예약 완료
 	let openPay;
 	function resPay(){
 		openPay = window.open("resPay","결제창","width=570, height=350, resizable = no, scrollbars = no");
@@ -67,6 +68,7 @@ h1 {
 	</form>
 	<br>
 	<br>
+	<!-- 항공편 확인 후 예약 진행 페이지 -->
 	<form name="frm">
 		<h1>내가 선택한 여정</h1>
 		<table align="center" style="border: 1px solid black;">

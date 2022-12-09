@@ -29,6 +29,7 @@ form {
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>  
+	// 체크인, 체크아웃 날짜 선택 페이지
   $( function() {
 	    $( "#checkIn" ).datepicker({
 	      dateFormat: 'yy-mm-dd',
@@ -55,6 +56,7 @@ form {
 		<input class="category" type='submit' value='숙박' />
 	</form>
 	<br>
+	<!-- 체크인 날짜 체크아웃 날짜 선택 페이지 -->
 	<div id="Search" align="center">
 	<h1>일정선택</h1>
 	<form name="selectDate" action="${path }/event/lodDetail">

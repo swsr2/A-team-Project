@@ -3,7 +3,6 @@ package com.spring.project.event.controller;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,6 @@ import com.spring.project.event.service.EventService;
 import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.member.dto.MemberDTO;
 
-import jdk.internal.org.jline.utils.Log;
 
 import com.spring.project.event.dto.LodgingDTO;
 import com.spring.project.event.dto.LodgingResDTO;
@@ -37,10 +35,12 @@ import com.spring.project.event.dto.RoomInfoDTO;
 public class EventControllerImpl implements EventController {
 	@Autowired
 	EventService eventService;
+	
 	@Override
 	@RequestMapping("/main")
 	public String airport(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 상단 바에서 이벤트를 눌렀을 때 혹은 이벤트안에서 항공 버튼을 눌렀을 때 가는 항공편 메인 페이지
 		return "/event/airmain";
 	}
 
@@ -48,6 +48,7 @@ public class EventControllerImpl implements EventController {
 	@RequestMapping("/lodmain")
 	public String lodging(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 이벤트안에서 숙박 버튼을 눌렀을 때 가는 숙박 예약 메인 페이지
 		return "/event/lodmain";
 	}
 
@@ -56,22 +57,24 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView airDetail(@ModelAttribute("air") AirplaneDTO air, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		// 출도착 공항과 날짜를 입력 후 그 정보에 맞는 항공편을 보여주는 메서드
 		eventService.resetAir();
 		String date = request.getParameter("date");
+		// 가는 날
 		String fromdate = date.substring(0,10);
+		// 오는 날
 		String todate= date.substring(13);
 		
 		air.setAir_date(fromdate);
+		// 가는 날 항공편을 항공편 스케줄 api를 실행해서 담는 리스트
 		List<AirplaneDTO> airplaneList = eventService.arrivalList(air);
 		air.setAir_date(todate);
-		//System.out.println(air.getAir_date());
-		//System.out.println(air.getAir_arrivalPlace());
-		//System.out.println(air.getAir_departPlace());
-		
+		// 오는 날 항공편을 항공편 스케줄 api를 실행해서 담는 리스트
 		List<AirplaneDTO> airplaneList2 = eventService.departList(air);
 		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
+		// 가는 날 오는 날 오는 날 항공편 리스트를 jsp로 보내주기
 		mav.addObject("airplaneList", airplaneList);
 		mav.addObject("airplaneList2", airplaneList2);
 		
@@ -83,6 +86,7 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView checkReserv(@RequestParam("air_no_from") int air_no_from,@RequestParam("air_no_to") int air_no_to, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 선택한 항공편을 가져와서 확인하고 예약을 진행하는 페이지
 		List<AirplaneDTO> airplaneList = eventService.checkReserv(air_no_from, air_no_to);
 		
 		int price_from = airplaneList.get(0).getAir_price();
@@ -91,6 +95,7 @@ public class EventControllerImpl implements EventController {
 		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
+		// 가는 편 오는편이 저장된 리스트와 가격을 합친 sum값을 jsp로 보내주기
 		mav.addObject("airplaneList", airplaneList);
 		mav.addObject("sum", sum);
 		return mav;
@@ -188,7 +193,7 @@ public class EventControllerImpl implements EventController {
 		}
 		boolean prev = startPageNum == 1 ? false : true;
 		boolean next = endPageNum * pageNum_cnt >= lodCnt ? false : true;
-
+		// 선택한 페이지번호로 계산된 만큼에 숙박 정보를 담은 리스트
 		List<LodgingDTO> lodList = eventService.lodList(start, end);
 		mav.addObject("lodList", lodList);
 		mav.addObject("pageNum", pageNum);
@@ -254,7 +259,6 @@ public class EventControllerImpl implements EventController {
 		}
 		boolean prev = startPageNum == 1 ? false : true;
 		boolean next = endPageNum * pageNum_cnt >= HotelCnt ? false : true;
-
 		List<LodgingDTO> hotelList = eventService.hotelList(start, end);
 		mav.addObject("hotelList", hotelList);
 		mav.addObject("pageNum", pageNum);
@@ -406,6 +410,7 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView lodInfo(@RequestParam("lod_id") int lod_id, @RequestParam("resultDay") int resultDay,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 하나의 숙박 업체를 선택했을 시 선택한 업체의 상세 설명 객실정보를 보여주는 메서드
 		HttpSession session = request.getSession();
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		LodgingDTO lodging = eventService.lodDatail(lod_id);
@@ -423,12 +428,12 @@ public class EventControllerImpl implements EventController {
 			pickMap.put("lod_id", lod_id);
 			
 			int result = eventService.checkPick(pickMap);
-			// http://localhost:8080/project/food/myPick?fd_no=924&pick=true
 			
 			if(result==1) {
 				mav.addObject("pick", true);
 			}
 		} 
+		// 평점, 숙박 일수 계산, 선택한 업체 정보, 선택한 업체의 객실 리스트, 선택한 업체에 달린 리뷰 리스트를 jsp로 전송
 		mav.addObject("avg", avg);
 		mav.addObject("resultDay", resultDay);
 		mav.addObject("lodging",lodging);
@@ -442,11 +447,12 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView roomRes(@ModelAttribute("room") RoomInfoDTO room, @RequestParam("resultDay") int resultDay,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		
+		// 객실 선택 시 객실 상세정보를 확인 후 예약을 진행하는 메서드
 		room = eventService.roomInfo(room);
 		LodgingDTO lodging = eventService.lodDatail(Integer.parseInt(room.getLod_id()));
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
+		// 선택한 객실 정보, 숙박 일수 를 jsp로 전송
 		mav.addObject("room",room);
 		mav.addObject("lodging",lodging);
 		mav.addObject("resultDay", resultDay);
@@ -459,6 +465,7 @@ public class EventControllerImpl implements EventController {
 	public String resPay(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		// 결제 하기 버튼을 누를 때 결제중 이라는 팝업창이 뜨도록 하는 메서드
 		return "event/resPay";
 	}
 
@@ -467,6 +474,7 @@ public class EventControllerImpl implements EventController {
 	public void resPay(@ModelAttribute("res") LodgingResDTO res, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		// 예약이 완료되고 숙박 예약 테이블에 저장되면서 완료 alert를 띄워 주는 메서드
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -491,6 +499,7 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView myPick(@RequestParam("lod_id") int lod_id, @RequestParam("pick") boolean pick,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 찜하기
 			response.setContentType("text/html;charset=utf-8");
 			
 			HttpSession session = request.getSession();
@@ -532,7 +541,7 @@ public class EventControllerImpl implements EventController {
 	public ModelAndView myReview(@RequestParam("lod_id") int lod_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
-		
+		// 리뷰 작성 폼
 		HttpSession session = request.getSession();
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		ModelAndView mav = null;
@@ -556,6 +565,7 @@ public class EventControllerImpl implements EventController {
 	@RequestMapping(value="/addReview", method=RequestMethod.POST)
 	public void addReview(@ModelAttribute("review") ReviewDTO review, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		// 리뷰 작성 후 db에 저장되고 리뷰 등록 완료 alert창 띄워주는 메서드
 		response.setContentType("text/html;charset=utf-8");
 		
 		int result = eventService.addReview(review);
@@ -568,10 +578,9 @@ public class EventControllerImpl implements EventController {
 			out.println("alert('리뷰가 등록되지 않았습니다.');");
 		}
 		out.println("location.href='"+ request.getContextPath() 
-				+ "/event/lodInfo?lod_id="+review.getLod_id()+"';"); 
+				+ "/event/lodInfo?lod_id="+review.getLod_id()+"&resultDay=0';"); 
 		out.println("</script>");
 		
 	}
 
-	
 }

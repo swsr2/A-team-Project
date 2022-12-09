@@ -16,6 +16,7 @@ request.setCharacterEncoding("UTF-8");
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <script>
+  // 날짜 선택 스크립트
   $(function () {
       $('#date').daterangepicker({
           "locale": {
@@ -83,6 +84,7 @@ form {
 			<td></td>
 		</tr>
 		<tr>
+		<!-- 가는 편 공항 선택 -->
 			<td><select name="air_departPlace">
 				<option value="none" selected disabled>=== 선택 ===</option>
 				<option value="GMP">김포</option>
@@ -97,6 +99,7 @@ form {
 				<option value="KPO">포항</option>
 				<option value="YNY">양양</option>
 			</select></td>
+			<!-- 오는 편 공항 선택 -->
 			<td ><select name="air_arrivalPlace">
 				<option value="none" selected disabled>=== 선택 ===</option>
 				<option value="GMP">김포</option>
@@ -111,6 +114,7 @@ form {
 				<option value="KPO">포항</option>
 				<option value="YNY">양양</option>
 			</select></td>
+			<!-- 가는 편 오는 편 날짜 선택 -->
 			<td><input type="text" id="date" name="date" value="" /></td>
 			<td><input type="submit" id="selectFinish" value="선택완료"></td>
 		</tr>

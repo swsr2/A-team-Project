@@ -11,9 +11,6 @@ import com.spring.project.event.dto.ReviewDTO;
 import com.spring.project.event.dto.RoomInfoDTO;
 
 public interface EventDAO {
-	public List<AirplaneDTO> selectList(AirplaneDTO air);
-
-	public List<AirplaneDTO> selectList2(AirplaneDTO air);
 
 	public AirplaneDTO selectAir_no_from(int air_no_from);
 
