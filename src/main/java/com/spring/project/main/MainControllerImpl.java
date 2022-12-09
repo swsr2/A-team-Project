@@ -59,7 +59,7 @@ public class MainControllerImpl implements MainController{
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("alert('문의가 완료되었습니다.');");
-		out.println("location.href='http://제주가고싶조.메인.한국:8080/project/main/main.do';");
+		out.println("location.href='http://15.164.48.50:8080/project/main/main.do';");
 		out.println("</script>");
 	}
 	

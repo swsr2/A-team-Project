@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -110,7 +111,7 @@ public class KakaoControllerImpl implements KakaoController {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=7c06fcfbfeffe9bdd6963f11f30aaf2d");
-			sb.append("&redirect_uri=http://제주가고싶조.메인.한국:8080/project/kakao/kakaoLogin.do");
+			sb.append("&redirect_uri=http://15.164.48.50:8080/project/kakao/kakaoLogin.do");
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();
@@ -182,6 +183,7 @@ public class KakaoControllerImpl implements KakaoController {
 			JsonObject profile = kakao_account.getAsJsonObject().get("profile").getAsJsonObject();
 			
 			String id = kakao_account.getAsJsonObject().get("email").getAsString();
+//			String name = URLEncoder.encode(profile.getAsJsonObject().get("nickname").getAsString(),"UTF-8");
 			String name = profile.getAsJsonObject().get("nickname").getAsString();
 			String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();

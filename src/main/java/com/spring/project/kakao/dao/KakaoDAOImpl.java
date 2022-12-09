@@ -23,8 +23,8 @@ public class KakaoDAOImpl implements KakaoDAO {
 	// 정보 확인
 	@Override
 	public MemberDTO findKakao(HashMap<String, Object> userInfo) {
-		System.out.println("RN : " + userInfo.get("name"));
-		System.out.println("daoimpl의 id email gender" + userInfo.get("id") + userInfo.get("gender") + userInfo.get("email"));
+//		System.out.println("RN : " + userInfo.get("name"));
+//		System.out.println("daoimpl의 id email gender" + userInfo.get("id") + userInfo.get("gender") + userInfo.get("email"));
 		
 		return sqlSession.selectOne("mapper.kakao.kakao", userInfo);
 	}
