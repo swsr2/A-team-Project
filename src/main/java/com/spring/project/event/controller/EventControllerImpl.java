@@ -147,8 +147,9 @@ public class EventControllerImpl implements EventController {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 				
+		HttpSession session = request.getSession();
+		// 처음 페이지 
 		if(!(request.getParameter("lodDate") == null)) {
-			HttpSession session = request.getSession();
 			session.setAttribute("checkIn", request.getParameter("checkIn"));
 			session.setAttribute("checkOut", request.getParameter("checkOut"));
 
@@ -163,7 +164,22 @@ public class EventControllerImpl implements EventController {
 
 			int resultDay = period.getDays();
 			mav.addObject("resultDay", resultDay); 
-		}
+		} 
+		
+		
+		// 두번째 이후 페이지 - 숙박일 수 계산
+		String CheckIn = (String) session.getAttribute("checkIn");
+		String CheckOut = (String) session.getAttribute("checkOut");
+
+		LocalDate StartDate = LocalDate.parse(CheckIn);
+		LocalDate EndDate = LocalDate.parse(CheckOut);
+
+		Period period = Period.between(StartDate, EndDate);
+
+		int resultDay = period.getDays();
+		mav.addObject("resultDay", resultDay); 
+		
+		
 		int lodCnt = eventService.allLodCnt();
 		int postNum = 12;
 		int pageNum = (int)Math.ceil((double)lodCnt/postNum);
