@@ -246,6 +246,7 @@ select {
 				<input type="hidden" id="gender" name="gender" value="${member.gender }">
 			</c:if>
 		<br>
+		<p class="check"></p><br>
 		<td width="400">
 			<input type="button" class="btn" value="수정하기" onclick="fn_checkForm()"><br>
 			<input type="button" class="btn" value="뒤로가기" onclick="location.href='${path }/mypage/mypagemain'"><br>
