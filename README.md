@@ -34,3 +34,7 @@
  - 내 예약 내역 보기
  - 여행 일정 짜기(찜한 목록으로 일자별 여행 일정짜기) 
  5. 1:1 문의하기
+
+
+* ERD : https://www.erdcloud.com/d/YhzrQh2fziLWSrXLJ
+* 배포사이트 시연 영상: https://www.youtube.com/watch?v=GXycLbWbMks
